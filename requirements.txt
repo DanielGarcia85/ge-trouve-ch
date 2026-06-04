@@ -1,0 +1,7 @@
+# Dépendances Python — ge-trouve.ch
+# -----------------------------------
+# Rempli au fur et à mesure : chaque dépendance est ajoutée (avec sa version
+# épinglée, ex. paquet==1.2.3) au moment où on l'utilise réellement dans le
+# code, pas avant. On garde ainsi la maîtrise de chaque ligne.
+#
+# Aucune dépendance pour l'instant.

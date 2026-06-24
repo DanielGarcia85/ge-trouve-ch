@@ -12,12 +12,12 @@ Travail de Bachelor (HEG-Genève, module 66-62, filière Informatique de gestion
 Auteur : Daniel Garcia. Directeur : Frédéric Mencier.
 
 **Question de recherche :** Dans quelle mesure un système RAG appliqué à des documents
-administratifs en français produit-il des réponses fiables et pertinentes pour des
+administratifs en français du canton de Genève produit-il des réponses fiables et pertinentes pour des
 utilisateurs non-experts ?
 
 ## Stack technique
 
-- **Langage :** Python 3.11+
+- **Langage :** Python
 - **Framework RAG :** LangChain / LlamaIndex / OpenRAG (choix à justifier — chapitre 2)
 - **LLM :** Mistral 7B servi via Ollama, en local (choix à justifier — chapitre 3)
 - **Embeddings :** modèle multilingue à choisir (chapitre 4)

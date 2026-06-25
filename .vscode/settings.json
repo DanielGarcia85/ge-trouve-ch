@@ -1,0 +1,21 @@
+{
+    // ─────────────────────────────────────────────────────────────────────
+    // Interpréteur Python du projet
+    // ─────────────────────────────────────────────────────────────────────
+    // Le dépôt est partagé entre deux PC via OneDrive. Or un venv contient
+    // des chemins absolus + des binaires propres à une machine : impossible
+    // donc de partager le même venv entre les deux postes. Chaque PC a le
+    // sien, avec un nom distinct (.venvdaniel sur un poste, .venvgarciad sur
+    // l'autre) pour qu'ils ne s'écrasent pas via la synchronisation OneDrive.
+    //
+    // Pour qu'UN SEUL settings.json fonctionne sur les deux machines, le nom
+    // du venv n'est pas écrit en dur : il est injecté via la variable
+    // d'environnement LOCAL_PC_VENV, définie une fois par poste
+    // (LOCAL_PC_VENV=.venvdaniel & LOCAL_PC_VENV=.venvgarciad).
+    // VS Code résout ${env:LOCAL_PC_VENV} 
+    // au démarrage vers le bon dossier selon la machine.
+    "python.defaultInterpreterPath": "${workspaceFolder}/${env:LOCAL_PC_VENV}/Scripts/python.exe",
+
+    // Active automatiquement le venv dans les terminaux intégrés de VS Code.
+    "python.terminal.activateEnvironment": true
+}

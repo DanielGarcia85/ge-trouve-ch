@@ -1,12 +1,13 @@
-# .gitignore — rempli au fur et à mesure, jamais à l'avance.
-# On n'ignore que ce qui existe réellement dans le projet. Chaque nouvelle
-# entrée est ajoutée quand le fichier/dossier concerné apparaît, pour garder
-# la maîtrise et la compréhension de ce qui est versionné ou non.
-
 # --- Secrets (le .env n'est jamais commité ; .env.example sert de modèle) ---
 .env
 .env.*
 !.env.example
+
+# --- Configuration éditeur VS Code ---
+# On versionne uniquement settings.json (réglages partagés, interpréteur via
+# ${env:LOCAL_PC_VENV}) ; tout le reste de .vscode/ reste local à la machine.
+.vscode/*
+!.vscode/settings.json
 
 # --- Données scrapées (dossier présent, contenu non versionné — voir CLAUDE.md) ---
 data/*
@@ -14,3 +15,9 @@ data/*
 
 # --- Fichiers temporaires Office (le mémoire est ouvert en édition) ---
 ~$*.docx
+
+# --- Environnement Claude Code (historique, config — jamais versionné) ---
+.claude/
+
+# --- Contexte projet pour l'assistant ---
+CLAUDE.md

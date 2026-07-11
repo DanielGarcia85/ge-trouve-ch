@@ -1,0 +1,39 @@
+<svg viewBox="8 26 960 272" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1060" height="312" fill="#FFFFFF"/>
+
+  <!-- liens d'attention depuis "permis" -->
+  <path d="M 590 102 Q 320 8 52 100" fill="none" stroke="#D97706" stroke-width="1.6" opacity="0.5"/>
+  <path d="M 594 102 Q 380 20 170 100" fill="none" stroke="#D97706" stroke-width="2.8" opacity="0.65"/>
+  <path d="M 600 102 Q 500 34 400 100" fill="none" stroke="#D97706" stroke-width="4.2" opacity="0.8"/>
+  <path d="M 660 102 Q 726 62 826 100" fill="none" stroke="#D97706" stroke-width="5" opacity="0.88"/>
+  <text x="150" y="48" text-anchor="middle" font-size="14" font-style="italic" fill="#B45309">lien faible</text>
+  <text x="742" y="56" text-anchor="middle" font-size="14" font-style="italic" fill="#B45309">lien fort</text>
+
+  <!-- chips de mots -->
+  <g font-size="19">
+    <rect x="16" y="100" width="66" height="52" rx="10" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1.8"/>
+    <text x="49" y="133" text-anchor="middle" fill="#1E40AF">Où</text>
+    <rect x="108" y="100" width="116" height="52" rx="10" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1.8"/>
+    <text x="166" y="133" text-anchor="middle" fill="#1E40AF">déposer</text>
+    <rect x="250" y="100" width="58" height="52" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+    <text x="279" y="133" text-anchor="middle" fill="#6B7280">ma</text>
+    <rect x="334" y="100" width="120" height="52" rx="10" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1.8"/>
+    <text x="394" y="133" text-anchor="middle" fill="#1E40AF">demande</text>
+    <rect x="480" y="100" width="56" height="52" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+    <text x="508" y="133" text-anchor="middle" fill="#6B7280">de</text>
+    <rect x="562" y="100" width="112" height="52" rx="10" fill="#FDE68A" stroke="#D97706" stroke-width="2.5"/>
+    <text x="618" y="133" text-anchor="middle" font-weight="700" fill="#92400E">permis</text>
+    <rect x="700" y="100" width="56" height="52" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+    <text x="728" y="133" text-anchor="middle" fill="#6B7280">de</text>
+    <rect x="782" y="100" width="104" height="52" rx="10" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1.8"/>
+    <text x="834" y="133" text-anchor="middle" fill="#1E40AF">séjour</text>
+    <rect x="912" y="100" width="48" height="52" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+    <text x="936" y="133" text-anchor="middle" fill="#6B7280">?</text>
+  </g>
+  <text x="618" y="176" text-anchor="middle" font-size="14" font-style="italic" fill="#B45309">mot observé</text>
+
+  <text x="488" y="214" text-anchor="middle" font-size="16" fill="#4B5563">Le mot « permis » se relie fortement à « séjour », qui précise sa nature, mais aussi à « demande »,</text>
+  <text x="488" y="238" text-anchor="middle" font-size="16" fill="#4B5563">« déposer » et « Où », pourtant éloignés dans la phrase. L'épaisseur du trait suggère la force du lien.</text>
+  <text x="488" y="262" text-anchor="middle" font-size="16" fill="#4B5563">En bleu, les mots auxquels « permis » prête le plus attention ; en gris, ceux qu'il néglige presque.</text>
+  <text x="488" y="286" text-anchor="middle" font-size="16" fill="#4B5563">Chaque mot de la phrase effectue en parallèle cette même évaluation vis-à-vis de tous les autres.</text>
+</svg>

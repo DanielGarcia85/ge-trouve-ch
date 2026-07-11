@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1060 452" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1060" height="452" fill="#FFFFFF"/>
+
+  <defs>
+    <marker id="arr23" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9CA3AF"/>
+    </marker>
+  </defs>
+
+  <!-- Question de l'usager -->
+  <rect x="8" y="22" width="310" height="130" rx="14" fill="#EFF6FF" stroke="#60A5FA" stroke-width="2"/>
+  <text x="163" y="56" text-anchor="middle" font-size="15.5" fill="#1E3A8A">« Où déposer ma demande</text>
+  <text x="163" y="80" text-anchor="middle" font-size="15.5" fill="#1E3A8A">de permis de séjour ? »</text>
+  <text x="163" y="118" text-anchor="middle" font-size="14" font-style="italic" fill="#3B82F6">la question de l'usager</text>
+
+  <line x1="324" y1="87" x2="382" y2="87" stroke="#9CA3AF" stroke-width="2.5" marker-end="url(#arr23)"/>
+
+  <!-- LLM seul -->
+  <rect x="390" y="22" width="280" height="130" rx="14" fill="#F5F3FF" stroke="#A78BFA" stroke-width="2.2"/>
+  <text x="530" y="58" text-anchor="middle" font-size="17" font-weight="700" fill="#6D28D9">LLM interrogé seul</text>
+  <text x="530" y="90" text-anchor="middle" font-size="15" fill="#7C3AED">répond « à livre fermé »,</text>
+  <text x="530" y="114" text-anchor="middle" font-size="15" fill="#7C3AED">uniquement de mémoire</text>
+
+  <line x1="676" y1="87" x2="734" y2="87" stroke="#9CA3AF" stroke-width="2.5" marker-end="url(#arr23)"/>
+
+  <!-- Réponse produite -->
+  <rect x="742" y="22" width="310" height="130" rx="14" fill="#FFF1F2" stroke="#FB7185" stroke-width="2"/>
+  <text x="897" y="52" text-anchor="middle" font-size="15.5" fill="#9F1239">« Envoyez le formulaire</text>
+  <text x="897" y="76" text-anchor="middle" font-size="15.5" fill="#9F1239">M-347 à l'office cantonal,</text>
+  <text x="897" y="100" text-anchor="middle" font-size="15.5" fill="#9F1239">sous un délai de 60 jours. »</text>
+  <text x="897" y="134" text-anchor="middle" font-size="14" font-style="italic" fill="#E11D48">fluide et assurée… mais inventée</text>
+
+  <!-- Les quatre limites -->
+  <rect x="8" y="196" width="249" height="152" rx="12" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
+  <text x="132" y="228" text-anchor="middle" font-size="16" font-weight="700" fill="#B45309">1. Hallucination</text>
+  <text x="132" y="260" text-anchor="middle" font-size="14" fill="#78350F">peut affirmer avec aplomb</text>
+  <text x="132" y="282" text-anchor="middle" font-size="14" fill="#78350F">une information inventée :</text>
+  <text x="132" y="304" text-anchor="middle" font-size="14" fill="#78350F">formulaire, délai, montant</text>
+
+  <rect x="273" y="196" width="249" height="152" rx="12" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="2"/>
+  <text x="397" y="228" text-anchor="middle" font-size="16" font-weight="700" fill="#0369A1">2. Connaissances figées</text>
+  <text x="397" y="260" text-anchor="middle" font-size="14" fill="#0C4A6E">ignore tout changement</text>
+  <text x="397" y="282" text-anchor="middle" font-size="14" fill="#0C4A6E">survenu après son entraînement :</text>
+  <text x="397" y="304" text-anchor="middle" font-size="14" fill="#0C4A6E">délais, barèmes, procédures</text>
+
+  <rect x="538" y="196" width="249" height="152" rx="12" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+  <text x="662" y="228" text-anchor="middle" font-size="16" font-weight="700" fill="#047857">3. Pas de spécialisation</text>
+  <text x="662" y="260" text-anchor="middle" font-size="14" fill="#064E3B">connaît mal les spécificités</text>
+  <text x="662" y="282" text-anchor="middle" font-size="14" fill="#064E3B">genevoises, qu'il peut</text>
+  <text x="662" y="304" text-anchor="middle" font-size="14" fill="#064E3B">confondre avec d'autres</text>
+
+  <rect x="803" y="196" width="249" height="152" rx="12" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="927" y="228" text-anchor="middle" font-size="16" font-weight="700" fill="#6D28D9">4. Aucune traçabilité</text>
+  <text x="927" y="260" text-anchor="middle" font-size="14" fill="#4C1D95">ne cite aucune source ;</text>
+  <text x="927" y="282" text-anchor="middle" font-size="14" fill="#4C1D95">l'usager n'a aucun moyen</text>
+  <text x="927" y="304" text-anchor="middle" font-size="14" fill="#4C1D95">de vérifier la réponse</text>
+
+  <text x="530" y="394" text-anchor="middle" font-size="16" fill="#4B5563">Quatre limites, une même racine : interrogé seul, le modèle ne consulte aucun document</text>
+  <text x="530" y="418" text-anchor="middle" font-size="16" fill="#4B5563">au moment de répondre — il ne peut que se souvenir.</text>
+</svg>

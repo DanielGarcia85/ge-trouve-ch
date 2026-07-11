@@ -1,0 +1,78 @@
+<svg viewBox="0 0 1060 468" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1060" height="468" fill="#FFFFFF"/>
+
+  <defs>
+    <marker id="a26" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9CA3AF"/>
+    </marker>
+    <marker id="a26o" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#FB923C"/>
+    </marker>
+  </defs>
+
+  <!-- ===== NAIVE RAG ===== -->
+  <rect x="8" y="16" width="1044" height="132" rx="12" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1.4"/>
+  <text x="24" y="42" font-size="15.5" font-weight="700" fill="#1F2937">NAIVE RAG : le pipeline simple de la Figure 2.5</text>
+
+  <g font-size="14.5">
+    <rect x="20" y="58" width="190" height="68" rx="10" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1.6"/>
+    <text x="115" y="88" text-anchor="middle" fill="#1E3A8A">Question</text>
+    <text x="115" y="108" text-anchor="middle" fill="#1E3A8A">de l'usager</text>
+    <line x1="214" y1="92" x2="230" y2="92" stroke="#9CA3AF" stroke-width="2.4" marker-end="url(#a26)"/>
+    <rect x="236" y="58" width="190" height="68" rx="10" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.6"/>
+    <text x="331" y="88" text-anchor="middle" fill="#5B21B6">Recherche dans</text>
+    <text x="331" y="108" text-anchor="middle" fill="#5B21B6">la base vectorielle</text>
+    <line x1="430" y1="92" x2="446" y2="92" stroke="#9CA3AF" stroke-width="2.4" marker-end="url(#a26)"/>
+    <rect x="452" y="58" width="200" height="68" rx="10" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1.6"/>
+    <text x="552" y="88" text-anchor="middle" fill="#1E3A8A">K fragments,</text>
+    <text x="552" y="108" text-anchor="middle" fill="#1E3A8A">tels quels</text>
+    <line x1="656" y1="92" x2="672" y2="92" stroke="#9CA3AF" stroke-width="2.4" marker-end="url(#a26)"/>
+    <rect x="678" y="58" width="150" height="68" rx="10" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.6"/>
+    <text x="753" y="96" text-anchor="middle" font-weight="700" fill="#166534">LLM</text>
+    <line x1="832" y1="92" x2="848" y2="92" stroke="#9CA3AF" stroke-width="2.4" marker-end="url(#a26)"/>
+    <rect x="854" y="58" width="186" height="68" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="1.6"/>
+    <text x="947" y="96" text-anchor="middle" fill="#065F46">Réponse</text>
+  </g>
+
+  <!-- ===== ADVANCED RAG ===== -->
+  <rect x="8" y="164" width="1044" height="230" rx="12" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1.4"/>
+  <text x="24" y="190" font-size="15.5" font-weight="700" fill="#1F2937">ADVANCED RAG : le même pipeline, raffiné avant et après la recherche</text>
+
+  <!-- modules ajoutés (avant / après) -->
+  <rect x="82" y="206" width="286" height="66" rx="10" fill="#FFF7ED" stroke="#FB923C" stroke-width="2"/>
+  <text x="225" y="230" text-anchor="middle" font-size="14.5" font-weight="700" fill="#9A3412">Avant la recherche</text>
+  <text x="225" y="254" text-anchor="middle" font-size="14" fill="#9A3412">reformulation de la requête (<tspan font-style="italic">query rewriting</tspan>)</text>
+  <line x1="225" y1="274" x2="225" y2="296" stroke="#FB923C" stroke-width="2.4" marker-end="url(#a26o)"/>
+
+  <rect x="470" y="200" width="340" height="78" rx="10" fill="#FFF7ED" stroke="#FB923C" stroke-width="2"/>
+  <text x="640" y="224" text-anchor="middle" font-size="14.5" font-weight="700" fill="#9A3412">Après la recherche</text>
+  <text x="640" y="246" text-anchor="middle" font-size="14" fill="#9A3412">re-classement des fragments (<tspan font-style="italic">re-ranking</tspan>)</text>
+  <text x="640" y="266" text-anchor="middle" font-size="14" fill="#9A3412">et compression du contexte</text>
+  <line x1="640" y1="280" x2="640" y2="296" stroke="#FB923C" stroke-width="2.4" marker-end="url(#a26o)"/>
+
+  <!-- chaine advanced -->
+  <g font-size="14.5">
+    <rect x="20" y="300" width="190" height="68" rx="10" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1.6"/>
+    <text x="115" y="330" text-anchor="middle" fill="#1E3A8A">Question</text>
+    <text x="115" y="350" text-anchor="middle" fill="#1E3A8A">de l'usager</text>
+    <line x1="214" y1="334" x2="230" y2="334" stroke="#9CA3AF" stroke-width="2.4" marker-end="url(#a26)"/>
+    <rect x="236" y="300" width="190" height="68" rx="10" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.6"/>
+    <text x="331" y="330" text-anchor="middle" fill="#5B21B6">Recherche dans</text>
+    <text x="331" y="350" text-anchor="middle" fill="#5B21B6">la base vectorielle</text>
+    <line x1="430" y1="334" x2="446" y2="334" stroke="#9CA3AF" stroke-width="2.4" marker-end="url(#a26)"/>
+    <rect x="452" y="300" width="200" height="68" rx="10" fill="#FFF7ED" stroke="#FB923C" stroke-width="1.8"/>
+    <text x="552" y="330" text-anchor="middle" fill="#9A3412">K fragments triés</text>
+    <text x="552" y="350" text-anchor="middle" fill="#9A3412">et condensés</text>
+    <line x1="656" y1="334" x2="672" y2="334" stroke="#9CA3AF" stroke-width="2.4" marker-end="url(#a26)"/>
+    <rect x="678" y="300" width="150" height="68" rx="10" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.6"/>
+    <text x="753" y="338" text-anchor="middle" font-weight="700" fill="#166534">LLM</text>
+    <line x1="832" y1="334" x2="848" y2="334" stroke="#9CA3AF" stroke-width="2.4" marker-end="url(#a26)"/>
+    <rect x="854" y="300" width="186" height="68" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="1.6"/>
+    <text x="947" y="330" text-anchor="middle" fill="#065F46">Réponse plus</text>
+    <text x="947" y="350" text-anchor="middle" fill="#065F46">fiable</text>
+  </g>
+
+  <!-- Synthese -->
+  <text x="530" y="428" text-anchor="middle" font-size="15" fill="#4B5563">Le Modular RAG pousse la logique un cran plus loin : recherche, mémoire ou routage deviennent des briques</text>
+  <text x="530" y="452" text-anchor="middle" font-size="15" fill="#4B5563">interchangeables, que l'on assemble et réordonne selon les besoins du cas d'usage.</text>
+</svg>

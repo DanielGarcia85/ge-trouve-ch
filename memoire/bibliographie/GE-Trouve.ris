@@ -1,0 +1,387 @@
+TY  - MGZN
+TI  - Cinq chatbots de l’administration fédérale
+AU  - Chavanne, Yannick
+T2  - ICTjournal
+AB  - Cinq projets de chatbots, développés par divers départements fédéraux suisses, utilisent l’IA pour simplifier l’accès aux informations, tant pour les fonctionnaires administratifs que pour les citoyens et les entreprises.
+DA  - 2024/10/17/
+PY  - 2024
+LA  - fr
+UR  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
+Y2  - 2026/03/19/13:26:03
+L2  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
+ER  - 
+
+TY  - GEN
+TI  - Ragas: Automated Evaluation of Retrieval Augmented Generation
+AU  - Es, Shahul
+AU  - James, Jithin
+AU  - Espinosa-Anke, Luis
+AU  - Schockaert, Steven
+AB  - We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAG systems are composed of a retrieval and an LLM based generation module, and provide LLMs with knowledge from a reference textual database, which enables them to act as a natural language layer between a user and textual databases, reducing the risk of hallucinations. Evaluating RAG architectures is, however, challenging because there are several dimensions to consider: the ability of the retrieval system to identify relevant and focused context passages, the ability of the LLM to exploit such passages in a faithful way, or the quality of the generation itself. With Ragas, we put forward a suite of metrics which can be used to evaluate these different dimensions \textit{without having to rely on ground truth human annotations}. We posit that such a framework can crucially contribute to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs.
+DA  - 2023/09/26/
+PY  - 2023
+DO  - 10.48550/arXiv.2309.15217
+DP  - arXiv.org
+PB  - arXiv
+ST  - Ragas
+UR  - http://arxiv.org/abs/2309.15217
+Y2  - 2026/03/19/10:12:50
+L1  - http://arxiv.org/pdf/2309.15217v2
+L2  - http://arxiv.org/abs/2309.15217
+N1  - Comment: Reference-free (not tied to having ground truth available) evaluation framework for retrieval agumented generation
+KW  - Computer Science - Computation and Language
+ER  - 
+
+TY  - GEN
+TI  - Retrieval-Augmented Generation for Large Language Models: A Survey
+AU  - Gao, Yunfan
+AU  - Xiong, Yun
+AU  - Gao, Xinyu
+AU  - Jia, Kangxiang
+AU  - Pan, Jinliu
+AU  - Bi, Yuxi
+AU  - Dai, Yi
+AU  - Sun, Jiawei
+AU  - Wang, Meng
+AU  - Wang, Haofen
+AB  - Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark. At the end, this article delineates the challenges currently faced and points out prospective avenues for research and development.
+DA  - 2023/12/18/
+PY  - 2023
+DO  - 10.48550/arXiv.2312.10997
+DP  - arXiv.org
+PB  - arXiv
+ST  - Retrieval-Augmented Generation for Large Language Models
+UR  - http://arxiv.org/abs/2312.10997
+Y2  - 2026/03/19/11:34:22
+L1  - http://arxiv.org/pdf/2312.10997v5
+L2  - http://arxiv.org/abs/2312.10997
+N1  - Comment: Ongoing Work
+KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Computation and Language
+ER  - 
+
+TY  - GEN
+TI  - Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+AU  - Lewis, Patrick
+AU  - Perez, Ethan
+AU  - Piktus, Aleksandra
+AU  - Petroni, Fabio
+AU  - Karpukhin, Vladimir
+AU  - Goyal, Naman
+AU  - Küttler, Heinrich
+AU  - Lewis, Mike
+AU  - Yih, Wen-tau
+AU  - Rocktäschel, Tim
+AU  - Riedel, Sebastian
+AU  - Kiela, Douwe
+AB  - Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.
+DA  - 2020/05/22/
+PY  - 2020
+DO  - 10.48550/arXiv.2005.11401
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2005.11401
+Y2  - 2026/03/19/10:52:35
+L1  - http://arxiv.org/pdf/2005.11401v4
+L2  - http://arxiv.org/abs/2005.11401
+N1  - Comment: Accepted at NeurIPS 2020
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Machine Learning
+ER  - 
+
+TY  - GEN
+TI  - Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers
+AU  - Sharma, Chaitanya
+AB  - Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm to enhance large language models (LLMs) by conditioning generation on external evidence retrieved at inference time. While RAG addresses critical limitations of parametric knowledge storage-such as factual inconsistency and domain inflexibility-it introduces new challenges in retrieval quality, grounding fidelity, pipeline efficiency, and robustness against noisy or adversarial inputs. This survey provides a comprehensive synthesis of recent advances in RAG systems, offering a taxonomy that categorizes architectures into retriever-centric, generator-centric, hybrid, and robustness-oriented designs. We systematically analyze enhancements across retrieval optimization, context filtering, decoding control, and efficiency improvements, supported by comparative performance analyses on short-form and multi-hop question answering tasks. Furthermore, we review state-of-the-art evaluation frameworks and benchmarks, highlighting trends in retrieval-aware evaluation, robustness testing, and federated retrieval settings. Our analysis reveals recurring trade-offs between retrieval precision and generation flexibility, efficiency and faithfulness, and modularity and coordination. We conclude by identifying open challenges and future research directions, including adaptive retrieval architectures, real-time retrieval integration, structured reasoning over multi-hop evidence, and privacy-preserving retrieval mechanisms. This survey aims to consolidate current knowledge in RAG research and serve as a foundation for the next generation of retrieval-augmented language modeling systems.
+DA  - 2025/05/28/
+PY  - 2025
+DO  - 10.48550/arXiv.2506.00054
+LA  - en
+PB  - arXiv
+ST  - Retrieval-Augmented Generation
+UR  - https://arxiv.org/abs/2506.00054v1
+Y2  - 2026/04/29/12:24:32
+L1  - https://arxiv.org/pdf/2506.00054
+ER  - 
+
+TY  - GEN
+TI  - Improving language models by retrieving from trillions of tokens
+AU  - Borgeaud, Sebastian
+AU  - Mensch, Arthur
+AU  - Hoffmann, Jordan
+AU  - Cai, Trevor
+AU  - Rutherford, Eliza
+AU  - Millican, Katie
+AU  - Driessche, George van den
+AU  - Lespiau, Jean-Baptiste
+AU  - Damoc, Bogdan
+AU  - Clark, Aidan
+AU  - Casas, Diego de Las
+AU  - Guy, Aurelia
+AU  - Menick, Jacob
+AU  - Ring, Roman
+AU  - Hennigan, Tom
+AU  - Huang, Saffron
+AU  - Maggiore, Loren
+AU  - Jones, Chris
+AU  - Cassirer, Albin
+AU  - Brock, Andy
+AU  - Paganini, Michela
+AU  - Irving, Geoffrey
+AU  - Vinyals, Oriol
+AU  - Osindero, Simon
+AU  - Simonyan, Karen
+AU  - Rae, Jack W.
+AU  - Elsen, Erich
+AU  - Sifre, Laurent
+AB  - We enhance auto-regressive language models by conditioning on document chunks retrieved from a large corpus, based on local similarity with preceding tokens. With a $2$ trillion token database, our Retrieval-Enhanced Transformer (RETRO) obtains comparable performance to GPT-3 and Jurassic-1 on the Pile, despite using 25$\times$ fewer parameters. After fine-tuning, RETRO performance translates to downstream knowledge-intensive tasks such as question answering. RETRO combines a frozen Bert retriever, a differentiable encoder and a chunked cross-attention mechanism to predict tokens based on an order of magnitude more data than what is typically consumed during training. We typically train RETRO from scratch, yet can also rapidly RETROfit pre-trained transformers with retrieval and still achieve good performance. Our work opens up new avenues for improving language models through explicit memory at unprecedented scale.
+DA  - 2021/12/08/
+PY  - 2021
+DO  - 10.48550/arXiv.2112.04426
+LA  - en
+PB  - arXiv
+UR  - https://arxiv.org/abs/2112.04426v3
+Y2  - 2026/04/29/12:18:45
+L1  - https://arxiv.org/pdf/2112.04426
+ER  - 
+
+TY  - GEN
+TI  - REALM: Retrieval-Augmented Language Model Pre-Training
+AU  - Guu, Kelvin
+AU  - Lee, Kenton
+AU  - Tung, Zora
+AU  - Pasupat, Panupong
+AU  - Chang, Ming-Wei
+AB  - Language model pre-training has been shown to capture a surprising amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network, requiring ever-larger networks to cover more facts. To capture knowledge in a more modular and interpretable way, we augment language model pre-training with a latent knowledge retriever, which allows the model to retrieve and attend over documents from a large corpus such as Wikipedia, used during pre-training, fine-tuning and inference. For the first time, we show how to pre-train such a knowledge retriever in an unsupervised manner, using masked language modeling as the learning signal and backpropagating through a retrieval step that considers millions of documents. We demonstrate the effectiveness of Retrieval-Augmented Language Model pre-training (REALM) by fine-tuning on the challenging task of Open-domain Question Answering (Open-QA). We compare against state-of-the-art models for both explicit and implicit knowledge storage on three popular Open-QA benchmarks, and find that we outperform all previous methods by a significant margin (4-16% absolute accuracy), while also providing qualitative benefits such as interpretability and modularity.
+DA  - 2020/02/10/
+PY  - 2020
+DO  - 10.48550/arXiv.2002.08909
+LA  - en
+PB  - arXiv
+ST  - REALM
+UR  - https://arxiv.org/abs/2002.08909v1
+Y2  - 2026/04/29/12:18:25
+L1  - https://arxiv.org/pdf/2002.08909
+ER  - 
+
+TY  - GEN
+TI  - Survey of Hallucination in Natural Language Generation
+AU  - Ji, Ziwei
+AU  - Lee, Nayeon
+AU  - Frieske, Rita
+AU  - Yu, Tiezheng
+AU  - Su, Dan
+AU  - Xu, Yan
+AU  - Ishii, Etsuko
+AU  - Bang, Yejin
+AU  - Chen, Delong
+AU  - Dai, Wenliang
+AU  - Chan, Ho Shu
+AU  - Madotto, Andrea
+AU  - Fung, Pascale
+AB  - Natural Language Generation (NLG) has improved exponentially in recent years thanks to the development of sequence-to-sequence deep learning technologies such as Transformer-based language models. This advancement has led to more fluent and coherent NLG, leading to improved development in downstream tasks such as abstractive summarization, dialogue generation and data-to-text generation. However, it is also apparent that deep learning based generation is prone to hallucinate unintended text, which degrades the system performance and fails to meet user expectations in many real-world scenarios. To address this issue, many studies have been presented in measuring and mitigating hallucinated texts, but these have never been reviewed in a comprehensive manner before. In this survey, we thus provide a broad overview of the research progress and challenges in the hallucination problem in NLG. The survey is organized into two parts: (1) a general overview of metrics, mitigation methods, and future directions; (2) an overview of task-specific research progress on hallucinations in the following downstream tasks, namely abstractive summarization, dialogue generation, generative question answering, data-to-text generation, machine translation, and visual-language generation; and (3) hallucinations in large language models (LLMs). This survey serves to facilitate collaborative efforts among researchers in tackling the challenge of hallucinated texts in NLG.
+DA  - 2022/02/08/
+PY  - 2022
+DO  - 10.1145/3571730
+LA  - en
+PB  - arXiv
+UR  - https://arxiv.org/abs/2202.03629v7
+Y2  - 2026/04/29/12:15:20
+L1  - https://arxiv.org/pdf/2202.03629
+ER  - 
+
+TY  - GEN
+TI  - Attention Is All You Need
+AU  - Vaswani, Ashish
+AU  - Shazeer, Noam
+AU  - Parmar, Niki
+AU  - Uszkoreit, Jakob
+AU  - Jones, Llion
+AU  - Gomez, Aidan N.
+AU  - Kaiser, Lukasz
+AU  - Polosukhin, Illia
+AB  - The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.
+DA  - 2017/06/12/
+PY  - 2017
+DO  - 10.48550/arXiv.1706.03762
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/1706.03762
+Y2  - 2026/04/30/10:14:39
+L1  - http://arxiv.org/pdf/1706.03762v7
+L2  - http://arxiv.org/abs/1706.03762
+N1  - Comment: 15 pages, 5 figures
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Machine Learning
+ER  - 
+
+TY  - GEN
+TI  - A Survey of Large Language Models
+AU  - Zhao, Wayne Xin
+AU  - Zhou, Kun
+AU  - Li, Junyi
+AU  - Tang, Tianyi
+AU  - Wang, Xiaolei
+AU  - Hou, Yupeng
+AU  - Min, Yingqian
+AU  - Zhang, Beichen
+AU  - Zhang, Junjie
+AU  - Dong, Zican
+AU  - Du, Yifan
+AU  - Yang, Chen
+AU  - Chen, Yushuo
+AU  - Chen, Zhipeng
+AU  - Jiang, Jinhao
+AU  - Ren, Ruiyang
+AU  - Li, Yifan
+AU  - Tang, Xinyu
+AU  - Liu, Zikang
+AU  - Liu, Peiyu
+AU  - Nie, Jian-Yun
+AU  - Wen, Ji-Rong
+AB  - Language is essentially a complex, intricate system of human expressions governed by grammatical rules. It poses a significant challenge to develop capable AI algorithms for comprehending and grasping a language. As a major approach, language modeling has been widely studied for language understanding and generation in the past two decades, evolving from statistical language models to neural language models. Recently, pre-trained language models (PLMs) have been proposed by pre-training Transformer models over large-scale corpora, showing strong capabilities in solving various NLP tasks. Since researchers have found that model scaling can lead to performance improvement, they further study the scaling effect by increasing the model size to an even larger size. Interestingly, when the parameter scale exceeds a certain level, these enlarged language models not only achieve a significant performance improvement but also show some special abilities that are not present in small-scale language models. To discriminate the difference in parameter scale, the research community has coined the term large language models (LLM) for the PLMs of significant size. Recently, the research on LLMs has been largely advanced by both academia and industry, and a remarkable progress is the launch of ChatGPT, which has attracted widespread attention from society. The technical evolution of LLMs has been making an important impact on the entire AI community, which would revolutionize the way how we develop and use AI algorithms. In this survey, we review the recent advances of LLMs by introducing the background, key findings, and mainstream techniques. In particular, we focus on four major aspects of LLMs, namely pre-training, adaptation tuning, utilization, and capacity evaluation. Besides, we also summarize the available resources for developing LLMs and discuss the remaining issues for future directions.
+DA  - 2023/03/31/
+PY  - 2023
+DO  - 10.48550/arXiv.2303.18223
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2303.18223
+Y2  - 2026/07/01/15:07:30
+L1  - http://arxiv.org/pdf/2303.18223v19
+L2  - http://arxiv.org/abs/2303.18223
+N1  - Comment: ongoing work; 144 pages, 1081 citations
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Artificial Intelligence
+ER  - 
+
+TY  - GEN
+TI  - BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension
+AU  - Lewis, Mike
+AU  - Liu, Yinhan
+AU  - Goyal, Naman
+AU  - Ghazvininejad, Marjan
+AU  - Mohamed, Abdelrahman
+AU  - Levy, Omer
+AU  - Stoyanov, Ves
+AU  - Zettlemoyer, Luke
+AB  - We present BART, a denoising autoencoder for pretraining sequence-to-sequence models. BART is trained by (1) corrupting text with an arbitrary noising function, and (2) learning a model to reconstruct the original text. It uses a standard Tranformer-based neural machine translation architecture which, despite its simplicity, can be seen as generalizing BERT (due to the bidirectional encoder), GPT (with the left-to-right decoder), and many other more recent pretraining schemes. We evaluate a number of noising approaches, finding the best performance by both randomly shuffling the order of the original sentences and using a novel in-filling scheme, where spans of text are replaced with a single mask token. BART is particularly effective when fine tuned for text generation but also works well for comprehension tasks. It matches the performance of RoBERTa with comparable training resources on GLUE and SQuAD, achieves new state-of-the-art results on a range of abstractive dialogue, question answering, and summarization tasks, with gains of up to 6 ROUGE. BART also provides a 1.1 BLEU increase over a back-translation system for machine translation, with only target language pretraining. We also report ablation experiments that replicate other pretraining schemes within the BART framework, to better measure which factors most influence end-task performance.
+DA  - 2019/10/29/
+PY  - 2019
+DO  - 10.48550/arXiv.1910.13461
+LA  - en
+PB  - arXiv
+ST  - BART
+UR  - https://arxiv.org/abs/1910.13461v1
+Y2  - 2026/07/01/14:13:26
+L1  - https://arxiv.org/pdf/1910.13461
+ER  - 
+
+TY  - GEN
+TI  - Dense Passage Retrieval for Open-Domain Question Answering
+AU  - Karpukhin, Vladimir
+AU  - Oğuz, Barlas
+AU  - Min, Sewon
+AU  - Lewis, Patrick
+AU  - Wu, Ledell
+AU  - Edunov, Sergey
+AU  - Chen, Danqi
+AU  - Yih, Wen-tau
+AB  - Open-domain question answering relies on efficient passage retrieval to select candidate contexts, where traditional sparse vector space models, such as TF-IDF or BM25, are the de facto method. In this work, we show that retrieval can be practically implemented using dense representations alone, where embeddings are learned from a small number of questions and passages by a simple dual-encoder framework. When evaluated on a wide range of open-domain QA datasets, our dense retriever outperforms a strong Lucene-BM25 system largely by 9%-19% absolute in terms of top-20 passage retrieval accuracy, and helps our end-to-end QA system establish new state-of-the-art on multiple open-domain QA benchmarks.
+DA  - 2020/04/10/
+PY  - 2020
+DO  - 10.48550/arXiv.2004.04906
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2004.04906
+Y2  - 2026/07/01/14:24:34
+L1  - http://arxiv.org/pdf/2004.04906v3
+L2  - http://arxiv.org/abs/2004.04906
+N1  - Comment: EMNLP 2020
+KW  - Computer Science - Computation and Language
+ER  - 
+
+TY  - GEN
+TI  - BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+AU  - Devlin, Jacob
+AU  - Chang, Ming-Wei
+AU  - Lee, Kenton
+AU  - Toutanova, Kristina
+AB  - We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).
+DA  - 2018/10/11/
+PY  - 2018
+DO  - 10.48550/arXiv.1810.04805
+DP  - arXiv.org
+PB  - arXiv
+ST  - BERT
+UR  - http://arxiv.org/abs/1810.04805
+Y2  - 2026/07/01/14:09:51
+L1  - http://arxiv.org/pdf/1810.04805v2
+L2  - http://arxiv.org/abs/1810.04805
+KW  - Computer Science - Computation and Language
+ER  - 
+
+TY  - JOUR
+TI  - Evaluating chatbot architectures for public service delivery: balancing functionality, safety, ethics, and adaptability
+AU  - Papadopoulos, Theodoros
+AU  - Alexopoulos, Charalampos Harris
+AU  - Charalabidis, Yannis
+T2  - Frontiers in Political Science
+AB  - The increasing integration of AI-driven interfaces into public service channels has catalyzed a vibrant discourse on the interplay between technological innovation and the traditional values of public governance. This discussion invites a critical exploration of how emerging chatbot architectures can be aligned with ethical principles and resilient public sector practices. While there is research assessing the potential benefits of integrating chatbots in service delivery, existing evaluation approaches often lack specificity to the unique context of public administration, failing to adequately balance technical performance with crucial ethical considerations, safety requirements, and core public service principles like transparency, fairness, and accountability. This research addresses this critical gap by developing and applying a structured evaluation framework specifically designed for assessing diverse chatbot architectures within the public sector. The methodology offers actionable insights to guide the selection and implementation of chatbot solutions that enhance citizen engagement, streamline government services, and uphold key public service values. A key contribution is the introduction of fifteen pre-assessed evaluation criteria, encompassing areas such as input understanding, error handling, legal compliance, safety, and personalization, which are applied to four distinct chatbot architectures. Our findings indicate that while no single architecture is universally optimal, hybrid retrieval-augmented generation (RAG) systems emerge as the most balanced approach, effectively mitigating the risks of pure generative models while retaining their adaptability. Ultimately, this work provides actionable guidance for policymakers and researchers, supporting informed decisions on the responsible use of chatbots and emphasizing the critical balance between innovation and public trust.
+DA  - 2025/10/01/
+PY  - 2025
+DO  - 10.3389/fpos.2025.1601440
+DP  - Frontiers
+VL  - 7
+J2  - Front. Polit. Sci.
+LA  - English
+PB  - Frontiers
+SN  - 2673-3145
+ST  - Evaluating chatbot architectures for public service delivery
+UR  - https://www.frontiersin.org/journals/political-science/articles/10.3389/fpos.2025.1601440/full
+Y2  - 2026/07/11/06:54:23
+L1  - https://www.frontiersin.org/articles/10.3389/fpos.2025.1601440/pdf
+KW  - AI ethics
+KW  - chatbots
+KW  - evaluation framework
+KW  - LLMs
+KW  - politics of technology
+KW  - public service delivery
+ER  - 
+
+TY  - ELEC
+TI  - Intelligence artificielle générative dans la fonction publique: l'Etat de Genève pose un cadre
+AU  - État de Genève
+T2  - ge.ch
+AB  - L’intelligence artificielle (IA) a pris un coup d'accélérateur porté par les possibilités pour le grand public d'accéder à de nouveaux systèmes d'IA générative. Ces outils transforment profondément les méthodes de travail, ouvrant de nouvelles perspectives notamment pour les prestations publiques. Face à cette évolution et afin de répondre aux enjeux qu'elle soulève, l'Etat de Genève propose à ses collaboratrices et collaborateurs un cadre d'utilisation pour les accompagner dans leurs démarches.
+DA  - 2024/11/21/
+PY  - 2024
+LA  - fr
+ST  - Intelligence artificielle générative dans la fonction publique
+UR  - https://www.ge.ch/node/37663
+Y2  - 2026/07/11/07:19:24
+L2  - https://www.ge.ch/node/37663
+ER  - 
+
+TY  - ELEC
+TI  - Genève développe sa stratégie en matière de souveraineté numérique
+AU  - État de Genève
+T2  - ge.ch
+AB  - Le canton publie sa première stratégie de souveraineté numérique . Elaborée par le département des institutions et du numérique (DIN), elle définit le cadre des choix technologiques et de la gestion des données de l’administration, afin de garantir des prestations fiables et sécurisées dans un contexte de souveraineté renforcée.
+DA  - 2026/07/07/
+PY  - 2026
+LA  - fr
+UR  - https://www.ge.ch/node/44080
+Y2  - 2026/07/05/07:53:45
+L2  - https://www.ge.ch/node/44080
+ER  - 
+
+TY  - ELEC
+TI  - Intelligence artificielle (utilisation dans l'administration fédérale)
+AU  - Chancellerie fédérale
+T2  - bk.admin.ch
+LA  - fr
+UR  - https://www.bk.admin.ch/fr/intelligence-artificielle
+Y2  - 2026/07/11/07:19:33
+L2  - https://www.bk.admin.ch/fr/intelligence-artificielle
+ER  - 
+

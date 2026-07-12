@@ -140,7 +140,7 @@ PY  - 2021
 DO  - 10.48550/arXiv.2112.04426
 LA  - en
 PB  - arXiv
-UR  - https://arxiv.org/abs/2112.04426v3
+UR  - https://arxiv.org/abs/2112.04426
 Y2  - 2026/04/29/12:18:45
 L1  - https://arxiv.org/pdf/2112.04426
 ER  - 
@@ -159,7 +159,7 @@ DO  - 10.48550/arXiv.2002.08909
 LA  - en
 PB  - arXiv
 ST  - REALM
-UR  - https://arxiv.org/abs/2002.08909v1
+UR  - https://arxiv.org/abs/2002.08909
 Y2  - 2026/04/29/12:18:25
 L1  - https://arxiv.org/pdf/2002.08909
 ER  - 
@@ -182,10 +182,10 @@ AU  - Fung, Pascale
 AB  - Natural Language Generation (NLG) has improved exponentially in recent years thanks to the development of sequence-to-sequence deep learning technologies such as Transformer-based language models. This advancement has led to more fluent and coherent NLG, leading to improved development in downstream tasks such as abstractive summarization, dialogue generation and data-to-text generation. However, it is also apparent that deep learning based generation is prone to hallucinate unintended text, which degrades the system performance and fails to meet user expectations in many real-world scenarios. To address this issue, many studies have been presented in measuring and mitigating hallucinated texts, but these have never been reviewed in a comprehensive manner before. In this survey, we thus provide a broad overview of the research progress and challenges in the hallucination problem in NLG. The survey is organized into two parts: (1) a general overview of metrics, mitigation methods, and future directions; (2) an overview of task-specific research progress on hallucinations in the following downstream tasks, namely abstractive summarization, dialogue generation, generative question answering, data-to-text generation, machine translation, and visual-language generation; and (3) hallucinations in large language models (LLMs). This survey serves to facilitate collaborative efforts among researchers in tackling the challenge of hallucinated texts in NLG.
 DA  - 2022/02/08/
 PY  - 2022
-DO  - 10.1145/3571730
+DO  - 10.48550/arXiv.2202.03629
 LA  - en
 PB  - arXiv
-UR  - https://arxiv.org/abs/2202.03629v7
+UR  - https://arxiv.org/abs/2202.03629
 Y2  - 2026/04/29/12:15:20
 L1  - https://arxiv.org/pdf/2202.03629
 ER  - 
@@ -271,7 +271,7 @@ DO  - 10.48550/arXiv.1910.13461
 LA  - en
 PB  - arXiv
 ST  - BART
-UR  - https://arxiv.org/abs/1910.13461v1
+UR  - https://arxiv.org/abs/1910.13461
 Y2  - 2026/07/01/14:13:26
 L1  - https://arxiv.org/pdf/1910.13461
 ER  - 
@@ -357,7 +357,7 @@ DA  - 2024/11/21/
 PY  - 2024
 LA  - fr
 ST  - Intelligence artificielle générative dans la fonction publique
-UR  - https://www.ge.ch/node/37663
+UR  - https://www.ge.ch/document/intelligence-artificielle-generative-dans-fonction-publique-etat-geneve-pose-cadre
 Y2  - 2026/07/11/07:19:24
 L2  - https://www.ge.ch/node/37663
 ER  - 
@@ -370,8 +370,8 @@ AB  - Le canton publie sa première stratégie de souveraineté numérique . Ela
 DA  - 2026/07/07/
 PY  - 2026
 LA  - fr
-UR  - https://www.ge.ch/node/44080
-Y2  - 2026/07/05/07:53:45
+UR  - https://www.ge.ch/document/geneve-developpe-sa-strategie-matiere-souverainete-numerique
+Y2  - 2026/07/10/07:53:45
 L2  - https://www.ge.ch/node/44080
 ER  - 
 

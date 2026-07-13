@@ -1,0 +1,62 @@
+<svg viewBox="0 0 1060 568" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1060" height="568" fill="#FFFFFF"/>
+
+  <defs>
+    <marker id="a27" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#059669"/>
+    </marker>
+  </defs>
+
+  <!-- entêtes de colonnes -->
+  <text x="218" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#6B7280">LIMITE D'UN LLM SEUL (section 2.2)</text>
+  <text x="764" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#6B7280">RÉPONSE DU RAG</text>
+
+  <!-- Ligne 1 : hallucination -->
+  <rect x="8" y="40" width="420" height="96" rx="10" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+  <text x="218" y="68" text-anchor="middle" font-size="15" font-weight="700" fill="#92400E">1. Hallucination</text>
+  <text x="218" y="94" text-anchor="middle" font-size="14" fill="#78350F">le modèle peut affirmer avec aplomb</text>
+  <text x="218" y="114" text-anchor="middle" font-size="14" fill="#78350F">une information inventée</text>
+  <line x1="434" y1="88" x2="466" y2="88" stroke="#059669" stroke-width="2.6" marker-end="url(#a27)"/>
+  <rect x="474" y="40" width="578" height="96" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="763" y="68" text-anchor="middle" font-size="15" font-weight="700" fill="#065F46">L'ancrage documentaire</text>
+  <text x="763" y="94" text-anchor="middle" font-size="14" fill="#047857">le modèle rédige à partir des fragments officiels fournis ;</text>
+  <text x="763" y="114" text-anchor="middle" font-size="14" fill="#047857">la fidélité aux sources devient mesurable (chapitre 7)</text>
+
+  <!-- Ligne 2 : connaissances figées -->
+  <rect x="8" y="152" width="420" height="96" rx="10" fill="#F0F9FF" stroke="#0284C7" stroke-width="2"/>
+  <text x="218" y="180" text-anchor="middle" font-size="15" font-weight="700" fill="#075985">2. Connaissances figées</text>
+  <text x="218" y="206" text-anchor="middle" font-size="14" fill="#0C4A6E">le modèle ignore tout changement</text>
+  <text x="218" y="226" text-anchor="middle" font-size="14" fill="#0C4A6E">survenu après son entraînement</text>
+  <line x1="434" y1="200" x2="466" y2="200" stroke="#059669" stroke-width="2.6" marker-end="url(#a27)"/>
+  <rect x="474" y="152" width="578" height="96" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="763" y="180" text-anchor="middle" font-size="15" font-weight="700" fill="#065F46">La mise à jour par l'index</text>
+  <text x="763" y="206" text-anchor="middle" font-size="14" fill="#047857">un règlement change : on réindexe les documents,</text>
+  <text x="763" y="226" text-anchor="middle" font-size="14" fill="#047857">sans réentraîner le modèle (remplacement « à chaud », section 2.3)</text>
+
+  <!-- Ligne 3 : spécialisation -->
+  <rect x="8" y="264" width="420" height="96" rx="10" fill="#F0FDF4" stroke="#059669" stroke-width="2"/>
+  <text x="218" y="292" text-anchor="middle" font-size="15" font-weight="700" fill="#065F46">3. Pas de spécialisation</text>
+  <text x="218" y="318" text-anchor="middle" font-size="14" fill="#14532D">le modèle généraliste connaît mal</text>
+  <text x="218" y="338" text-anchor="middle" font-size="14" fill="#14532D">les spécificités genevoises</text>
+  <line x1="434" y1="312" x2="466" y2="312" stroke="#059669" stroke-width="2.6" marker-end="url(#a27)"/>
+  <rect x="474" y="264" width="578" height="96" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="763" y="292" text-anchor="middle" font-size="15" font-weight="700" fill="#065F46">Le corpus fait la spécialisation</text>
+  <text x="763" y="318" text-anchor="middle" font-size="14" fill="#047857">des documents officiels genevois dans l'index :</text>
+  <text x="763" y="338" text-anchor="middle" font-size="14" fill="#047857">des réponses genevoises, sans toucher au modèle</text>
+
+  <!-- Ligne 4 : traçabilité -->
+  <rect x="8" y="376" width="420" height="96" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+  <text x="218" y="404" text-anchor="middle" font-size="15" font-weight="700" fill="#5B21B6">4. Aucune traçabilité</text>
+  <text x="218" y="430" text-anchor="middle" font-size="14" fill="#4C1D95">l'usager n'a aucun moyen</text>
+  <text x="218" y="450" text-anchor="middle" font-size="14" fill="#4C1D95">de vérifier la réponse</text>
+  <line x1="434" y1="424" x2="466" y2="424" stroke="#059669" stroke-width="2.6" marker-end="url(#a27)"/>
+  <rect x="474" y="376" width="578" height="96" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="763" y="404" text-anchor="middle" font-size="15" font-weight="700" fill="#065F46">Des sources identifiables</text>
+  <text x="763" y="430" text-anchor="middle" font-size="14" fill="#047857">les fragments utilisés sont connus du système :</text>
+  <text x="763" y="450" text-anchor="middle" font-size="14" fill="#047857">la réponse peut renvoyer aux textes officiels</text>
+
+  <!-- bandeau verdict -->
+  <rect x="8" y="490" width="1044" height="70" rx="12" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+  <text x="530" y="518" text-anchor="middle" font-size="15" fill="#1E3A8A">Sur quinze critères propres au service public, l'architecture RAG est jugée « la plus équilibrée » (Papadopoulos et al. 2025),</text>
+  <text x="530" y="544" text-anchor="middle" font-size="15" fill="#1E3A8A">au prix de garde-fous sur l'éthique et la sécurité : consigne stricte, évaluation de la fidélité, protection des données.</text>
+</svg>

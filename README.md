@@ -175,7 +175,7 @@ Le travail s'articule en trois parties : la **recherche** (revue de littérature
 
 ## Bibliographie
 
-La revue de littérature s'appuie sur **17 sources**, gérées sous Zotero et exportées dans `memoire/bibliographie/` (fichier `.ris`). Les prépublications arXiv sont citées à l'année de leur **première version** (v1), avec leur DOI.
+La revue de littérature s'appuie sur un ensemble de sources gérées sous Zotero et exportées dans `memoire/bibliographie/` (fichier `.ris`), qui **fait foi** et **s'enrichit au fil du travail**. Les prépublications arXiv sont citées à l'année de leur **première version** (v1), avec leur DOI.
 
 Parmi les travaux fondateurs mobilisés : [**Vaswani et al. (2017)**](https://arxiv.org/abs/1706.03762) pour le Transformer, [**Lewis et al. (2020)**](https://arxiv.org/abs/2005.11401) pour l'architecture RAG, [**Gao et al. (2023)**](https://arxiv.org/abs/2312.10997) pour la synthèse du domaine.
 

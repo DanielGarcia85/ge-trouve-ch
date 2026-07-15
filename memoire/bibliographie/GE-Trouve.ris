@@ -1,65 +1,3 @@
-TY  - MGZN
-TI  - Cinq chatbots de l’administration fédérale
-AU  - Chavanne, Yannick
-T2  - ICTjournal
-AB  - Cinq projets de chatbots, développés par divers départements fédéraux suisses, utilisent l’IA pour simplifier l’accès aux informations, tant pour les fonctionnaires administratifs que pour les citoyens et les entreprises.
-DA  - 2024/10/17/
-PY  - 2024
-LA  - fr
-UR  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
-Y2  - 2026/03/19/13:26:03
-L2  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
-ER  - 
-
-TY  - GEN
-TI  - Ragas: Automated Evaluation of Retrieval Augmented Generation
-AU  - Es, Shahul
-AU  - James, Jithin
-AU  - Espinosa-Anke, Luis
-AU  - Schockaert, Steven
-AB  - We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAG systems are composed of a retrieval and an LLM based generation module, and provide LLMs with knowledge from a reference textual database, which enables them to act as a natural language layer between a user and textual databases, reducing the risk of hallucinations. Evaluating RAG architectures is, however, challenging because there are several dimensions to consider: the ability of the retrieval system to identify relevant and focused context passages, the ability of the LLM to exploit such passages in a faithful way, or the quality of the generation itself. With Ragas, we put forward a suite of metrics which can be used to evaluate these different dimensions \textit{without having to rely on ground truth human annotations}. We posit that such a framework can crucially contribute to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs.
-DA  - 2023/09/26/
-PY  - 2023
-DO  - 10.48550/arXiv.2309.15217
-DP  - arXiv.org
-PB  - arXiv
-ST  - Ragas
-UR  - http://arxiv.org/abs/2309.15217
-Y2  - 2026/03/19/10:12:50
-L1  - http://arxiv.org/pdf/2309.15217v2
-L2  - http://arxiv.org/abs/2309.15217
-N1  - Comment: Reference-free (not tied to having ground truth available) evaluation framework for retrieval agumented generation
-KW  - Computer Science - Computation and Language
-ER  - 
-
-TY  - GEN
-TI  - Retrieval-Augmented Generation for Large Language Models: A Survey
-AU  - Gao, Yunfan
-AU  - Xiong, Yun
-AU  - Gao, Xinyu
-AU  - Jia, Kangxiang
-AU  - Pan, Jinliu
-AU  - Bi, Yuxi
-AU  - Dai, Yi
-AU  - Sun, Jiawei
-AU  - Wang, Meng
-AU  - Wang, Haofen
-AB  - Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark. At the end, this article delineates the challenges currently faced and points out prospective avenues for research and development.
-DA  - 2023/12/18/
-PY  - 2023
-DO  - 10.48550/arXiv.2312.10997
-DP  - arXiv.org
-PB  - arXiv
-ST  - Retrieval-Augmented Generation for Large Language Models
-UR  - http://arxiv.org/abs/2312.10997
-Y2  - 2026/03/19/11:34:22
-L1  - http://arxiv.org/pdf/2312.10997v5
-L2  - http://arxiv.org/abs/2312.10997
-N1  - Comment: Ongoing Work
-KW  - Computer Science - Artificial Intelligence
-KW  - Computer Science - Computation and Language
-ER  - 
-
 TY  - GEN
 TI  - Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
 AU  - Lewis, Patrick
@@ -90,18 +28,110 @@ KW  - Computer Science - Machine Learning
 ER  - 
 
 TY  - GEN
-TI  - Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers
-AU  - Sharma, Chaitanya
-AB  - Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm to enhance large language models (LLMs) by conditioning generation on external evidence retrieved at inference time. While RAG addresses critical limitations of parametric knowledge storage-such as factual inconsistency and domain inflexibility-it introduces new challenges in retrieval quality, grounding fidelity, pipeline efficiency, and robustness against noisy or adversarial inputs. This survey provides a comprehensive synthesis of recent advances in RAG systems, offering a taxonomy that categorizes architectures into retriever-centric, generator-centric, hybrid, and robustness-oriented designs. We systematically analyze enhancements across retrieval optimization, context filtering, decoding control, and efficiency improvements, supported by comparative performance analyses on short-form and multi-hop question answering tasks. Furthermore, we review state-of-the-art evaluation frameworks and benchmarks, highlighting trends in retrieval-aware evaluation, robustness testing, and federated retrieval settings. Our analysis reveals recurring trade-offs between retrieval precision and generation flexibility, efficiency and faithfulness, and modularity and coordination. We conclude by identifying open challenges and future research directions, including adaptive retrieval architectures, real-time retrieval integration, structured reasoning over multi-hop evidence, and privacy-preserving retrieval mechanisms. This survey aims to consolidate current knowledge in RAG research and serve as a foundation for the next generation of retrieval-augmented language modeling systems.
-DA  - 2025/05/28/
-PY  - 2025
-DO  - 10.48550/arXiv.2506.00054
+TI  - Retrieval-Augmented Generation for Large Language Models: A Survey
+AU  - Gao, Yunfan
+AU  - Xiong, Yun
+AU  - Gao, Xinyu
+AU  - Jia, Kangxiang
+AU  - Pan, Jinliu
+AU  - Bi, Yuxi
+AU  - Dai, Yi
+AU  - Sun, Jiawei
+AU  - Wang, Meng
+AU  - Wang, Haofen
+AB  - Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark. At the end, this article delineates the challenges currently faced and points out prospective avenues for research and development.
+DA  - 2023/12/18/
+PY  - 2023
+DO  - 10.48550/arXiv.2312.10997
+DP  - arXiv.org
+PB  - arXiv
+ST  - Retrieval-Augmented Generation for Large Language Models
+UR  - http://arxiv.org/abs/2312.10997
+Y2  - 2026/03/19/11:34:22
+L1  - http://arxiv.org/pdf/2312.10997v5
+L2  - http://arxiv.org/abs/2312.10997
+N1  - Comment: Ongoing Work
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Artificial Intelligence
+ER  - 
+
+TY  - GEN
+TI  - Ragas: Automated Evaluation of Retrieval Augmented Generation
+AU  - Es, Shahul
+AU  - James, Jithin
+AU  - Espinosa-Anke, Luis
+AU  - Schockaert, Steven
+AB  - We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAG systems are composed of a retrieval and an LLM based generation module, and provide LLMs with knowledge from a reference textual database, which enables them to act as a natural language layer between a user and textual databases, reducing the risk of hallucinations. Evaluating RAG architectures is, however, challenging because there are several dimensions to consider: the ability of the retrieval system to identify relevant and focused context passages, the ability of the LLM to exploit such passages in a faithful way, or the quality of the generation itself. With Ragas, we put forward a suite of metrics which can be used to evaluate these different dimensions \textit{without having to rely on ground truth human annotations}. We posit that such a framework can crucially contribute to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs.
+DA  - 2023/09/26/
+PY  - 2023
+DO  - 10.48550/arXiv.2309.15217
+DP  - arXiv.org
+PB  - arXiv
+ST  - Ragas
+UR  - http://arxiv.org/abs/2309.15217
+Y2  - 2026/03/19/10:12:50
+L1  - http://arxiv.org/pdf/2309.15217v2
+L2  - http://arxiv.org/abs/2309.15217
+N1  - Comment: Reference-free (not tied to having ground truth available) evaluation framework for retrieval agumented generation
+KW  - Computer Science - Computation and Language
+ER  - 
+
+TY  - MGZN
+TI  - Cinq chatbots de l’administration fédérale
+AU  - Chavanne, Yannick
+T2  - ICTjournal
+AB  - Cinq projets de chatbots, développés par divers départements fédéraux suisses, utilisent l’IA pour simplifier l’accès aux informations, tant pour les fonctionnaires administratifs que pour les citoyens et les entreprises.
+DA  - 2024/10/17/
+PY  - 2024
+LA  - fr
+UR  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
+Y2  - 2026/03/19/13:26:03
+L2  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
+ER  - 
+
+TY  - GEN
+TI  - Survey of Hallucination in Natural Language Generation
+AU  - Ji, Ziwei
+AU  - Lee, Nayeon
+AU  - Frieske, Rita
+AU  - Yu, Tiezheng
+AU  - Su, Dan
+AU  - Xu, Yan
+AU  - Ishii, Etsuko
+AU  - Bang, Yejin
+AU  - Chen, Delong
+AU  - Dai, Wenliang
+AU  - Chan, Ho Shu
+AU  - Madotto, Andrea
+AU  - Fung, Pascale
+AB  - Natural Language Generation (NLG) has improved exponentially in recent years thanks to the development of sequence-to-sequence deep learning technologies such as Transformer-based language models. This advancement has led to more fluent and coherent NLG, leading to improved development in downstream tasks such as abstractive summarization, dialogue generation and data-to-text generation. However, it is also apparent that deep learning based generation is prone to hallucinate unintended text, which degrades the system performance and fails to meet user expectations in many real-world scenarios. To address this issue, many studies have been presented in measuring and mitigating hallucinated texts, but these have never been reviewed in a comprehensive manner before. In this survey, we thus provide a broad overview of the research progress and challenges in the hallucination problem in NLG. The survey is organized into two parts: (1) a general overview of metrics, mitigation methods, and future directions; (2) an overview of task-specific research progress on hallucinations in the following downstream tasks, namely abstractive summarization, dialogue generation, generative question answering, data-to-text generation, machine translation, and visual-language generation; and (3) hallucinations in large language models (LLMs). This survey serves to facilitate collaborative efforts among researchers in tackling the challenge of hallucinated texts in NLG.
+DA  - 2022/02/08/
+PY  - 2022
+DO  - 10.48550/arXiv.2202.03629
 LA  - en
 PB  - arXiv
-ST  - Retrieval-Augmented Generation
-UR  - https://arxiv.org/abs/2506.00054v1
-Y2  - 2026/04/29/12:24:32
-L1  - https://arxiv.org/pdf/2506.00054
+UR  - https://arxiv.org/abs/2202.03629
+Y2  - 2026/04/29/12:15:20
+L1  - https://arxiv.org/pdf/2202.03629
+ER  - 
+
+TY  - GEN
+TI  - REALM: Retrieval-Augmented Language Model Pre-Training
+AU  - Guu, Kelvin
+AU  - Lee, Kenton
+AU  - Tung, Zora
+AU  - Pasupat, Panupong
+AU  - Chang, Ming-Wei
+AB  - Language model pre-training has been shown to capture a surprising amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network, requiring ever-larger networks to cover more facts. To capture knowledge in a more modular and interpretable way, we augment language model pre-training with a latent knowledge retriever, which allows the model to retrieve and attend over documents from a large corpus such as Wikipedia, used during pre-training, fine-tuning and inference. For the first time, we show how to pre-train such a knowledge retriever in an unsupervised manner, using masked language modeling as the learning signal and backpropagating through a retrieval step that considers millions of documents. We demonstrate the effectiveness of Retrieval-Augmented Language Model pre-training (REALM) by fine-tuning on the challenging task of Open-domain Question Answering (Open-QA). We compare against state-of-the-art models for both explicit and implicit knowledge storage on three popular Open-QA benchmarks, and find that we outperform all previous methods by a significant margin (4-16% absolute accuracy), while also providing qualitative benefits such as interpretability and modularity.
+DA  - 2020/02/10/
+PY  - 2020
+DO  - 10.48550/arXiv.2002.08909
+LA  - en
+PB  - arXiv
+ST  - REALM
+UR  - https://arxiv.org/abs/2002.08909
+Y2  - 2026/04/29/12:18:25
+L1  - https://arxiv.org/pdf/2002.08909
 ER  - 
 
 TY  - GEN
@@ -146,48 +176,18 @@ L1  - https://arxiv.org/pdf/2112.04426
 ER  - 
 
 TY  - GEN
-TI  - REALM: Retrieval-Augmented Language Model Pre-Training
-AU  - Guu, Kelvin
-AU  - Lee, Kenton
-AU  - Tung, Zora
-AU  - Pasupat, Panupong
-AU  - Chang, Ming-Wei
-AB  - Language model pre-training has been shown to capture a surprising amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network, requiring ever-larger networks to cover more facts. To capture knowledge in a more modular and interpretable way, we augment language model pre-training with a latent knowledge retriever, which allows the model to retrieve and attend over documents from a large corpus such as Wikipedia, used during pre-training, fine-tuning and inference. For the first time, we show how to pre-train such a knowledge retriever in an unsupervised manner, using masked language modeling as the learning signal and backpropagating through a retrieval step that considers millions of documents. We demonstrate the effectiveness of Retrieval-Augmented Language Model pre-training (REALM) by fine-tuning on the challenging task of Open-domain Question Answering (Open-QA). We compare against state-of-the-art models for both explicit and implicit knowledge storage on three popular Open-QA benchmarks, and find that we outperform all previous methods by a significant margin (4-16% absolute accuracy), while also providing qualitative benefits such as interpretability and modularity.
-DA  - 2020/02/10/
-PY  - 2020
-DO  - 10.48550/arXiv.2002.08909
+TI  - Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers
+AU  - Sharma, Chaitanya
+AB  - Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm to enhance large language models (LLMs) by conditioning generation on external evidence retrieved at inference time. While RAG addresses critical limitations of parametric knowledge storage-such as factual inconsistency and domain inflexibility-it introduces new challenges in retrieval quality, grounding fidelity, pipeline efficiency, and robustness against noisy or adversarial inputs. This survey provides a comprehensive synthesis of recent advances in RAG systems, offering a taxonomy that categorizes architectures into retriever-centric, generator-centric, hybrid, and robustness-oriented designs. We systematically analyze enhancements across retrieval optimization, context filtering, decoding control, and efficiency improvements, supported by comparative performance analyses on short-form and multi-hop question answering tasks. Furthermore, we review state-of-the-art evaluation frameworks and benchmarks, highlighting trends in retrieval-aware evaluation, robustness testing, and federated retrieval settings. Our analysis reveals recurring trade-offs between retrieval precision and generation flexibility, efficiency and faithfulness, and modularity and coordination. We conclude by identifying open challenges and future research directions, including adaptive retrieval architectures, real-time retrieval integration, structured reasoning over multi-hop evidence, and privacy-preserving retrieval mechanisms. This survey aims to consolidate current knowledge in RAG research and serve as a foundation for the next generation of retrieval-augmented language modeling systems.
+DA  - 2025/05/28/
+PY  - 2025
+DO  - 10.48550/arXiv.2506.00054
 LA  - en
 PB  - arXiv
-ST  - REALM
-UR  - https://arxiv.org/abs/2002.08909
-Y2  - 2026/04/29/12:18:25
-L1  - https://arxiv.org/pdf/2002.08909
-ER  - 
-
-TY  - GEN
-TI  - Survey of Hallucination in Natural Language Generation
-AU  - Ji, Ziwei
-AU  - Lee, Nayeon
-AU  - Frieske, Rita
-AU  - Yu, Tiezheng
-AU  - Su, Dan
-AU  - Xu, Yan
-AU  - Ishii, Etsuko
-AU  - Bang, Yejin
-AU  - Chen, Delong
-AU  - Dai, Wenliang
-AU  - Chan, Ho Shu
-AU  - Madotto, Andrea
-AU  - Fung, Pascale
-AB  - Natural Language Generation (NLG) has improved exponentially in recent years thanks to the development of sequence-to-sequence deep learning technologies such as Transformer-based language models. This advancement has led to more fluent and coherent NLG, leading to improved development in downstream tasks such as abstractive summarization, dialogue generation and data-to-text generation. However, it is also apparent that deep learning based generation is prone to hallucinate unintended text, which degrades the system performance and fails to meet user expectations in many real-world scenarios. To address this issue, many studies have been presented in measuring and mitigating hallucinated texts, but these have never been reviewed in a comprehensive manner before. In this survey, we thus provide a broad overview of the research progress and challenges in the hallucination problem in NLG. The survey is organized into two parts: (1) a general overview of metrics, mitigation methods, and future directions; (2) an overview of task-specific research progress on hallucinations in the following downstream tasks, namely abstractive summarization, dialogue generation, generative question answering, data-to-text generation, machine translation, and visual-language generation; and (3) hallucinations in large language models (LLMs). This survey serves to facilitate collaborative efforts among researchers in tackling the challenge of hallucinated texts in NLG.
-DA  - 2022/02/08/
-PY  - 2022
-DO  - 10.48550/arXiv.2202.03629
-LA  - en
-PB  - arXiv
-UR  - https://arxiv.org/abs/2202.03629
-Y2  - 2026/04/29/12:15:20
-L1  - https://arxiv.org/pdf/2202.03629
+ST  - Retrieval-Augmented Generation
+UR  - https://arxiv.org/abs/2506.00054v1
+Y2  - 2026/04/29/12:24:32
+L1  - https://arxiv.org/pdf/2506.00054
 ER  - 
 
 TY  - GEN
@@ -216,42 +216,23 @@ KW  - Computer Science - Machine Learning
 ER  - 
 
 TY  - GEN
-TI  - A Survey of Large Language Models
-AU  - Zhao, Wayne Xin
-AU  - Zhou, Kun
-AU  - Li, Junyi
-AU  - Tang, Tianyi
-AU  - Wang, Xiaolei
-AU  - Hou, Yupeng
-AU  - Min, Yingqian
-AU  - Zhang, Beichen
-AU  - Zhang, Junjie
-AU  - Dong, Zican
-AU  - Du, Yifan
-AU  - Yang, Chen
-AU  - Chen, Yushuo
-AU  - Chen, Zhipeng
-AU  - Jiang, Jinhao
-AU  - Ren, Ruiyang
-AU  - Li, Yifan
-AU  - Tang, Xinyu
-AU  - Liu, Zikang
-AU  - Liu, Peiyu
-AU  - Nie, Jian-Yun
-AU  - Wen, Ji-Rong
-AB  - Language is essentially a complex, intricate system of human expressions governed by grammatical rules. It poses a significant challenge to develop capable AI algorithms for comprehending and grasping a language. As a major approach, language modeling has been widely studied for language understanding and generation in the past two decades, evolving from statistical language models to neural language models. Recently, pre-trained language models (PLMs) have been proposed by pre-training Transformer models over large-scale corpora, showing strong capabilities in solving various NLP tasks. Since researchers have found that model scaling can lead to performance improvement, they further study the scaling effect by increasing the model size to an even larger size. Interestingly, when the parameter scale exceeds a certain level, these enlarged language models not only achieve a significant performance improvement but also show some special abilities that are not present in small-scale language models. To discriminate the difference in parameter scale, the research community has coined the term large language models (LLM) for the PLMs of significant size. Recently, the research on LLMs has been largely advanced by both academia and industry, and a remarkable progress is the launch of ChatGPT, which has attracted widespread attention from society. The technical evolution of LLMs has been making an important impact on the entire AI community, which would revolutionize the way how we develop and use AI algorithms. In this survey, we review the recent advances of LLMs by introducing the background, key findings, and mainstream techniques. In particular, we focus on four major aspects of LLMs, namely pre-training, adaptation tuning, utilization, and capacity evaluation. Besides, we also summarize the available resources for developing LLMs and discuss the remaining issues for future directions.
-DA  - 2023/03/31/
-PY  - 2023
-DO  - 10.48550/arXiv.2303.18223
+TI  - BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+AU  - Devlin, Jacob
+AU  - Chang, Ming-Wei
+AU  - Lee, Kenton
+AU  - Toutanova, Kristina
+AB  - We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).
+DA  - 2018/10/11/
+PY  - 2018
+DO  - 10.48550/arXiv.1810.04805
 DP  - arXiv.org
 PB  - arXiv
-UR  - http://arxiv.org/abs/2303.18223
-Y2  - 2026/07/01/15:07:30
-L1  - http://arxiv.org/pdf/2303.18223v19
-L2  - http://arxiv.org/abs/2303.18223
-N1  - Comment: ongoing work; 144 pages, 1081 citations
+ST  - BERT
+UR  - http://arxiv.org/abs/1810.04805
+Y2  - 2026/07/01/14:09:51
+L1  - http://arxiv.org/pdf/1810.04805v2
+L2  - http://arxiv.org/abs/1810.04805
 KW  - Computer Science - Computation and Language
-KW  - Computer Science - Artificial Intelligence
 ER  - 
 
 TY  - GEN
@@ -301,51 +282,42 @@ KW  - Computer Science - Computation and Language
 ER  - 
 
 TY  - GEN
-TI  - BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
-AU  - Devlin, Jacob
-AU  - Chang, Ming-Wei
-AU  - Lee, Kenton
-AU  - Toutanova, Kristina
-AB  - We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).
-DA  - 2018/10/11/
-PY  - 2018
-DO  - 10.48550/arXiv.1810.04805
+TI  - A Survey of Large Language Models
+AU  - Zhao, Wayne Xin
+AU  - Zhou, Kun
+AU  - Li, Junyi
+AU  - Tang, Tianyi
+AU  - Wang, Xiaolei
+AU  - Hou, Yupeng
+AU  - Min, Yingqian
+AU  - Zhang, Beichen
+AU  - Zhang, Junjie
+AU  - Dong, Zican
+AU  - Du, Yifan
+AU  - Yang, Chen
+AU  - Chen, Yushuo
+AU  - Chen, Zhipeng
+AU  - Jiang, Jinhao
+AU  - Ren, Ruiyang
+AU  - Li, Yifan
+AU  - Tang, Xinyu
+AU  - Liu, Zikang
+AU  - Liu, Peiyu
+AU  - Nie, Jian-Yun
+AU  - Wen, Ji-Rong
+AB  - Language is essentially a complex, intricate system of human expressions governed by grammatical rules. It poses a significant challenge to develop capable AI algorithms for comprehending and grasping a language. As a major approach, language modeling has been widely studied for language understanding and generation in the past two decades, evolving from statistical language models to neural language models. Recently, pre-trained language models (PLMs) have been proposed by pre-training Transformer models over large-scale corpora, showing strong capabilities in solving various NLP tasks. Since researchers have found that model scaling can lead to performance improvement, they further study the scaling effect by increasing the model size to an even larger size. Interestingly, when the parameter scale exceeds a certain level, these enlarged language models not only achieve a significant performance improvement but also show some special abilities that are not present in small-scale language models. To discriminate the difference in parameter scale, the research community has coined the term large language models (LLM) for the PLMs of significant size. Recently, the research on LLMs has been largely advanced by both academia and industry, and a remarkable progress is the launch of ChatGPT, which has attracted widespread attention from society. The technical evolution of LLMs has been making an important impact on the entire AI community, which would revolutionize the way how we develop and use AI algorithms. In this survey, we review the recent advances of LLMs by introducing the background, key findings, and mainstream techniques. In particular, we focus on four major aspects of LLMs, namely pre-training, adaptation tuning, utilization, and capacity evaluation. Besides, we also summarize the available resources for developing LLMs and discuss the remaining issues for future directions.
+DA  - 2023/03/31/
+PY  - 2023
+DO  - 10.48550/arXiv.2303.18223
 DP  - arXiv.org
 PB  - arXiv
-ST  - BERT
-UR  - http://arxiv.org/abs/1810.04805
-Y2  - 2026/07/01/14:09:51
-L1  - http://arxiv.org/pdf/1810.04805v2
-L2  - http://arxiv.org/abs/1810.04805
+UR  - http://arxiv.org/abs/2303.18223
+Y2  - 2026/07/01/15:07:30
+L1  - http://arxiv.org/pdf/2303.18223v19
+L2  - http://arxiv.org/abs/2303.18223
+N1  - Comment: ongoing work; 144 pages, 1081 citations
 KW  - Computer Science - Computation and Language
-ER  - 
-
-TY  - JOUR
-TI  - Evaluating chatbot architectures for public service delivery: balancing functionality, safety, ethics, and adaptability
-AU  - Papadopoulos, Theodoros
-AU  - Alexopoulos, Charalampos Harris
-AU  - Charalabidis, Yannis
-T2  - Frontiers in Political Science
-AB  - The increasing integration of AI-driven interfaces into public service channels has catalyzed a vibrant discourse on the interplay between technological innovation and the traditional values of public governance. This discussion invites a critical exploration of how emerging chatbot architectures can be aligned with ethical principles and resilient public sector practices. While there is research assessing the potential benefits of integrating chatbots in service delivery, existing evaluation approaches often lack specificity to the unique context of public administration, failing to adequately balance technical performance with crucial ethical considerations, safety requirements, and core public service principles like transparency, fairness, and accountability. This research addresses this critical gap by developing and applying a structured evaluation framework specifically designed for assessing diverse chatbot architectures within the public sector. The methodology offers actionable insights to guide the selection and implementation of chatbot solutions that enhance citizen engagement, streamline government services, and uphold key public service values. A key contribution is the introduction of fifteen pre-assessed evaluation criteria, encompassing areas such as input understanding, error handling, legal compliance, safety, and personalization, which are applied to four distinct chatbot architectures. Our findings indicate that while no single architecture is universally optimal, hybrid retrieval-augmented generation (RAG) systems emerge as the most balanced approach, effectively mitigating the risks of pure generative models while retaining their adaptability. Ultimately, this work provides actionable guidance for policymakers and researchers, supporting informed decisions on the responsible use of chatbots and emphasizing the critical balance between innovation and public trust.
-DA  - 2025/10/01/
-PY  - 2025
-DO  - 10.3389/fpos.2025.1601440
-DP  - Frontiers
-VL  - 7
-J2  - Front. Polit. Sci.
-LA  - English
-PB  - Frontiers
-SN  - 2673-3145
-ST  - Evaluating chatbot architectures for public service delivery
-UR  - https://www.frontiersin.org/journals/political-science/articles/10.3389/fpos.2025.1601440/full
-Y2  - 2026/07/11/06:54:23
-L1  - https://www.frontiersin.org/articles/10.3389/fpos.2025.1601440/pdf
-KW  - AI ethics
-KW  - chatbots
-KW  - evaluation framework
-KW  - LLMs
-KW  - politics of technology
-KW  - public service delivery
+KW  - Computer Science - Artificial Intelligence
 ER  - 
 
 TY  - ELEC
@@ -379,9 +351,193 @@ TY  - ELEC
 TI  - Intelligence artificielle (utilisation dans l'administration fédérale)
 AU  - Chancellerie fédérale
 T2  - bk.admin.ch
+DA  - s.d.
+PY  - s.d.
 LA  - fr
 UR  - https://www.bk.admin.ch/fr/intelligence-artificielle
 Y2  - 2026/07/11/07:19:33
 L2  - https://www.bk.admin.ch/fr/intelligence-artificielle
+ER  - 
+
+TY  - JOUR
+TI  - Evaluating chatbot architectures for public service delivery: balancing functionality, safety, ethics, and adaptability
+AU  - Papadopoulos, Theodoros
+AU  - Alexopoulos, Charalampos Harris
+AU  - Charalabidis, Yannis
+T2  - Frontiers in Political Science
+AB  - The increasing integration of AI-driven interfaces into public service channels has catalyzed a vibrant discourse on the interplay between technological innovation and the traditional values of public governance. This discussion invites a critical exploration of how emerging chatbot architectures can be aligned with ethical principles and resilient public sector practices. While there is research assessing the potential benefits of integrating chatbots in service delivery, existing evaluation approaches often lack specificity to the unique context of public administration, failing to adequately balance technical performance with crucial ethical considerations, safety requirements, and core public service principles like transparency, fairness, and accountability. This research addresses this critical gap by developing and applying a structured evaluation framework specifically designed for assessing diverse chatbot architectures within the public sector. The methodology offers actionable insights to guide the selection and implementation of chatbot solutions that enhance citizen engagement, streamline government services, and uphold key public service values. A key contribution is the introduction of fifteen pre-assessed evaluation criteria, encompassing areas such as input understanding, error handling, legal compliance, safety, and personalization, which are applied to four distinct chatbot architectures. Our findings indicate that while no single architecture is universally optimal, hybrid retrieval-augmented generation (RAG) systems emerge as the most balanced approach, effectively mitigating the risks of pure generative models while retaining their adaptability. Ultimately, this work provides actionable guidance for policymakers and researchers, supporting informed decisions on the responsible use of chatbots and emphasizing the critical balance between innovation and public trust.
+DA  - 2025/10/01/
+PY  - 2025
+DO  - 10.3389/fpos.2025.1601440
+DP  - Frontiers
+VL  - 7
+J2  - Front. Polit. Sci.
+LA  - English
+PB  - Frontiers
+SN  - 2673-3145
+ST  - Evaluating chatbot architectures for public service delivery
+UR  - https://www.frontiersin.org/journals/political-science/articles/10.3389/fpos.2025.1601440/full
+Y2  - 2026/07/11/06:54:23
+L1  - https://www.frontiersin.org/articles/10.3389/fpos.2025.1601440/pdf
+KW  - AI ethics
+KW  - chatbots
+KW  - evaluation framework
+KW  - LLMs
+KW  - politics of technology
+KW  - public service delivery
+ER  - 
+
+TY  - GEN
+TI  - Engineering RAG Systems for Real-World Applications: Design, Development, and Evaluation
+AU  - Hasan, Md Toufique
+AU  - Waseem, Muhammad
+AU  - Kemell, Kai-Kristian
+AU  - Khan, Ayman Asad
+AU  - Saari, Mika
+AU  - Abrahamsson, Pekka
+AB  - Retrieval-Augmented Generation (RAG) systems are emerging as a key approach for grounding Large Language Models (LLMs) in external knowledge, addressing limitations in factual accuracy and contextual relevance. However, there is a lack of empirical studies that report on the development of RAG-based implementations grounded in real-world use cases, evaluated through general user involvement, and accompanied by systematic documentation of lessons learned. This paper presents five domain-specific RAG applications developed for real-world scenarios across governance, cybersecurity, agriculture, industrial research, and medical diagnostics. Each system incorporates multilingual OCR, semantic retrieval via vector embeddings, and domain-adapted LLMs, deployed through local servers or cloud APIs to meet distinct user needs. A web-based evaluation involving a total of 100 participants assessed the systems across six dimensions: (i) Ease of Use, (ii) Relevance, (iii) Transparency, (iv) Responsiveness, (v) Accuracy, and (vi) Likelihood of Recommendation. Based on user feedback and our development experience, we documented twelve key lessons learned, highlighting technical, operational, and ethical challenges affecting the reliability and usability of RAG systems in practice.
+DA  - 2025/06/25/
+PY  - 2025
+DO  - 10.48550/arXiv.2506.20869
+DP  - arXiv.org
+PB  - arXiv
+ST  - Engineering RAG Systems for Real-World Applications
+UR  - http://arxiv.org/abs/2506.20869
+Y2  - 2026/07/13/14:08:27
+L1  - http://arxiv.org/pdf/2506.20869v3
+L2  - http://arxiv.org/abs/2506.20869
+N1  - Comment: Published in the Proceedings of the 51st Euromicro Conference on Software Engineering and Advanced Applications, SEAA 2025. Lecture Notes in Computer Science, volume 16082, pages 143-158. Springer, 2026
+KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Information Retrieval
+KW  - Computer Science - Software Engineering
+ER  - 
+
+TY  - GEN
+TI  - Seven Failure Points When Engineering a Retrieval Augmented Generation System
+AU  - Barnett, Scott
+AU  - Kurniawan, Stefanus
+AU  - Thudumu, Srikanth
+AU  - Brannelly, Zach
+AU  - Abdelrazek, Mohamed
+AB  - Software engineers are increasingly adding semantic search capabilities to applications using a strategy known as Retrieval Augmented Generation (RAG). A RAG system involves finding documents that semantically match a query and then passing the documents to a large language model (LLM) such as ChatGPT to extract the right answer using an LLM. RAG systems aim to: a) reduce the problem of hallucinated responses from LLMs, b) link sources/references to generated responses, and c) remove the need for annotating documents with meta-data. However, RAG systems suffer from limitations inherent to information retrieval systems and from reliance on LLMs. In this paper, we present an experience report on the failure points of RAG systems from three case studies from separate domains: research, education, and biomedical. We share the lessons learned and present 7 failure points to consider when designing a RAG system. The two key takeaways arising from our work are: 1) validation of a RAG system is only feasible during operation, and 2) the robustness of a RAG system evolves rather than designed in at the start. We conclude with a list of potential research directions on RAG systems for the software engineering community.
+DA  - 2024/01/11/
+PY  - 2024
+DO  - 10.48550/arXiv.2401.05856
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2401.05856
+Y2  - 2026/07/13/14:13:44
+L1  - http://arxiv.org/pdf/2401.05856v1
+L2  - http://arxiv.org/abs/2401.05856
+KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Software Engineering
+ER  - 
+
+TY  - GEN
+TI  - Retrieval-augmented generation in multilingual settings
+AU  - Chirkova, Nadezhda
+AU  - Rau, David
+AU  - Déjean, Hervé
+AU  - Formal, Thibault
+AU  - Clinchant, Stéphane
+AU  - Nikoulina, Vassilina
+AB  - Retrieval-augmented generation (RAG) has recently emerged as a promising solution for incorporating up-to-date or domain-specific knowledge into large language models (LLMs) and improving LLM factuality, but is predominantly studied in English-only settings. In this work, we consider RAG in the multilingual setting (mRAG), i.e. with user queries and the datastore in 13 languages, and investigate which components and with which adjustments are needed to build a well-performing mRAG pipeline, that can be used as a strong baseline in future works. Our findings highlight that despite the availability of high-quality off-the-shelf multilingual retrievers and generators, task-specific prompt engineering is needed to enable generation in user languages. Moreover, current evaluation metrics need adjustments for multilingual setting, to account for variations in spelling named entities. The main limitations to be addressed in future works include frequent code-switching in non-Latin alphabet languages, occasional fluency errors, wrong reading of the provided documents, or irrelevant retrieval. We release the code for the resulting mRAG baseline pipeline at https://github.com/naver/bergen.
+DA  - 2024/07/01/
+PY  - 2024
+DO  - 10.48550/arXiv.2407.01463
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2407.01463
+Y2  - 2026/07/13/14:26:43
+L1  - http://arxiv.org/pdf/2407.01463v1
+L2  - http://arxiv.org/abs/2407.01463
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Artificial Intelligence
+ER  - 
+
+TY  - COMP
+TI  - LangChain
+AU  - Chase, Harrison
+AB  - The agent engineering platform.
+DA  - 2022/10//
+PY  - 2022
+DP  - GitHub
+LA  - Python
+PB  - LangChain, Inc.
+ST  - LangChain
+UR  - https://github.com/langchain-ai/langchain
+Y2  - 2026/07/13/14:53:10
+N1  - <div data-schema-version="9"><p>Documentation : <a href="https://docs.langchain.com/" rel="noopener noreferrer nofollow">https://docs.langchain.com/</a></p>
+<p>Documentation integration : <a href="https://docs.langchain.com/oss/python/integrations/providers/overview" rel="noopener noreferrer nofollow">https://docs.langchain.com/oss/python/integrations/providers/overview</a></p>
+<p>Documentation integration Ollama : <a href="https://docs.langchain.com/oss/python/integrations/providers/ollama" rel="noopener noreferrer nofollow">https://docs.langchain.com/oss/python/integrations/providers/ollama</a></p>
+<p>Repo GitHub : <a href="https://github.com/langchain-ai/langchain" rel="noopener noreferrer nofollow">https://github.com/langchain-ai/langchain</a></p>
+</div>
+ER  - 
+
+TY  - COMP
+TI  - LlamaIndex
+AU  - Liu, Jerry
+AB  - LlamaIndex is the leading document agent and OCR platform
+DA  - 2022/11//
+PY  - 2022
+DP  - GitHub
+LA  - Python
+PB  - LlamaIndex, Inc.
+ST  - LlamaIndex
+UR  - https://github.com/run-llama/llama_index
+Y2  - 2026/07/13/14:53:44
+N1  - <div data-schema-version="9"><p>Documentation : <a href="https://developers.llamaindex.ai/python/framework/" rel="noopener noreferrer nofollow">https://developers.llamaindex.ai/python/framework/</a></p>
+<p>Documentation integration Ollama : <a href="https://developers.llamaindex.ai/python/framework/integrations/llm/ollama/" rel="noopener noreferrer nofollow">https://developers.llamaindex.ai/python/framework/integrations/llm/ollama/</a></p>
+<p>Repo GitHub : <a href="https://github.com/run-llama/llama_index" rel="noopener noreferrer nofollow">https://github.com/run-llama/llama_index</a></p>
+</div>
+ER  - 
+
+TY  - COMP
+TI  - Haystack: the end-to-end NLP framework for pragmatic builders
+AU  - Pietsch, Malte
+AU  - Möller, Timo
+AU  - Kostic, Bogdan
+AU  - Risch, Julian
+AU  - Pippi, Massimiliano
+AU  - Jobanputra, Mayank
+AU  - Zanzottera, Sara
+AU  - Cerza, Silvano
+AU  - Blagojevic, Vladimir
+AU  - Stadelmann, Thomas
+AU  - Soni, Tanay
+AU  - Lee, Sebastian
+AB  - Open-source AI orchestration framework for building context-engineered, production-ready LLM applications. Design modular pipelines and agent workflows with explicit control over retrieval, routing, memory, and generation. Built for scalable agents, RAG, multimodal applications, semantic search, and conversational systems.
+DA  - 2019/11//
+PY  - 2019
+DP  - GitHub
+LA  - Python
+PB  - deepset GmbH
+ST  - Haystack
+UR  - https://github.com/deepset-ai/haystack
+Y2  - 2026/07/13/14:54:37
+N1  - <div data-schema-version="9"><p>Documentation : <a href="https://docs.haystack.deepset.ai/docs/intro" rel="noopener noreferrer nofollow">https://docs.haystack.deepset.ai/docs/intro</a><br><br>Documentation integration : <a href="https://haystack.deepset.ai/integrations" rel="noopener noreferrer nofollow">https://haystack.deepset.ai/integrations</a></p>
+<p>Documentation integration Ollama : <a href="https://haystack.deepset.ai/integrations/ollama" rel="noopener noreferrer nofollow">https://haystack.deepset.ai/integrations/ollama</a></p>
+<p>Repo GitHub : <a href="https://github.com/deepset-ai/haystack" rel="noopener noreferrer nofollow">https://github.com/deepset-ai/haystack</a></p>
+<p>Repo integration GitHub : <a href="https://github.com/deepset-ai/haystack-core-integrations" rel="noopener noreferrer nofollow">https://github.com/deepset-ai/haystack-core-integrations</a></p>
+</div>
+ER  - 
+
+TY  - COMP
+TI  - Openrag
+AU  - Linagora
+AB  - An open source, modular, lightweight, and extensible RAG application stack, designed for anyone and everyone.
+DA  - 2025/07//
+PY  - 2025
+DP  - GitHub
+LA  - Python
+PB  - Linagora
+ST  - OpenRAG
+UR  - https://github.com/linagora/openrag
+Y2  - 2026/07/14/12:54:06
+N1  - <div data-schema-version="9"><p>Documentation : <a href="https://linagora.github.io/openrag/" rel="noopener noreferrer nofollow">https://linagora.github.io/openrag/</a></p>
+<p>Documentation integration Ollama : aucune page dédiée (constaté le 14.07.2026)</p>
+<p>Site : <a href="https://open-rag.ai/" rel="noopener noreferrer nofollow">https://open-rag.ai</a></p>
+<p>Repo GitHub : <a href="https://github.com/linagora/openrag" rel="noopener noreferrer nofollow">https://github.com/linagora/openrag</a></p>
+</div>
 ER  - 
 

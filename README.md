@@ -90,13 +90,13 @@ Cette exigence est centrale pour un service public, et se trouve alignée sur la
 
 ## Stack technique
 
-> **Aucun choix technologique n'est arrêté à ce stade.** Les éléments ci-dessous sont des **pistes envisagées**, données à titre indicatif. Chacune sera étudiée, comparée et tranchée dans le chapitre correspondant du mémoire.
+> Les choix technologiques sont **étudiés, comparés et tranchés chapitre par chapitre** dans le mémoire. Les composants encore ouverts restent des **pistes envisagées**, données à titre indicatif ; ceux qui sont arrêtés sont signalés comme tels.
 
-| Composant | Pistes envisagées | Tranché au |
+| Composant | Choix / pistes envisagées | Tranché au |
 |---|---|---|
 | **Langage** | Python 3.13 | *(socle du projet)* |
-| **Framework RAG** | LangChain, LlamaIndex, Haystack, etc. | Chapitre 3 |
-| **LLM** | modèles open source servis en local via Ollama (ex. Mistral 7B, etc.) | Chapitre 4 |
+| **Framework RAG** | **Haystack 2.x** (arrêté) | Chapitre 3 |
+| **LLM** | **Gemma 4 12B Instruct** (arrêté), servi en local via Ollama | Chapitre 4 |
 | **Embeddings** | modèles multilingues (ex. BGE-M3, etc.) | Chapitre 5 |
 | **Base vectorielle** | ChromaDB, Qdrant, FAISS, etc. | Chapitre 6 |
 | **Évaluation** | RAGAS, etc. | Chapitre 7 |

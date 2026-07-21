@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" font-family="Calibri, Arial, sans-serif">
+
+  <!-- ===== Entree 1 : fragments (indexation) ===== -->
+  <text x="30" y="50" font-size="22" fill="#595959">à l’indexation, une seule fois</text>
+  <rect x="46" y="62" width="225" height="104" rx="6" fill="#F7FAF3" stroke="#C4D6B2" stroke-width="1.5"/>
+  <rect x="38" y="70" width="225" height="104" rx="6" fill="#EFF6E9" stroke="#A9C08F" stroke-width="1.5"/>
+  <rect x="30" y="78" width="225" height="104" rx="6" fill="#E2EFDA" stroke="#7CA75C" stroke-width="1.5"/>
+  <text x="142" y="122" font-size="18" font-weight="bold" text-anchor="middle" fill="#000000">Fragments</text>
+  <text x="142" y="150" font-size="14" text-anchor="middle" fill="#404040">des pages de ge.ch</text>
+
+  <!-- ===== Entree 2 : question ===== -->
+  <text x="30" y="356" font-size="22" fill="#595959">à chaque question</text>
+  <rect x="30" y="368" width="250" height="116" rx="6" fill="#FFF2CC" stroke="#C9A227" stroke-width="1.5"/>
+  <text x="155" y="404" font-size="18" font-weight="bold" text-anchor="middle" fill="#000000">Question de l’usager</text>
+  <text x="155" y="432" font-size="14" text-anchor="middle" fill="#404040">« Où déposer ma demande</text>
+  <text x="155" y="456" font-size="14" text-anchor="middle" fill="#404040">de permis de séjour&#160;? »</text>
+
+  <!-- ===== Fleches d'entree ===== -->
+  <polyline points="271,130 302,130 302,240 322,240" fill="none" stroke="#595959" stroke-width="2.5"/>
+  <polygon points="322,233 322,247 333,240" fill="#595959"/>
+  <polyline points="280,426 302,426 302,300 322,300" fill="none" stroke="#595959" stroke-width="2.5"/>
+  <polygon points="322,293 322,307 333,300" fill="#595959"/>
+
+  <!-- ===== Maillon du chapitre : modele d'embeddings ===== -->
+  <rect x="333" y="192" width="240" height="170" rx="8" fill="#D9E2F3" stroke="#2E5496" stroke-width="3"/>
+  <text x="453" y="230" font-size="18" font-weight="bold" text-anchor="middle" fill="#000000">Modèle d’embeddings</text>
+  <text x="453" y="262" font-size="14" text-anchor="middle" fill="#404040">transforme chaque texte</text>
+  <text x="453" y="284" font-size="14" text-anchor="middle" fill="#404040">en un vecteur</text>
+  <text x="453" y="316" font-size="13" font-style="italic" text-anchor="middle" fill="#404040">le même modèle</text>
+  <text x="453" y="336" font-size="13" font-style="italic" text-anchor="middle" fill="#404040">pour les deux entrées</text>
+
+  <!-- ===== Fleches vers la base ===== -->
+  <text x="612" y="172" font-size="20" text-anchor="middle" fill="#404040">vecteurs des fragments</text>
+  <polyline points="612,180 612,232" fill="none" stroke="#8C8C8C" stroke-width="1.5"/>
+  <polyline points="573,240 643,240" fill="none" stroke="#595959" stroke-width="2.5"/>
+  <polygon points="643,233 643,247 654,240" fill="#595959"/>
+  <polyline points="573,300 643,300" fill="none" stroke="#595959" stroke-width="2.5"/>
+  <polygon points="643,293 643,307 654,300" fill="#595959"/>
+  <polyline points="612,308 612,396" fill="none" stroke="#8C8C8C" stroke-width="1.5"/>
+  <text x="612" y="416" font-size="20" text-anchor="middle" fill="#404040">vecteur de la question</text>
+
+  <!-- ===== Base vectorielle ===== -->
+  <rect x="654" y="192" width="170" height="170" rx="6" fill="#F2F2F2" stroke="#808080" stroke-width="1.5"/>
+  <text x="739" y="228" font-size="17" font-weight="bold" text-anchor="middle" fill="#000000">Base vectorielle</text>
+  <text x="739" y="258" font-size="14" text-anchor="middle" fill="#404040">stocke les vecteurs,</text>
+  <text x="739" y="280" font-size="14" text-anchor="middle" fill="#404040">compare, retient</text>
+  <text x="739" y="302" font-size="14" text-anchor="middle" fill="#404040">les plus proches</text>
+  <text x="739" y="334" font-size="13" font-style="italic" text-anchor="middle" fill="#595959">(choix au chapitre 6)</text>
+
+  <!-- ===== Fleche verte : seuls les fragments retrouves ===== -->
+  <text x="847" y="140" font-size="20" font-weight="bold" text-anchor="middle" fill="#538135">seuls les fragments</text>
+  <text x="847" y="165" font-size="20" font-weight="bold" text-anchor="middle" fill="#538135">retrouvés</text>
+  <polyline points="847,173 847,262" fill="none" stroke="#538135" stroke-width="1.5"/>
+  <polyline points="824,270 862,270" fill="none" stroke="#538135" stroke-width="3"/>
+  <polygon points="862,262 862,278 874,270" fill="#538135"/>
+
+  <!-- ===== Modele de langage ===== -->
+  <rect x="874" y="205" width="100" height="145" rx="6" fill="#F2F2F2" stroke="#808080" stroke-width="1.5"/>
+  <text x="924" y="246" font-size="14" font-weight="bold" text-anchor="middle" fill="#000000">Modèle</text>
+  <text x="924" y="266" font-size="14" font-weight="bold" text-anchor="middle" fill="#000000">de langage</text>
+  <text x="924" y="298" font-size="13" text-anchor="middle" fill="#404040">rédige la</text>
+  <text x="924" y="316" font-size="13" text-anchor="middle" fill="#404040">réponse</text>
+
+  <!-- ===== Message integre ===== -->
+  <text x="500" y="518" font-size="15" font-style="italic" text-anchor="middle" fill="#595959">Si le bon fragment n’est pas retrouvé à cette étape, le modèle de langage ne le verra jamais.</text>
+
+</svg>

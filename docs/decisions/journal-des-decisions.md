@@ -8,6 +8,83 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-07-21 — Modèle d'embeddings : Qwen3-Embedding-0.6B
+
+**Décision.** Le modèle d'embeddings retenu est **Qwen3-Embedding-0.6B** (Alibaba, équipe Qwen,
+juin 2025), servi en local via Ollama (paquet `qwen3-embedding:0.6b`, 639 Mo). Repli documenté :
+**BGE-M3** (BAAI, février 2024), même mécanique de repli qu'au chapitre 4 : sur le papier, activé
+seulement si les mesures de la partie pratique contredisent le choix.
+
+**Lien avec le mémoire.** Chapitre 5 (choix des embeddings). Décision prise le 21.07.2026, sur la base
+d'un relevé du classement MTEB daté du 20.07.2026 (date de référence unique du chapitre, comme le
+16.07.2026 pour le chapitre 4).
+
+**Candidats comparés (7 critères : récupération sur MTEB relevé et daté ; français ; empreinte mémoire
+du paquet Ollama ; dimension des vecteurs ; longueur de contexte ; licence et accès ; maturité).**
+- **Qwen3-Embedding-0.6B** (retenu) : Apache 2.0, 596 M paramètres, vecteurs 1 024 réglables (MRL),
+  contexte 32 768, Ollama officiel 639 Mo ; consignes de tâche ajoutées à la requête, jamais aux documents.
+- **BGE-M3** (repli) : MIT, 568 M paramètres, vecteurs 1 024 fixes, contexte 8 192, Ollama officiel
+  1,2 Go ; article relu par les pairs (Findings ACL 2024), paquet le plus téléchargé (5,2 M), seul
+  candidat mesuré par le volet français en 2024. Trois fonctions de recherche (dense, lexicale,
+  multi-vecteurs), mais seule la dense serait servie : règle posée en 5.2, tous les scores lus sur la
+  fonction dense.
+- **EmbeddingGemma 300m** (écarté) : Google DeepMind, 09/2025, conditions d'utilisation Gemma avec
+  acceptation préalable au téléchargement, 308 M paramètres, vecteurs 768 réglables jusqu'à 128,
+  contexte 2 048 (le plus court), Ollama officiel 622 Mo, quantification préparée à l'entraînement (QAT).
+
+**Motifs.**
+1. Qualité mesurée : premier des trois candidats en récupération sur MTEB(Multilingual, v2), confirmé
+   par trois sources convergentes (rapport Alibaba, Zhang et al. 2025 ; rapport Google, Vera et al.
+   2025 ; relevé indépendant du 20.07.2026). Scores en récupération : 64,65 (rang général 18) contre
+   62,49 (rang 29) pour EmbeddingGemma et 54,59 (rang 49) pour bge-m3.
+2. Dossier : source primaire dédiée (rapport arXiv 2506.05176), licence Apache 2.0 sans barrière
+   d'accès, paquet Ollama officiel léger, vecteurs à taille réglable (MRL) et consignes de tâche
+   documentées par l'éditeur.
+3. Marge : contexte de 32 768 jetons, le plus long du trio, qui laisse le découpage des pages libre.
+
+**Écartés (motifs).** Services d'embeddings en nuage (OpenAI, Gemini Embedding, etc.) hors périmètre
+par construction ; embedders de plusieurs milliards de paramètres (E5-Mistral, GritLM) hors enveloppe
+mémoire ; générations françaises antérieures à pooling (CamemBERT, FlauBERT) et dérivés entraînés
+(Solon, sentence-camembert) sans paquet Ollama officiel ; multilingual-e5-large-instruct sans paquet
+Ollama officiel (seulement des conversions communautaires, vérifié le 20.07.2026) et contexte de
+512 jetons.
+
+**Français.** Le volet français du classement, MTEB(fra, v1), existe et contient les trois candidats,
+mais aucun n'y est mesuré en récupération au 20.07.2026 (seule la classification de paires est
+renseignée : 67,52 / 61,99 / 59,18, même ordre que le multilingue). La décision s'est donc prise sur
+le multilingue ; la qualité en français sera vérifiée en Partie 3, sur le système complet construit
+avec le seul modèle retenu, via RAGAS sur les questions genevoises. Aucun test comparatif des trois
+embedders n'est prévu : un seul modèle est monté, comme pour le LLM et le framework.
+
+**Mise en œuvre (implémentation future).** Pipeline Haystack 2.x + Ollama, dimension par défaut 1 024
+(MRL disponible si l'arbitrage stockage/qualité l'exige, sous-décision à trancher en pratique).
+Consignes de tâche côté requête uniquement, au format documenté par Qwen ; documents encodés sans
+consigne. Contexte 32 768 jetons : le découpage des pages ge.ch n'est pas contraint. Mesures prévues
+en Partie 2 avant mise en service : latence d'encodage sous CPU (embedder issu d'un LLM contre encodeur
+classique) et débit d'indexation.
+
+**Souveraineté.** Inférence 100 % locale via Ollama. Aucune donnée ni document ne part vers un service
+externe à l'exécution.
+
+**Archives et sources.** Relevé du 20.07.2026 archivé dans `biblio/Embeddings` (captures PDF et exports
+CSV des vues MTEB Multilingual v2 et fra v1). Pas d'annexe dans le mémoire (convention identique au
+relevé compar:IA du chapitre 4 : citation datée dans le texte, exports archivés au dépôt). Zotero :
+deux fiches pour le relevé (MTEB 2026a multilingue, MTEB 2026b française, consultées le 20.07.2026),
+plus 6 fiches arXiv (Muennighoff 2022, Ciancone 2024, Enevoldsen 2025, Chen 2024, Zhang 2025, Vera
+2025), 3 cartes Hugging Face (BAAI 2024, Qwen Team 2025, Google 2025) et 3 fiches Ollama (bge-m3,
+embeddinggemma, qwen3-embedding).
+
+**Vigilance bibliographique.** Collisions de millésimes Ollama (2024 ×2, 2025 ×4 avec le chapitre 4).
+Les lettres de désambiguïsation (Ollama 2024a/b, 2025a-d) et les lettres MTEB 2026a/b devront être
+vérifiées et alignées entre les deux chapitres à la génération de la bibliographie Zotero.
+
+**Ce qui reste ouvert.** Base vectorielle (ChromaDB pressentie, chapitre 6). Le code doit rester
+paramétrable pour échanger ce maillon sans réécriture.
+
+**État.** Décision documentée. Rien n'est installé (ni Ollama, ni modèle, ni pipeline).
+
+---
+
 ## 2026-07-15 — Modèle de langage (LLM) : Gemma 4 12B Instruct
 
 **Décision.** Le modèle de langage retenu est **Gemma 4 12B Instruct**, servi en local via Ollama.

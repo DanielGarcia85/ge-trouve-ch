@@ -78,14 +78,14 @@ embeddinggemma, qwen3-embedding).
 Les lettres de désambiguïsation (Ollama 2024a/b, 2025a-d) et les lettres MTEB 2026a/b devront être
 vérifiées et alignées entre les deux chapitres à la génération de la bibliographie Zotero.
 
-**Ce qui reste ouvert.** Base vectorielle (ChromaDB pressentie, chapitre 6). Le code doit rester
+**Ce qui reste ouvert à cette date.** Base vectorielle (ChromaDB pressentie, chapitre 6). Le code doit rester
 paramétrable pour échanger ce maillon sans réécriture.
 
 **État.** Décision documentée. Rien n'est installé (ni Ollama, ni modèle, ni pipeline).
 
 ---
 
-## 2026-07-15 — Modèle de langage (LLM) : Gemma 4 12B Instruct
+## 2026-07-16 — Modèle de langage (LLM) : Gemma 4 12B Instruct
 
 **Décision.** Le modèle de langage retenu est **Gemma 4 12B Instruct**, servi en local via Ollama.
 Le choix du modèle et celui du palier serveur sont **liés** : c'est une décision conjointe.
@@ -109,7 +109,19 @@ prévue en août.
 **Souveraineté.** Inférence 100 % locale via Ollama (`http://localhost:11434`). Aucune donnée ni
 document ne part vers un service externe à l'exécution.
 
-**Ce qui reste ouvert.** Embeddings (chapitre 5) et base vectorielle (ChromaDB pressentie, chapitre 6)
+**Archives et sources.** Date de référence unique du chapitre : 16.07.2026 (modèles, cartes et
+classements évoluant chaque semaine, une date fixe rend la comparaison honnête). Relevé de qualité :
+classement compar:IA (comparateur d'IA conversationnelles, comparia.beta.gouv.fr/ranking), consulté le
+17.07.2026 ; exports archivés au dépôt, pas d'annexe dans le mémoire (citation datée dans le texte,
+convention reprise au chapitre 5). Cinq candidats comparés : Llama 3.1 8B Instruct (Meta, 07/2024),
+Apertus 8B Instruct (Swiss AI, 09/2025), Ministral 3 8B Instruct (Mistral AI, 12/2025), Qwen 3.5 9B
+Instruct (Alibaba, 03/2026) et Gemma 4 12B Instruct (Google DeepMind, 06/2026) ; principaux écartés
+pour l'enveloppe mémoire : GLM-5.2 (744 milliards de paramètres), gpt-oss, Lucie-7B. Zotero : cartes
+Hugging Face et rapports techniques des candidats (consultés le 16.07.2026), pages de la bibliothèque
+Ollama (`llama3.1`, `ministral-3`, `qwen3.5`, `gemma4`, consultées les 17-18.07.2026) et le relevé
+compar:IA.
+
+**Ce qui reste ouvert à cette date.** Embeddings (chapitre 5) et base vectorielle (ChromaDB pressentie, chapitre 6)
 non tranchés. Le code doit rester paramétrable pour échanger ces maillons sans réécriture.
 
 **État.** Décision documentée. Rien n'est installé (ni Ollama, ni modèle, ni pipeline).
@@ -140,7 +152,7 @@ non tranchés. Le code doit rester paramétrable pour échanger ces maillons san
 document ne part vers un service externe à l'exécution. Toute bibliothèque qui exigerait une clé d'API
 externe doit être signalée avant usage.
 
-**Ce qui reste ouvert (ne rien présumer dans le code).**
+**Ce qui reste ouvert à cette date (ne rien présumer dans le code).**
 - **LLM** : chapitre 4 en cours. Mistral 7B via Ollama sert de modèle de travail provisoire pour le
   développement, ce n'est pas le choix final.
 - **Embeddings** : chapitre 5, non traité.
@@ -151,3 +163,8 @@ Le code doit rester paramétrable pour échanger ces maillons sans réécriture.
 **Environnement.** Développement local Windows (Ryzen 7 7840HS, 32 Go de RAM, CPU uniquement, pas de
 GPU supporté par Ollama ici). Cible de production : VPS Infomaniak Ubuntu, environ 12 Go de RAM.
 Viser la sobriété à chaque choix.
+
+> **Mise à jour (supersession partielle).** Les maillons listés ci-dessus comme ouverts ont depuis été
+> tranchés : LLM le 16.07.2026 (Gemma 4 12B Instruct), embeddings le 21.07.2026 (Qwen3-Embedding-0.6B).
+> Le palier serveur retenu est 6 CPU / 18 Go de RAM (confort), non les ~12 Go évoqués ici. Voir les
+> entrées du 16.07 et du 21.07 ci-dessus.

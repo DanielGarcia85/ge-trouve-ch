@@ -8,6 +8,67 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-04 — Évaluation d'un système RAG : RAGAS
+
+**Décision.** L'évaluation du système reposera sur **RAGAS** (bibliothèque `vibrantlabsai/ragas`,
+v0.4.3, Apache-2.0, environ 1 million de téléchargements par mois). Chapitre de **méthode**, non de
+comparatif : il fixe comment le système sera évalué ; les résultats iront en **Partie 3**, après le
+déploiement de la Partie 2.
+
+**Lien avec le mémoire.** Chapitre 7 (évaluation d'un système RAG). Cadre acté depuis la proposition
+(article Es et al. 2023). Discipline de citation : l'article pour le cadre, la documentation datée pour
+l'état courant (le jeu de métriques a beaucoup grandi depuis l'article). Date de référence des faits :
+04.08.2026 (captures de la documentation).
+
+**Décisions du chapitre.**
+- **Métriques (quatuor RAG)** : context precision et context recall (récupération) ; faithfulness et
+  response relevancy (génération).
+- **Modèle juge** : local, d'une autre famille que le rédacteur pour écarter l'auto-jugement. Ce sera
+  Llama 3.1 8B (`llama3.1:8b`, le repli du chapitre 4), servi sur la machine de développement (32 Go).
+  Encodeur d'évaluation local également. Aucun compte ni clé externe, rien sur le VPS.
+- **Protocole (Partie 3)** : une vingtaine de questions genevoises écrites à la main (choix assumé
+  contre la génération automatique de jeux de test proposée par la bibliothèque, c'est l'apport propre
+  du travail), couvrant les grandes familles de démarches, en plusieurs registres, avec des questions
+  volontairement sans réponse dans le corpus ; chaque question avec sa réponse de référence et sa page
+  source (exigée par le context recall). Déroulé : configuration unique des chapitres 3 à 6,
+  conservation question/fragments/réponse, notation métrique par métrique sur la machine de
+  développement. Lecture en tableaux par métrique et famille, sans seuil absolu.
+- **Garde-fous** : contrôle humain d'au moins un quart des réponses (divergence forte = juge local plus
+  grand) ; classement de chaque erreur sur les sept points de défaillance de Barnett et al. 2024.
+
+**Limites nommées.** Taille du juge (les notes valent comme instrument de comparaison entre réglages,
+pas comme vérité absolue) ; faillibilité (d'où le contrôle humain d'échantillon) ; câblage (la doc
+RAGAS n'illustre que des fournisseurs en nuage ; le branchement local précis, via `llm_factory` /
+`embedding_factory` et la passerelle LiteLLM, sera établi et documenté en Partie 2).
+
+**Mise en œuvre (implémentation future).** Prévoir en Partie 3 un dossier d'évaluation (jeu de
+questions, réponses de référence, scripts RAGAS) exécuté sur la machine de développement ; juge
+`llama3.1:8b` via Ollama ; câblage LiteLLM à valider (l'ancienne voie `LangchainLLMWrapper` n'est plus
+documentée).
+
+**Souveraineté.** Évaluation 100 % locale, sur la machine de développement : juge et encodeur locaux,
+aucun service ni clé externe.
+
+**Archives et sources.** Captures du 04.08.2026 archivées dans `biblio/RAGAS` :
+`20260804_RAGAS_Metrics.pdf`, `20260804_RAGAS_Customize_Models.pdf`, `20260804_RAGAS_GitHub.pdf`.
+Zotero : 3 fiches nouvelles (2 pages web docs.ragas.io, 1 logiciel `vibrantlabsai/ragas`) ; la fiche
+Es et al. 2023 existait déjà (v2 arXiv du 28.04.2025 relevée, année de fiche inchangée).
+
+**Vigilance bibliographique.** L'organisation GitHub a été renommée (`explodinggradients` devenu
+`vibrantlabsai` ; les captures font foi). L'API de configuration du juge a changé (`llm_factory` et
+`embedding_factory` avec LiteLLM ; l'ancienne voie `LangchainLLMWrapper` n'est plus documentée). Méthode
+consolidée : bloc de vérification des appels de citation, chaque affirmation confrontée mot à mot à sa
+pièce avant insertion.
+
+**Ce qui reste ouvert à cette date.** La Partie 1 est complète (pile RAG et méthode d'évaluation).
+Restent le chapitre 8 (RAG en contexte francophone) et la conclusion, puis les briques de la Partie 2
+(interface, serveur web, déploiement).
+
+**État.** Décision documentée. Rien n'est installé (ni Ollama, ni modèle, ni pipeline, ni harnais
+d'évaluation).
+
+---
+
 ## 2026-08-02 — Base vectorielle : Chroma
 
 **Décision.** La base vectorielle retenue est **Chroma** (base embarquée, cœur en Rust, licence

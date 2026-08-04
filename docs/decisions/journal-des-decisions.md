@@ -8,6 +8,82 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-02 — Base vectorielle : Chroma
+
+**Décision.** La base vectorielle retenue est **Chroma** (base embarquée, cœur en Rust, licence
+Apache 2.0), via l'intégration Haystack officielle `chroma-haystack` (`ChromaDocumentStore` et son
+retriever). Repli documenté : **Qdrant** (serveur dédié, Apache 2.0, Rust ; intégration officielle
+cosignée deepset/Qdrant, réglages HNSW exposés), pour le scénario où il faudrait plus (charge,
+filtrage, échelle) ; l'interchangeabilité des magasins Haystack rend la bascule simple.
+
+**Lien avec le mémoire.** Chapitre 6 (choix de la base vectorielle). Décision du 02.08.2026 ; date de
+référence unique des faits (captures et fiches) : 01.08.2026.
+
+**Particularité méthodologique.** Premier chapitre de choix où la **performance ne figure pas dans les
+critères**. Justification sourcée : la force brute balaie 1 million de vecteurs en 94 ms sur un fil
+(Malkov et Yashunin 2016) ; la recherche non exhaustive ne devient la pierre angulaire qu'au-delà
+d'environ 10 000 vecteurs, et la contrainte mémoire disparaît quand la base tient plusieurs fois en RAM
+(Douze et al. 2024). Le corpus Ge-Trouve (milliers à dizaines de milliers de fragments) est sous ces
+seuils : recherche exacte suffisante, index approximatif non requis. Les sept critères retenus sont
+donc d'exploitation : intégration Haystack, mode de service, persistance/sauvegarde, filtrage par
+métadonnées, empreinte d'exploitation, licence, maturité.
+
+**Candidats comparés (état au 01.08.2026).**
+- **Chroma** (retenu) : dépôt 2022, Apache 2.0, cœur Rust ; embarquée, mode serveur optionnel, stockage
+  local intégré ; filtrage par métadonnées à la recherche.
+- **Qdrant** (repli) : dépôt 2020, Apache 2.0, Rust ; serveur dédié, persistance gérée, filtrage par
+  charge utile (payload) ; mode local d'essai ; `hnsw_config` (m, ef_construct) exposé dans l'intégration.
+- **Faiss** (battu) : Meta, dépôt 2017, MIT, C++ ; bibliothèque sans serveur ; intégration Haystack via
+  index `.faiss` + métadonnées `.json`, positionnée petits et moyens corpus ; filtrage à la charge de
+  la couche du dessus. Reste au projet comme référence algorithmique (son article fonde l'argument
+  d'échelle du chapitre).
+
+**Motifs.**
+1. Mode de service : base embarquée, vit dans le processus de l'application, aucun serveur séparé à
+   installer, surveiller ou mettre à jour.
+2. Filtrage par métadonnées natif, appliqué au moment de la recherche (source, date, section des pages
+   ge.ch), sans code sur mesure.
+3. Éventail de recherche documenté au-delà du vecteur dense (recherche lexicale et plein texte
+   intégrées), réserve d'évolution.
+
+Inconvénients nommés : jeunesse (dépôt créé en 2022, le plus court historique du trio). En cas de
+dépassement du cadre, la réponse est la bascule vers Qdrant, pas la torsion de Chroma.
+
+**Écartés (motifs).** Services en nuage (Pinecone, etc.) hors périmètre ; Milvus et Weaviate (échelle
+industrielle) ; pgvector (un serveur PostgreSQL entier pour un besoin simple) ; Elasticsearch et
+parents (pile disproportionnée).
+
+**Mise en œuvre (implémentation future).** Pipeline Haystack 2.x + `chroma-haystack` ;
+`ChromaDocumentStore` en mode persistant local sur le VPS, retriever Chroma pour la recherche dense.
+Schéma d'indexation avec métadonnées par fragment (url de la page, section, date de capture) pour le
+filtrage. Pas d'index approximatif requis à l'échelle du corpus, aucun réglage HNSW a priori. Repli :
+`QdrantDocumentStore` (mêmes interfaces Haystack) si la charge, le filtrage ou le volume l'exigeaient.
+Mesures prévues en Partie 2 : consommations mémoire réelles et latences de recherche sur le serveur,
+corpus réel compté.
+
+**Souveraineté.** Base locale, embarquée dans l'application. Aucune donnée ni document ne part vers un
+service externe à l'exécution.
+
+**Archives et sources.** Relevés du 01.08.2026 archivés dans `biblio/BaseVectorielle` : 8 captures
+datées (Chroma Docs et GitHub, Qdrant Documentation et GitHub, Faiss GitHub, intégrations Haystack
+Chroma / Qdrant / Faiss), 2 PDF arXiv, 2 résumés de la série (Malkov et Yashunin 2016, « Le graphe à
+étages » ; Douze et al. 2024, « La boîte à outils »). Zotero : 10 fiches nouvelles (2 arXiv, type GEN ;
+3 dépôts, type Logiciel : Chroma, Qdrant, Meta AI ; 5 pages web : 2 documentations et 3 intégrations
+deepset), consultées le 01.08.2026.
+
+**Vigilance bibliographique.** Un audit de sources complet a été mené sur le chapitre 6 (chaque
+affirmation confrontée aux pièces, corrections intégrées) ; méthode à reconduire. Doublons Zotero à
+supprimer : « bge-m3 » et « gpt-oss ». Lettres de désambiguïsation 2026a/b/c posées à la main (deepset,
+Chroma, Qdrant), à réaligner à la génération de la bibliographie, en même temps qu'Ollama et MTEB.
+
+**Ce qui reste ouvert à cette date.** La pile RAG est complète (framework, LLM, embeddings et base
+vectorielle tous arrêtés). Restent l'évaluation (chapitre 7, RAGAS pressenti) et les briques de la
+Partie 2 (interface, serveur web, déploiement). Le code doit rester paramétrable.
+
+**État.** Décision documentée. Rien n'est installé (ni Ollama, ni modèle, ni pipeline).
+
+---
+
 ## 2026-07-21 — Modèle d'embeddings : Qwen3-Embedding-0.6B
 
 **Décision.** Le modèle d'embeddings retenu est **Qwen3-Embedding-0.6B** (Alibaba, équipe Qwen,

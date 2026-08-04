@@ -98,7 +98,7 @@ Cette exigence est centrale pour un service public, et se trouve alignée sur la
 | **Framework RAG** | **Haystack 2.x** (arrêté) | Chapitre 3 |
 | **LLM** | **Gemma 4 12B Instruct** (arrêté), servi en local via Ollama | Chapitre 4 |
 | **Embeddings** | **Qwen3-Embedding-0.6B** (arrêté), servi via Ollama ; repli : BGE-M3 | Chapitre 5 |
-| **Base vectorielle** | ChromaDB, Qdrant, FAISS, etc. | Chapitre 6 |
+| **Base vectorielle** | **Chroma** (arrêtée), base embarquée via `chroma-haystack` ; repli : Qdrant | Chapitre 6 |
 | **Évaluation** | RAGAS, etc. | Chapitre 7 |
 | **Interface** | Streamlit, Open WebUI, etc. | Partie 2 |
 | **Serveur web** | Nginx, Caddy, etc. | Partie 2 |

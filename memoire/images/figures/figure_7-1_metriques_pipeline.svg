@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" font-family="Calibri, Arial, sans-serif">
+
+  <!-- ===== Entete etage recuperation ===== -->
+  <text x="380" y="46" font-size="14" font-weight="bold" text-anchor="middle" fill="#538135">Métriques de la récupération</text>
+
+  <!-- ===== Pastilles du haut ===== -->
+  <rect x="100" y="62" width="270" height="96" rx="12" fill="#E2EFDA" stroke="#538135" stroke-width="2"/>
+  <text x="235" y="86" font-size="15" font-weight="bold" text-anchor="middle" fill="#385723">Précision du contexte</text>
+  <text x="235" y="107" font-size="13" text-anchor="middle" fill="#404040">les fragments remontés sont-ils</text>
+  <text x="235" y="124" font-size="13" text-anchor="middle" fill="#404040">utiles, les utiles en tête ?</text>
+  <text x="235" y="146" font-size="12" font-style="italic" text-anchor="middle" fill="#595959">compare : la question et les fragments</text>
+
+  <rect x="420" y="62" width="290" height="96" rx="12" fill="#E2EFDA" stroke="#538135" stroke-width="2"/>
+  <text x="565" y="86" font-size="15" font-weight="bold" text-anchor="middle" fill="#385723">Rappel du contexte</text>
+  <text x="565" y="107" font-size="13" text-anchor="middle" fill="#404040">tout ce qu'il fallait pour répondre</text>
+  <text x="565" y="124" font-size="13" text-anchor="middle" fill="#404040">a-t-il été remonté ?</text>
+  <text x="565" y="146" font-size="12" font-style="italic" text-anchor="middle" fill="#595959">compare : les fragments et la référence</text>
+
+  <rect x="750" y="70" width="220" height="66" rx="8" fill="#F7F7F7" stroke="#808080" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="860" y="98" font-size="14" text-anchor="middle" fill="#404040">Réponse de référence</text>
+  <text x="860" y="118" font-size="12" font-style="italic" text-anchor="middle" fill="#595959">(écrite à la main, section 7.4)</text>
+
+  <!-- ===== Connecteurs du haut ===== -->
+  <g stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="5,4" fill="none">
+    <line x1="235" y1="158" x2="350" y2="240"/>
+    <line x1="565" y1="158" x2="450" y2="240"/>
+    <line x1="710" y1="110" x2="750" y2="103"/>
+  </g>
+
+  <!-- ===== Pipeline ===== -->
+  <rect x="40" y="255" width="195" height="80" rx="6" fill="#FFF2CC" stroke="#C9A227" stroke-width="1.5"/>
+  <text x="137" y="288" font-size="16" font-weight="bold" text-anchor="middle" fill="#000000">Question</text>
+  <text x="137" y="310" font-size="16" font-weight="bold" text-anchor="middle" fill="#000000">de l'usager</text>
+
+  <polyline points="235,295 285,295" fill="none" stroke="#595959" stroke-width="2.5"/>
+  <polygon points="285,289 285,301 295,295" fill="#595959"/>
+
+  <rect x="311" y="239" width="190" height="88" rx="6" fill="#F7FAF3" stroke="#C4D6B2" stroke-width="1.5"/>
+  <rect x="303" y="247" width="190" height="88" rx="6" fill="#E2EFDA" stroke="#7CA75C" stroke-width="1.5"/>
+  <text x="398" y="284" font-size="16" font-weight="bold" text-anchor="middle" fill="#000000">Fragments</text>
+  <text x="398" y="306" font-size="16" font-weight="bold" text-anchor="middle" fill="#000000">retrouvés</text>
+
+  <polyline points="501,295 553,295" fill="none" stroke="#595959" stroke-width="2.5"/>
+  <polygon points="553,289 553,301 563,295" fill="#595959"/>
+
+  <rect x="563" y="255" width="167" height="80" rx="6" fill="#F2F2F2" stroke="#808080" stroke-width="1.5"/>
+  <text x="646" y="288" font-size="16" font-weight="bold" text-anchor="middle" fill="#000000">Modèle</text>
+  <text x="646" y="310" font-size="16" font-weight="bold" text-anchor="middle" fill="#000000">de langage</text>
+
+  <polyline points="730,295 782,295" fill="none" stroke="#595959" stroke-width="2.5"/>
+  <polygon points="782,289 782,301 792,295" fill="#595959"/>
+
+  <rect x="792" y="255" width="178" height="80" rx="6" fill="#D9E2F3" stroke="#2E5496" stroke-width="2"/>
+  <text x="881" y="288" font-size="16" font-weight="bold" text-anchor="middle" fill="#000000">Réponse</text>
+  <text x="881" y="310" font-size="16" font-weight="bold" text-anchor="middle" fill="#000000">de l'assistant</text>
+
+  <!-- ===== Connecteurs du bas ===== -->
+  <g stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="5,4" fill="none">
+    <line x1="390" y1="428" x2="840" y2="337"/>
+    <line x1="730" y1="428" x2="905" y2="337"/>
+  </g>
+
+  <!-- ===== Pastilles du bas ===== -->
+  <text x="530" y="418" font-size="14" font-weight="bold" text-anchor="middle" fill="#2E5496">Métriques de la génération</text>
+
+  <rect x="240" y="430" width="300" height="96" rx="12" fill="#D9E2F3" stroke="#2E5496" stroke-width="2"/>
+  <text x="390" y="454" font-size="15" font-weight="bold" text-anchor="middle" fill="#1F3864">Fidélité</text>
+  <text x="390" y="475" font-size="13" text-anchor="middle" fill="#404040">chaque affirmation de la réponse</text>
+  <text x="390" y="492" font-size="13" text-anchor="middle" fill="#404040">s'appuie-t-elle sur les fragments ?</text>
+  <text x="390" y="514" font-size="12" font-style="italic" text-anchor="middle" fill="#595959">compare : la réponse et les fragments</text>
+
+  <rect x="580" y="430" width="300" height="96" rx="12" fill="#D9E2F3" stroke="#2E5496" stroke-width="2"/>
+  <text x="730" y="454" font-size="15" font-weight="bold" text-anchor="middle" fill="#1F3864">Pertinence de la réponse</text>
+  <text x="730" y="475" font-size="13" text-anchor="middle" fill="#404040">la réponse répond-elle à la</text>
+  <text x="730" y="492" font-size="13" text-anchor="middle" fill="#404040">question posée, sans digression ?</text>
+  <text x="730" y="514" font-size="12" font-style="italic" text-anchor="middle" fill="#595959">compare : la réponse et la question</text>
+
+  <!-- ===== Message integre ===== -->
+  <text x="500" y="552" font-size="15" font-style="italic" text-anchor="middle" fill="#595959">Deux métriques jugent la récupération, deux jugent la génération ; chacune compare deux pièces précises du pipeline.</text>
+
+</svg>

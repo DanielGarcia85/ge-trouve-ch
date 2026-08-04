@@ -51,8 +51,8 @@ Y2  - 2026/03/19/11:34:22
 L1  - http://arxiv.org/pdf/2312.10997v5
 L2  - http://arxiv.org/abs/2312.10997
 N1  - Comment: Ongoing Work
-KW  - Computer Science - Computation and Language
 KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Computation and Language
 ER  - 
 
 TY  - GEN
@@ -316,8 +316,8 @@ Y2  - 2026/07/01/15:07:30
 L1  - http://arxiv.org/pdf/2303.18223v19
 L2  - http://arxiv.org/abs/2303.18223
 N1  - Comment: ongoing work; 144 pages, 1081 citations
-KW  - Computer Science - Computation and Language
 KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Computation and Language
 ER  - 
 
 TY  - ELEC
@@ -451,8 +451,8 @@ UR  - http://arxiv.org/abs/2407.01463
 Y2  - 2026/07/13/14:26:43
 L1  - http://arxiv.org/pdf/2407.01463v1
 L2  - http://arxiv.org/abs/2407.01463
-KW  - Computer Science - Computation and Language
 KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Computation and Language
 ER  - 
 
 TY  - COMP
@@ -1072,8 +1072,8 @@ Y2  - 2026/07/16/14:11:25
 L1  - http://arxiv.org/pdf/2607.02770v1
 L2  - http://arxiv.org/abs/2607.02770
 N1  - Comment: 17 pages, 2 figures, technical report
-KW  - Computer Science - Computation and Language
 KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Computation and Language
 ER  - 
 
 TY  - COMP
@@ -1213,9 +1213,9 @@ UR  - http://arxiv.org/abs/2509.14233
 Y2  - 2026/07/16/14:40:46
 L1  - http://arxiv.org/pdf/2509.14233v2
 L2  - http://arxiv.org/abs/2509.14233
+KW  - Computer Science - Artificial Intelligence
 KW  - Computer Science - Computation and Language
 KW  - Computer Science - Machine Learning
-KW  - Computer Science - Artificial Intelligence
 ER  - 
 
 TY  - GEN
@@ -1882,8 +1882,8 @@ L1  - http://arxiv.org/pdf/2407.21783v3
 L2  - http://arxiv.org/abs/2407.21783
 N1  - <div data-schema-version="9"><p>Alias de citation : la v1 (31.07.2024) listait Abhimanyu Dubey en premier auteur ; l'article circule donc sous (Dubey et al. 2024) dans la littérature de 2024, puis sous (Grattafiori et al. 2024) depuis la réorganisation de la liste d'auteurs. Même article, même identifiant arXiv:2407.21783.</p>
 </div>
-KW  - Computer Science - Computation and Language
 KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Computation and Language
 KW  - Computer Science - Computer Vision and Pattern Recognition
 ER  - 
 
@@ -1909,8 +1909,8 @@ UR  - http://arxiv.org/abs/2503.12294
 Y2  - 2026/07/16/20:28:32
 L1  - http://arxiv.org/pdf/2503.12294v1
 L2  - http://arxiv.org/abs/2503.12294
-KW  - Computer Science - Computation and Language
 KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Computation and Language
 ER  - 
 
 TY  - COMP
@@ -1971,7 +1971,7 @@ TY  - COMP
 TI  - gpt-oss
 AU  - OpenAI
 AB  - gpt-oss-120b and gpt-oss-20b are two open-weight language models by OpenAI
-DA  - 2026/07/16/T19:12:58Z
+DA  - 2026/07/16/
 PY  - 2026
 DP  - GitHub
 LA  - Python
@@ -2169,8 +2169,8 @@ UR  - http://arxiv.org/abs/2508.10925
 Y2  - 2026/07/16/20:17:08
 L1  - http://arxiv.org/pdf/2508.10925v1
 L2  - http://arxiv.org/abs/2508.10925
-KW  - Computer Science - Computation and Language
 KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Computation and Language
 ER  - 
 
 TY  - GEN
@@ -2381,7 +2381,7 @@ TI  - Mistral AI
 AU  - Wikipedia
 T2  - Wikipedia
 AB  - Mistral AI SAS (French: [mistʁal]) is a French artificial intelligence (AI) company headquartered in Paris. Founded in 2023, it develops large language models (LLMs), some of which are open-source. As of 2025, the company has a valuation of more than US$14 billion.
-DA  - 2026/07/10/T06:04:02Z
+DA  - 2026/07/10/
 PY  - 2026
 DP  - Wikipedia
 LA  - en
@@ -2395,7 +2395,7 @@ TI  - Qwen
 AU  - Wikipedia
 T2  - Wikipedia
 AB  - Qwen (also known as Tongyi Qianwen, Chinese: 通义千问; pinyin: Tōngyì Qiānwèn) is a family of large language models developed by Alibaba Cloud. Many Qwen models are distributed under the free and open-source Apache 2.0 license, the source-available Qwen License, or the non-commercial Qwen Research License; other proprietary Qwen models are served through Alibaba Cloud.
-DA  - 2026/07/12/T14:01:23Z
+DA  - 2026/07/12/
 PY  - 2026
 DP  - Wikipedia
 LA  - en
@@ -2409,7 +2409,7 @@ TI  - Gemma (language model)
 AU  - Wikipedia
 T2  - Wikipedia
 AB  - Gemma is a series of source-available large language models developed by Google DeepMind. It is based on similar technologies as Gemini. The first version was released in February 2024, followed by Gemma 2 in June 2024, Gemma 3 in March 2025, and the open-weights Gemma 4 in April 2026. Variants of Gemma have also been developed, such as the vision-language model PaliGemma and the model MedGemma for medical consultation topics.
-DA  - 2026/07/13/T17:01:37Z
+DA  - 2026/07/13/
 PY  - 2026
 DP  - Wikipedia
 LA  - en
@@ -2425,7 +2425,7 @@ T2  - Wikipedia
 AB  - Apertus is a public large language model, developed by the Swiss AI Initiative (a collaboration between EPFL, ETH Zurich, and the Swiss National Supercomputing Centre). It was released on September 2, 2025, under the free and open-source Apache 2.0 license.
 Designed initially for business and research use cases around the world, Apertus was trained on over 1800 languages, and comes in 8 billion or 70 billion parameter versions and is available on Hugging Face for download. The model was developed aiming to adhere to European copyright law, and is one of the first examples of AI as a public good in the vein of AI Sovereignty. It is also the first large model to comply with the European Union's Artificial Intelligence Act. At its launch, the model creators emphasized multilinguality, transparency, and auditability as priorities in contrast to commercial frontier model. While international reception was largely positive, the first iteration was significantly behind the capabilities of frontier models and needs adaptation for many use cases with chatbots being a secondary but not a primary use case.
 As of late 2025, it was considered the largest and most capable fully open model. The capability of future models will depend in part on how much more funding can be secured.
-DA  - 2026/07/14/T12:19:23Z
+DA  - 2026/07/14/
 PY  - 2026
 DP  - Wikipedia
 LA  - en
@@ -2443,7 +2443,7 @@ Llama models come in different sizes, ranging from 1 billion to 2 trillion param
 Model weights for the first version of Llama were only available to researchers on a case-by-case basis, under a non-commercial license. Unauthorized copies of the first model were shared via BitTorrent. Subsequent versions of Llama were made accessible outside academia and released under licenses that permitted some commercial use.
 Alongside the release of Llama 3, Meta rolled out Meta AI, an AI assistant built on Llama. Meta AI has a dedicated website and is available on Facebook and WhatsApp. The latest version is Llama 4, released in April 2025.
 In April 2026, Meta Superintelligence Labs released Muse Spark as a replacement for Llama.
-DA  - 2026/07/11/T02:06:15Z
+DA  - 2026/07/11/
 PY  - 2026
 DP  - Wikipedia
 LA  - en
@@ -2966,5 +2966,189 @@ UR  - https://ollama.com/library/bge-m3
 Y2  - 2026/07/20/07:56:56
 N1  - <div data-schema-version="9"><p>bibliothèque officielle, mise en ligne 2024 ; environ 4,7 millions de téléchargements à ma veille, le plus téléchargé des embeddings multilingues de la bibliothèque, volatil ; paquet 1,2 Go en F16, contexte 8K.</p>
 </div>
+ER  - 
+
+TY  - ELEC
+TI  - Multilingual · MTEB Leaderboard
+AU  - MTEB
+T2  - MTEB Leaderboard
+AB  - 131 tasks, 1037 languages, 460 models — MMTEB measures multilingual text embedding quality across 250+ languages spanning classification, clustering, retrieval semantic similarity and more, driven by
+DA  - 2026/07/20/
+PY  - 2026
+LA  - en
+UR  - https://mteb-leaderboard.hf.space/benchmark/MTEB(Multilingual%2C%20v2)
+Y2  - 2026/07/20/15:43:53
+N1  - <div data-schema-version="9"><p>MMTEB measures multilingual text embedding quality across 250+ languages spanning classification, clustering, retrieval, semantic similarity and more, driven by curated community contributions.</p>
+<p></p>
+<p>Périmètre affiché au relevé du 20.07.2026 : 1 037 langues, 131 tâches, 9 types de tâches, 169 modèles classés. Dans le top 8 visible : Qwen3-Embedding-8B au rang 4, Qwen3-Embedding-4B au rang 6. Capture PDF du 20.07.2026 archivée au dossier.</p>
+</div>
+ER  - 
+
+TY  - ELEC
+TI  - French · MTEB Leaderboard
+AU  - MTEB
+T2  - MTEB Leaderboard
+AB  - 25 tasks, 2 languages, 234 models — French text embedding quality across classification, clustering, pair classification, reranking, retrieval, and semantic similarity, using high-quality native Frenc
+DA  - 2026/07/20/
+PY  - 2026
+LA  - en
+UR  - https://mteb-leaderboard.hf.space/benchmark/MTEB(fra%2C%20v1)
+Y2  - 2026/07/20/15:43:57
+L2  - https://mteb-leaderboard.hf.space/benchmark/MTEB(fra%2C%20v1)
+N1  - <div data-schema-version="9"><p>French text embedding quality across classification, clustering, pair classification, reranking, retrieval, and semantic similarity, using high-quality native French datasets.</p>
+<p></p>
+<p>Périmètre affiché au relevé du 20.07.2026 : 2 langues, 25 tâches, 7 types de tâches, 117 modèles classés. Aucun des candidats pressentis dans le top 8 visible, dominé par la famille F2LLM-v2. Capture PDF du 20.07.2026 archivée au dossier.</p>
+</div>
+ER  - 
+
+TY  - ELEC
+TI  - FAISS
+AU  - deepset
+T2  - Haystack
+AB  - A Document Store for vector search using FAISS
+DA  - 2026///
+PY  - 2026
+LA  - en
+UR  - https://haystack.deepset.ai/integrations/faiss/
+Y2  - 2026/08/01/15:21:14
+L2  - https://haystack.deepset.ai/integrations/faiss/
+ER  - 
+
+TY  - ELEC
+TI  - Qdrant
+AU  - deepset
+T2  - Haystack
+AB  - Use the Qdrant vector database with Haystack
+DA  - 2026///
+PY  - 2026
+LA  - en
+UR  - https://haystack.deepset.ai/integrations/qdrant-document-store/
+Y2  - 2026/08/01/15:20:31
+L2  - https://haystack.deepset.ai/integrations/qdrant-document-store/
+ER  - 
+
+TY  - ELEC
+TI  - Chroma
+AU  - deepset
+T2  - Haystack
+AB  - A Document Store for storing and retrieval from Chroma
+DA  - 2026///
+PY  - 2026
+LA  - en
+UR  - https://haystack.deepset.ai/integrations/chroma-documentstore/
+Y2  - 2026/08/01/15:19:18
+L2  - https://haystack.deepset.ai/integrations/chroma-documentstore/
+ER  - 
+
+TY  - COMP
+TI  - facebookresearch/faiss
+AU  - Meta AI
+AB  - A library for efficient similarity search and clustering of dense vectors.
+DA  - 2026/08/01/
+PY  - 2026
+DP  - GitHub
+LA  - C++
+PB  - Meta Research
+UR  - https://github.com/facebookresearch/faiss
+Y2  - 2026/08/01/15:18:26
+ER  - 
+
+TY  - COMP
+TI  - qdrant/qdrant
+AU  - Qdrant
+AB  - Qdrant - High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI. Also available in the cloud https://cloud.qdrant.io/
+DA  - 2026/08/01/
+PY  - 2026
+DP  - GitHub
+LA  - Rust
+PB  - Qdrant
+UR  - https://github.com/qdrant/qdrant
+Y2  - 2026/08/01/15:16:54
+ER  - 
+
+TY  - COMP
+TI  - chroma-core/chroma
+AU  - Chroma
+AB  - Search infrastructure for AI
+DA  - 2026/08/01/
+PY  - 2026
+DP  - GitHub
+LA  - Rust
+PB  - Chroma
+UR  - https://github.com/chroma-core/chroma
+Y2  - 2026/08/01/15:15:13
+ER  - 
+
+TY  - ELEC
+TI  - Qdrant Documentation
+AU  - Qdrant
+T2  - Qdrant
+AB  - Official Qdrant documentation for vector search and retrieval — quickstarts, deployment guides, integrations, and references for self-hosted and Qdrant Cloud.
+DA  - 2026///
+PY  - 2026
+LA  - en
+UR  - https://qdrant.tech/documentation/
+Y2  - 2026/08/01/15:16:16
+L2  - https://qdrant.tech/documentation/
+ER  - 
+
+TY  - ELEC
+TI  - Introduction
+AU  - Chroma
+T2  - Chroma Docs
+AB  - Chroma is the open-source data infrastructure for AI. It comes with everything you need to get started built-in.
+DA  - 2026///
+PY  - 2026
+LA  - en
+UR  - https://docs.trychroma.com/docs/overview/introduction
+Y2  - 2026/08/01/15:08:42
+L2  - https://docs.trychroma.com/docs/overview/introduction
+ER  - 
+
+TY  - GEN
+TI  - The Faiss library
+AU  - Douze, Matthijs
+AU  - Guzhva, Alexandr
+AU  - Deng, Chengqi
+AU  - Johnson, Jeff
+AU  - Szilvasy, Gergely
+AU  - Mazaré, Pierre-Emmanuel
+AU  - Lomeli, Maria
+AU  - Hosseini, Lucas
+AU  - Jégou, Hervé
+AB  - Vector databases typically manage large collections of embedding vectors. Currently, AI applications are growing rapidly, and so is the number of embeddings that need to be stored and indexed. The Faiss library is dedicated to vector similarity search, a core functionality of vector databases. Faiss is a toolkit of indexing methods and related primitives used to search, cluster, compress and transform vectors. This paper describes the trade-off space of vector search and the design principles of Faiss in terms of structure, approach to optimization and interfacing. We benchmark key features of the library and discuss a few selected applications to highlight its broad applicability.
+DA  - 2024/01/16/
+PY  - 2024
+DO  - 10.48550/arXiv.2401.08281
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2401.08281
+Y2  - 2026/08/01/15:07:24
+L1  - http://arxiv.org/pdf/2401.08281v4
+L2  - http://arxiv.org/abs/2401.08281
+KW  - Computer Science - Machine Learning
+KW  - Computer Science - Software Engineering
+KW  - Computer Science - Computer Vision and Pattern Recognition
+ER  - 
+
+TY  - GEN
+TI  - Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs
+AU  - Malkov, Yu A.
+AU  - Yashunin, D. A.
+AB  - We present a new approach for the approximate K-nearest neighbor search based on navigable small world graphs with controllable hierarchy (Hierarchical NSW, HNSW). The proposed solution is fully graph-based, without any need for additional search structures, which are typically used at the coarse search stage of the most proximity graph techniques. Hierarchical NSW incrementally builds a multi-layer structure consisting from hierarchical set of proximity graphs (layers) for nested subsets of the stored elements. The maximum layer in which an element is present is selected randomly with an exponentially decaying probability distribution. This allows producing graphs similar to the previously studied Navigable Small World (NSW) structures while additionally having the links separated by their characteristic distance scales. Starting search from the upper layer together with utilizing the scale separation boosts the performance compared to NSW and allows a logarithmic complexity scaling. Additional employment of a heuristic for selecting proximity graph neighbors significantly increases performance at high recall and in case of highly clustered data. Performance evaluation has demonstrated that the proposed general metric space search index is able to strongly outperform previous opensource state-of-the-art vector-only approaches. Similarity of the algorithm to the skip list structure allows straightforward balanced distributed implementation.
+DA  - 2016/03/30/
+PY  - 2016
+DO  - 10.48550/arXiv.1603.09320
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/1603.09320
+Y2  - 2026/08/01/15:00:00
+L1  - http://arxiv.org/pdf/1603.09320v4
+L2  - http://arxiv.org/abs/1603.09320
+N1  - Comment: 13 pages, 15 figures
+KW  - Computer Science - Information Retrieval
+KW  - Computer Science - Computer Vision and Pattern Recognition
+KW  - Computer Science - Data Structures and Algorithms
+KW  - Computer Science - Social and Information Networks
 ER  - 
 

@@ -49,10 +49,6 @@ métadonnées, empreinte d'exploitation, licence, maturité.
 Inconvénients nommés : jeunesse (dépôt créé en 2022, le plus court historique du trio). En cas de
 dépassement du cadre, la réponse est la bascule vers Qdrant, pas la torsion de Chroma.
 
-**Écartés (motifs).** Services en nuage (Pinecone, etc.) hors périmètre ; Milvus et Weaviate (échelle
-industrielle) ; pgvector (un serveur PostgreSQL entier pour un besoin simple) ; Elasticsearch et
-parents (pile disproportionnée).
-
 **Mise en œuvre (implémentation future).** Pipeline Haystack 2.x + `chroma-haystack` ;
 `ChromaDocumentStore` en mode persistant local sur le VPS, retriever Chroma pour la recherche dense.
 Schéma d'indexation avec métadonnées par fragment (url de la page, section, date de capture) pour le
@@ -70,11 +66,6 @@ Chroma / Qdrant / Faiss), 2 PDF arXiv, 2 résumés de la série (Malkov et Yashu
 étages » ; Douze et al. 2024, « La boîte à outils »). Zotero : 10 fiches nouvelles (2 arXiv, type GEN ;
 3 dépôts, type Logiciel : Chroma, Qdrant, Meta AI ; 5 pages web : 2 documentations et 3 intégrations
 deepset), consultées le 01.08.2026.
-
-**Vigilance bibliographique.** Un audit de sources complet a été mené sur le chapitre 6 (chaque
-affirmation confrontée aux pièces, corrections intégrées) ; méthode à reconduire. Doublons Zotero à
-supprimer : « bge-m3 » et « gpt-oss ». Lettres de désambiguïsation 2026a/b/c posées à la main (deepset,
-Chroma, Qdrant), à réaligner à la génération de la bibliographie, en même temps qu'Ollama et MTEB.
 
 **Ce qui reste ouvert à cette date.** La pile RAG est complète (framework, LLM, embeddings et base
 vectorielle tous arrêtés). Restent l'évaluation (chapitre 7, RAGAS pressenti) et les briques de la
@@ -118,13 +109,6 @@ du paquet Ollama ; dimension des vecteurs ; longueur de contexte ; licence et ac
    documentées par l'éditeur.
 3. Marge : contexte de 32 768 jetons, le plus long du trio, qui laisse le découpage des pages libre.
 
-**Écartés (motifs).** Services d'embeddings en nuage (OpenAI, Gemini Embedding, etc.) hors périmètre
-par construction ; embedders de plusieurs milliards de paramètres (E5-Mistral, GritLM) hors enveloppe
-mémoire ; générations françaises antérieures à pooling (CamemBERT, FlauBERT) et dérivés entraînés
-(Solon, sentence-camembert) sans paquet Ollama officiel ; multilingual-e5-large-instruct sans paquet
-Ollama officiel (seulement des conversions communautaires, vérifié le 20.07.2026) et contexte de
-512 jetons.
-
 **Français.** Le volet français du classement, MTEB(fra, v1), existe et contient les trois candidats,
 mais aucun n'y est mesuré en récupération au 20.07.2026 (seule la classification de paires est
 renseignée : 67,52 / 61,99 / 59,18, même ordre que le multilingue). La décision s'est donc prise sur
@@ -149,10 +133,6 @@ deux fiches pour le relevé (MTEB 2026a multilingue, MTEB 2026b française, cons
 plus 6 fiches arXiv (Muennighoff 2022, Ciancone 2024, Enevoldsen 2025, Chen 2024, Zhang 2025, Vera
 2025), 3 cartes Hugging Face (BAAI 2024, Qwen Team 2025, Google 2025) et 3 fiches Ollama (bge-m3,
 embeddinggemma, qwen3-embedding).
-
-**Vigilance bibliographique.** Collisions de millésimes Ollama (2024 ×2, 2025 ×4 avec le chapitre 4).
-Les lettres de désambiguïsation (Ollama 2024a/b, 2025a-d) et les lettres MTEB 2026a/b devront être
-vérifiées et alignées entre les deux chapitres à la génération de la bibliographie Zotero.
 
 **Ce qui reste ouvert à cette date.** Base vectorielle (ChromaDB pressentie, chapitre 6). Le code doit rester
 paramétrable pour échanger ce maillon sans réécriture.
@@ -218,17 +198,16 @@ non tranchés. Le code doit rester paramétrable pour échanger ces maillons san
 
 **Mise en œuvre.**
 - Paquets : `haystack-ai` (cœur 2.x), `ollama-haystack`, `chroma-haystack`.
-- Versions **épinglées** dans `requirements.txt` dès la première installation. Aucune montée de version
-  sans décision explicite de Daniel.
+- Versions **épinglées** dans `requirements.txt` dès la première installation. 
 - Composants de référence : `OllamaTextEmbedder` / `OllamaDocumentEmbedder`, `OllamaGenerator` ou
   `OllamaChatGenerator`, `ChromaDocumentStore`, `ChromaEmbeddingRetriever`, `PromptBuilder`.
 - Pipelines assemblés explicitement (`add_component` / `connect`), sans raccourci masquant le flux.
 
 **Souveraineté.** Inférence 100 % locale via Ollama (`http://localhost:11434`). Aucune donnée ni
 document ne part vers un service externe à l'exécution. Toute bibliothèque qui exigerait une clé d'API
-externe doit être signalée avant usage.
+externe sera exclut.
 
-**Ce qui reste ouvert à cette date (ne rien présumer dans le code).**
+**Ce qui reste ouvert à cette date.**
 - **LLM** : chapitre 4 en cours. Mistral 7B via Ollama sert de modèle de travail provisoire pour le
   développement, ce n'est pas le choix final.
 - **Embeddings** : chapitre 5, non traité.

@@ -3170,6 +3170,8 @@ TI  - Customise models - Ragas
 AU  - Ragas
 T2  - Ragas
 AB  - Evaluation framework for your AI Application
+DA  - 2026/08/04/
+PY  - 2026
 LA  - en
 UR  - https://docs.ragas.io/en/stable/howtos/customizations/customize_models/
 Y2  - 2026/08/04/15:11:01
@@ -3181,9 +3183,23 @@ TI  - List of available metrics - Ragas
 AU  - Ragas
 T2  - Ragas
 AB  - Evaluation framework for your AI Application
+DA  - 2026/08/04/
+PY  - 2026
 LA  - en
 UR  - https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
 Y2  - 2026/08/04/15:10:30
 L2  - https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
+ER  - 
+
+TY  - RPRT
+TI  - IA : notre ambition pour la France
+AU  - Commission de l'intelligence artificielle
+CY  - Paris
+DA  - 2024///
+PY  - 2024
+PB  - Gouvernement français
+UR  - https://www.info.gouv.fr/upload/media/content/0001/09/4d3cc456dd2f5b9d79ee75feea63b47f10d75158.pdf
+Y2  - 2026/08/04/
+L1  - https://www.info.gouv.fr/upload/media/content/0001/09/4d3cc456dd2f5b9d79ee75feea63b47f10d75158.pdf
 ER  - 
 

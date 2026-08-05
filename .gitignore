@@ -16,6 +16,10 @@ data/*
 # --- Fichiers temporaires Office (le mémoire est ouvert en édition) ---
 ~$*.docx
 
+# --- Environnements virtuels Python (un par poste, machine-spécifiques) ---
+.venvdaniel/
+.venvgarciad/
+
 # --- Environnement Claude Code (historique, config — jamais versionné) ---
 .claude/
 

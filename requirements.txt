@@ -1,2 +1,9 @@
 # Dépendances Python — ge-trouve.ch
 # -----------------------------------
+# Python 3.13 · mise à jour : 2026-08-06
+# Seuls les paquets de haut niveau réellement utilisés sont épinglés ;
+# les dépendances transitives sont laissées à pip.
+
+haystack-ai==3.0.0
+ollama-haystack==6.8.0
+chroma-haystack==4.4.0

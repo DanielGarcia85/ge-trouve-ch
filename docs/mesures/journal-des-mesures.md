@@ -6,19 +6,27 @@ Ce journal alimentera l'annexe B du mémoire (mesures datées).
 
 ---
 
-## AAAA-MM-JJ — Objet de la session
+## 2026-08-06 — Environnement local et premières mesures — poste DANIELGARCIA
 
-**Poste.** Nom, CPU, RAM totale, OS, alimentation secteur, conditions (OneDrive suspendu,
-applications fermées).
+**Poste.** DANIELGARCIA · AMD Ryzen 7 7840HS (iGPU Radeon 780M) · 27,7 Go de RAM disponibles
+(32 Go installés, ~4 Go réservés à l'iGPU) · Windows 11 Pro (10.0.26200) · secteur.
 
-**Versions.** Python ; Ollama ; haystack-ai ; ollama-haystack ; chroma-haystack ; modèles
-(tag, digest, taille disque).
+**Versions.** Python 3.13.2 · Ollama 0.32.5 · haystack-ai 3.0.0 · ollama-haystack 6.8.0 ·
+chroma-haystack 4.4.0.
 
-**Protocole.** Script (chemin), paramètres (num_ctx, temperature, seed, num_predict, nombre
-d'exécutions, agrégation).
+Modèles installés (Ollama) :
+
+| Rôle | Tag | ID | Quantisation | Contexte | Taille disque |
+|---|---|---|---|---|---|
+| LLM rédacteur | `gemma4:12b` | `4eb23ef187e2` | Q4_K_M | 262 144 | 7,6 Go |
+| Juge / repli | `llama3.1:8b` | `46e0c10c039e` | Q4_K_M | 131 072 | 4,9 Go |
+| Embeddings | `qwen3-embedding:0.6b` | `ac6da0dfba84` | Q8_0 | 32 768 | 639 Mo |
+
+**Protocole.** À compléter lors des relevés (scripts `scripts/mesures/`, paramètres de l'annexe B).
 
 | Grandeur | Valeur | Unité | Méthode |
 |---|---|---|---|
-|  |  |  |  |
+| *(à remplir lors des mesures)* |  |  |  |
 
-**Observations.** ...
+**Observations.** RAM disponible 27,7 Go et non 32 (iGPU Radeon 780M réserve ~4 Go). Inférence CPU
+(iGPU non supporté par Ollama sous Windows).

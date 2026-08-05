@@ -8,6 +8,43 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-05 — Ancrage francophone et clôture de la Partie 1 (chapitre 8)
+
+**Nature.** Chapitre de terrain, **sans candidats ni décision** : il localise les choix des chapitres 3
+à 7 sur le français administratif genevois, et **referme la Partie 1 (recherche complète)**.
+
+**Lien avec le mémoire.** Chapitre 8 (RAG en contexte francophone), dernier chapitre de la Partie 1.
+
+**Ce que le chapitre établit.**
+- **Français administratif** : l'écart de registre entre la langue des usagers et celle des pages
+  officielles est le problème central que la recherche doit absorber. Particularités genevoises (sigles
+  OCPM et AFC, helvétismes comme les permis B/C, mélange des niveaux fédéral et cantonal dans le corpus,
+  d'où l'importance du filtrage par métadonnées du chapitre 6).
+- **Traversée du pipeline** (Tableau 8.1) : embeddings (le volet français de MTEB ne mesure pas la
+  récupération, vérification confiée au protocole) ; LLM (exigence nouvelle : garder les termes officiels
+  dans des réponses simples, à porter par la consigne en Partie 2) ; base vectorielle (les vecteurs n'ont
+  pas de langue, le terrain entre par les métadonnées) ; évaluation (RAGAS est né en anglais, comportement
+  sur copies françaises non documenté, inconnue couverte par le contrôle humain du protocole).
+
+**Implications pour la Partie 2.** Métadonnées de corpus (source, section, niveau fédéral/cantonal) ;
+consigne de génération (français simple, mais conserver les noms exacts d'offices, de formulaires et de
+permis) ; jeu d'évaluation (une vingtaine de questions en plusieurs registres, dont des questions
+volontairement sans réponse) ; vigilance Partie 3 (comportement des consignes anglaises de RAGAS sur des
+copies françaises, à confronter au contrôle humain).
+
+**Sources.** Réutilisations : Ciancone et al. 2024, compar:IA 2026, Swiss AI
+Initiative 2025 (Apertus), Es et al. 2023. Zotero : 83 fiches.
+
+**État du document.** Environ 30 100 mots, 15 tableaux, 12 figures, 64 notes. Partie 1 complète.
+
+**Ce qui reste ouvert à cette date.** La Partie 1 (recherche) est terminée. Restent la conclusion, puis
+toute la **Partie 2 (développement)** : interface, serveur web, déploiement, puis l'évaluation empirique
+en Partie 3. La phase pratique est la prochaine étape.
+
+**État.** Rien n'est installé (ni Ollama, ni modèle, ni pipeline, ni harnais d'évaluation).
+
+---
+
 ## 2026-08-04 — Évaluation d'un système RAG : RAGAS
 
 **Décision.** L'évaluation du système reposera sur **RAGAS** (bibliothèque `vibrantlabsai/ragas`,

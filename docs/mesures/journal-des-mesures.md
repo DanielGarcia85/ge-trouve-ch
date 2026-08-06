@@ -125,3 +125,66 @@ autres au préalable).
 - Empreintes identiques à DANIELGARCIA (Gemma 8,9 Go, Llama 5,6 Go, Qwen 2,4 Go) : reproductibles,
   indépendantes de la machine. Qwen a ici été mesuré isolé, ce qui confirme ses 2,4 Go chargés, au-dessus
   de l'hypothèse 0,5-1,5 Go du chapitre 4 (poste embeddings à réviser).
+
+---
+
+## 2026-08-06 — Étape 1, pipeline pilote (permis de séjour) — poste DANIELGARCIA
+
+Premier pipeline complet, de bout en bout, sur un périmètre pilote (pages `www.ge.ch` du permis de
+séjour). Les sous-étapes 1.1 et 1.2 (environnement, manifeste, vérification robots.txt) ont été faites
+sur GARCIAD ; le pipeline lui-même (scraping, indexation, réponse, mesures) tourne sur **DANIELGARCIA**
+(32 Go), OneDrive suspendu pendant les exécutions. Les mesures sont ajoutées au fil des sous-étapes
+1.3 à 1.6.
+
+**Vérification robots.txt (`www.ge.ch`), préalable au scraping (2026-08-06).**
+
+- `robots.txt` récupéré avec l'agent `GeTrouveBot`. Seul groupe présent : `User-agent: *` (nous concerne).
+- Les **23 URL du manifeste** (12 de départ, plus 11 sous-pages ajoutées après inspection des 6 pages
+  chapeau) sont **autorisées** (`can_fetch` = OK pour chacune).
+- Règles `Disallow` du site (`/core/`, `/profiles/`, `/admin/`, `/search/`, `/user/*`, `/node/add/`,
+  `/comment/reply/`, `/taxonomy/term/*/impression`, `/statusDB.php`, `README.txt`, `web.config`) :
+  aucune ne touche les pages de démarches (URL propres `demander-permis-…`, `renouveler-…`, `arriver-…`).
+- Aucun `crawl-delay` ni `request-rate` déclaré : on applique notre propre délai de politesse ≥ 2 s.
+- `Sitemap: https://www.ge.ch/sitemap.xml`.
+- Conditions d'utilisation : non contredites par le robots.txt ; le périmètre se limite à des pages
+  publiques de démarches, pour un usage académique non commercial (revue formelle des CGU à compléter
+  si besoin).
+
+Verdict : **feu vert** pour les 23 URL du manifeste, délai ≥ 2 s, agent identifiable.
+
+**Scraping (1.3), poste DANIELGARCIA.**
+
+- **23 pages réussies sur 23, aucun échec** (HTTP 200 partout, y compris les URL `ue/aele`).
+- Temps de requête et d'extraction : ~7 s cumulés (≈ 0,3 s par page). Le délai de politesse (2 s, 22
+  intervalles) domine : durée totale ≈ 51 s. À l'échelle du corpus complet, c'est ce délai qui fixera le temps.
+- Textes extraits (`HTMLToDocument` / trafilatura) de 556 à 7 379 caractères : les pages « hub » sont
+  brèves (surtout des liens), les pages de cas plus denses.
+- Sortie : un JSON par page dans `data/pilote/pages/` (non versionné), plus `data/pilote/journal_scraping.md`.
+
+**Indexation (1.4), poste DANIELGARCIA.**
+
+- 23 pages découpées en **72 fragments** (par mots, 200 par fragment, recouvrement 40) ; base Chroma
+  vérifiée à 72 fragments (politique overwrite, ré-exécution idempotente, IDs = hash du contenu).
+- Embeddings Qwen (documents sans consigne), **dimension 1024** (conforme).
+- Durée totale ≈ 92 s (chargement à froid de Qwen inclus), débit **0,8 fragment/s**. C'est sous le bench
+  de l'étape 0 (1,2 docs/s) : fragments plus longs (200 mots contre ~150-180 au bench) et coût du
+  chargement à froid inclus dans la durée.
+- Base Chroma persistante ≈ 2,7 Mo sur disque (`data/chroma/`, non versionné). Métadonnées par fragment :
+  `url`, `titre`, `section`, `niveau`, `date_capture`, `position`.
+
+**Pipeline de réponse (1.5-1.6), poste DANIELGARCIA.** Question type « Où déposer ma demande de permis
+de séjour ? ». Mesures avec `bench_pipeline.py` (réutilise le pipeline de `repondre_pilote`).
+
+- **Mode direct confirmé** : `reasoning` vide dans la réponse, donc `think:false` bien effectif.
+- **Latence de bout en bout** : à froid **73,1 s** (coût unique de chargement des deux modèles, Gemma
+  13,7 s plus Qwen et premier accès Chroma) ; à chaud **8,1 s** (médiane de 8,3 / 8,1 / 8,0), dont
+  génération 4,8 s pour 25 jetons et encodage requête + recherche ~3,3 s.
+- **RAM du pipeline chargé** : Gemma 8,9 Go + Qwen 2,4 Go = **11,3 Go** (`ollama ps`), processus
+  Python/Chroma ~92 Mo. Relevé système 22,4 Go utilisés (VS Code ~1,6 Go inclus) ; sur un VPS épuré,
+  l'empreinte du pipeline (≈ 11,3 Go + OS + réserve) tient au palier de confort 18 Go.
+- **Qualité de la réponse** (archivée dans `data/pilote/reponse_pilote.md`) : correcte et sourcée
+  (dépôt auprès de l'OCPM, en ligne ou par courrier), mais **incomplète** (ni lien en ligne ni adresse).
+  Cause : ces détails ne sont pas dans le corpus, les hyperliens sont retirés par l'extraction
+  (trafilatura garde la prose), le service en ligne (e-démarches) et les formulaires (PDF) sont hors
+  périmètre pilote. Le modèle n'a rien inventé : fidélité au contexte respectée. Constat pour l'étape 3
+  (préserver les liens à l'ingestion, élargir le corpus) et l'étape 2 (consigne).

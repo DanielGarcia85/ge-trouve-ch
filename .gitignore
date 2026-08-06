@@ -20,6 +20,10 @@ data/*
 .venvdaniel/
 .venvgarciad/
 
+# --- Caches Python ---
+__pycache__/
+*.pyc
+
 # --- Environnement Claude Code (historique, config — jamais versionné) ---
 .claude/
 

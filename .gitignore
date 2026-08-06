@@ -29,3 +29,6 @@ __pycache__/
 
 # --- Contexte projet pour l'assistant ---
 CLAUDE.md
+
+# --- Document de travail personnel (plan de développement, non versionné) ---
+docs/plan-developpement.md

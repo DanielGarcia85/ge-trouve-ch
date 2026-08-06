@@ -22,11 +22,49 @@ Modèles installés (Ollama) :
 | Juge / repli | `llama3.1:8b` | `46e0c10c039e` | Q4_K_M | 131 072 | 4,9 Go |
 | Embeddings | `qwen3-embedding:0.6b` | `ac6da0dfba84` | Q8_0 | 32 768 | 639 Mo |
 
-**Protocole.** À compléter lors des relevés (scripts `scripts/mesures/`, paramètres de l'annexe B).
+**Protocole.**
 
-| Grandeur | Valeur | Unité | Méthode |
+- *Génération* (`bench_generation.py`) : API `/api/chat` en flux, `think:false` (mode direct),
+  température 0, seed 42, `num_predict` 256, `num_ctx` 4096. Une passe à froid, puis trois à chaud
+  (médiane). Consigne système, contexte fictif et question type « Où déposer ma demande de permis de séjour ? ».
+- *Embeddings* (`bench_embeddings.py`) : via Haystack (`OllamaTextEmbedder` / `OllamaDocumentEmbedder`).
+  Latence de requête = médiane sur 10 encodages ; débit d'indexation sur 100 documents (12 paragraphes cyclés).
+- *RAM* (`releve_ram.ps1`) : `Get-CimInstance` + `ollama ps`, un relevé par état. Un modèle isolé via `ollama stop`.
+
+**Génération (LLM).**
+
+| Modèle | Chargement à froid | Latence 1er jeton | Débit | Jetons |
+|---|---|---|---|---|
+| `gemma4:12b` | 14,3 s | 3,2 s | 5,6 jetons/s | 57 |
+| `llama3.1:8b` | 8,8 s | 2,5 s | 9,3 jetons/s | 63 |
+
+**Embeddings (`qwen3-embedding:0.6b`).**
+
+| Grandeur | Valeur |
+|---|---|
+| Latence d'encodage d'une requête | 245 ms (médiane sur 10) |
+| Débit d'indexation | 1,2 docs/s (100 documents en 85,5 s) |
+| Dimension des vecteurs | 1024 |
+
+**RAM par état.** Empreinte = colonne SIZE de `ollama ps`.
+
+| État | RAM utilisée | RAM libre | Empreinte |
 |---|---|---|---|
-| *(à remplir lors des mesures)* |  |  |  |
+| Repos (aucun modèle) | 11,2 Go | 16,5 Go | — |
+| Gemma seul | 19,8 Go | 7,9 Go | 8,9 Go |
+| Llama seul | 15,7 Go | 12,0 Go | 5,6 Go |
+| Gemma + Llama | 24,8 Go | 2,9 Go | 8,9 + 5,6 Go |
+| Qwen (Llama encore résident) | 17,1 Go | 10,6 Go | 2,4 Go (Qwen) |
 
-**Observations.** RAM disponible 27,7 Go et non 32 (iGPU Radeon 780M réserve ~4 Go). Inférence CPU
-(iGPU non supporté par Ollama sous Windows).
+**Observations.**
+
+- RAM disponible 27,7 Go et non 32 (iGPU Radeon 780M réserve ~4 Go). Inférence CPU (iGPU non supporté
+  par Ollama sous Windows).
+- Gemma « pense » par défaut : le mode direct exige `think:false` dans l'appel API. En ligne de commande
+  (`ollama run`), la réflexion reste active. Sans effet sur la RAM, mais elle allonge la latence et
+  consomme des jetons (constaté au chapitre 4).
+- Les deux LLM chargés simultanément saturent la machine (2,9 Go libres). En production, un seul LLM est
+  servi : ce cas ne se présente que par recouvrement du keep-alive Ollama (déchargement après ~5 min d'inactivité).
+- Budget de production : Gemma (8,9 Go) + Qwen (2,4 Go) ≈ 11,3 Go pour les deux modèles. Tient au palier
+  de confort 18 Go avec l'OS, Chroma et l'application ; au palier plancher 12 Go, la bascule sur Llama
+  (5,6 Go) redevient nécessaire. La mesure appuie l'arbitrage conjoint modèle/palier du chapitre 4.

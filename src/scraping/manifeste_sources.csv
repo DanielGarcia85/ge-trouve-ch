@@ -1,0 +1,24 @@
+url;titre;section;niveau;remarque
+https://www.ge.ch/demander-permis-resider-travailler-geneve;Demander un permis pour résider et travailler à Genève;permis de séjour;cantonal;chapeau
+https://www.ge.ch/demander-permis-sejour-travailleur-independant;Demander un permis de séjour pour travailleur indépendant;permis de séjour;cantonal;chapeau
+https://www.ge.ch/demander-permis-sejour-travailleur-independant/demande-permis-sejour-independant-ue-aele;Demande de permis de séjour pour indépendant UE-AELE;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-sans-activite-lucrative;Demander un permis de séjour sans activité lucrative;permis de séjour;cantonal;chapeau
+https://www.ge.ch/demander-permis-sejour-etudiant;Demander un permis de séjour pour étudiant;permis de séjour;cantonal;chapeau
+https://www.ge.ch/demander-permis-c;Demander un permis C;permis de séjour;cantonal;page
+https://www.ge.ch/demander-permis-sejour-ma-famille-regroupement-familial;Demander un permis de séjour pour ma famille;regroupement familial;cantonal;chapeau
+https://www.ge.ch/demander-permis-sejour-ma-famille-regroupement-familial/je-suis-ressortissant-etat-hors-ue-aele;Regroupement familial, ressortissant d'un État hors UE-AELE;regroupement familial;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-ma-famille-regroupement-familial/je-suis-suisse;Regroupement familial, je suis Suisse;regroupement familial;cantonal;sous-page
+https://www.ge.ch/renouveler-son-permis-travail-sejour;Renouveler son permis de travail ou de séjour;renouvellement;cantonal;chapeau
+https://www.ge.ch/renouveler-son-permis-travail-sejour/renouvellement-permis-frontalier-permis-g;Renouvellement permis frontalier (permis G);renouvellement;cantonal;sous-page
+https://www.ge.ch/arriver-dans-canton-geneve-toutes-informations-pratiques;Bienvenue dans le canton de Genève;arrivée;cantonal;contexte
+https://www.ge.ch/demander-permis-resider-travailler-geneve/activite-salariee-ressortissant-etat-tiers;Activité salariée, ressortissant d'un État tiers;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-resider-travailler-geneve/activite-salariee-ressortissant-ue/aele;Activité salariée, ressortissant UE/AELE;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-travailleur-independant/demande-permis-sejour-independant-etat-tiers;Demande de permis pour indépendant, État tiers;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-sans-activite-lucrative/demande-permis-etat-tiers-sans-activite;Permis sans activité, État tiers;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-sans-activite-lucrative/demande-permis-ue/aele-sans-activite;Permis sans activité, UE/AELE;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-etudiant/demande-permis-etudiant-etat-tiers;Permis étudiant, État tiers;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-etudiant/demande-permis-etudiant-ue-aele;Permis étudiant, UE/AELE;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-etudiant/reponses-aux-questions-frequentes-permis-etude;Questions fréquentes, permis étudiant;permis de séjour;cantonal;sous-page
+https://www.ge.ch/demander-permis-sejour-ma-famille-regroupement-familial/je-suis-ressortissant-etat-membre-ue-aele;Regroupement familial, ressortissant UE/AELE;regroupement familial;cantonal;sous-page
+https://www.ge.ch/renouveler-son-permis-travail-sejour/renouvellement-permis-b-durable-permis-c;Renouvellement permis B durable ou permis C;renouvellement;cantonal;sous-page
+https://www.ge.ch/renouveler-son-permis-travail-sejour/renouvellement-permis-etudiant;Renouvellement du permis étudiant;renouvellement;cantonal;sous-page

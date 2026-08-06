@@ -7,3 +7,6 @@
 haystack-ai==3.0.0
 ollama-haystack==6.8.0
 chroma-haystack==4.4.0
+
+# Extraction du contenu principal des pages HTML (moteur de HTMLToDocument), licence Apache-2.0
+trafilatura==2.2.0

@@ -16,19 +16,27 @@ développement et premiers relevés. Ouvre la Partie 2 (développement).
 **Lien avec le mémoire.** Partie 2 (développement), phase amont. Les mesures datées alimenteront
 l'annexe B ; le détail chiffré est consigné dans `docs/mesures/journal-des-mesures.md`.
 
-**Ce qui est fait.**
-- Ollama 0.32.5 installé (poste DANIELGARCIA), inférence CPU (iGPU Radeon 780M non supporté sous Windows).
-- Trois modèles tirés : `gemma4:12b` (7,6 Go), `llama3.1:8b` (4,9 Go), `qwen3-embedding:0.6b` (639 Mo).
+**Ce qui est fait (les deux postes).**
+- Ollama installé sur les deux postes (0.32.5 sur DANIELGARCIA, 0.32.6 sur GARCIAD), inférence CPU
+  (iGPU non supporté sous Windows).
+- Trois modèles tirés sur chaque poste, ID identiques : `gemma4:12b` (7,6 Go), `llama3.1:8b` (4,9 Go),
+  `qwen3-embedding:0.6b` (639 Mo).
 - Environnement Python 3.13 (un venv par poste) ; dépendances Haystack épinglées dans `requirements.txt`
   (`haystack-ai` 3.0.0, `ollama-haystack` 6.8.0, `chroma-haystack` 4.4.0).
-- Quatre scripts de mesure versionnés (`scripts/mesures/`) : relevé du poste, génération, embeddings, RAM.
-- Journal des mesures rempli (génération, embeddings, RAM par état).
+- Scripts versionnés : quatre de mesure (`scripts/mesures/` : relevé du poste, génération, embeddings,
+  RAM) et un de setup (`scripts/setup/pull_modeles.ps1`, pull des trois modèles, réutilisable sur le VPS).
+  `bench_generation.py` décharge chaque modèle entre deux pour tenir sur une machine à faible RAM.
+- Journal des mesures rempli : deux sessions datées (DANIELGARCIA 32 Go, GARCIAD 16 Go).
 
 **Constats (détail dans le journal des mesures).**
-- Génération CPU : Gemma 5,6 jetons/s, Llama 9,3 jetons/s ; chargement à froid 14 s / 9 s.
-- Embeddings : latence de requête 245 ms, débit d'indexation 1,2 docs/s, vecteurs de dimension 1 024.
-- RAM chargée : Gemma 8,9 Go, Llama 5,6 Go, Qwen 2,4 Go. Budget de production (Gemma + Qwen ≈ 11,3 Go)
-  cohérent avec le palier de confort 18 Go du chapitre 4 ; le palier plancher 12 Go imposerait le repli Llama.
+- Génération CPU (DANIELGARCIA) : Gemma 5,6 jetons/s, Llama 9,3 jetons/s ; chargement à froid 14 s / 9 s.
+- Embeddings (DANIELGARCIA) : latence de requête 245 ms, débit d'indexation 1,2 docs/s, dimension 1 024.
+- RAM chargée, identique sur les deux postes : Gemma 8,9 Go, Llama 5,6 Go, Qwen 2,4 Go. Budget de
+  production (Gemma + Qwen ≈ 11,3 Go) cohérent avec le palier de confort 18 Go ; le palier plancher 12 Go
+  imposerait le repli Llama. Le poste embeddings mesuré (2,4 Go) dépasse l'hypothèse du chapitre 4 (0,5-1,5 Go).
+- Contraste inter-postes : GARCIAD (16 Go, DDR4) est un meilleur proxy du VPS que DANIELGARCIA (32 Go,
+  DDR5). Le débit de génération y tombe à ~65 % (borné par la bande passante mémoire), mais le premier
+  jeton sort plus vite (CPU de bureau). Sur 16 Go, Gemma tient tout juste (1,4 Go libre une fois chargé).
 
 **Précision technique.** Le mode direct de Gemma (réflexion désactivée) s'obtient par le **paramètre
 d'API `think:false`**, non par un jeton de prompt. Mesuré sur la question type : réflexion active ≈ 50 s

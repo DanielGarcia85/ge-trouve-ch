@@ -38,11 +38,13 @@ l'annexe B ; le détail chiffré est consigné dans `docs/mesures/journal-des-me
   DDR5). Le débit de génération y tombe à ~65 % (borné par la bande passante mémoire), mais le premier
   jeton sort plus vite (CPU de bureau). Sur 16 Go, Gemma tient tout juste (1,4 Go libre une fois chargé).
 
-**Précision technique.** Le mode direct de Gemma (réflexion désactivée) s'obtient par le **paramètre
-d'API `think:false`**, non par un jeton de prompt. Mesuré sur la question type : réflexion active ≈ 50 s
-(sortie tronquée à 256 jetons), `think:false` ≈ 3 s. Le chapitre 4 du mémoire reste exact : il parle de
-réflexion « désactivable » et de « mode direct » sans nommer le mécanisme. En revanche, l'entrée du
-16.07.2026 (ci-dessous) et CLAUDE.md le décrivaient par un « jeton de contrôle » : formulation corrigée.
+**Précision technique.** Le chapitre 4 décrit le mode direct de Gemma comme une réflexion qui « s'active
+et se coupe par un simple jeton de contrôle », sourcé sur la page de distribution Ollama du modèle
+(Ollama 2026b) : exact au niveau du gabarit. En pratique, via l'API Ollama, la réflexion est active par
+défaut et se désactive par le paramètre `think:false`. Mesuré sur la question type : réflexion active
+≈ 50 s (sortie tronquée à 256 jetons), `think:false` ≈ 3 s. Les deux énoncés sont vrais à deux niveaux
+(jeton de gabarit / paramètre d'API) ; le mémoire (Partie 1) reste tel quel, la réalité d'implémentation
+sera exposée en Partie 2.
 
 **Souveraineté.** Tout local : Ollama sur `localhost`, aucun appel externe.
 
@@ -325,8 +327,9 @@ non tranchés. Le code doit rester paramétrable pour échanger ces maillons san
 
 **État.** Décision documentée. Rien n'est installé (ni Ollama, ni modèle, ni pipeline).
 
-> **Précision (06.08.2026).** Le mécanisme du mode direct a été vérifié en Partie 2 : la réflexion se
-> désactive par le paramètre d'API `think:false` (Ollama), non par un « jeton de contrôle ». Voir
+> **Précision (06.08.2026).** Vérifié en Partie 2 : via l'API Ollama, la réflexion est active par défaut
+> et se désactive par le paramètre `think:false`. La mention d'un « jeton de contrôle » (ici et au
+> chapitre 4) décrit le niveau gabarit du modèle ; le commutateur côté API est `think:false`. Voir
 > l'entrée du 06.08.2026.
 
 ---
@@ -370,3 +373,9 @@ Viser la sobriété à chaque choix.
 > tranchés : LLM le 16.07.2026 (Gemma 4 12B Instruct), embeddings le 21.07.2026 (Qwen3-Embedding-0.6B).
 > Le palier serveur retenu est 6 CPU / 18 Go de RAM (confort), non les ~12 Go évoqués ici. Voir les
 > entrées du 16.07 et du 21.07 ci-dessus.
+
+> **Précision (06.08.2026).** À l'installation, `requirements.txt` épingle `haystack-ai` **3.0.0**, la
+> version courante. Le chapitre 3 avait tranché sur la ligne 2.x (v2.31 alors, transition 3.0 annoncée) ;
+> la 3.0 conserve l'architecture à pipelines explicites (composants, `add_component` / `connect`),
+> vérifiée par l'import des composants de référence. Aucune décision changée, simple montée de version
+> majeure prise à l'installation.

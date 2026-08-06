@@ -82,6 +82,23 @@ def generer(modele):
     }
 
 
+def decharger(modele):
+    """
+    Décharge un modèle de la mémoire (keep_alive 0).
+    Évite de cumuler deux LLM en RAM entre deux modèles, ce qui saturerait une
+    machine à faible mémoire (le poste à 16 Go partirait en swap et fausserait
+    les mesures). Sans effet visible sur une machine large.
+    """
+    corps = {"model": modele, "keep_alive": 0}
+    requete = urllib.request.Request(
+        OLLAMA_URL + "/api/generate",
+        data=json.dumps(corps).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(requete) as reponse:
+        reponse.read()
+
+
 def main():
     """Pour chaque modèle : 1 exécution à froid puis 3 à chaud, médiane des 3."""
     print("| Modele | Chargement a froid (s) | Latence 1er jeton (s) | Debit (jetons/s) | Jetons |")
@@ -93,6 +110,7 @@ def main():
         debit = statistics.median(c["debit"] for c in chauds)
         jetons = int(statistics.median(c["jetons"] for c in chauds))
         print(f"| {modele} | {froid['chargement']:.2f} | {latence:.2f} | {debit:.1f} | {jetons} |")
+        decharger(modele)  # libère la RAM avant le modèle suivant (poste à faible mémoire)
 
 
 if __name__ == "__main__":

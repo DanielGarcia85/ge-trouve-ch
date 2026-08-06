@@ -139,6 +139,7 @@ ge-trouve-ch/
 ├── docs/                           ← Documentation technique
 │   ├── architecture.md
 │   ├── decisions/                  ← Choix techniques argumentés
+│   ├── mesures/                    ← Journal des mesures datées
 │   ├── notes_rdv/                  ← Notes des rendez-vous avec le directeur
 │   └── heg/                        ← Directives officielles HEG
 ├── src/                            ← Code source Python
@@ -147,6 +148,7 @@ ge-trouve-ch/
 │   ├── retrieval/                  ← Recherche dans la base vectorielle
 │   ├── generation/                 ← Appel au LLM local
 │   └── app/                        ← Interface web
+├── scripts/                        ← Scripts utilitaires (mesures locales)
 ├── tests/                          ← Tests sur un jeu de questions types
 ├── evaluation/                     ← Scripts et résultats RAGAS
 ├── data/                           ← Documents scrapés (non versionné)

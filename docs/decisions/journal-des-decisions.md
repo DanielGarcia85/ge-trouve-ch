@@ -8,6 +8,43 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-06 — Démarrage de la Partie 2 : environnement local et premières mesures
+
+**Nature.** Jalon d'exécution, **sans décision de choix** : mise en place de l'environnement de
+développement et premiers relevés. Ouvre la Partie 2 (développement).
+
+**Lien avec le mémoire.** Partie 2 (développement), phase amont. Les mesures datées alimenteront
+l'annexe B ; le détail chiffré est consigné dans `docs/mesures/journal-des-mesures.md`.
+
+**Ce qui est fait.**
+- Ollama 0.32.5 installé (poste DANIELGARCIA), inférence CPU (iGPU Radeon 780M non supporté sous Windows).
+- Trois modèles tirés : `gemma4:12b` (7,6 Go), `llama3.1:8b` (4,9 Go), `qwen3-embedding:0.6b` (639 Mo).
+- Environnement Python 3.13 (un venv par poste) ; dépendances Haystack épinglées dans `requirements.txt`
+  (`haystack-ai` 3.0.0, `ollama-haystack` 6.8.0, `chroma-haystack` 4.4.0).
+- Quatre scripts de mesure versionnés (`scripts/mesures/`) : relevé du poste, génération, embeddings, RAM.
+- Journal des mesures rempli (génération, embeddings, RAM par état).
+
+**Constats (détail dans le journal des mesures).**
+- Génération CPU : Gemma 5,6 jetons/s, Llama 9,3 jetons/s ; chargement à froid 14 s / 9 s.
+- Embeddings : latence de requête 245 ms, débit d'indexation 1,2 docs/s, vecteurs de dimension 1 024.
+- RAM chargée : Gemma 8,9 Go, Llama 5,6 Go, Qwen 2,4 Go. Budget de production (Gemma + Qwen ≈ 11,3 Go)
+  cohérent avec le palier de confort 18 Go du chapitre 4 ; le palier plancher 12 Go imposerait le repli Llama.
+
+**Précision technique.** Le mode direct de Gemma (réflexion désactivée) s'obtient par le **paramètre
+d'API `think:false`**, non par un jeton de prompt. Mesuré sur la question type : réflexion active ≈ 50 s
+(sortie tronquée à 256 jetons), `think:false` ≈ 3 s. Le chapitre 4 du mémoire reste exact : il parle de
+réflexion « désactivable » et de « mode direct » sans nommer le mécanisme. En revanche, l'entrée du
+16.07.2026 (ci-dessous) et CLAUDE.md le décrivaient par un « jeton de contrôle » : formulation corrigée.
+
+**Souveraineté.** Tout local : Ollama sur `localhost`, aucun appel externe.
+
+**Ce qui reste ouvert.** Interface, serveur web et déploiement (briques de la Partie 2 non tranchées) ;
+construction du pipeline RAG (scraping, indexation, recherche, génération) à venir.
+
+**État.** Environnement installé et mesuré. Pipeline RAG non encore construit.
+
+---
+
 ## 2026-08-05 — Ancrage francophone et clôture de la Partie 1 (chapitre 8)
 
 **Nature.** Chapitre de terrain, **sans candidats ni décision** : il localise les choix des chapitres 3
@@ -279,6 +316,10 @@ compar:IA.
 non tranchés. Le code doit rester paramétrable pour échanger ces maillons sans réécriture.
 
 **État.** Décision documentée. Rien n'est installé (ni Ollama, ni modèle, ni pipeline).
+
+> **Précision (06.08.2026).** Le mécanisme du mode direct a été vérifié en Partie 2 : la réflexion se
+> désactive par le paramètre d'API `think:false` (Ollama), non par un « jeton de contrôle ». Voir
+> l'entrée du 06.08.2026.
 
 ---
 

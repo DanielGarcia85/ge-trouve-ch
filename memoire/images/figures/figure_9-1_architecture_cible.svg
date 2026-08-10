@@ -1,0 +1,115 @@
+<svg viewBox="0 0 1000 1414" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="fg" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#475569"/></marker>
+    <marker id="fa" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#B45309"/></marker>
+    <marker id="fv" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#059669"/></marker>
+  </defs>
+
+  <!-- Message d'ensemble -->
+  <text x="500" y="30" text-anchor="middle" font-size="18" fill="#334155">L'assistant assemble deux chaînes qui s'exécutent entièrement en local, sans aucun service externe :</text>
+  <text x="500" y="52" text-anchor="middle" font-size="18" fill="#334155">la chaîne hors ligne construit la mémoire documentaire ; la chaîne en ligne la consulte à chaque question.</text>
+
+  <!-- Bandeau chaîne hors ligne -->
+  <rect x="150" y="78" width="700" height="34" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.6"/>
+  <text x="500" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">CHAÎNE HORS LIGNE : l'indexation, en amont puis à chaque mise à jour</text>
+
+  <!-- A1 Sources -->
+  <rect x="150" y="126" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
+  <text x="500" y="149" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Sources officielles du corpus</text>
+  <text x="500" y="171" text-anchor="middle" font-size="15.5" fill="#14532D">les cercles du Tableau 9.2 : ge.ch, ch.ch, SEM, getax.ch (et geneve.ch si retenu)</text>
+  <line x1="500" y1="184" x2="500" y2="204" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- A2 Manifeste -->
+  <rect x="150" y="210" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
+  <text x="500" y="233" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Manifeste des sources</text>
+  <text x="500" y="255" text-anchor="middle" font-size="15.5" fill="#14532D">fichier versionné : adresse de la page, niveau fédéral ou cantonal, date de capture</text>
+  <line x1="500" y1="268" x2="500" y2="288" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- A3 Scraping -->
+  <rect x="150" y="294" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
+  <text x="500" y="317" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Scraping</text>
+  <text x="500" y="339" text-anchor="middle" font-size="15.5" fill="#14532D">téléchargement des seules pages listées, dans le respect des règles du site</text>
+  <line x1="500" y1="352" x2="500" y2="372" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- A4 Découpage -->
+  <rect x="150" y="378" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
+  <text x="500" y="401" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Découpage en fragments</text>
+  <text x="500" y="423" text-anchor="middle" font-size="15.5" fill="#14532D">fragments courts porteurs de leurs métadonnées : source, section, niveau, date</text>
+  <line x1="500" y1="436" x2="500" y2="456" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- A5 Embeddings -->
+  <rect x="150" y="462" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
+  <text x="500" y="485" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Embeddings : Qwen3-Embedding-0.6B (via Ollama)</text>
+  <text x="500" y="507" text-anchor="middle" font-size="15.5" fill="#14532D">chaque fragment devient un vecteur de 1 024 dimensions</text>
+  <line x1="500" y1="520" x2="500" y2="546" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- Pivot Chroma -->
+  <rect x="150" y="552" width="700" height="76" rx="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2.2"/>
+  <text x="500" y="579" text-anchor="middle" font-size="19" font-weight="700" fill="#92400E">Chroma : la base vectorielle, embarquée et persistante</text>
+  <text x="500" y="601" text-anchor="middle" font-size="15.5" fill="#78350F">écrite par la chaîne d'indexation, lue par la chaîne de réponse ;</text>
+  <text x="500" y="618" text-anchor="middle" font-size="15.5" fill="#78350F">vit dans le processus de l'application et survit aux redémarrages</text>
+
+  <!-- Lien de lecture Chroma vers la recherche -->
+  <polyline points="170,628 170,1047 200,1047" fill="none" stroke="#B45309" stroke-width="2.4" marker-end="url(#fa)"/>
+
+  <!-- Bandeau chaîne en ligne -->
+  <rect x="210" y="662" width="580" height="34" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.6"/>
+  <text x="500" y="684" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">CHAÎNE EN LIGNE : la réponse, à chaque question</text>
+
+  <!-- Usager -->
+  <rect x="250" y="708" width="500" height="56" rx="9" fill="#FFFFFF" stroke="#64748B" stroke-width="1.6"/>
+  <text x="500" y="731" text-anchor="middle" font-size="18" font-weight="700" fill="#334155">Usager</text>
+  <text x="500" y="753" text-anchor="middle" font-size="15.5" fill="#475569">question en langue courante, depuis un navigateur (HTTPS)</text>
+  <line x1="500" y1="764" x2="500" y2="784" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- B1 Frontal -->
+  <rect x="210" y="790" width="580" height="54" rx="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <text x="500" y="812" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">Serveur frontal : Nginx ou Caddy (section 9.6)</text>
+  <text x="500" y="833" text-anchor="middle" font-size="15.5" fill="#1E40AF">point d'entrée HTTPS du serveur</text>
+  <line x1="500" y1="844" x2="500" y2="864" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- B2 Interface -->
+  <rect x="210" y="870" width="580" height="54" rx="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <text x="500" y="892" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">Interface web : Streamlit ou Open WebUI (section 9.5)</text>
+  <text x="500" y="913" text-anchor="middle" font-size="15.5" fill="#1E40AF">la page où l'usager écrit sa question et lit la réponse</text>
+  <line x1="500" y1="924" x2="500" y2="944" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- B3 Encodage -->
+  <rect x="210" y="950" width="580" height="54" rx="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.6"/>
+  <text x="500" y="972" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">Encodage de la question</text>
+  <text x="500" y="993" text-anchor="middle" font-size="15.5" fill="#1E40AF">même modèle d'embeddings, consigne de tâche côté requête</text>
+  <line x1="500" y1="1004" x2="500" y2="1024" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- B4 Recherche -->
+  <rect x="210" y="1030" width="580" height="54" rx="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.6"/>
+  <text x="500" y="1052" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">Recherche dans Chroma</text>
+  <text x="500" y="1073" text-anchor="middle" font-size="15.5" fill="#1E40AF">les K fragments les plus proches, filtrés par métadonnées (niveau)</text>
+  <line x1="500" y1="1084" x2="500" y2="1104" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- B5 Prompt -->
+  <rect x="210" y="1110" width="580" height="54" rx="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.6"/>
+  <text x="500" y="1132" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">Assemblage du prompt</text>
+  <text x="500" y="1153" text-anchor="middle" font-size="15.5" fill="#1E40AF">consigne + fragments retrouvés + question</text>
+  <line x1="500" y1="1164" x2="500" y2="1184" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- B6 Génération -->
+  <rect x="210" y="1190" width="580" height="54" rx="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.6"/>
+  <text x="500" y="1212" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">Génération : Gemma 4 12B (via Ollama), mode direct</text>
+  <text x="500" y="1233" text-anchor="middle" font-size="15.5" fill="#1E40AF">rédige uniquement à partir des fragments fournis</text>
+  <line x1="500" y1="1244" x2="500" y2="1264" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
+
+  <!-- B7 Réponse -->
+  <rect x="210" y="1270" width="580" height="54" rx="9" fill="#ECFDF5" stroke="#10B981" stroke-width="1.8"/>
+  <text x="500" y="1292" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Réponse et sources</text>
+  <text x="500" y="1313" text-anchor="middle" font-size="15.5" fill="#047857">français simple, noms exacts conservés, pages officielles citées</text>
+
+  <!-- Retour vers l'usager -->
+  <polyline points="790,1297 930,1297 930,736 754,736" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#fv)"/>
+  <text x="852" y="726" text-anchor="middle" font-size="15" fill="#047857">réponse à l'usager</text>
+
+  <!-- Bande d'explication basse -->
+  <rect x="60" y="1338" width="880" height="66" rx="9" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="500" y="1358" text-anchor="middle" font-size="15.5" fill="#475569">Tout s'exécute sur une seule machine : le poste de développement pour construire et mesurer (chapitre 10),</text>
+  <text x="500" y="1376" text-anchor="middle" font-size="15.5" fill="#475569">puis le serveur suisse visé pour servir les usagers (chapitre 11). Aucune donnée ne part vers un service externe.</text>
+  <text x="500" y="1394" text-anchor="middle" font-size="15.5" fill="#475569">Bordures en traitillé : les deux pièces encore ouvertes de la pile, instruites aux sections 9.5 et 9.6.</text>
+</svg>

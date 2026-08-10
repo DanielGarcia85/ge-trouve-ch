@@ -3203,3 +3203,75 @@ Y2  - 2026/08/04/
 L1  - https://www.info.gouv.fr/upload/media/content/0001/09/4d3cc456dd2f5b9d79ee75feea63b47f10d75158.pdf
 ER  - 
 
+TY  - COMP
+TI  - DanielGarcia85/ge-trouve-ch
+AU  - Garcia, Daniel
+AB  - Assistant conversationnel RAG en français pour les démarches administratives du canton de Genève — Travail de Bachelor HEG-Genève
+DA  - 2026/08/06/
+PY  - 2026
+DP  - GitHub
+LA  - Python
+UR  - https://github.com/DanielGarcia85/ge-trouve-ch
+Y2  - 2026/08/06/14:26:28
+ER  - 
+
+TY  - COMP
+TI  - open-webui/open-webui
+AU  - Open WebUI
+AB  - User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
+
+Interface de conversation auto-hébergée pour LLM (Ollama et API compatibles OpenAI), avec moteur RAG intégré.
+DA  - 2026/08/06/
+PY  - 2026
+DP  - GitHub
+LA  - Python
+PB  - Open WebUI
+UR  - https://github.com/open-webui/open-webui
+Y2  - 2026/08/06/17:50:45
+ER  - 
+
+TY  - COMP
+TI  - streamlit/streamlit
+AU  - Streamlit
+AB  - Streamlit — A faster way to build and share data apps.
+
+Bibliothèque Python qui transforme un script en application web interactive ; composants de conversation intégrés.
+DA  - 2026/08/06/
+PY  - 2026
+DP  - GitHub
+LA  - Python
+PB  - Streamlit
+UR  - https://github.com/streamlit/streamlit
+Y2  - 2026/08/06/17:54:22
+ER  - 
+
+TY  - COMP
+TI  - caddyserver/caddy
+AU  - Caddy
+AB  - Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
+
+Serveur web multiplateforme avec HTTPS automatique par défaut ; configuration par Caddyfile.
+DA  - 2026/08/06/
+PY  - 2026
+DP  - GitHub
+LA  - Go
+PB  - ZeroSSL
+UR  - https://github.com/caddyserver/caddy
+Y2  - 2026/08/06/18:28:38
+ER  - 
+
+TY  - COMP
+TI  - nginx/nginx
+AU  - Nginx
+AB  - The official NGINX Open Source repository.
+
+Dépôt officiel de NGINX Open Source, serveur web et proxy inverse.
+DA  - 2026/08/06/
+PY  - 2026
+DP  - GitHub
+LA  - C
+PB  - F5
+UR  - https://github.com/nginx/nginx
+Y2  - 2026/08/06/18:29:58
+ER  - 
+

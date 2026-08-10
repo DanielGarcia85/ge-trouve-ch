@@ -3275,3 +3275,18 @@ UR  - https://github.com/nginx/nginx
 Y2  - 2026/08/06/18:29:58
 ER  - 
 
+TY  - COMP
+TI  - adbar/trafilatura
+AU  - Barbaresi, Adrien
+AB  - Python & Command-line tool to gather text and metadata on the Web: Crawling, scraping, extraction, output as CSV, JSON, HTML, MD, TXT, XML
+
+Outil Python d'extraction du contenu principal et des métadonnées de pages web.
+DA  - 2026/08/10/
+PY  - 2026
+DP  - GitHub
+LA  - Python
+ST  - Trafilatura
+UR  - https://github.com/adbar/trafilatura
+Y2  - 2026/08/10/18:45:49
+ER  - 
+

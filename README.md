@@ -100,8 +100,8 @@ Cette exigence est centrale pour un service public, et se trouve alignée sur la
 | **Embeddings** | **Qwen3-Embedding-0.6B** (arrêté), servi via Ollama ; repli : BGE-M3 | Chapitre 5 |
 | **Base vectorielle** | **Chroma** (arrêtée), base embarquée via `chroma-haystack` ; repli : Qdrant | Chapitre 6 |
 | **Évaluation** | **RAGAS** (arrêté), avec un modèle juge local | Chapitre 7 |
-| **Interface** | Streamlit, Open WebUI, etc. | Partie 2 |
-| **Serveur web** | Nginx, Caddy, etc. | Partie 2 |
+| **Interface** | **Streamlit** (arrêté), page appelant directement le pipeline ; repli : Open WebUI | Chapitre 9 |
+| **Serveur web** | **Caddy** (arrêté), HTTPS automatique ; repli : Nginx | Chapitre 9 |
 | **Déploiement** | VPS Linux suisse (ex. Infomaniak), Ubuntu Server LTS | Partie 2 |
 
 ---

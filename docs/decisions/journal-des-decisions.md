@@ -53,6 +53,55 @@ Chroma embarquée. Aucun appel externe, aucune clé.
 
 ---
 
+## 2026-08-06 — Chapitre 9 : spécifications, périmètre du corpus, interface et frontal
+
+**Nature.** Chapitre de spécifications et d'architecture du prototype (rédigé côté mémoire). Il pose le
+cahier des charges, arrête le périmètre du corpus, et tranche deux briques de la Partie 2 laissées
+ouvertes : l'interface et le serveur frontal.
+
+**Lien avec le mémoire.** Chapitre 9. Rédigé et inséré au docx ; cinq fiches Zotero ajoutées ; Figure 9.1
+(architecture cible) ; création de l'Annexe 2 du mémoire (« Mesures datées de la partie pratique », qui
+compile le journal des mesures). Date de référence des sections 9.5-9.6 : 06.08.2026. Numérotation des
+annexes en chiffres (l'Annexe 1, Transformer, inchangée).
+
+**Décision, périmètre du corpus (9.2).** Trois cercles :
+- **C1, cœur obligatoire** : le catalogue cantonal (ge.ch/demarches en colonne vertébrale, pages
+  pratiques, pages publiques des e-démarches, getax.ch).
+- **C2, complément fédéral ciblé** : ch.ch et sem.admin.ch, qui font vivre le filtrage par niveau.
+- **C3, communal** : geneve.ch/demarches, conditionnel au calendrier (sinon limite et perspective).
+- **silgeneve.ch** (recueil législatif) : en réserve, hors corpus initial.
+- Exclusions : espaces e-démarches authentifiés, annuaires privés (search.ch), PDF en réserve
+  (sous-décision de l'étape 3). Questions hors périmètre : « je ne sais pas » orienté (exigence F5). Le
+  manifeste des sources opérationnalisera ce périmètre à l'étape 3.
+
+**Décision, interface (9.5).** **Streamlit** retenu. Motifs : intégration directe au pipeline Haystack
+(la page appelle la fonction de réponse, rien ne s'intercale), simplicité pour un exploitant seul,
+licence Apache 2.0. **Open WebUI** écarté (moteur RAG intégré qui superposerait un second pipeline,
+application de plus à administrer, licence propre imposant la marque), gardé comme repli documenté.
+Renoncements assumés : pas de comptes ni d'historique natifs, montée en charge modeste.
+
+**Décision, frontal (9.6).** **Caddy** retenu. Motifs : HTTPS automatique par défaut (certificats gérés,
+ZeroSSL ou Let's Encrypt), configuration courte (Caddyfile), binaire unique sans dépendance, licence
+Apache 2.0. **Nginx** écarté pour ce rôle (gestion des certificats hors de son cœur, outil externe à
+entretenir), gardé comme repli documenté ; sa solidité et son ubiquité restent reconnues.
+
+**Confrontation d'une hypothèse du chapitre 4.** En 9.4, l'hypothèse d'empreinte des embeddings est
+confrontée aux mesures : le poste s'avère plus lourd que prévu. Constat acté sans rétrofit de la
+Partie 1 (mesures en Annexe 2 ; chiffres au journal des mesures).
+
+**Pièces.** Cinq captures (Streamlit, Open WebUI, Caddy, Nginx) archivées **localement** dans `biblio/`
+(hors dépôt) ; cinq fiches Zotero au `.ris` (versionné) ; Figure 9.1 versionnée dans
+`memoire/images/figures/`.
+
+**Ce qui reste ouvert.** Consigne de génération = étape 2 ; corpus complet et manifeste = étape 3 ;
+déploiement et palier VPS = étape 5.
+
+**Souveraineté.** Interface et frontal locaux, open source, aucun service externe.
+
+**État.** Chapitre 9 rédigé et inséré. Interface (Streamlit) et frontal (Caddy) arrêtés. Rien n'est déployé.
+
+---
+
 ## 2026-08-06 — Démarrage de la Partie 2 : environnement local et premières mesures
 
 **Nature.** Jalon d'exécution, **sans décision de choix** : mise en place de l'environnement de

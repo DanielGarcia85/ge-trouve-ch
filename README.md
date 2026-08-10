@@ -148,7 +148,10 @@ ge-trouve-ch/
 │   ├── retrieval/                  ← Recherche dans la base vectorielle
 │   ├── generation/                 ← Appel au LLM local
 │   └── app/                        ← Interface web
-├── scripts/                        ← Scripts utilitaires (mesures locales)
+├── scripts/                        ← Scripts utilitaires (hors pipeline)
+│   ├── mesures/                    ← Relevés et benchmarks locaux
+│   ├── setup/                      ← Installation des modèles Ollama
+│   └── scraping/                   ← Vérification robots.txt, exploration
 ├── tests/                          ← Tests sur un jeu de questions types
 ├── evaluation/                     ← Scripts et résultats RAGAS
 ├── data/                           ← Documents scrapés (non versionné)

@@ -8,6 +8,51 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-07 — Étape 1 : pipeline pilote (permis de séjour)
+
+**Nature.** Jalon d'exécution : premier pipeline RAG complet, de bout en bout, sur un périmètre pilote.
+Pas une décision de choix (la pile est arrêtée en Partie 1), mais sa première mise en œuvre.
+
+**Lien avec le mémoire.** Partie 2 (développement). Les mesures alimentent l'annexe B ; la réponse
+archivée alimentera l'annexe C. Détail chiffré : `docs/mesures/journal-des-mesures.md`.
+
+**Ce qui est construit.**
+- Manifeste versionné de 23 URL `www.ge.ch` (permis de séjour), avec vérification robots.txt
+  (`scripts/scraping/verifier_robots.py`) et découverte des sous-pages (`lister_souspages_chapeau.py`).
+- Scraper poli (`src/scraping/scrape_pilote.py`) : délai 2 s, agent identifiable, extraction du texte
+  principal par `HTMLToDocument` (trafilatura, épinglé), un JSON par page.
+- Indexation (`src/indexing/indexer_pilote.py`) : découpage 200 mots / recouvrement 40, embeddings Qwen
+  sans consigne, écriture dans Chroma persistant avec métadonnées par fragment.
+- Pipeline de réponse (`src/repondre_pilote.py`, assemblé en `add_component` / `connect`) : requête Qwen
+  avec consigne de tâche, recherche Chroma (top_k 5), `ChatPromptBuilder` (système + utilisateur),
+  `OllamaChatGenerator` sur Gemma en mode direct (`think=False`).
+- Configuration partagée `src/config.py` (lecture du `.env`).
+
+**Constats (chiffres et détail dans le journal des mesures).**
+- Pipeline fonctionnel de bout en bout : réponse sourcée, en **mode direct** confirmé (`think:false`
+  effectif, aucune réflexion).
+- Latence utilisateur (à chaud) de l'ordre de quelques secondes ; le chargement à froid des modèles est
+  un coût unique (keep-alive Ollama).
+- L'empreinte mémoire du couple Gemma + Qwen **confirme le budget du chapitre 4** : tenue au palier de
+  confort 18 Go ; sur GARCIAD (16 Go) elle tient tout juste. Cela **verrouille le dimensionnement du VPS**
+  (palier plancher 12 Go exclu, confort 18 Go requis).
+- Le contraste inter-postes de l'étape 0 se confirme sur le pipeline (garciad prépare vite, décode lentement).
+
+**Réglages posés comme révisables.** Découpage 200 mots / recouvrement 40 ; top_k 5 ; consigne provisoire
+(annexe C). L'extraction retire les hyperliens (trafilatura garde la prose) : la réponse est juste mais
+vague, sans lien ni adresse, ces éléments n'étant pas dans le corpus. À corriger à l'étape 3.
+
+**Ce qui reste ouvert.** Consigne réelle = étape 2 ; corpus complet et ingestion reproductible (avec
+préservation des liens) = étape 3 ; interface = étape 4 ; aucun réglage Advanced (reformulation,
+re-classement) sans verdict de l'évaluation.
+
+**Souveraineté.** Tout local : scraping poli de sources publiques, inférence Ollama sur `localhost`, base
+Chroma embarquée. Aucun appel externe, aucune clé.
+
+**État.** Pipeline pilote fonctionnel et mesuré sur les deux postes (DANIELGARCIA et GARCIAD).
+
+---
+
 ## 2026-08-06 — Démarrage de la Partie 2 : environnement local et premières mesures
 
 **Nature.** Jalon d'exécution, **sans décision de choix** : mise en place de l'environnement de
@@ -19,8 +64,7 @@ l'annexe B ; le détail chiffré est consigné dans `docs/mesures/journal-des-me
 **Ce qui est fait (les deux postes).**
 - Ollama installé sur les deux postes (0.32.5 sur DANIELGARCIA, 0.32.6 sur GARCIAD), inférence CPU
   (iGPU non supporté sous Windows).
-- Trois modèles tirés sur chaque poste, ID identiques : `gemma4:12b` (7,6 Go), `llama3.1:8b` (4,9 Go),
-  `qwen3-embedding:0.6b` (639 Mo).
+- Trois modèles tirés sur chaque poste, ID identiques : `gemma4:12b`, `llama3.1:8b`, `qwen3-embedding:0.6b`.
 - Environnement Python 3.13 (un venv par poste) ; dépendances Haystack épinglées dans `requirements.txt`
   (`haystack-ai` 3.0.0, `ollama-haystack` 6.8.0, `chroma-haystack` 4.4.0).
 - Scripts versionnés : quatre de mesure (`scripts/mesures/` : relevé du poste, génération, embeddings,
@@ -28,21 +72,20 @@ l'annexe B ; le détail chiffré est consigné dans `docs/mesures/journal-des-me
   `bench_generation.py` décharge chaque modèle entre deux pour tenir sur une machine à faible RAM.
 - Journal des mesures rempli : deux sessions datées (DANIELGARCIA 32 Go, GARCIAD 16 Go).
 
-**Constats (détail dans le journal des mesures).**
-- Génération CPU (DANIELGARCIA) : Gemma 5,6 jetons/s, Llama 9,3 jetons/s ; chargement à froid 14 s / 9 s.
-- Embeddings (DANIELGARCIA) : latence de requête 245 ms, débit d'indexation 1,2 docs/s, dimension 1 024.
-- RAM chargée, identique sur les deux postes : Gemma 8,9 Go, Llama 5,6 Go, Qwen 2,4 Go. Budget de
-  production (Gemma + Qwen ≈ 11,3 Go) cohérent avec le palier de confort 18 Go ; le palier plancher 12 Go
-  imposerait le repli Llama. Le poste embeddings mesuré (2,4 Go) dépasse l'hypothèse du chapitre 4 (0,5-1,5 Go).
+**Constats (chiffres et détail dans le journal des mesures).**
+- Génération et embeddings mesurés sur CPU (débits, latences et chargements à froid relevés par poste).
+- L'empreinte mémoire des modèles **confirme le budget du chapitre 4** : le couple Gemma + Qwen tient au
+  palier de confort 18 Go ; le palier plancher 12 Go imposerait le repli Llama. Le poste embeddings
+  **dépasse l'hypothèse du chapitre 4** (0,5-1,5 Go), à réviser.
 - Contraste inter-postes : GARCIAD (16 Go, DDR4) est un meilleur proxy du VPS que DANIELGARCIA (32 Go,
-  DDR5). Le débit de génération y tombe à ~65 % (borné par la bande passante mémoire), mais le premier
-  jeton sort plus vite (CPU de bureau). Sur 16 Go, Gemma tient tout juste (1,4 Go libre une fois chargé).
+  DDR5), avec un débit de génération plus bas (bande passante mémoire) mais un premier jeton plus rapide
+  (CPU de bureau). Sur 16 Go, Gemma tient tout juste.
 
 **Précision technique.** Le chapitre 4 décrit le mode direct de Gemma comme une réflexion qui « s'active
 et se coupe par un simple jeton de contrôle », sourcé sur la page de distribution Ollama du modèle
 (Ollama 2026b) : exact au niveau du gabarit. En pratique, via l'API Ollama, la réflexion est active par
-défaut et se désactive par le paramètre `think:false`. Mesuré sur la question type : réflexion active
-≈ 50 s (sortie tronquée à 256 jetons), `think:false` ≈ 3 s. Les deux énoncés sont vrais à deux niveaux
+défaut et se désactive par le paramètre `think:false`. Constaté sur la question type : la réflexion active
+allonge fortement la latence, le mode direct la ramène à quelques secondes. Les deux énoncés sont vrais à deux niveaux
 (jeton de gabarit / paramètre d'API) ; le mémoire (Partie 1) reste tel quel, la réalité d'implémentation
 sera exposée en Partie 2.
 

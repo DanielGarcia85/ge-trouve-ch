@@ -8,6 +8,40 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-10 — Chapitre 10, première vague : pipeline pilote rédigé, palier de confort inscrit
+
+**Nature.** Jalon rédactionnel : la première vague du chapitre 10 (Construction du pipeline RAG) est
+rédigée et insérée au mémoire. Elle raconte le pilote de l'étape 1 et inscrit le dimensionnement du
+serveur. Pas une nouvelle décision technique, mais la mise en mémoire de décisions déjà prises.
+
+**Lien avec le mémoire.** Chapitre 10, sections 10.1 à 10.4. Les sections 10.5 (consigne, étape 2) et
+10.6 (corpus, étape 3) ont leurs titres posés, sans contenu.
+
+**Ce qui est inscrit.**
+- 10.1 Le corpus pilote (robots.txt, note 69 ; appels Barbaresi 2026 et Garcia 2026).
+- 10.2 L'indexation pilote.
+- 10.3 Le pipeline de réponse (Tableau 10.1 : réglages du pilote et leurs statuts).
+- 10.4 Les mesures et le palier de serveur : le **palier de confort 18 Go est désormais inscrit au
+  mémoire**, le plancher 12 Go étant exclu pour le régime retenu ; la location du VPS (chapitre 11) se
+  fera sur cette base.
+- Annexe 2 refondue : compilation du journal des mesures (tableaux communs des postes et des modèles,
+  sections Étape 0 et Étape 1), avec définition de l'empreinte (taille lue dans `ollama ps`) et de l'écart
+  de pagination sur 16 Go.
+
+**Bibliographie.** Une fiche ajoutée : trafilatura (Barbaresi, Adrien, 2026 ; moteur de `HTMLToDocument`).
+Capture archivée localement (`biblio/Scraping/`, hors dépôt).
+
+**Décisions éditoriales.** Réponse pilote citée en prose (pas d'annexe dédiée) ; pas d'appels Garcia en
+10.3-10.4 (couverts par 10.1, 10.2, l'annexe et le renvoi) ; libellés « PC : DANIELGARCIA / PC : GARCIAD »
+conservés en 9.4 ; adresses longues conservées dans la prose de 9.2.
+
+**Ce qui reste ouvert.** Consigne de génération (10.5 = étape 2, en cours) ; corpus complet et ingestion
+reproductible (10.6 = étape 3).
+
+**État.** Chapitre 10 rédigé jusqu'en 10.4. Palier de confort inscrit. Étape 2 en cours.
+
+---
+
 ## 2026-08-07 — Étape 1 : pipeline pilote (permis de séjour)
 
 **Nature.** Jalon d'exécution : premier pipeline RAG complet, de bout en bout, sur un périmètre pilote.

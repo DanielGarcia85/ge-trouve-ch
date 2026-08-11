@@ -38,24 +38,21 @@ from haystack_integrations.document_stores.chroma import ChromaDocumentStore
 # Accès au module de configuration partagé (src/config.py).
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import config  # noqa: E402
+from generation.consignes import CONSIGNE_ACTIVE  # noqa: E402
 
 # ── Constantes ────────────────────────────────────────────────────────
 MODELE_EMBEDDINGS = "qwen3-embedding:0.6b"
 TOP_K = 5
 TACHE = "Given a web search query, retrieve relevant passages that answer the query"
-OPTIONS = {"temperature": 0, "seed": 42, "num_predict": 512, "num_ctx": 4096}
+# Régime de production acté à la clôture de l'étape 2 : température basse (réponses fondées et
+# quasi stables), échantillonnage recommandé par l'éditeur (top_p/top_k), plafond large pour ne
+# pas tronquer les réponses complètes. Pas de seed en production (outil de comparaison seulement).
+OPTIONS = {"temperature": 0.3, "top_p": 0.95, "top_k": 64, "num_predict": 1024, "num_ctx": 4096}
+TIMEOUT_GENERATION = 300  # secondes ; marge pour le chargement à froid du modèle et une génération longue
 QUESTION_DEFAUT = "Où déposer ma demande de permis de séjour ?"
 
 # Contrôle temporaire prouvant le mode direct ; à passer à False ensuite.
 CONTROLE_MODE_DIRECT = True
-
-# Consigne provisoire (annexe C), remplacée à l'étape 2.
-CONSIGNE_SYSTEME = (
-    "Tu es Ge-Trouve, un assistant pour les démarches administratives du canton de Genève. "
-    "Réponds en français simple, uniquement à partir des extraits fournis. Conserve les noms "
-    "exacts des offices, des formulaires et des permis. Si les extraits ne permettent pas de "
-    "répondre, dis-le clairement."
-)
 
 # Message utilisateur : chaque extrait précédé de son URL, puis la question.
 GABARIT_UTILISATEUR = (
@@ -67,11 +64,18 @@ GABARIT_UTILISATEUR = (
 )
 
 
-def construire_pipeline():
-    """Assemble le pipeline explicite : embedder, retriever, prompt, générateur."""
+def construire_pipeline(consigne=None, options=None):
+    """
+    Assemble le pipeline explicite : embedder, retriever, prompt, générateur.
+
+    `consigne` et `options` servent à essayer des variantes (étape 2) ; par défaut,
+    la consigne active et les options de référence.
+    """
+    consigne = consigne or CONSIGNE_ACTIVE
+    options = options or OPTIONS
     store = ChromaDocumentStore(persist_path=str(Path(config.CHROMA_PERSIST_DIR)))
     gabarit = [
-        ChatMessage.from_system(CONSIGNE_SYSTEME),
+        ChatMessage.from_system(consigne),
         ChatMessage.from_user(GABARIT_UTILISATEUR),
     ]
     pipe = Pipeline()
@@ -84,7 +88,8 @@ def construire_pipeline():
     pipe.add_component(
         "generator",
         OllamaChatGenerator(
-            model=config.OLLAMA_MODEL, url=config.OLLAMA_BASE_URL, think=False, generation_kwargs=OPTIONS
+            model=config.OLLAMA_MODEL, url=config.OLLAMA_BASE_URL, think=False,
+            timeout=TIMEOUT_GENERATION, generation_kwargs=options
         ),
     )
     pipe.connect("embedder.embedding", "retriever.query_embedding")

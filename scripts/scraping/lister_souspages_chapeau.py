@@ -27,7 +27,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
 UA = "GeTrouveBot/0.1 (travail de bachelor HEG)"
-MANIFESTE = Path("src/scraping/manifeste_sources.csv")
+MANIFESTE = Path("src/scraping/manifeste_sources_pilote.csv")
 DELAI = 2.0  # secondes entre deux requêtes (politesse)
 
 

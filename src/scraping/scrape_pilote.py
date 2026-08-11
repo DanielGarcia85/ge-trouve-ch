@@ -9,8 +9,8 @@ Responsabilité
 Lire le manifeste des sources, télécharger chaque page autorisée par robots.txt
 (délai de politesse, agent identifiable), extraire son texte principal via
 HTMLToDocument (trafilatura), et écrire un fichier JSON par page sous
-`DATA_DIR/pilote/pages/`. Tient un journal d'exécution. Ne fait ni le découpage
-ni l'indexation.
+`DATA_DIR/pilote/pages/` (corpus brut, non versionné). Tient un journal d'exécution
+dans `resultats/pilote/` (versionné). Ne fait ni le découpage ni l'indexation.
 
 Politesse et sûreté
 ───────────────────
@@ -42,13 +42,14 @@ import config  # noqa: E402
 UA = "GeTrouveBot/0.1 (+https://github.com/DanielGarcia85/ge-trouve-ch)"
 ROBOTS_URL = "https://www.ge.ch/robots.txt"
 HOTE = "www.ge.ch"
-MANIFESTE = Path("src/scraping/manifeste_sources.csv")
+MANIFESTE = Path("src/scraping/manifeste_sources_pilote.csv")
 DELAI = 2.0            # secondes entre deux requêtes (politesse)
 MINIMUM_PAGES = 10     # en dessous, on arrête et on diagnostique
 
+# Corpus brut sous DATA_DIR (non versionné) ; journal d'exécution sous RESULTATS_DIR (versionné).
 DOSSIER_PILOTE = Path(config.DATA_DIR) / "pilote"
 DOSSIER_PAGES = DOSSIER_PILOTE / "pages"
-JOURNAL = DOSSIER_PILOTE / "journal_scraping.md"
+JOURNAL = config.RESULTATS_DIR / "pilote" / "journal_scraping_pilote.md"
 
 
 # ── Utilitaires ───────────────────────────────────────────────────────
@@ -102,6 +103,7 @@ def ecrire_journal(entrees, reussies, echecs, capture):
     ]
     for url, statut, taille, duree in entrees:
         lignes.append(f"| {url} | {statut} | {taille} | {duree:.2f} |")
+    JOURNAL.parent.mkdir(parents=True, exist_ok=True)
     JOURNAL.write_text("\n".join(lignes) + "\n", encoding="utf-8")
 
 
@@ -138,9 +140,9 @@ def main():
             print(f"  [NON] HTTP {erreur.code}  {url}")
             continue
         except URLError as erreur:
-            entrees_journal.append((url, f"erreur reseau : {erreur.reason}", 0, time.perf_counter() - debut))
+            entrees_journal.append((url, f"erreur réseau : {erreur.reason}", 0, time.perf_counter() - debut))
             echecs += 1
-            print(f"  [NON] reseau  {url}")
+            print(f"  [NON] réseau  {url}")
             continue
         duree = time.perf_counter() - debut
 

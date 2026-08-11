@@ -24,7 +24,7 @@ from urllib.robotparser import RobotFileParser
 
 UA = "GeTrouveBot"
 ROBOTS = "https://www.ge.ch/robots.txt"
-MANIFESTE = Path("src/scraping/manifeste_sources.csv")
+MANIFESTE = Path("src/scraping/manifeste_sources_pilote.csv")
 
 
 def charger_robots():

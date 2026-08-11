@@ -2,7 +2,7 @@
 
 Chaque session de mesure est datée, rattachée à un poste et reproductible : script versionné,
 paramètres consignés. Seules des valeurs mesurées figurent ici, jamais des estimations.
-Ce journal alimentera l'annexe B du mémoire (mesures datées).
+Ce journal alimentera l'Annexe 2 du mémoire (mesures datées).
 
 ---
 
@@ -163,7 +163,8 @@ Verdict : **feu vert** pour les 23 URL du manifeste, délai ≥ 2 s, agent ident
 - Durée ≈ 51 s, **dominée par le délai de politesse** (2 s × 22 intervalles) ; le temps de requête et
   d'extraction ne pèse que ~7 s au total. C'est ce délai, pas le matériel, qui fixera le temps à l'échelle
   du corpus complet.
-- Sortie : un JSON par page dans `data/pilote/pages/` (non versionné), plus `data/pilote/journal_scraping.md`.
+- Sortie : un JSON par page dans `data/pilote/pages/` (corpus brut, non versionné), plus le journal
+  `resultats/pilote/journal_scraping_pilote.md` (versionné).
 
 **Index Chroma (1.4).** Artefact indépendant de la machine (construit sur DANIELGARCIA).
 
@@ -179,7 +180,7 @@ Verdict : **feu vert** pour les 23 URL du manifeste, délai ≥ 2 s, agent ident
 **Réponse générée (1.5).** Comportement du pipeline, indépendant de la machine.
 
 - **Mode direct confirmé** : `reasoning` vide dans la réponse, donc `think:false` bien effectif.
-- **Qualité** (réponse archivée dans `data/pilote/reponse_pilote.md`) : correcte et sourcée (dépôt auprès
+- **Qualité** (réponse archivée dans `resultats/pilote/reponse_pilote.md`) : correcte et sourcée (dépôt auprès
   de l'OCPM, en ligne ou par courrier), mais **incomplète** (ni lien en ligne ni adresse). Cause : ces
   détails ne sont pas dans le corpus, les hyperliens étant retirés par l'extraction (trafilatura garde la
   prose), et le service en ligne (e-démarches) comme les formulaires (PDF) étant hors périmètre pilote.
@@ -208,3 +209,70 @@ processus Python/Chroma ~92 Mo.
 - **Dimensionnement du VPS verrouillé** : sur GARCIAD le pipeline tient tout juste (0,3 Go libre), donc le
   palier plancher 12 Go est exclu, 16 Go est un plancher extrême, et le palier de confort 18 Go (sur VPS
   épuré, sans les ~1,6 Go de VS Code) donne la marge nécessaire.
+
+---
+
+## 2026-08-10 et 11 — Étape 2, mise au point de la consigne de génération
+
+Objet : régler la consigne système de génération (variante V3 retenue, voir le journal des décisions) et,
+au passage, le régime d'échantillonnage de production. Essais sur DANIELGARCIA (10.08, variantes V0/V1/V2)
+puis GARCIAD (11.08, V0/V3). Le détail des réponses est archivé dans le dépôt (versionné)
+(`resultats/consignes/comparaison_consignes_*.md`).
+
+**Régime d'échantillonnage, constats.**
+
+- Régime « recommandé par l'éditeur » (température 1.0, top_p 0.95, top_k 64) : sur CPU, Gemma déroule
+  jusqu'au plafond de jetons. Réponses de 400 à 500 jetons, **100 à 160 s chacune**, certaines dépassant
+  300 s. Trop lent et trop bavard pour un assistant réactif.
+- Température abaissée à **0.3** : réponses quasi reproductibles, ce qui permet de comparer les variantes
+  à conditions égales (seed fixé pour les essais). Le plafond `num_predict` 256 coupait certaines réponses
+  en pleine phrase ; porté à 512 pour les essais, puis à **1024 en production** (les réponses complètes de
+  V3 dépassent parfois 512).
+- `num_predict` est un plafond, pas une cible : à température basse, le modèle s'arrête de lui-même quand
+  il a fini. Le relever ne pénalise pas les réponses courtes ; seule la longueur réelle de la réponse coûte
+  du temps.
+
+**Latences des essais V0/V3 (GARCIAD, 11.08, température 0.3, `num_predict` 512).** En secondes, par question.
+
+| Question | V0 | V3 |
+|---|---|---|
+| Q1 | échec (>300 s) | 273,1 |
+| Q2 | 203,3 | 262,0 |
+| Q3 | 145,4 | 204,6 |
+| Q4 | 129,9 | 290,3 |
+| Q5 | 57,5 | 184,9 |
+| Q6 | 114,6 | 218,0 |
+| Q7 | 82,1 | 134,5 |
+| Q8 | 156,3 | 110,0 |
+| **médiane** | **137,6** | **211,3** |
+
+- V3 plus lente que V0 : réponses plus complètes, donc plus de jetons à décoder. Cohérent avec l'arbitrage
+  complétude / latence assumé au choix de la consigne.
+- **Chiffres non fiables comme référence** : throttling thermique probable après ~40 min de génération
+  continue sur garciad, et une génération V0 (Q1) coupée par le garde-fou de 300 s. Le premier run (10.08)
+  avait de plus été faussé par une mise en veille nocturne (deux réponses en échec, latences aberrantes de
+  plusieurs heures). Une latence propre du régime de production sera relevée séparément sur DANIELGARCIA.
+
+**Latence propre sur DANIELGARCIA (11.08), machine au repos.** La mesure fiable annoncée ci-dessus.
+
+- *Régime de production* (`bench_pipeline.py`, `num_predict` 1024, sans seed), sur la phrase-exemple « Où
+  déposer ma demande de permis de séjour ? » (réponse V3 courte, 107 jetons) : latence à froid **110,6 s**
+  (chargements Qwen et Gemma inclus) ; à chaud **42,8 s** de médiane (42,8 / 43,3 / 26,8), dont **23,0 s**
+  de génération et ~19,8 s d'encodage plus recherche.
+- *Régime des essais* (`comparer_consignes.py`, V3 seul, `num_predict` 512, seed 42), sur les 8 questions
+  de mise au point (réponses souvent longues) : **médiane 147,4 s** (de 88,1 s pour une réponse courte à
+  208,2 s pour une réponse détaillée).
+- **Les deux chiffres ne se comparent pas** : le premier porte sur une question à réponse courte, le second
+  sur des questions à réponses complètes et plus longues. La leçon rejoint celle de garciad : la latence
+  d'une réponse V3 **suit sa longueur**, de quelques dizaines de secondes (réponse brève) à près de trois
+  minutes (réponse détaillée) sur ce CPU.
+- **RAM du pipeline chargé** : 26,2 / 27,7 Go utilisée, 1,5 Go libre ; empreinte Gemma 8,9 + Qwen 2,4 =
+  **11,3 Go** (`ollama ps`), identique aux relevés précédents. `reponse_pilote.md` est régénérée en
+  V3/production ; elle remplace l'ancienne réponse V0 de l'étape 1 (dont la description datée reste un
+  constat d'époque).
+
+**Ancrage vérifié à la source.** Les détails les plus spécifiques produits par V3 (SEFRI, délai « 6 à
+8 semaines », permis Ci et carte de légitimation DFAE, pays à accord d'établissement, personnel académique)
+ont été **retrouvés dans les pages sources correspondantes** du corpus pilote (recherche plein texte sur
+`data/pilote/pages/`). V3 n'invente pas : sa richesse vient des extraits. Constat central pour la fidélité
+(chapitre 7).

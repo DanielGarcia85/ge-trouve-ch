@@ -8,6 +8,52 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-11 — Étape 2 : consigne de génération (V3 retenue) et régime de production
+
+**Nature.** Jalon d'exécution de la Partie 2 : mise au point et choix de la consigne système de génération,
+qui remplace la consigne provisoire de l'étape 1. Décision arrêtée après essais comparés.
+
+**Lien avec le mémoire.** Partie 2 (développement), section 10.5 (consigne). Latences et ancrage vérifié
+alimentent l'Annexe 2 ; détail chiffré dans `docs/mesures/journal-des-mesures.md`.
+
+**Ce qui est tranché.**
+- **Consigne retenue : V3** (`src/generation/consignes.py`, `CONSIGNE_ACTIVE`). Elle demande une réponse
+  **complète et fondée sur les extraits** (conditions, délais, pièces, démarche), conserve les **noms exacts**
+  (offices, formulaires, permis), **cite les pages officielles** (URL fournies avec les extraits) et, hors
+  corpus, **avoue son ignorance et oriente** vers le guichet ou le site officiel, sans rien inventer. Les
+  formulaires, numéros ou adresses ne sont repris que s'ils figurent dans les extraits.
+- **Régime d'échantillonnage de production** (`src/repondre_pilote.py`, `OPTIONS`) : température **0.3**,
+  top_p 0.95, top_k 64, `num_predict` **1024**, `num_ctx` 4096, **sans seed** (le seed reste un outil de
+  comparaison des essais, pas un réglage de production).
+
+**Cheminement.**
+- Premiers essais V0/V1/V2 : la contrainte de **brièveté** (poussée par V1/V2) tronquait ou appauvrissait
+  les réponses et n'était pas souhaitée. Abandon de la brièveté comme critère, au profit de la complétude
+  fondée.
+- Constat sur le régime : la température 1.0 « éditeur » rend Gemma bavard et lent sur CPU (mesures au
+  journal). Abaissée à 0.3.
+- V3 rédigée puis comparée à V0 (essais du 11.08) : V3 l'emporte sur la complétude, la citation des sources
+  et l'orientation hors corpus.
+- **Ancrage vérifié à la source** : les détails spécifiques de V3 (SEFRI, délai « 6 à 8 semaines », permis
+  Ci, accord d'établissement, personnel académique) figurent bien dans le corpus pilote. V3 n'invente pas.
+
+**Outils.** Jeu de 8 questions de mise au point (`src/generation/questions_mise_au_point_pilote.py` : 6 tirées du
+corpus, 2 hors corpus ; distinct du jeu d'évaluation du chapitre 7, qui doit arriver vierge en Partie 3) ;
+script de comparaison (`scripts/mesures/comparer_consignes.py`) archivant réponses et latences dans
+`resultats/consignes/` (versionné), dans un fichier daté et étiqueté par les variantes jouées.
+
+**Ce qui reste ouvert.**
+- Latence propre du régime de production à mesurer sur DANIELGARCIA (les essais garciad throttlaient).
+- La complétude de V3 ne prendra tout son sens qu'avec le **corpus complet** (étape 3) : formulaires, liens
+  et contacts n'existent dans les réponses que si le corpus les contient (le pilote en est pauvre).
+- Tirages de stabilité formels (sans seed) allégés : V3 déjà vérifiée, y compris son ancrage.
+
+**Souveraineté.** Inchangée : tout local, aucun appel externe, aucune clé.
+
+**État.** Étape 2 close. Consigne V3 active, régime de production acté. Reste le corpus complet (étape 3).
+
+---
+
 ## 2026-08-10 — Chapitre 10, première vague : pipeline pilote rédigé, palier de confort inscrit
 
 **Nature.** Jalon rédactionnel : la première vague du chapitre 10 (Construction du pipeline RAG) est
@@ -47,8 +93,8 @@ reproductible (10.6 = étape 3).
 **Nature.** Jalon d'exécution : premier pipeline RAG complet, de bout en bout, sur un périmètre pilote.
 Pas une décision de choix (la pile est arrêtée en Partie 1), mais sa première mise en œuvre.
 
-**Lien avec le mémoire.** Partie 2 (développement). Les mesures alimentent l'annexe B ; la réponse
-archivée alimentera l'annexe C. Détail chiffré : `docs/mesures/journal-des-mesures.md`.
+**Lien avec le mémoire.** Partie 2 (développement). Les mesures alimentent l'Annexe 2 ; la réponse
+archivée est citée en prose dans le mémoire. Détail chiffré : `docs/mesures/journal-des-mesures.md`.
 
 **Ce qui est construit.**
 - Manifeste versionné de 23 URL `www.ge.ch` (permis de séjour), avec vérification robots.txt
@@ -72,8 +118,7 @@ archivée alimentera l'annexe C. Détail chiffré : `docs/mesures/journal-des-me
   (palier plancher 12 Go exclu, confort 18 Go requis).
 - Le contraste inter-postes de l'étape 0 se confirme sur le pipeline (garciad prépare vite, décode lentement).
 
-**Réglages posés comme révisables.** Découpage 200 mots / recouvrement 40 ; top_k 5 ; consigne provisoire
-(annexe C). L'extraction retire les hyperliens (trafilatura garde la prose) : la réponse est juste mais
+**Réglages posés comme révisables.** Découpage 200 mots / recouvrement 40 ; top_k 5 ; consigne provisoire. L'extraction retire les hyperliens (trafilatura garde la prose) : la réponse est juste mais
 vague, sans lien ni adresse, ces éléments n'étant pas dans le corpus. À corriger à l'étape 3.
 
 **Ce qui reste ouvert.** Consigne réelle = étape 2 ; corpus complet et ingestion reproductible (avec
@@ -142,7 +187,7 @@ déploiement et palier VPS = étape 5.
 développement et premiers relevés. Ouvre la Partie 2 (développement).
 
 **Lien avec le mémoire.** Partie 2 (développement), phase amont. Les mesures datées alimenteront
-l'annexe B ; le détail chiffré est consigné dans `docs/mesures/journal-des-mesures.md`.
+l'Annexe 2 ; le détail chiffré est consigné dans `docs/mesures/journal-des-mesures.md`.
 
 **Ce qui est fait (les deux postes).**
 - Ollama installé sur les deux postes (0.32.5 sur DANIELGARCIA, 0.32.6 sur GARCIAD), inférence CPU
@@ -481,7 +526,7 @@ non tranchés. Le code doit rester paramétrable pour échanger ces maillons san
 
 **Souveraineté.** Inférence 100 % locale via Ollama (`http://localhost:11434`). Aucune donnée ni
 document ne part vers un service externe à l'exécution. Toute bibliothèque qui exigerait une clé d'API
-externe sera exclut.
+externe sera exclue.
 
 **Ce qui reste ouvert à cette date.**
 - **LLM** : chapitre 4 en cours. Mistral 7B via Ollama sert de modèle de travail provisoire pour le

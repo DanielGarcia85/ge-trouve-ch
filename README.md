@@ -95,7 +95,7 @@ Cette exigence est centrale pour un service public, et se trouve alignée sur la
 | Composant | Choix / pistes envisagées | Tranché au |
 |---|---|---|
 | **Langage** | Python 3.13 | *(socle du projet)* |
-| **Framework RAG** | **Haystack 2.x** (arrêté) | Chapitre 3 |
+| **Framework RAG** | **Haystack 3.x** (arrêté) | Chapitre 3 |
 | **LLM** | **Gemma 4 12B Instruct** (arrêté), servi en local via Ollama | Chapitre 4 |
 | **Embeddings** | **Qwen3-Embedding-0.6B** (arrêté), servi via Ollama ; repli : BGE-M3 | Chapitre 5 |
 | **Base vectorielle** | **Chroma** (arrêtée), base embarquée via `chroma-haystack` ; repli : Qdrant | Chapitre 6 |
@@ -120,7 +120,7 @@ D'autres sources institutionnelles pourront être évaluées, et le périmètre 
 
 Le périmètre exact du corpus sera arrêté en **Partie 2**, via un **manifeste des sources** (URL et date de capture). L'aspiration des contenus est réalisée par un script Python dédié, qui **respecte les conditions d'utilisation de chaque site**.
 
-Le corpus lui-même (`data/`) **n'est pas versionné** : Git n'est pas adapté aux données volumineuses et évolutives. La reproductibilité est assurée en versionnant le **pipeline de scraping** et le manifeste des sources, plutôt que les fichiers bruts.
+Le corpus brut (`data/`) **n'est pas versionné** : Git n'est pas adapté aux données volumineuses et évolutives, et le dépôt étant public, les documents officiels ne sont pas redistribués. La reproductibilité est assurée en versionnant le **pipeline de scraping** et le manifeste des sources, plutôt que les fichiers bruts. En revanche, **nos propres résultats de travail** (`resultats/`) sont versionnés.
 
 ---
 
@@ -138,11 +138,14 @@ ge-trouve-ch/
 │       └── backups/                ← Figures de secours pour la soutenance
 ├── docs/                           ← Documentation technique
 │   ├── architecture.md
+│   ├── plan_developpement.md       ← Plan des étapes (Partie 2), avec commandes
 │   ├── decisions/                  ← Choix techniques argumentés
 │   ├── mesures/                    ← Journal des mesures datées
 │   ├── notes_rdv/                  ← Notes des rendez-vous avec le directeur
 │   └── heg/                        ← Directives officielles HEG
 ├── src/                            ← Code source Python
+│   ├── config.py                   ← Configuration partagée (.env, chemins)
+│   ├── repondre_pilote.py          ← Orchestrateur pilote (recherche + génération)
 │   ├── scraping/                   ← Aspiration des sources officielles
 │   ├── indexing/                   ← Chunking et embeddings
 │   ├── retrieval/                  ← Recherche dans la base vectorielle
@@ -152,9 +155,10 @@ ge-trouve-ch/
 │   ├── mesures/                    ← Relevés et benchmarks locaux
 │   ├── setup/                      ← Installation des modèles Ollama
 │   └── scraping/                   ← Vérification robots.txt, exploration
+├── resultats/                      ← Nos résultats versionnés (scraping, réponses, consignes)
 ├── tests/                          ← Tests sur un jeu de questions types
 ├── evaluation/                     ← Scripts et résultats RAGAS
-├── data/                           ← Documents scrapés (non versionné)
+├── data/                           ← Corpus brut + base Chroma (non versionné)
 ├── .env.example                    ← Modèle de configuration
 ├── requirements.txt                ← Dépendances Python
 └── .gitignore

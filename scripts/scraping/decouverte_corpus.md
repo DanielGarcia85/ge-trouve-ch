@@ -61,6 +61,8 @@ python scripts/scraping/decouvrir_sitemap.py <url_sitemap> [--garder seg1,seg2] 
   plus bas).
 - **`--sortie`** (optionnel) : si fourni, les URL retenues sont écrites dans ce fichier CSV (le manifeste).
   Sans cette option, l'outil se contente d'afficher l'analyse.
+- **`--ajouter`** (optionnel) : ajoute les URL à un manifeste existant au lieu de l'écraser, sans réécrire
+  l'entête. Sert à réunir plusieurs domaines (ge.ch puis geneve.ch) dans un seul fichier.
 
 Exemples :
 
@@ -73,6 +75,10 @@ python scripts/scraping/decouvrir_sitemap.py https://www.geneve.ch/sitemap.xml -
 
 # 3. Analyser ET écrire le manifeste des pages retenues
 python scripts/scraping/decouvrir_sitemap.py https://www.ge.ch/sitemap.xml --sortie src/scraping/manifeste_sources.csv
+
+# 4. Construire le manifeste complet du corpus (ge.ch, puis geneve.ch ajouté à la suite)
+python scripts/scraping/decouvrir_sitemap.py https://www.ge.ch/sitemap.xml --sortie src/scraping/manifeste_sources.csv
+python scripts/scraping/decouvrir_sitemap.py https://www.geneve.ch/sitemap.xml --garder demarches --sortie src/scraping/manifeste_sources.csv --ajouter
 ```
 
 Pour un nouveau domaine, la marche à suivre est : lancer d'abord l'analyse **sans** `--sortie` pour voir sa

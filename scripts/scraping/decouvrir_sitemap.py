@@ -27,18 +27,20 @@ Ce que le script n'est pas
 
 Usage
 ─────
-  python scripts/scraping/decouvrir_sitemap.py <url_sitemap> [--garder seg1,seg2] [--sortie fichier.csv]
+  python scripts/scraping/decouvrir_sitemap.py <url_sitemap> [--garder seg1,seg2] [--sortie fichier.csv] [--ajouter]
 
 Exemples :
   python scripts/scraping/decouvrir_sitemap.py https://www.ge.ch/sitemap.xml
   python scripts/scraping/decouvrir_sitemap.py https://www.geneve.ch/sitemap.xml --garder demarches
   python scripts/scraping/decouvrir_sitemap.py https://www.ge.ch/sitemap.xml --sortie src/scraping/manifeste_sources.csv
+  python scripts/scraping/decouvrir_sitemap.py https://www.geneve.ch/sitemap.xml --garder demarches --sortie src/scraping/manifeste_sources.csv --ajouter
 
 Le raisonnement derrière le filtre est expliqué dans `decouverte_corpus.md`.
 """
 
 import argparse
 import csv
+import os
 import re
 import time
 import urllib.request
@@ -134,6 +136,11 @@ def main():
         "--sortie",
         help="fichier CSV du manifeste ; sans cette option, le script se contente d'analyser",
     )
+    analyseur.add_argument(
+        "--ajouter",
+        action="store_true",
+        help="ajouter les URL à un manifeste existant au lieu de l'écraser (pour réunir plusieurs domaines)",
+    )
     args = analyseur.parse_args()
 
     garder = set(args.garder.split(",")) if args.garder else None
@@ -167,12 +174,18 @@ def main():
         print("  ", u)
 
     if args.sortie:
-        with open(args.sortie, "w", encoding="utf-8", newline="") as fichier:
+        # En mode --ajouter, on complète un manifeste existant (autre domaine) sans réécrire l'entête.
+        ajouter = args.ajouter and os.path.exists(args.sortie) and os.path.getsize(args.sortie) > 0
+        with open(args.sortie, "a" if ajouter else "w", encoding="utf-8", newline="") as fichier:
             ecrivain = csv.writer(fichier, delimiter=";")
-            ecrivain.writerow(["url"])
+            if not ajouter:
+                ecrivain.writerow(["url"])
             for u in gardees:
                 ecrivain.writerow([u])
-        print(f"\nManifeste écrit : {args.sortie} ({len(gardees)} URL)")
+        if ajouter:
+            print(f"\nManifeste complété : {args.sortie} (+{len(gardees)} URL)")
+        else:
+            print(f"\nManifeste écrit : {args.sortie} ({len(gardees)} URL)")
 
 
 if __name__ == "__main__":

@@ -169,7 +169,6 @@ def main():
             "url": url,
             "titre": ligne["titre"],
             "section": ligne["section"],
-            "niveau": ligne["niveau"],
             "date_capture": capture,
             "texte": texte,
         }

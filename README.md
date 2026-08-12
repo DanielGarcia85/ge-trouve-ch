@@ -111,10 +111,7 @@ Cette exigence est centrale pour un service public, et se trouve alignée sur la
 Les documents indexés proviennent **exclusivement de sources publiques officielles**. Le cœur du corpus :
 
 - [`ge.ch`](https://www.ge.ch) : portail officiel de l'État de Genève (démarches, offices, prestations) ;
-- [`silgeneve.ch`](https://silgeneve.ch) : législation genevoise, les textes que les démarches citent ;
-- [`ch.ch`](https://www.ch.ch) : portail officiel Confédération-cantons-communes dédié aux démarches ;
-- [`sem.admin.ch`](https://www.sem.admin.ch) : Secrétariat d'État aux migrations (les permis de séjour relèvent d'une compétence partagée fédérale/cantonale) ;
-- [`geneve.ch`](https://www.geneve.ch) et sites communaux : de nombreuses démarches passent par la commune de domicile.
+- [`geneve.ch`](https://www.geneve.ch) : les démarches de la Ville de Genève.
 
 D'autres sources institutionnelles pourront être évaluées, et le périmètre étendu si le besoin s'en fait sentir (Feuille d'avis officielle, assurances sociales, aide sociale, etc.).
 

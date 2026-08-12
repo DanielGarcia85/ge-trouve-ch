@@ -9,7 +9,7 @@ Responsabilité
 Lire les pages scrapées (un JSON par page sous DATA_DIR/pilote/pages/), les
 découper en fragments (Annexe 2 : 200 mots, recouvrement 40), les encoder avec
 Qwen (documents sans consigne) et les écrire dans une base Chroma persistante,
-chaque fragment portant ses métadonnées (url, titre, section, niveau,
+chaque fragment portant ses métadonnées (url, titre, section,
 date_capture, position). Reconstruction propre : la collection est vidée avant
 écriture, pour éviter que les fragments s'accumulent d'un run à l'autre. Relève les
 mesures d'indexation. Ne fait ni la recherche ni la génération (étape 1.5).
@@ -67,7 +67,6 @@ def charger_pages():
                     "url": donnees["url"],
                     "titre": donnees["titre"],
                     "section": donnees["section"],
-                    "niveau": donnees["niveau"],
                     "date_capture": donnees["date_capture"],
                 },
             )

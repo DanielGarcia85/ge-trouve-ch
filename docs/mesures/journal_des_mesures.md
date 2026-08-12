@@ -171,7 +171,7 @@ Verdict : **feu vert** pour les 23 URL du manifeste, délai ≥ 2 s, agent ident
 - 23 pages découpées en **72 fragments** (par mots, 200 par fragment, recouvrement 40) ; base vérifiée à
   72 fragments (politique overwrite, ré-exécution idempotente, IDs = hash du contenu).
 - Embeddings Qwen (documents sans consigne), **dimension 1024** (conforme). Métadonnées par fragment :
-  `url`, `titre`, `section`, `niveau`, `date_capture`, `position`.
+  `url`, `titre`, `section`, `date_capture`, `position`.
 - Base persistante ≈ 2,7 Mo sur disque (`data/chroma/`, non versionné).
 - Débit d'indexation (mesure dépendante du matériel, DANIELGARCIA) : **0,8 fragment/s** ; sous le bench de
   l'étape 0 (1,2 docs/s), du fait de fragments plus longs (200 mots contre ~150-180) et du chargement à

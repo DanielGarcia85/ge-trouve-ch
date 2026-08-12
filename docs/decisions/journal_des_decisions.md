@@ -8,13 +8,43 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-12 — Étape 3 : corpus cantonal (ge.ch + geneve.ch) et méthode de découverte
+
+**Nature.** Jalon d'exécution de la Partie 2 : découverte des pages à scraper et arrêt du périmètre du
+corpus. Le corpus est **cantonal genevois** : ge.ch et geneve.ch, rien d'autre.
+
+**Lien avec le mémoire.** Partie 2, section 10.6 (corpus complet).
+
+**Ce qui est tranché.**
+- **Méthode de découverte.** Avant de scraper, on énumère les pages d'un domaine via son **sitemap**, on
+  les classe par catégorie (premier segment du chemin), puis on filtre. Outil :
+  `scripts/scraping/decouvrir_sitemap.py` ; raisonnement complet dans `scripts/scraping/decouverte_corpus.md`.
+- **Périmètre.** Deux sources, toutes deux cantonales genevoises :
+  - `ge.ch` : environ **4 072** pages (démarches et dossiers), filtre par défaut (écarter le bruit :
+    documents en vrac, actualité, événements, variantes de langue). Sitemap de 27 484 pages au total.
+  - `geneve.ch` : **250** pages du dossier `/demarches/`, filtre « ne garder que » (`--garder demarches`).
+    Sitemap de 31 218 pages, très majoritairement institutionnel (annuaire, conseil municipal).
+
+**Cheminement.** Le `robots.txt` de chaque domaine a été lu d'abord. ge.ch annonce son sitemap ; geneve.ch
+ne l'annonce pas mais l'expose à l'emplacement standard. La répartition par catégorie a montré que « toutes
+les démarches » ne sont qu'une petite part de chaque site, d'où le filtrage. Le filtre diffère selon le
+rangement du site : exclusion du bruit pour ge.ch (démarches éparpillées), inclusion d'un seul dossier pour
+geneve.ch (démarches regroupées).
+
+**Ce qui reste ouvert.** Les autres communes, la législation (`silgeneve.ch`) et les assurances sociales
+restent des extensions possibles, activées seulement si l'évaluation (Partie 3) révèle un manque.
+
+**Outils.** `decouvrir_sitemap.py` (sitemap, catégories, filtre) ; `robots.txt` de chaque domaine.
+
+---
+
 ## 2026-08-11 — Étape 2 : consigne de génération (V3 retenue) et régime de production
 
 **Nature.** Jalon d'exécution de la Partie 2 : mise au point et choix de la consigne système de génération,
 qui remplace la consigne provisoire de l'étape 1. Décision arrêtée après essais comparés.
 
 **Lien avec le mémoire.** Partie 2 (développement), section 10.5 (consigne). Latences et ancrage vérifié
-alimentent l'Annexe 2 ; détail chiffré dans `docs/mesures/journal-des-mesures.md`.
+alimentent l'Annexe 2 ; détail chiffré dans `docs/mesures/journal_des_mesures.md`.
 
 **Ce qui est tranché.**
 - **Consigne retenue : V3** (`src/generation/consignes.py`, `CONSIGNE_ACTIVE`). Elle demande une réponse
@@ -100,7 +130,7 @@ reproductible (10.6 = étape 3).
 Pas une décision de choix (la pile est arrêtée en Partie 1), mais sa première mise en œuvre.
 
 **Lien avec le mémoire.** Partie 2 (développement). Les mesures alimentent l'Annexe 2 ; la réponse
-archivée est citée en prose dans le mémoire. Détail chiffré : `docs/mesures/journal-des-mesures.md`.
+archivée est citée en prose dans le mémoire. Détail chiffré : `docs/mesures/journal_des_mesures.md`.
 
 **Ce qui est construit.**
 - Manifeste versionné de 23 URL `www.ge.ch` (permis de séjour), avec vérification robots.txt
@@ -149,11 +179,10 @@ ouvertes : l'interface et le serveur frontal.
 compile le journal des mesures). Date de référence des sections 9.5-9.6 : 06.08.2026. Numérotation des
 annexes en chiffres (l'Annexe 1, Transformer, inchangée).
 
-**Décision, périmètre du corpus (9.2).** Trois cercles :
-- **C1, cœur obligatoire** : le catalogue cantonal (ge.ch/demarches en colonne vertébrale, pages
-  pratiques, pages publiques des e-démarches, getax.ch).
-- **C2, complément fédéral ciblé** : ch.ch et sem.admin.ch, qui font vivre le filtrage par niveau.
-- **C3, communal** : geneve.ch/demarches, conditionnel au calendrier (sinon limite et perspective).
+**Décision, périmètre du corpus (9.2).** Corpus **cantonal genevois** :
+- **ge.ch** : le catalogue cantonal (démarches en colonne vertébrale, pages pratiques, pages publiques
+  des e-démarches).
+- **geneve.ch/demarches** : les démarches de la Ville de Genève.
 - **silgeneve.ch** (recueil législatif) : en réserve, hors corpus initial.
 - Exclusions : espaces e-démarches authentifiés, annuaires privés (search.ch), PDF en réserve
   (sous-décision de l'étape 3). Questions hors périmètre : « je ne sais pas » orienté (exigence F5). Le
@@ -193,7 +222,7 @@ déploiement et palier VPS = étape 5.
 développement et premiers relevés. Ouvre la Partie 2 (développement).
 
 **Lien avec le mémoire.** Partie 2 (développement), phase amont. Les mesures datées alimenteront
-l'Annexe 2 ; le détail chiffré est consigné dans `docs/mesures/journal-des-mesures.md`.
+l'Annexe 2 ; le détail chiffré est consigné dans `docs/mesures/journal_des_mesures.md`.
 
 **Ce qui est fait (les deux postes).**
 - Ollama installé sur les deux postes (0.32.5 sur DANIELGARCIA, 0.32.6 sur GARCIAD), inférence CPU
@@ -242,15 +271,14 @@ construction du pipeline RAG (scraping, indexation, recherche, génération) à 
 **Ce que le chapitre établit.**
 - **Français administratif** : l'écart de registre entre la langue des usagers et celle des pages
   officielles est le problème central que la recherche doit absorber. Particularités genevoises (sigles
-  OCPM et AFC, helvétismes comme les permis B/C, mélange des niveaux fédéral et cantonal dans le corpus,
-  d'où l'importance du filtrage par métadonnées du chapitre 6).
+  OCPM et AFC, helvétismes comme les permis B/C).
 - **Traversée du pipeline** (Tableau 8.1) : embeddings (le volet français de MTEB ne mesure pas la
   récupération, vérification confiée au protocole) ; LLM (exigence nouvelle : garder les termes officiels
   dans des réponses simples, à porter par la consigne en Partie 2) ; base vectorielle (les vecteurs n'ont
   pas de langue, le terrain entre par les métadonnées) ; évaluation (RAGAS est né en anglais, comportement
   sur copies françaises non documenté, inconnue couverte par le contrôle humain du protocole).
 
-**Implications pour la Partie 2.** Métadonnées de corpus (source, section, niveau fédéral/cantonal) ;
+**Implications pour la Partie 2.** Métadonnées de corpus (source, section, date de capture) ;
 consigne de génération (français simple, mais conserver les noms exacts d'offices, de formulaires et de
 permis) ; jeu d'évaluation (une vingtaine de questions en plusieurs registres, dont des questions
 volontairement sans réponse) ; vigilance Partie 3 (comportement des consignes anglaises de RAGAS sur des

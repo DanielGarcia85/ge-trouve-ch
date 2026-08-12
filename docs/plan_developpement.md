@@ -7,7 +7,8 @@ de l'avancement.
 Les **sous-étapes détaillées, avec leurs commandes d'exécution**, sont ajoutées à mesure qu'on atteint
 chaque étape : elles servent de mode d'emploi pour **rejouer le jalon depuis zéro**. Une étape non encore
 atteinte n'est pas détaillée (règle de non-présomption) ; ses sous-étapes s'écrivent quand on
-y arrive. À ce jour, les étapes **0, 1 et 2** sont détaillées plus bas.
+y arrive. À ce jour, les étapes **0 à 3** sont détaillées plus bas (l'étape 3 est en cours, son ossature
+prévisionnelle est posée ci-dessous).
 
 Le détail par décision vit dans `docs/decisions/journal-des-decisions.md`, les chiffres dans
 `docs/mesures/journal-des-mesures.md`.
@@ -75,6 +76,22 @@ contrôle humain).
 - **2.3 Variantes de consigne** : V0 (témoin, la provisoire), V1 (structurée), V2 (V1 plus l'ignorance avouée et l'orientation), puis **V3 retenue** (complète et fondée, cite les pages sources, oriente hors corpus, contacts seulement s'ils figurent dans les extraits, sans rien inventer).
 - **2.4 Essais** : variantes jouées sur les 8 questions (clés dans `A_ESSAYER`), régime modéré (température basse ; le régime « éditeur » s'est révélé trop bavard et lent sur CPU), seed fixé pour comparer à conditions égales ; grille de lecture, puis **arbitrage manuel** de la variante retenue. **Commande :** `python scripts\mesures\comparer_consignes.py` (écrit un fichier daté `comparaison_consignes_<variantes>_<date>.md`).
 - **2.5 Clôture** : consigne V3 intégrée (`CONSIGNE_ACTIVE`) et régime de production acté (`OPTIONS`) ; session au journal des mesures ; entrée au journal des décisions ; rédaction de la section 10.5 du mémoire.
+
+---
+
+## Sous-étapes de l'étape 3 *(en cours)*
+
+Ossature prévisionnelle ; les commandes s'ajoutent à mesure de l'exécution. Sources du cœur : `ge.ch`,
+`getax.ch`, `geneve.ch`, `ch.ch`, `sem.admin.ch`. `silgeneve.ch` est un candidat, décidé au contrôle
+`robots.txt` ; les autres communes et les assurances sociales restent des extensions ouvertes.
+
+- **3.1 État des lieux** *(lecture seule)* : dépôt propre, venv, Ollama et les trois modèles, index pilote présent.
+- **3.2 Liens préservés (verrou, validé d'abord sur le pilote)** : adapter l'extraction pour conserver les hyperliens dans le texte ; re-scraper et ré-indexer le pilote ; vérifier que la réponse peut citer le lien du guichet en ligne. GO avant d'élargir.
+- **3.3 Manifeste cantonal (C1)** : liste des pages `ge.ch` (catalogue des démarches, pages pratiques, e-démarches publiques), `getax.ch` et `geneve.ch`, dans un `manifeste_sources.csv` complet (le manifeste pilote reste en l'état) ; niveau `cantonal`.
+- **3.4 Manifeste fédéral (C2)** : pages `ch.ch` et `sem.admin.ch` sur les thématiques de C1 ; niveau `federal`.
+- **3.5 Scraping complet** : `robots.txt` vérifié par domaine (refus = arrêt, aucun contournement), délai ≥ 2 s, journal d'exécution, échecs consignés. Scraper dédié (`scrape_complet.py`).
+- **3.6 Indexation complète et mesures** : reconstruction idempotente, métadonnées complètes (niveau) ; **PDF indexés** (texte extrait à l'ingestion, lien officiel conservé, fichier non stocké) ; contrôles qualitatifs (réponse type avec lien, question à versant fédéral, démonstration de recherche filtrée par niveau) ; mesures au journal.
+- **3.7 Clôture** : entrée au journal des décisions (manifeste arrêté et volumes, préservation des liens, PDF, C3 conditionnel) ; plan et documentation à jour ; rédaction de la section 10.6.
 
 ---
 

@@ -52,6 +52,12 @@ script de comparaison (`scripts/mesures/comparer_consignes.py`) archivant répon
 
 **État.** Étape 2 close. Consigne V3 active, régime de production acté. Reste le corpus complet (étape 3).
 
+**Mise à jour (soirée du 11.08).** La latence propre du régime de production a été relevée sur DANIELGARCIA
+(détail au journal des mesures) : le point « latence à mesurer » ci-dessus est clos. La section 10.5
+(consigne de génération) est rédigée, insérée et vérifiée au mémoire ; l'Annexe 2 porte sa section Étape 2.
+Dans la foulée, le dépôt a été réorganisé (résultats versionnés dans `resultats/` hors `data/`, chemins
+centralisés, renommages `_pilote`).
+
 ---
 
 ## 2026-08-10 — Chapitre 10, première vague : pipeline pilote rédigé, palier de confort inscrit

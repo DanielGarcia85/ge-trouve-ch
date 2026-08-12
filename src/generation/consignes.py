@@ -17,8 +17,9 @@ Statut
 V1 et V2 sont ajoutées en 2.3 et essayées en 2.4. Les premiers essais ayant montré
 que la contrainte de brièveté tronquait ou appauvrissait les réponses (et n'était
 pas souhaitée), V3 affine la consigne : réponse complète et fondée, noms exacts,
-orientation hors corpus, sans pression de brièveté. La variante retenue devient
-`CONSIGNE_ACTIVE` à la clôture (2.5).
+orientation hors corpus, sans pression de brièveté. V3 devient `CONSIGNE_ACTIVE` à la
+clôture (2.5). À l'étape 3, le corpus préserve les hyperliens ; V4 (V3 plus la reprise
+des liens utiles des extraits) devient à son tour la variante active.
 """
 
 # V0 : consigne provisoire de l'étape 1, gardée comme témoin.
@@ -64,14 +65,24 @@ V3_COMPLETE = (
     "lien ni d'adresse."
 )
 
-# Variantes considérées à l'étape 2 (V3 ajoutée après les premiers essais).
+# V4 : évolution de l'étape 3. Le corpus conserve désormais les hyperliens (extraction markdown) ;
+# V4 = V3 plus une clause pour reprendre dans la réponse les liens utiles présents dans les extraits
+# (guichet en ligne, formulaires, documents), sans jamais en inventer.
+V4_LIENS = V3_COMPLETE + (
+    " Les extraits contiennent des liens au format [texte](url) vers des ressources officielles "
+    "(guichet en ligne, formulaires, documents) : quand un lien est utile à la démarche demandée, "
+    "reprends-le dans ta réponse pour que l'usager y accède directement, sans jamais en inventer."
+)
+
+# Variantes considérées (V0-V3 à l'étape 2, V4 à l'étape 3).
 VARIANTES = {
     "V0": V0_PROVISOIRE,
     "V1": V1_STRUCTUREE,
     "V2": V2_IGNORANCE,
     "V3": V3_COMPLETE,
+    "V4": V4_LIENS,
 }
 
-# Variante active servie par le pipeline. V3 retenue à la clôture de l'étape 2 (essais V0/V3 :
-# V3 plus complète, cite les pages sources et oriente hors corpus ; ancrage vérifié à la source).
-CONSIGNE_ACTIVE = V3_COMPLETE
+# Variante active servie par le pipeline. V4 à l'étape 3 : V3 (retenue à l'étape 2) plus la reprise
+# des liens utiles des extraits, rendue possible par le corpus qui préserve désormais les hyperliens.
+CONSIGNE_ACTIVE = V4_LIENS

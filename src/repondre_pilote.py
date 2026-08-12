@@ -54,11 +54,12 @@ QUESTION_DEFAUT = "Où déposer ma demande de permis de séjour ?"
 # Contrôle temporaire prouvant le mode direct ; à passer à False ensuite.
 CONTROLE_MODE_DIRECT = True
 
-# Message utilisateur : chaque extrait précédé de son URL, puis la question.
+# Message utilisateur : chaque extrait précédé de son URL, puis la question. On montre au
+# modèle la version avec liens (`texte_liens`) ; le `content` embarqué, lui, est nettoyé des URL.
 GABARIT_UTILISATEUR = (
     "Extraits :\n"
     "{% for doc in documents %}"
-    "[{{ doc.meta.url }}]\n{{ doc.content }}\n\n"
+    "[{{ doc.meta.url }}]\n{{ doc.meta.get('texte_liens') or doc.content }}\n\n"
     "{% endfor %}"
     "Question : {{ question }}"
 )

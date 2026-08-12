@@ -8,8 +8,9 @@ Responsabilité
 ──────────────
 Lire le manifeste des sources, télécharger chaque page autorisée par robots.txt
 (délai de politesse, agent identifiable), extraire son texte principal via
-HTMLToDocument (trafilatura), et écrire un fichier JSON par page sous
-`DATA_DIR/pilote/pages/` (corpus brut, non versionné). Tient un journal d'exécution
+HTMLToDocument (trafilatura), en markdown avec les hyperliens préservés (résolus en
+absolu), et écrire un fichier JSON par page sous `DATA_DIR/pilote/pages/` (corpus brut,
+non versionné). Tient un journal d'exécution
 dans `resultats/pilote/` (versionné). Ne fait ni le découpage ni l'indexation.
 
 Politesse et sûreté
@@ -81,10 +82,14 @@ def recuperer(url):
         return reponse.read(), reponse.status, reponse.geturl()
 
 
-def extraire_texte(convertisseur, html_octets):
-    """Extrait le texte principal d'une page HTML via HTMLToDocument (trafilatura)."""
+def extraire_texte(convertisseur, html_octets, url):
+    """Extrait le texte principal via HTMLToDocument (trafilatura), en markdown avec les
+    hyperliens préservés et résolus en absolu (paramètre url)."""
     flux = ByteStream(data=html_octets, mime_type="text/html")
-    resultat = convertisseur.run(sources=[flux])
+    resultat = convertisseur.run(
+        sources=[flux],
+        extraction_kwargs={"output_format": "markdown", "include_links": True, "url": url},
+    )
     documents = resultat["documents"]
     if documents and documents[0].content:
         return documents[0].content.strip()
@@ -153,7 +158,7 @@ def main():
             print(f"  [NON] redirection hors ge.ch  {url}")
             continue
 
-        texte = extraire_texte(convertisseur, html)
+        texte = extraire_texte(convertisseur, html, url_finale)
         if not texte:
             entrees_journal.append((url, "texte vide", 0, duree))
             echecs += 1

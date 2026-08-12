@@ -16,13 +16,13 @@
   <!-- A1 Sources -->
   <rect x="150" y="126" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
   <text x="500" y="149" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Sources officielles du corpus</text>
-  <text x="500" y="171" text-anchor="middle" font-size="15.5" fill="#14532D">les cercles du Tableau 9.2 : ge.ch, ch.ch, SEM, getax.ch (et geneve.ch si retenu)</text>
+  <text x="500" y="171" text-anchor="middle" font-size="15.5" fill="#14532D">les deux sources du Tableau 9.2 : ge.ch (État de Genève) et geneve.ch (Ville)</text>
   <line x1="500" y1="184" x2="500" y2="204" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
 
   <!-- A2 Manifeste -->
   <rect x="150" y="210" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
   <text x="500" y="233" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Manifeste des sources</text>
-  <text x="500" y="255" text-anchor="middle" font-size="15.5" fill="#14532D">fichier versionné : adresse de la page, niveau fédéral ou cantonal, date de capture</text>
+  <text x="500" y="255" text-anchor="middle" font-size="15.5" fill="#14532D">fichier versionné : adresse de la page, section, date de capture</text>
   <line x1="500" y1="268" x2="500" y2="288" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
 
   <!-- A3 Scraping -->
@@ -34,7 +34,7 @@
   <!-- A4 Découpage -->
   <rect x="150" y="378" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
   <text x="500" y="401" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Découpage en fragments</text>
-  <text x="500" y="423" text-anchor="middle" font-size="15.5" fill="#14532D">fragments courts porteurs de leurs métadonnées : source, section, niveau, date</text>
+  <text x="500" y="423" text-anchor="middle" font-size="15.5" fill="#14532D">fragments courts porteurs de leurs métadonnées : source, section, date de capture</text>
   <line x1="500" y1="436" x2="500" y2="456" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
 
   <!-- A5 Embeddings -->
@@ -83,7 +83,7 @@
   <!-- B4 Recherche -->
   <rect x="210" y="1030" width="580" height="54" rx="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.6"/>
   <text x="500" y="1052" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">Recherche dans Chroma</text>
-  <text x="500" y="1073" text-anchor="middle" font-size="15.5" fill="#1E40AF">les K fragments les plus proches, filtrés par métadonnées (niveau)</text>
+  <text x="500" y="1073" text-anchor="middle" font-size="15.5" fill="#1E40AF">les K fragments les plus proches, métadonnées à l'appui</text>
   <line x1="500" y1="1084" x2="500" y2="1104" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
 
   <!-- B5 Prompt -->

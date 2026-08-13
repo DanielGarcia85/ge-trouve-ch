@@ -142,7 +142,7 @@ ge-trouve-ch/
 │   └── heg/                        ← Directives officielles HEG
 ├── src/                            ← Code source Python
 │   ├── config.py                   ← Configuration partagée (.env, chemins)
-│   ├── repondre_pilote.py          ← Orchestrateur pilote (recherche + génération)
+│   ├── repondre.py                 ← Orchestrateur (recherche + génération)
 │   ├── scraping/                   ← Aspiration des sources officielles
 │   ├── indexing/                   ← Chunking et embeddings
 │   ├── retrieval/                  ← Recherche dans la base vectorielle
@@ -155,7 +155,9 @@ ge-trouve-ch/
 ├── resultats/                      ← Nos résultats versionnés (scraping, réponses, consignes)
 ├── tests/                          ← Tests sur un jeu de questions types
 ├── evaluation/                     ← Scripts et résultats RAGAS
-├── data/                           ← Corpus brut + base Chroma (non versionné)
+├── data/                           ← NON VERSIONNÉ (régénérable via le pipeline)
+│   ├── pages/                      ← Corpus brut scrapé (un JSON par page)
+│   └── chroma/                     ← Base vectorielle Chroma
 ├── .env.example                    ← Modèle de configuration
 ├── requirements.txt                ← Dépendances Python
 └── .gitignore

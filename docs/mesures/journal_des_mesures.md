@@ -313,7 +313,7 @@ finale (9651 fragments) est identique à ce qu'aurait produit une passe unique :
 empreintes du contenu, la reprise n'introduit aucun doublon.
 
 **Contrôle qualitatif.** Question type « Où déposer ma demande de permis de séjour ? » via
-`repondre_pilote.py` sur le corpus complet : réponse fondée et sourcée, **plus complète que sur le pilote**
+`repondre.py` sur le corpus complet : réponse fondée et sourcée, **plus complète que sur le pilote**
 (elle couvre l'arrivée d'un autre canton, la recherche d'emploi, le regroupement familial et l'asile,
 toutes présentes dans le corpus élargi), avec liens officiels cités **dont un lien vers une fiche document**
 (`ge.ch/document/aide-pratique-…`). Cela valide en situation la préservation des liens décidée à l'étape 3 :

@@ -1,16 +1,16 @@
-# src/repondre_pilote.py
+# src/repondre.py
 
 """
-Pipeline de réponse pilote — recherche puis génération
+Pipeline de réponse — recherche puis génération
 ─────────────────────────────────────────────────────────────────────────────
 
 Responsabilité
 ──────────────
-Répondre à une question en langage naturel à partir de la base Chroma pilote :
+Répondre à une question en langage naturel à partir de la base Chroma :
 encoder la requête (Qwen, avec la consigne de tâche), récupérer les fragments
 les plus proches (Chroma), assembler un prompt (message système + extraits +
 question) et générer la réponse avec Gemma en mode direct. Point d'entrée en
-ligne de commande. Ne construit pas l'index (étape 1.4).
+ligne de commande. Ne construit pas l'index.
 
 Asymétrie des embeddings
 ────────────────────────

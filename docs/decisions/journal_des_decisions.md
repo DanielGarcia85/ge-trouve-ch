@@ -8,6 +8,43 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-13 — Clôture de l'étape 3 : corpus complet scrapé, indexé, pipeline de production
+
+**Nature.** Clôture de l'étape 3. Le pipeline RAG tourne désormais de bout en bout sur le corpus cantonal
+complet (4304 pages), plus seulement sur le pilote.
+
+**Lien avec le mémoire.** Partie 2, section 10.6 (corpus complet et indexation).
+
+**Ce qui est fait.**
+- **Corpus scrapé.** 4304 pages sur 4322 du manifeste (ge.ch + geneve.ch) ; 18 exclusions justifiées :
+  1 page supprimée (404) et 17 pages d'accès restreint (403 « Page non autorisée », non contournées).
+  Scraper `src/scraping/scrape_complet.py` : robots.txt par domaine, délai 2 s, titre extrait de chaque
+  page, reprise, journal résumé (`resultats/complet/journal_scraping.md`).
+- **Corpus indexé.** 9651 fragments (200 mots, recouvrement 40) dans Chroma, embeddings Qwen, base de
+  190,9 Mo. Indexeur `src/indexing/indexer_complet.py` : encodage par lots de pages, reconstruction propre,
+  option `--reprise` (aucun doublon, IDs = empreinte du contenu). Débit 0,8 fragment/s ; mesures au journal
+  des mesures (13.08).
+- **Métadonnées par fragment** : `url`, `titre`, `date_capture`, `position`. Le titre est extrait de la page
+  (le manifeste complet n'a qu'une colonne `url`) ; pas de `section` (elle était propre au pilote fait à la main).
+- **Liens préservés.** Le texte conserve les hyperliens en absolu ; les liens vers les PDF/documents sont
+  donc cités par l'assistant sans que les pages document soient scrapées. Le **contenu** des PDF n'est pas
+  indexé à ce stade (à revoir seulement si l'évaluation révèle un manque).
+- **Pipeline de production.** `src/repondre_pilote.py` renommé `src/repondre.py` : il ne sert plus le
+  pilote mais le corpus complet (références mises à jour). Contrôle qualitatif sur la question type
+  concluant (réponse fondée, sourcée, liens cités, plus complète que sur le pilote).
+
+**Leçon d'exécution.** Un traitement long (scraping ~2,4 h, indexation ~3,3 h) sur poste Windows exige de
+désactiver la mise en veille (`powercfg /change standby-timeout-ac 0`) et de suspendre OneDrive pendant
+l'écriture de la base. La reprise a sauvé l'indexation après une mise en veille intempestive.
+
+**Ce qui reste ouvert.** Interface (étape 4), déploiement (étape 5), évaluation RAGAS (Partie 3). Extension
+possible du corpus (autres communes, législation `silgeneve.ch`, contenu des PDF) seulement si l'évaluation
+le justifie.
+
+**Outils.** `scrape_complet.py`, `indexer_complet.py`, `repondre.py` ; `decouvrir_sitemap.py` (manifeste).
+
+---
+
 ## 2026-08-12 — Étape 3 : corpus cantonal (ge.ch + geneve.ch) et méthode de découverte
 
 **Nature.** Jalon d'exécution de la Partie 2 : découverte des pages à scraper et arrêt du périmètre du
@@ -52,7 +89,7 @@ alimentent l'Annexe 2 ; détail chiffré dans `docs/mesures/journal_des_mesures.
   (offices, formulaires, permis), **cite les pages officielles** (URL fournies avec les extraits) et, hors
   corpus, **avoue son ignorance et oriente** vers le guichet ou le site officiel, sans rien inventer. Les
   formulaires, numéros ou adresses ne sont repris que s'ils figurent dans les extraits.
-- **Régime d'échantillonnage de production** (`src/repondre_pilote.py`, `OPTIONS`) : température **0.3**,
+- **Régime d'échantillonnage de production** (`src/repondre.py`, `OPTIONS`) : température **0.3**,
   top_p 0.95, top_k 64, `num_predict` **1024**, `num_ctx` 4096, **sans seed** (le seed reste un outil de
   comparaison des essais, pas un réglage de production).
 
@@ -139,7 +176,7 @@ archivée est citée en prose dans le mémoire. Détail chiffré : `docs/mesures
   principal par `HTMLToDocument` (trafilatura, épinglé), un JSON par page.
 - Indexation (`src/indexing/indexer_pilote.py`) : découpage 200 mots / recouvrement 40, embeddings Qwen
   sans consigne, écriture dans Chroma persistant avec métadonnées par fragment.
-- Pipeline de réponse (`src/repondre_pilote.py`, assemblé en `add_component` / `connect`) : requête Qwen
+- Pipeline de réponse (`src/repondre.py`, assemblé en `add_component` / `connect`) : requête Qwen
   avec consigne de tâche, recherche Chroma (top_k 5), `ChatPromptBuilder` (système + utilisateur),
   `OllamaChatGenerator` sur Gemma en mode direct (`think=False`).
 - Configuration partagée `src/config.py` (lecture du `.env`).

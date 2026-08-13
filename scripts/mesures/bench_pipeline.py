@@ -11,7 +11,7 @@ question type : une exécution à froid puis trois à chaud, médiane. Lit le d�
 de génération dans la métadonnée Ollama (chargement, évaluation, jetons). Archive
 la réponse et ses fragments pour le mémoire. Relève enfin la RAM du pipeline
 chargé (Qwen, Gemma et Chroma résidents) via `releve_ram.ps1`, exécuté tant que
-ce processus est vivant. Réutilise le pipeline de `repondre_pilote`, sans le
+ce processus est vivant. Réutilise le pipeline de `repondre`, sans le
 redéfinir.
 """
 
@@ -24,7 +24,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RACINE / "src"))
 import config  # noqa: E402
-import repondre_pilote as rp  # noqa: E402
+import repondre as rp  # noqa: E402
 
 RELEVE_RAM = RACINE / "scripts" / "mesures" / "releve_ram.ps1"
 ARCHIVE = config.RESULTATS_DIR / "pilote" / "reponse_pilote.md"

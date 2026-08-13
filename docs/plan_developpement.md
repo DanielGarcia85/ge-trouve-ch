@@ -63,7 +63,7 @@ contrôle humain).
 - **1.2 Manifeste et robots** : `manifeste_sources_pilote.csv` versionné, vérification `robots.txt`, verdict consigné. **Commandes :** `python scripts\scraping\verifier_robots.py` (contrôle robots) ; `python scripts\scraping\lister_souspages_chapeau.py` (découverte des sous-pages, appoint).
 - **1.3 Scraper** : téléchargement poli des pages du manifeste vers `data/pilote/pages/` (un JSON par page), journal dans `resultats/pilote/`. **Commande :** `python src\scraping\scrape_pilote.py`.
 - **1.4 Indexation** : découpage, embeddings Qwen, écriture dans Chroma avec métadonnées par fragment. **Commande :** `python src\indexing\indexer_pilote.py`.
-- **1.5 Pipeline de réponse** : recherche (embedder requête + retriever Chroma) puis génération (Gemma, mode direct). **Commande :** `python src\repondre_pilote.py "Où déposer ma demande de permis de séjour ?"`.
+- **1.5 Pipeline de réponse** : recherche (embedder requête + retriever Chroma) puis génération (Gemma, mode direct). **Commande :** `python src\repondre.py "Où déposer ma demande de permis de séjour ?"`.
 - **1.6 Exécution et mesures** : latence de bout en bout, RAM du pipeline chargé, réponse archivée dans `resultats/pilote/`. **Commande :** `python scripts\mesures\bench_pipeline.py`.
 - **1.7 Clôture** : entrée au journal des décisions, mise à jour du README.
 
@@ -88,9 +88,9 @@ restent des extensions ouvertes, activées seulement si l'évaluation révèle u
 - **3.1 État des lieux** *(lecture seule)* : dépôt propre, venv, Ollama et les trois modèles, index pilote présent.
 - **3.2 Liens préservés (verrou, validé d'abord sur le pilote)** : adapter l'extraction pour conserver les hyperliens dans le texte ; re-scraper et ré-indexer le pilote ; vérifier que la réponse peut citer le lien du guichet en ligne. GO avant d'élargir. **Commandes :** `python src\scraping\scrape_pilote.py` (re-scrape) ; `python src\indexing\indexer_pilote.py` (ré-indexation).
 - **3.3 Manifeste du corpus** : liste des pages `ge.ch` (catalogue des démarches, pages pratiques, e-démarches publiques) et `geneve.ch` (dossier `/demarches/`), dans un `manifeste_sources.csv` complet (le manifeste pilote reste en l'état). **Commande :** `python scripts\scraping\decouvrir_sitemap.py <url_sitemap> [--garder demarches] [--sortie src\scraping\manifeste_sources.csv]` (un passage par domaine : ge.ch en mode par défaut, geneve.ch avec `--garder demarches`) ; méthode dans `scripts/scraping/decouverte_corpus.md`.
-- **3.4 Scraping complet** : `robots.txt` vérifié par domaine (refus = arrêt, aucun contournement), délai ≥ 2 s, journal d'exécution, échecs consignés. Scraper dédié (`scrape_complet.py`).
-- **3.5 Indexation complète et mesures** : reconstruction idempotente, métadonnées par fragment (source, section, date de capture) ; **PDF indexés** (texte extrait à l'ingestion, lien officiel conservé, fichier non stocké) ; contrôles qualitatifs (réponse type avec lien, questions de plusieurs registres) ; mesures au journal.
-- **3.6 Clôture** : entrée au journal des décisions (manifeste arrêté et volumes, préservation des liens, PDF) ; plan et documentation à jour ; rédaction de la section 10.6.
+- **3.4 Scraping complet** : `robots.txt` vérifié par domaine (refus = arrêt, aucun contournement), délai ≥ 2 s, titre extrait de chaque page, reprise (page déjà scrapée sautée), journal résumé. **Commande :** `python src\scraping\scrape_complet.py`.
+- **3.5 Indexation complète et mesures** : reconstruction propre, encodage par lots avec reprise, métadonnées par fragment (`url`, `titre`, `date_capture`, `position`) ; **liens vers les PDF/documents conservés** (le contenu des PDF n'est pas indexé à ce stade, à revoir si l'évaluation le justifie) ; contrôle qualitatif (réponse type avec lien) ; mesures au journal. **Commandes :** `python src\indexing\indexer_complet.py` ; `python src\indexing\indexer_complet.py --reprise` (après interruption).
+- **3.6 Clôture** : entrée au journal des décisions (corpus arrêté et volumes, préservation des liens, PDF en liens) ; renommage `repondre_pilote.py` → `repondre.py` ; plan et documentation à jour ; rédaction de la section 10.6.
 
 ---
 

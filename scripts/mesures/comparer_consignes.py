@@ -10,7 +10,7 @@ Exécuter chaque question de mise au point avec chaque variante de consigne, à 
 régime d'échantillonnage modéré (seed fixé pour comparer à conditions égales),
 archiver les réponses et les latences (dans `resultats/`, versionné), et imprimer
 un récapitulatif des latences. Sert à trancher la consigne (grille de lecture remplie
-à la main sur l'archive). Réutilise le pipeline de `repondre_pilote`.
+à la main sur l'archive). Réutilise le pipeline de `repondre`.
 
 Régime d'échantillonnage
 ────────────────────────
@@ -40,7 +40,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RACINE / "src"))
 import config  # noqa: E402
-import repondre_pilote as rp  # noqa: E402
+import repondre as rp  # noqa: E402
 from generation.consignes import VARIANTES  # noqa: E402
 from generation.questions_mise_au_point_pilote import QUESTIONS  # noqa: E402
 

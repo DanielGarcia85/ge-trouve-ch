@@ -9,7 +9,7 @@ Responsabilité
 Lire le manifeste des sources, télécharger chaque page autorisée par robots.txt
 (délai de politesse, agent identifiable), extraire son texte principal via
 HTMLToDocument (trafilatura), en markdown avec les hyperliens préservés (résolus en
-absolu), et écrire un fichier JSON par page sous `DATA_DIR/pilote/pages/` (corpus brut,
+absolu), et écrire un fichier JSON par page sous `DATA_DIR/pages/pilote/` (corpus brut,
 non versionné). Tient un journal d'exécution
 dans `resultats/pilote/` (versionné). Ne fait ni le découpage ni l'indexation.
 
@@ -48,8 +48,7 @@ DELAI = 2.0            # secondes entre deux requêtes (politesse)
 MINIMUM_PAGES = 10     # en dessous, on arrête et on diagnostique
 
 # Corpus brut sous DATA_DIR (non versionné) ; journal d'exécution sous RESULTATS_DIR (versionné).
-DOSSIER_PILOTE = Path(config.DATA_DIR) / "pilote"
-DOSSIER_PAGES = DOSSIER_PILOTE / "pages"
+DOSSIER_PAGES = Path(config.DATA_DIR) / "pages" / "pilote"
 JOURNAL = config.RESULTATS_DIR / "pilote" / "journal_scraping_pilote.md"
 
 

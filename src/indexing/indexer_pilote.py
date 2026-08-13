@@ -6,7 +6,7 @@ Indexation pilote — fragments, embeddings, Chroma
 
 Responsabilité
 ──────────────
-Lire les pages scrapées (un JSON par page sous DATA_DIR/pilote/pages/), les
+Lire les pages scrapées (un JSON par page sous DATA_DIR/pages/pilote/), les
 découper en fragments (Annexe 2 : 200 mots, recouvrement 40), les encoder avec
 Qwen (documents sans consigne) et les écrire dans une base Chroma persistante,
 chaque fragment portant ses métadonnées (url, titre, section,
@@ -50,7 +50,7 @@ MODELE_EMBEDDINGS = "qwen3-embedding:0.6b"
 TAILLE_FRAGMENT = 200      # mots par fragment (Annexe 2)
 RECOUVREMENT = 40          # mots de recouvrement (Annexe 2)
 
-DOSSIER_PAGES = Path(config.DATA_DIR) / "pilote" / "pages"
+DOSSIER_PAGES = Path(config.DATA_DIR) / "pages" / "pilote"
 CHROMA_DIR = Path(config.CHROMA_PERSIST_DIR)
 
 

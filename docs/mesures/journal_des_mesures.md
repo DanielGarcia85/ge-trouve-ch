@@ -276,3 +276,46 @@ puis GARCIAD (11.08, V0/V3). Le détail des réponses est archivé dans le dép�
 ont été **retrouvés dans les pages sources correspondantes** du corpus pilote (recherche plein texte sur
 `data/pilote/pages/`). V3 n'invente pas : sa richesse vient des extraits. Constat central pour la fidélité
 (chapitre 7).
+
+---
+
+## 2026-08-13 — Indexation du corpus complet — poste DANIELGARCIA
+
+**Poste.** DANIELGARCIA · AMD Ryzen 7 7840HS · secteur, mise en veille désactivée
+(`powercfg /change standby-timeout-ac 0`). OneDrive suspendu pendant l'écriture de la base.
+
+**Objet.** Indexation du corpus complet (4304 pages ge.ch + geneve.ch ; voir
+`resultats/complet/journal_scraping.md`) via `indexer_complet.py` : découpage 200 mots / recouvrement 40,
+embeddings Qwen (documents sans consigne), encodage et écriture par lots de 50 pages, reconstruction propre
+de la base de production `data/chroma/`.
+
+**Résultats.**
+
+| Grandeur | Valeur |
+|---|---|
+| Pages indexées | 4304 |
+| Fragments | 9651 (2,24 par page) |
+| Débit d'encodage | 0,8 fragment/s |
+| Taille base Chroma | 190,9 Mo |
+| Dimension des vecteurs | 1024 |
+
+- Métadonnées par fragment : `url`, `titre`, `date_capture`, `position` (pas de `section`, contrairement au
+  pilote : le corpus complet ne la porte pas ; le titre est extrait de chaque page au scraping).
+- **9651 fragments conformes au décompte déterministe** (découpage seul, sans encodage) : aucun doublon,
+  rien de manquant. Débit **0,8 fragment/s**, identique à l'index pilote (même modèle, même CPU).
+
+**Interruption et reprise (fait notable).** La première passe s'est arrêtée à **2750/4304 pages** (6146
+fragments écrits) : le poste s'est mis en veille, la requête à Ollama a expiré (`ReadTimeout`). Après
+désactivation de la veille, reprise avec l'option `--reprise` : les 2750 URL déjà indexées ont été sautées,
+les **1554 pages restantes** traitées en **70,5 min**. Durées mesurées : **124,4 min** pour la première
+passe (2750 pages), **70,5 min** pour la reprise (1554 pages), soit ~195 min de calcul effectif. La base
+finale (9651 fragments) est identique à ce qu'aurait produit une passe unique : les IDs Chroma étant des
+empreintes du contenu, la reprise n'introduit aucun doublon.
+
+**Contrôle qualitatif.** Question type « Où déposer ma demande de permis de séjour ? » via
+`repondre_pilote.py` sur le corpus complet : réponse fondée et sourcée, **plus complète que sur le pilote**
+(elle couvre l'arrivée d'un autre canton, la recherche d'emploi, le regroupement familial et l'asile,
+toutes présentes dans le corpus élargi), avec liens officiels cités **dont un lien vers une fiche document**
+(`ge.ch/document/aide-pratique-…`). Cela valide en situation la préservation des liens décidée à l'étape 3 :
+l'assistant pointe vers un document sans que la page document ait été scrapée. Mode direct confirmé
+(réflexion vide).

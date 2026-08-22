@@ -79,7 +79,7 @@ contrôle humain).
 
 ---
 
-## Sous-étapes de l'étape 3 *(en cours)*
+## Sous-étapes de l'étape 3 *(terminée)*
 
 Ossature prévisionnelle ; les commandes s'ajoutent à mesure de l'exécution. Le corpus est **cantonal** :
 `ge.ch` et `geneve.ch`. La législation (`silgeneve.ch`), les autres communes et les assurances sociales
@@ -91,6 +91,21 @@ restent des extensions ouvertes, activées seulement si l'évaluation révèle u
 - **3.4 Scraping complet** : `robots.txt` vérifié par domaine (refus = arrêt, aucun contournement), délai ≥ 2 s, titre extrait de chaque page, reprise (page déjà scrapée sautée), journal résumé. **Commande :** `python src\scraping\scrape_complet.py`.
 - **3.5 Indexation complète et mesures** : reconstruction propre, encodage par lots avec reprise, métadonnées par fragment (`url`, `titre`, `date_capture`, `position`) ; **liens vers les PDF/documents conservés** (le contenu des PDF n'est pas indexé à ce stade, à revoir si l'évaluation le justifie) ; contrôle qualitatif (réponse type avec lien) ; mesures au journal. **Commandes :** `python src\indexing\indexer_complet.py` ; `python src\indexing\indexer_complet.py --reprise` (après interruption).
 - **3.6 Clôture** : entrée au journal des décisions (corpus arrêté et volumes, préservation des liens, PDF en liens) ; renommage `repondre_pilote.py` → `repondre.py` ; plan et documentation à jour ; rédaction de la section 10.6.
+
+---
+
+## Sous-étapes de l'étape 4 *(à venir)*
+
+L'interface **Streamlit** (arrêtée en 9.5) qui appelle directement `src/repondre.py` et affiche la réponse
+avec ses pages sources. Une pièce d'assemblage locale, pas un maillon RAG : le pipeline est consommé tel
+quel (consigne V3, régime de production, top_k 5), sans retouche.
+
+- **4.1 État des lieux** *(lecture seule)* : dépôt propre, venv, Ollama et modèles, base complète présente (`data/chroma/`, 9651 fragments), `src/repondre.py` opérationnel.
+- **4.2 Mesure préalable** : latence de bout en bout sur le corpus complet (question type, régime de production ; une passe à froid puis trois à chaud, médiane, sur DANIELGARCIA au repos). Session datée au journal des mesures.
+- **4.3 Dépendance** : `streamlit` épinglé dans `requirements.txt` (installé depuis PyPI après GO). **Commande :** `pip install streamlit`.
+- **4.4 Application** : page de conversation (titre, champ de question, réponse en markdown avec liens cliquables, bloc « Pages sources ») appelant `repondre.py`. Deux sous-décisions à proposer avant d'implémenter : diffusion progressive de la réponse (streaming) et préchargement des modèles au lancement.
+- **4.5 Exécution, captures et mesures** : test sur la question type et une question hors corpus ; captures d'écran (matière du chapitre 11) dans `resultats/interface/` ; mesures d'expérience (premier élément affiché, temps total) au journal.
+- **4.6 Clôture** : entrée au journal des décisions (structure retenue, les deux sous-décisions et leurs motifs, mesures) ; plan et documentation à jour ; prompt de retour pour Claude.ai.
 
 ---
 

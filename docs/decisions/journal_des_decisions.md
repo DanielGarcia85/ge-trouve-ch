@@ -8,6 +8,23 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-13 — Chapitre 10 complet : l'étape 3 racontée au mémoire
+
+**Nature.** Jalon rédactionnel, sans décision technique nouvelle. La section 10.6 (corpus complet :
+découverte, scraping, indexation) est rédigée et insérée ; le chapitre 10 est complet et fermé.
+
+**Lien avec le mémoire.** Chapitre 10 (Partie 2), sections 10.1 à 10.6 ; Annexe 2 (mesures) à jour pour
+l'étape 3.
+
+**Ce qui est fait.** La 10.6 raconte et justifie l'étape 3 (méthode de découverte par sitemap, périmètre
+cantonal, scraping responsable, préservation des liens, indexation, mesures, reprise), chiffres croisés
+sur les journaux. Détail des faits et chiffres : entrée du 13.08 (clôture de l'étape 3) et journal des mesures.
+
+**Ce qui reste ouvert.** Interface (étape 4, en cours), déploiement (étape 5), évaluation RAGAS (Partie 3),
+conclusion de la Partie 1.
+
+---
+
 ## 2026-08-13 — Clôture de l'étape 3 : corpus complet scrapé, indexé, pipeline de production
 
 **Nature.** Clôture de l'étape 3. Le pipeline RAG tourne désormais de bout en bout sur le corpus cantonal

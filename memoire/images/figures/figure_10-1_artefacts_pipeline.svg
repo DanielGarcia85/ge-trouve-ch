@@ -1,0 +1,86 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="fg" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#475569"/></marker>
+    <marker id="fp" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#92400E"/></marker>
+  </defs>
+
+  <text x="500" y="44" text-anchor="middle" font-size="17" fill="#334155">Ce que la chaîne d'indexation crée physiquement sur la machine, en deux artefacts régénérables :</text>
+
+  <!-- Pastilles de traitement -->
+  <rect x="217" y="86" width="210" height="34" rx="17" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.4"/>
+  <g stroke="#475569" stroke-width="2" fill="none">
+    <circle cx="245" cy="103" r="7"/>
+    <path d="M245,92 v-4 M245,114 v4 M234,103 h-4 M256,103 h4 M237,95 l-3,-3 M253,95 l3,-3 M237,111 l-3,3 M253,111 l3,3"/>
+  </g>
+  <text x="342" y="108" text-anchor="middle" font-size="14.5" fill="#334155">scraping, délai 2 s</text>
+
+  <rect x="575" y="86" width="210" height="34" rx="17" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.4"/>
+  <g stroke="#475569" stroke-width="2" fill="none">
+    <circle cx="603" cy="103" r="7"/>
+    <path d="M603,92 v-4 M603,114 v4 M592,103 h-4 M614,103 h4 M595,95 l-3,-3 M611,95 l3,-3 M595,111 l-3,3 M611,111 l3,3"/>
+  </g>
+  <text x="700" y="108" text-anchor="middle" font-size="14.5" fill="#334155">découpage + Qwen</text>
+
+  <!-- Boîte 1 : pages en ligne -->
+  <rect x="30" y="130" width="270" height="210" rx="12" fill="#FFFFFF" stroke="#64748B" stroke-width="1.8"/>
+  <g stroke="#3B82F6" stroke-width="2" fill="#EFF6FF">
+    <circle cx="165" cy="172" r="22"/>
+    <ellipse cx="165" cy="172" rx="22" ry="9" fill="none"/>
+    <ellipse cx="165" cy="172" rx="9" ry="22" fill="none"/>
+    <path d="M143,172 h44" fill="none"/>
+  </g>
+  <text x="165" y="228" text-anchor="middle" font-size="19" font-weight="700" fill="#334155">Pages en ligne</text>
+  <text x="165" y="260" text-anchor="middle" font-size="15.5" fill="#475569">ge.ch et geneve.ch</text>
+  <text x="165" y="285" text-anchor="middle" font-size="15.5" fill="#475569">4 322 adresses</text>
+  <text x="165" y="310" text-anchor="middle" font-size="15.5" fill="#475569">au manifeste versionné</text>
+
+  <line x1="300" y1="235" x2="346" y2="235" stroke="#475569" stroke-width="2.6" marker-end="url(#fg)"/>
+
+  <!-- Boîte 2 : un JSON par page -->
+  <rect x="352" y="130" width="300" height="210" rx="12" fill="#F0FDF4" stroke="#059669" stroke-width="1.8"/>
+  <rect x="494" y="150" width="40" height="48" rx="4" fill="#DCFCE7" stroke="#059669" stroke-width="1.6"/>
+  <path d="M478,158 h28 l12,12 v36 h-40 z" fill="#FFFFFF" stroke="#059669" stroke-width="1.8"/>
+  <path d="M506,158 l12,12 h-12 z" fill="#BBF7D0" stroke="#059669" stroke-width="1.4"/>
+  <text x="497" y="190" text-anchor="middle" font-size="15" font-weight="700" fill="#065F46">{ }</text>
+  <text x="502" y="228" text-anchor="middle" font-size="19" font-weight="700" fill="#065F46">Un fichier JSON par page</text>
+  <text x="502" y="260" text-anchor="middle" font-size="15.5" fill="#14532D">data/pages/complet/ : 4 304 fichiers</text>
+  <text x="502" y="285" text-anchor="middle" font-size="15.5" fill="#14532D">url, titre, date de capture,</text>
+  <text x="502" y="310" text-anchor="middle" font-size="15.5" fill="#14532D">texte avec liens</text>
+
+  <line x1="652" y1="235" x2="698" y2="235" stroke="#475569" stroke-width="2.6" marker-end="url(#fg)"/>
+
+  <!-- Boîte 3 : base Chroma (cylindre) -->
+  <rect x="704" y="130" width="266" height="210" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+  <path d="M791,154 v36" stroke="#F59E0B" stroke-width="2" fill="none"/>
+  <path d="M883,154 v36" stroke="#F59E0B" stroke-width="2" fill="none"/>
+  <ellipse cx="837" cy="190" rx="46" ry="11" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <rect x="791" y="154" width="92" height="36" fill="#FEF3C7"/>
+  <ellipse cx="837" cy="154" rx="46" ry="11" fill="#FDE68A" stroke="#F59E0B" stroke-width="2"/>
+  <text x="837" y="228" text-anchor="middle" font-size="19" font-weight="700" fill="#92400E">La base Chroma</text>
+  <text x="837" y="260" text-anchor="middle" font-size="15.5" fill="#78350F">data/chroma/ : 191 Mo</text>
+  <text x="837" y="285" text-anchor="middle" font-size="15.5" fill="#78350F">9 651 fragments encodés</text>
+  <text x="837" y="310" text-anchor="middle" font-size="15.5" fill="#78350F">url, titre, date, position</text>
+
+  <!-- Lecture par le pipeline -->
+  <line x1="837" y1="340" x2="837" y2="372" stroke="#B45309" stroke-width="2.2" marker-end="url(#fp)"/>
+  <g stroke="#92400E" stroke-width="2.4" fill="none">
+    <circle cx="718" cy="402" r="11"/>
+    <path d="M726,410 l12,12"/>
+  </g>
+  <text x="872" y="398" text-anchor="middle" font-size="15" fill="#92400E">lue à chaque question</text>
+  <text x="872" y="420" text-anchor="middle" font-size="15" fill="#92400E">par le pipeline (src/repondre.py)</text>
+
+  <!-- Bande basse : versionné / régénérable -->
+  <rect x="30" y="458" width="940" height="104" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+  <line x1="500" y1="474" x2="500" y2="546" stroke="#CBD5E1" stroke-width="1.2"/>
+  <g fill="#475569">
+    <circle cx="130" cy="492" r="5.5"/>
+    <circle cx="130" cy="530" r="5.5"/>
+    <circle cx="158" cy="511" r="5.5"/>
+  </g>
+  <path d="M130,497 v28 M133,508 L153,511" stroke="#475569" stroke-width="2.4" fill="none"/>
+  <text x="312" y="506" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">Versionné au dépôt</text>
+  <text x="312" y="532" text-anchor="middle" font-size="15" fill="#475569">le manifeste et le pipeline d'ingestion</text>
+  <text x="735" y="506" text-anchor="middle" font-size="16" font-weight="700" fill="#065F46">Hors dépôt, régénérables</text>
+  <text x="735" y="532" text-anchor="middle" font-size="15" fill="#14532D">les JSON du corpus et la base, à la demande</text>
+</svg>

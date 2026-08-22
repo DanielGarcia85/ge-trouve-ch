@@ -22,7 +22,7 @@
   <!-- A2 Manifeste -->
   <rect x="150" y="210" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
   <text x="500" y="233" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Manifeste des sources</text>
-  <text x="500" y="255" text-anchor="middle" font-size="15.5" fill="#14532D">fichier versionné : adresse de la page, section, date de capture</text>
+  <text x="500" y="255" text-anchor="middle" font-size="15.5" fill="#14532D">fichier versionné : les adresses des pages retenues</text>
   <line x1="500" y1="268" x2="500" y2="288" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
 
   <!-- A3 Scraping -->
@@ -34,7 +34,7 @@
   <!-- A4 Découpage -->
   <rect x="150" y="378" width="700" height="58" rx="9" fill="#F0FDF4" stroke="#059669" stroke-width="1.6"/>
   <text x="500" y="401" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Découpage en fragments</text>
-  <text x="500" y="423" text-anchor="middle" font-size="15.5" fill="#14532D">fragments courts porteurs de leurs métadonnées : source, section, date de capture</text>
+  <text x="500" y="423" text-anchor="middle" font-size="15.5" fill="#14532D">fragments courts porteurs de leurs métadonnées : source, titre, date de capture</text>
   <line x1="500" y1="436" x2="500" y2="456" stroke="#475569" stroke-width="2.2" marker-end="url(#fg)"/>
 
   <!-- A5 Embeddings -->

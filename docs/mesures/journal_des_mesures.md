@@ -319,3 +319,45 @@ toutes présentes dans le corpus élargi), avec liens officiels cités **dont un
 (`ge.ch/document/aide-pratique-…`). Cela valide en situation la préservation des liens décidée à l'étape 3 :
 l'assistant pointe vers un document sans que la page document ait été scrapée. Mode direct confirmé
 (réflexion vide).
+
+---
+
+## 2026-08-13 — Étape 4, mesure préalable : latence sur le corpus complet — poste GARCIAD
+
+**Poste.** GARCIAD · Intel Core i7-12700 · 16 Go DDR4 · Windows 10 · secteur, OneDrive suspendu, au repos
+(VS Code ouvert).
+
+**Objet.** Latence de bout en bout du pipeline de production (`repondre.py`, consigne V3, régime de
+production, top_k 5) sur le corpus complet (9651 fragments), question type « Où déposer ma demande de
+permis de séjour ? ». `bench_pipeline.py` : une passe à froid, trois à chaud, médiane.
+
+**Résultats.**
+
+| Grandeur | Valeur |
+|---|---|
+| Latence à froid | 268,6 s (chargements Qwen + Gemma inclus ; Gemma 39,8 s) |
+| Latence à chaud (3 passes) | 195,0 / 193,8 / 231,7 s |
+| Latence à chaud (médiane) | **195,0 s** |
+| dont génération (eval Ollama) | 212,0 s pour **735 jetons** |
+| dont encodage requête + recherche | **≈ 0 s** |
+| RAM du pipeline chargé | 15,0 / 15,7 Go utilisée, 0,7 Go libre |
+| Empreinte modèles (`ollama ps`) | Gemma 8,9 + Qwen 2,4 = 11,3 Go, 100 % CPU |
+
+**Constats.**
+- **La recherche ne pèse rien** : encodage requête + recherche ≈ 0 s, alors que la base est passée de 72
+  à 9651 vecteurs. La latence est **entièrement** dans la génération ; passer à l'échelle du corpus complet
+  n'a aucun coût côté recherche.
+- **La réponse est bien plus longue qu'au pilote** : 735 jetons ici contre 107 pour la même question à
+  l'étape 2 (DANIELGARCIA). Le corpus complet remonte davantage de cas pertinents (arrivée d'un autre
+  canton, emploi, regroupement familial, asile) et la consigne V3 « réponse complète » les détaille tous.
+  D'où une génération longue (~3,5 jetons/s sur ce CPU) et une latence de plus de trois minutes. Ce n'est
+  pas propre à garciad : à ~4,6 jetons/s sur DANIELGARCIA, 735 jetons feraient encore ~2,5 min.
+- **RAM tout juste** : 0,7 Go libre avec Gemma + Qwen + Chroma + VS Code sur 16 Go. Confirme que 16 Go est
+  un plancher extrême (constat de l'étape 1).
+
+**Pistes d'amélioration (hors étape 4).**
+- **Diffusion progressive (streaming)** dans l'interface : retenue pour l'étape 4 ; ne raccourcit pas la
+  génération mais rend l'attente supportable (la réponse s'affiche au fur et à mesure).
+- **Longueur de la réponse / consigne V3** : à réexaminer lors de l'**évaluation RAGAS (Partie 3)**, qui
+  fournira des données (pertinence de la réponse, fidélité) pour décider si la complétude de V3 doit être
+  tempérée. Pas de retouche du pipeline à ce stade.

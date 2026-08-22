@@ -1,13 +1,13 @@
 # scripts/mesures/bench_pipeline.py
 
 """
-Mesure du pipeline de réponse pilote — latence et RAM
+Mesure du pipeline de réponse — latence et RAM
 ─────────────────────────────────────────────────────────────────────────────
 
 Responsabilité
 ──────────────
-Mesurer la latence de bout en bout du pipeline de réponse (étape 1.5) sur la
-question type : une exécution à froid puis trois à chaud, médiane. Lit le détail
+Mesurer la latence de bout en bout du pipeline de réponse sur la question type :
+une exécution à froid puis trois à chaud, médiane. Lit le détail
 de génération dans la métadonnée Ollama (chargement, évaluation, jetons). Archive
 la réponse et ses fragments pour le mémoire. Relève enfin la RAM du pipeline
 chargé (Qwen, Gemma et Chroma résidents) via `releve_ram.ps1`, exécuté tant que
@@ -27,7 +27,7 @@ import config  # noqa: E402
 import repondre as rp  # noqa: E402
 
 RELEVE_RAM = RACINE / "scripts" / "mesures" / "releve_ram.ps1"
-ARCHIVE = config.RESULTATS_DIR / "pilote" / "reponse_pilote.md"
+ARCHIVE = config.RESULTATS_DIR / "complet" / "reponse.md"
 
 
 def une_execution(pipe, question, requete_instruite):
@@ -45,7 +45,7 @@ def une_execution(pipe, question, requete_instruite):
 
 def archiver(question, reply, documents):
     """Écrit la réponse et ses fragments dans un fichier (matière pour le mémoire)."""
-    lignes = [f"# Réponse pilote — {question}", "", "## Réponse", "", reply.text, "", "## Fragments utilisés", ""]
+    lignes = [f"# Réponse — {question}", "", "## Réponse", "", reply.text, "", "## Fragments utilisés", ""]
     for doc in documents:
         lignes.append(f"- {doc.meta.get('url')}")
     ARCHIVE.parent.mkdir(parents=True, exist_ok=True)

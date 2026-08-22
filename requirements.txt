@@ -1,12 +1,20 @@
 # Dépendances Python — ge-trouve.ch
 # -----------------------------------
-# Python 3.13 · mise à jour : 2026-08-06
+# Python 3.13 · mise à jour : 2026-08-13
 # Seuls les paquets de haut niveau réellement utilisés sont épinglés ;
 # les dépendances transitives sont laissées à pip.
 
+# Framework d'orchestration RAG (pipelines explicites, composant par composant), licence Apache-2.0
 haystack-ai==3.0.0
+
+# Intégration Haystack-Ollama (embeddings et génération servis en local par Ollama), licence Apache-2.0
 ollama-haystack==6.8.0
+
+# Intégration Haystack-Chroma (base vectorielle : ChromaDocumentStore et retriever dense), licence Apache-2.0
 chroma-haystack==4.4.0
 
 # Extraction du contenu principal des pages HTML (moteur de HTMLToDocument), licence Apache-2.0
 trafilatura==2.2.0
+
+# Interface web (page de conversation locale), licence Apache-2.0
+streamlit==1.62.0

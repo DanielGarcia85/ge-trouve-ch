@@ -141,7 +141,7 @@ ge-trouve-ch/
 │   ├── notes_rdv/                  ← Notes des rendez-vous avec le directeur
 │   └── heg/                        ← Directives officielles HEG
 ├── src/                            ← Code source Python
-│   ├── config.py                   ← Configuration partagée (.env, chemins)
+│   ├── config.py                   ← Configuration partagée (variables d'env, chemins)
 │   ├── repondre.py                 ← Orchestrateur (recherche + génération)
 │   ├── scraping/                   ← Aspiration des sources officielles
 │   ├── indexing/                   ← Chunking et embeddings
@@ -156,7 +156,6 @@ ge-trouve-ch/
 │   ├── pages/                      ← Corpus brut scrapé (un JSON par page)
 │   └── chroma/                     ← Base vectorielle Chroma
 ├── .streamlit/                     ← Configuration de l'interface Streamlit
-├── .env.example                    ← Modèle de configuration
 ├── requirements.txt                ← Dépendances Python
 └── .gitignore
 ```

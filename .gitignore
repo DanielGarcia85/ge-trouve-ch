@@ -1,8 +1,3 @@
-# --- Secrets (le .env n'est jamais commité ; .env.example sert de modèle) ---
-.env
-.env.*
-!.env.example
-
 # --- Configuration éditeur VS Code ---
 # On versionne uniquement settings.json (réglages partagés, interpréteur via
 # ${env:LOCAL_PC_VENV}) ; tout le reste de .vscode/ reste local à la machine.

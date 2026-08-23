@@ -87,7 +87,7 @@ def construire_pipeline(consigne=None, options=None, streaming_callback=None):
     pipe.add_component(
         "generator",
         OllamaChatGenerator(
-            model=config.OLLAMA_MODEL, url=config.OLLAMA_BASE_URL, think=False,
+            model=config.OLLAMA_GENERATION_MODEL, url=config.OLLAMA_BASE_URL, think=False,
             timeout=TIMEOUT_GENERATION, generation_kwargs=options,
             streaming_callback=streaming_callback,
         ),

@@ -1,0 +1,15 @@
+# Configuration de l'interface Ge-Trouve (lue par Streamlit au lancement, depuis la racine).
+
+[theme]
+base = "light"
+primaryColor = "#C8102E"              # accent rouge genevois
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F3F4F6"  # fond des bulles de conversation
+textColor = "#1F2430"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false              # aucune télémétrie : application strictement locale
+
+[client]
+toolbarMode = "minimal"               # masque les outils développeur (menu, Deploy, raccourcis clavier)

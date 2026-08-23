@@ -110,6 +110,25 @@ retrait de la liste « Sources » redondante avec la barre latérale ; voir jour
 
 ---
 
+## Sous-étapes de l'étape 5 *(à venir)*
+
+Déploiement du système sur un VPS Infomaniak (Serveur Cloud, 6 vCPU / 18 Go, Ubuntu 24.04 LTS, datacenter
+suisse), conteneurisé avec Docker Compose (services Ollama, application Streamlit, reverse proxy Caddy) et
+livré par un pipeline GitHub Actions avec un runner self-hosted sur le VPS. Principe : rendre le service
+vivant d'abord (5.1 à 5.4), brancher le pipeline ensuite (5.5 et 5.6). L'organisation des fichiers et le
+patron du runner reprennent une infrastructure existante de l'auteur (serveur « Danny Boy »), en adaptant
+nginx en Caddy et sans base PostgreSQL (la seule donnée persistante est la base Chroma, régénérable).
+
+- **5.1 Préparation du serveur** *(après souscription)* : accès SSH par clé, mises à jour, comptes dédiés (`danielgarcia` admin, `github-runner` service), groupes `docker` et `deploy`, pare-feu UFW (22, 80, 443), durcissement SSH (authentification par clé seule, login root désactivé, fail2ban), installation de Docker et du plugin Compose. **Commandes :** `apt update && apt upgrade` ; `ufw allow 22,80,443 && ufw enable` ; installation Docker via `get.docker.com`.
+- **5.2 Conteneurisation** : `Dockerfile` de l'application Streamlit ; `docker-compose.yml` orchestrant les services **ollama**, **app** et **caddy** (volumes pour les modèles Ollama et la base Chroma, réseau interne, `restart: unless-stopped`). Organisation FHS : `/srv/apps/ge-trouve` (app et compose), `/srv/infra/proxy` (Caddy). **Commande :** `docker compose up -d --build`.
+- **5.3 Modèles et base vectorielle** : `ollama pull` de Gemma et Qwen dans le volume du conteneur Ollama ; transfert de la base Chroma (`data/chroma/`, non versionnée) vers le volume monté ; maintien des modèles au chaud (`OLLAMA_KEEP_ALIVE` sans expiration). **Commandes :** `docker compose exec ollama ollama pull gemma4:12b` ; `docker compose exec ollama ollama pull qwen3-embedding:0.6b` ; `rsync` de la base depuis le poste de dev.
+- **5.4 Domaine, proxy et HTTPS** : enregistrement DNS (`ge-trouve.ch` vers l'IP du VPS) ; `Caddyfile` (proxy vers l'app Streamlit, HTTPS automatique) ; l'app n'est jamais joignable directement. Test HTTPS de bout en bout avec la question type. **Service vivant.** **Commande :** `docker compose up -d`.
+- **5.5 Runner GitHub self-hosted** : installation d'un GitHub Actions Runner sur l'hôte (`/opt/runners/github`), exécuté par le compte `github-runner` via un service systemd (patron repris de Danny Boy). **Commandes :** `./config.sh --url <dépôt> --token <jeton>` ; `./svc.sh install` ; `./svc.sh start`.
+- **5.6 Pipeline CI/CD** : `.github/workflows/deploy.yml` : sur push `main`, vérifications rapides (compilation Python) puis déploiement par le runner (`git pull` puis `docker compose up -d --build` dans `/srv/apps/ge-trouve`). **Déploiement automatisé.**
+- **5.7 Mesures de production, sécurité et clôture** : mesures sur le VPS réel (latence, RAM, à froid et à chaud) au journal des mesures ; rédaction d'un **document d'infrastructure** (aide-mémoire sur le modèle de Danny Boy : architecture, organisation des fichiers, flux de déploiement, points de sécurité) ; entrée au journal des décisions (architecture de déploiement) ; plan et documentation à jour.
+
+---
+
 ## Règle transversale
 
 Chaque jalon technique produit **dans la foulée** sa section rédigée du mémoire, ses mesures datées et

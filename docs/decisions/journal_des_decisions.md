@@ -8,6 +8,36 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-23 — Étape 5 : architecture de déploiement (VPS souverain, Docker, CI/CD)
+
+**Ce qui est arrêté.** Le système sera déployé sur un **VPS Infomaniak Serveur Cloud** (datacenter suisse),
+palier de confort **6 vCPU / 18 Go de RAM** (confirmé par les mesures : Gemma + Qwen tiennent à l'aise à
+18 Go), **Ubuntu 24.04 LTS**. La pile est **conteneurisée avec Docker Compose** (Ollama, application
+Streamlit, reverse proxy **Caddy** pour l'HTTPS automatique) et livrée par un **pipeline GitHub Actions**
+avec un **runner self-hosted sur le VPS** (compte dédié, service systemd) qui déploie sur un push `main`.
+Ordre d'exécution : service vivant d'abord, pipeline ensuite. Sous-étapes détaillées dans
+`docs/plan_developpement.md`.
+
+**Motifs.**
+- **Souveraineté** : tout reste sur le serveur suisse (inférence et déploiement) ; le runner self-hosted
+  garde même la chaîne CI/CD dans le serveur, pas sur une infrastructure tierce.
+- **Reproductibilité** : Docker Compose fige l'assemblage des briques ; un `docker compose up` relance tout.
+- **Sécurité dès le départ** : UFW (22/80/443), SSH par clé seule, login root désactivé, fail2ban ; comptes
+  et groupes dédiés (`docker`, `deploy`) plutôt que root. Ces mesures reprennent et devancent les
+  recommandations de durcissement d'une infrastructure antérieure de l'auteur.
+- **Patron éprouvé** : l'organisation des fichiers (`/srv/apps`, `/srv/infra`, `/opt/runners`) et le flux du
+  runner GitHub sont repris d'un serveur existant de l'auteur (adaptation : Caddy au lieu de nginx, pas de
+  base PostgreSQL, la seule donnée persistante étant la base Chroma).
+
+**Cadre à garder en tête.** Le déploiement et le CI/CD sont un **apport d'ingénierie et de vitrine** (dépôt
+public, démonstration de compétences DevOps), **pas le cœur de la recherche**. Le cœur reste l'apport RAG
+(assembler les briques pour combler un vide francophone et local) et son **évaluation** (Partie 3). Les
+aspects techniques de déploiement restent donc **instrumentaux et proportionnés** dans le mémoire.
+
+**Lien avec le mémoire.** Partie 2, chapitre du déploiement.
+
+---
+
 ## 2026-08-23 — Étape 4 : interface Streamlit et révision de la consigne (V5)
 
 **Ce qui est arrêté.** L'interface web locale (`src/app/app.py`, configuration `.streamlit/config.toml`)

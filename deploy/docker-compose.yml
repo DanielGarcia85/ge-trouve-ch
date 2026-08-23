@@ -5,12 +5,13 @@
 #
 # Responsabilité
 # ──────────────
-# Décrire et relier les trois conteneurs du système déployé sur le VPS :
-#   - ollama : sert les modèles (Gemma rédacteur, Qwen embeddings) ;
-#   - app    : l'interface Streamlit + le pipeline RAG (image construite ici) ;
-#   - caddy  : le proxy frontal, HTTPS automatique, seul exposé à Internet.
+# Décrire et relier les services du système déployé sur le VPS :
+#   - ollama      : sert les modèles (Gemma rédacteur, Qwen embeddings) ;
+#   - ollama-pull : tire une fois les modèles déclarés par config.py, puis s'arrête ;
+#   - app         : l'interface Streamlit + le pipeline RAG (image construite ici) ;
+#   - caddy       : le proxy frontal, HTTPS automatique, seul exposé à Internet.
 # Un seul réseau privé les relie ; ils se joignent par leur nom de service.
-# Ce fichier ne pull pas les modèles et ne construit pas l'index.
+# Ce fichier ne construit pas l'index.
 #
 # Exécution attendue (sur le VPS, depuis le dossier deploy/) :
 #   docker compose up -d --build
@@ -29,6 +30,25 @@ services:
     volumes:
       # Modèles rangés dans un volume nommé (donc sur /mnt/data via data-root).
       - ollama-models:/root/.ollama
+    healthcheck:
+      # « le serveur est-il prêt ? » : `ollama list` interroge le serveur local du conteneur.
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    networks:
+      - interne
+
+  # ── Provisionnement : tire les modèles déclarés par config.py, puis s'arrête ──
+  ollama-pull:
+    image: ge-trouve-app:local            # notre image : contient config.py, le script et le client ollama
+    depends_on:
+      ollama:
+        condition: service_healthy        # attend qu'Ollama réponde avant de tirer
+    environment:
+      OLLAMA_BASE_URL: "http://ollama:11434"
+    command: ["python", "src/pull_modeles.py"]
+    restart: "no"                         # tâche unique : se lance, tire, s'arrête
     networks:
       - interne
 
@@ -49,7 +69,10 @@ services:
       # ne fait que lire l'index (chemin hôte propre à ce VPS).
       - /mnt/data/chroma:/app/data/chroma:ro
     depends_on:
-      - ollama
+      ollama:
+        condition: service_healthy
+      ollama-pull:
+        condition: service_completed_successfully   # ne démarre qu'une fois les modèles tirés
     networks:
       - interne
 

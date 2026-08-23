@@ -35,6 +35,9 @@ def _lire(cle, defaut):
 OLLAMA_BASE_URL = _lire("OLLAMA_BASE_URL", "http://localhost:11434")  # serveur Ollama local (inférence)
 OLLAMA_GENERATION_MODEL = _lire("OLLAMA_GENERATION_MODEL", "gemma4:12b")  # LLM rédacteur servi par Ollama
 OLLAMA_EMBEDDING_MODEL = _lire("OLLAMA_EMBEDDING_MODEL", "qwen3-embedding:0.6b")  # modèle d'embeddings servi par Ollama
+# Modèles à provisionner sur le serveur Ollama (tirés une fois par le service ollama-pull) ;
+# ajouter un modèle à tirer = une ligne ici, sans toucher au script de pull.
+MODELES_A_TIRER = (OLLAMA_GENERATION_MODEL, OLLAMA_EMBEDDING_MODEL)
 CHROMA_PERSIST_DIR = _lire("CHROMA_PERSIST_DIR", "./data/chroma")  # base vectorielle Chroma (persistante)
 DATA_DIR = _lire("DATA_DIR", "./data")  # corpus brut scrapé (non versionné)
 RESULTATS_DIR = RACINE / "resultats"  # nos artefacts versionnés (chemin fixe dans le dépôt, non configurable)

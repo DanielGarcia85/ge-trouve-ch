@@ -322,42 +322,61 @@ l'assistant pointe vers un document sans que la page document ait été scrapée
 
 ---
 
-## 2026-08-13 — Étape 4, mesure préalable : latence sur le corpus complet — poste GARCIAD
+## 2026-08-23 — Étape 4, latence de l'interface (streaming) sous consigne V5 — postes GARCIAD et DANIELGARCIA
 
-**Poste.** GARCIAD · Intel Core i7-12700 · 16 Go DDR4 · Windows 10 · secteur, OneDrive suspendu, au repos
-(VS Code ouvert).
+**Objet.** Latence du pipeline de production (`repondre.py`, consigne **V5**, régime de production, top_k 5)
+sur la question type « Où déposer ma demande de permis de séjour ? », dans les **deux modes** de
+`bench_pipeline.py` : **appel direct** (réponse d'un bloc, équivalent de la mesure préalable prévue à
+l'étape 4.2) et **`--streaming`** (appel comme l'app, qui relève en plus le **temps jusqu'au premier mot**,
+la latence perçue). Une passe à froid, trois à chaud (médiane). Départ à froid garanti par un `ollama stop`
+des deux modèles avant chaque exécution ; Streamlit fermé.
 
-**Objet.** Latence de bout en bout du pipeline de production (`repondre.py`, consigne V3, régime de
-production, top_k 5) sur le corpus complet (9651 fragments), question type « Où déposer ma demande de
-permis de séjour ? ». `bench_pipeline.py` : une passe à froid, trois à chaud, médiane.
+**Postes.**
+- GARCIAD · Intel Core i7-12700 · 16 Go DDR4 · Windows 10 — **poste de référence**, le plus proche du palier VPS.
+- DANIELGARCIA · AMD Ryzen 7 7840HS · 32 Go DDR5 · Windows 11 — **contraste** : CPU plus rapide, plus de RAM.
 
-**Résultats.**
+**Résultats à chaud (médiane sur 3 ; production = modèles résidents).**
 
-| Grandeur | Valeur |
-|---|---|
-| Latence à froid | 268,6 s (chargements Qwen + Gemma inclus ; Gemma 39,8 s) |
-| Latence à chaud (3 passes) | 195,0 / 193,8 / 231,7 s |
-| Latence à chaud (médiane) | **195,0 s** |
-| dont génération (eval Ollama) | 212,0 s pour **735 jetons** |
-| dont encodage requête + recherche | **≈ 0 s** |
-| RAM du pipeline chargé | 15,0 / 15,7 Go utilisée, 0,7 Go libre |
-| Empreinte modèles (`ollama ps`) | Gemma 8,9 + Qwen 2,4 = 11,3 Go, 100 % CPU |
+| Grandeur | GARCIAD direct | GARCIAD streaming | DANIELGARCIA direct | DANIELGARCIA streaming |
+|---|---|---|---|---|
+| Temps jusqu'au premier mot | n/a | **1,0 s** | n/a | **3,5 s** |
+| Temps total | 132,3 s | 124,7 s | 87,1 s | 80,2 s |
+| dont génération (eval Ollama) | 131,2 s / 455 jetons | 123,7 s / 428 jetons | 75,3 s / 365 jetons | 73,2 s / 353 jetons |
+| encodage requête + recherche (reste) | ~1,1 s | ~1,0 s | ~11,9 s | ~7,1 s |
+
+**Résultats à froid (chargement des modèles ; n'arrive qu'au démarrage du VPS).**
+
+| Grandeur | GARCIAD direct | GARCIAD streaming | DANIELGARCIA direct | DANIELGARCIA streaming |
+|---|---|---|---|---|
+| Temps jusqu'au premier mot | n/a | 86,6 s | n/a | 103,4 s |
+| Temps total | 221,4 s / 388 jetons | 237,9 s / 521 jetons | 179,3 s / 352 jetons | 175,4 s / 348 jetons |
+
+**RAM du pipeline chargé** (système entier, pipeline résident ; modèles = Gemma 8,9 + Qwen 2,4 = 11,3 Go, 100 % CPU) :
+- GARCIAD : 13,8 Go utilisés, **1,9 Go libres** sur 16 (plancher extrême).
+- DANIELGARCIA : ~23 Go utilisés, **4-5 Go libres** sur 27,7 (confortable).
 
 **Constats.**
-- **La recherche ne pèse rien** : encodage requête + recherche ≈ 0 s, alors que la base est passée de 72
-  à 9651 vecteurs. La latence est **entièrement** dans la génération ; passer à l'échelle du corpus complet
-  n'a aucun coût côté recherche.
-- **La réponse est bien plus longue qu'au pilote** : 735 jetons ici contre 107 pour la même question à
-  l'étape 2 (DANIELGARCIA). Le corpus complet remonte davantage de cas pertinents (arrivée d'un autre
-  canton, emploi, regroupement familial, asile) et la consigne V3 « réponse complète » les détaille tous.
-  D'où une génération longue (~3,5 jetons/s sur ce CPU) et une latence de plus de trois minutes. Ce n'est
-  pas propre à garciad : à ~4,6 jetons/s sur DANIELGARCIA, 735 jetons feraient encore ~2,5 min.
-- **RAM tout juste** : 0,7 Go libre avec Gemma + Qwen + Chroma + VS Code sur 16 Go. Confirme que 16 Go est
-  un plancher extrême (constat de l'étape 1).
+- **Le streaming n'ajoute aucun surcoût de calcul** : à chaud, le temps total est le même en appel direct et
+  en streaming (l'écart, 132 vs 125 s sur garciad, vient du nombre de jetons, non-déterministe sans seed). Ce
+  que le streaming apporte, c'est la **latence perçue** : le premier mot en **~1 s** (garciad), alors que la
+  réponse complète met ~2 min à s'écrire. C'est la justification de la décision de streaming de l'étape 4.
+- **Latence de calcul vs latence perçue** : à bien distinguer. Le calcul (temps total) est inchangé par le
+  streaming ; seule la perception change, l'usager lit dès le premier mot.
+- **Débit borné par le matériel** : DANIELGARCIA (Ryzen, DDR5) génère nettement plus vite (eval 75 s contre
+  131 s sur garciad), ce qui confirme que la latence est dans la génération et dépend du CPU et de la bande
+  passante mémoire.
+- **Anomalie assumée sur DANIELGARCIA** : le « reste » (encodage + recherche + traitement du prompt) et le
+  premier mot y sont plus élevés (premier mot 3,5 s ; reste 7-12 s) que sur garciad (~1 s), alors que la
+  machine est plus rapide en génération. La base Chroma et la requête étant identiques, ce n'est pas la
+  recherche qui est réellement plus lente ; l'explication probable est une activité de fond pendant la mesure
+  (synchronisation OneDrive et cache disque récents) ou une contention mémoire liée à l'iGPU. Non surinterprété.
+- **RAM** : les modèles tiennent partout (11,3 Go). garciad confirme que 16 Go est un plancher extrême (1,9 Go
+  libres) ; le palier de confort 18 Go du VPS est le bon choix.
+- **À froid** : 66 à 103 s avant le premier mot (chargement de Gemma et Qwen). Sur le VPS, en gardant les
+  modèles résidents (`keep_alive`), cela n'arrive qu'au démarrage ; le service tourne ensuite au régime à chaud.
+  À prévoir en étape 5 (déploiement) pour garantir l'expérience « premier mot en ~1 s ».
+- **Effet de la consigne V5** : réponses plus courtes (~350-455 jetons à chaud) qu'en V4 (735 jetons lors des
+  essais antérieurs), la liste « Sources » ayant été retirée (redondante avec la barre latérale de l'interface).
 
-**Pistes d'amélioration (hors étape 4).**
-- **Diffusion progressive (streaming)** dans l'interface : retenue pour l'étape 4 ; ne raccourcit pas la
-  génération mais rend l'attente supportable (la réponse s'affiche au fur et à mesure).
-- **Longueur de la réponse / consigne V3** : à réexaminer lors de l'**évaluation RAGAS (Partie 3)**, qui
-  fournira des données (pertinence de la réponse, fidélité) pour décider si la complétude de V3 doit être
-  tempérée. Pas de retouche du pipeline à ce stade.
+**Captures de l'interface** : `resultats/interface/capture_repos.PNG` (au repos) et
+`resultats/interface/capture_reponse.PNG` (avec une réponse).

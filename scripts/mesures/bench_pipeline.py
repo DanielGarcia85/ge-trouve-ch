@@ -7,14 +7,25 @@ Mesure du pipeline de réponse — latence et RAM
 Responsabilité
 ──────────────
 Mesurer la latence de bout en bout du pipeline de réponse sur la question type :
-une exécution à froid puis trois à chaud, médiane. Lit le détail
-de génération dans la métadonnée Ollama (chargement, évaluation, jetons). Archive
-la réponse et ses fragments pour le mémoire. Relève enfin la RAM du pipeline
-chargé (Qwen, Gemma et Chroma résidents) via `releve_ram.ps1`, exécuté tant que
-ce processus est vivant. Réutilise le pipeline de `repondre`, sans le
-redéfinir.
+une exécution à froid puis trois à chaud, médiane. Lit le détail de génération
+dans la métadonnée Ollama (chargement, évaluation, jetons). Archive la réponse et
+ses fragments pour le mémoire. Relève enfin la RAM du pipeline chargé (Qwen, Gemma
+et Chroma résidents) via `releve_ram.ps1`. Réutilise le pipeline de `repondre`,
+sans le redéfinir.
+
+Deux modes (même sortie, directement comparables)
+─────────────────────────────────────────────────
+  - défaut (appel direct, mesure de type étape 4.2) : le pipeline est appelé en direct,
+    la réponse arrive d'un bloc ; pas de « premier mot ».
+  - `--streaming` (mesure de type étape 4.5) : le pipeline est appelé comme le fait l'app
+    (avec un callback de streaming), mais en direct dans ce processus, SANS lancer Streamlit ;
+    on relève en plus le temps jusqu'au premier mot (la latence PERÇUE, durée du badge).
+
+Comparer les deux modes valide que le streaming n'ajoute pas de surcoût (même temps
+total) et isole ce que l'interface apporte (le premier mot en ~1 s).
 """
 
+import argparse
 import statistics
 import subprocess
 import sys
@@ -29,18 +40,35 @@ import repondre as rp  # noqa: E402
 RELEVE_RAM = RACINE / "scripts" / "mesures" / "releve_ram.ps1"
 ARCHIVE = config.RESULTATS_DIR / "complet" / "reponse.md"
 
+# Rempli par le callback de streaming (mode interface) au premier mot de chaque exécution ;
+# remis à None avant chaque passe. En mode sans interface, il n'y a pas de callback, il reste None.
+_premier = {"t": None}
+
+
+def sur_jeton(chunk):
+    """Horodate le premier mot reçu du générateur (mode interface uniquement)."""
+    if _premier["t"] is None and (getattr(chunk, "content", "") or ""):
+        _premier["t"] = time.perf_counter()
+
 
 def une_execution(pipe, question, requete_instruite):
-    """Exécute le pipeline une fois et renvoie (latence totale, réponse, fragments)."""
+    """
+    Exécute le pipeline une fois.
+
+    Renvoie (temps total, temps jusqu'au premier mot ou None, réponse, fragments). Le temps
+    jusqu'au premier mot n'est renseigné qu'en mode interface (callback de streaming actif).
+    """
+    _premier["t"] = None
     debut = time.perf_counter()
     resultat = pipe.run(
         {"embedder": {"text": requete_instruite}, "prompt_builder": {"question": question}},
         include_outputs_from={"retriever"},
     )
     total = time.perf_counter() - debut
+    jusqu_premier = (_premier["t"] - debut) if _premier["t"] else None
     reply = resultat["generator"]["replies"][0]
     documents = resultat["retriever"]["documents"]
-    return total, reply, documents
+    return total, jusqu_premier, reply, documents
 
 
 def archiver(question, reply, documents):
@@ -52,33 +80,58 @@ def archiver(question, reply, documents):
     ARCHIVE.write_text("\n".join(lignes) + "\n", encoding="utf-8")
 
 
+def fmt(valeur):
+    """Formate une durée en secondes, ou « n/a » si non mesurée."""
+    return f"{valeur:.1f} s" if valeur is not None else "n/a (sans streaming)"
+
+
 def main():
-    """Mesure la latence, archive la réponse, puis relève la RAM du pipeline chargé."""
-    pipe = rp.construire_pipeline()
+    """Mesure la latence (1 à froid, 3 à chaud), archive la réponse, relève la RAM."""
+    parseur = argparse.ArgumentParser(description="Mesure de latence du pipeline de réponse.")
+    parseur.add_argument(
+        "--streaming", action="store_true",
+        help="Appelle le pipeline en streaming (comme l'app, sans lancer Streamlit) ; "
+             "ajoute le temps jusqu'au premier mot.",
+    )
+    args = parseur.parse_args()
+
+    mode = "streaming (comme l'app)" if args.streaming else "appel direct"
+    callback = sur_jeton if args.streaming else None
+    pipe = rp.construire_pipeline(streaming_callback=callback)
     question = rp.QUESTION_DEFAUT
     requete_instruite = f"Instruct: {rp.TACHE}\nQuery:{question}"
 
-    print("Mesure de latence (1 à froid, 3 à chaud)...")
-    froid, reply_froid, _ = une_execution(pipe, question, requete_instruite)
+    print(f"Mesure du pipeline — mode {mode} (1 à froid, 3 à chaud)...")
+    froid = une_execution(pipe, question, requete_instruite)
     chauds = [une_execution(pipe, question, requete_instruite) for _ in range(3)]
 
-    latences_chaud = [c[0] for c in chauds]
-    latence_chaud = statistics.median(latences_chaud)
-    reply, documents = chauds[-1][1], chauds[-1][2]
+    totaux_chaud = [c[0] for c in chauds]
+    total_chaud = statistics.median(totaux_chaud)
+    premiers_chaud = [c[1] for c in chauds if c[1] is not None]
+    reply, documents = chauds[-1][2], chauds[-1][3]
 
     meta = reply.meta
     eval_s = meta.get("eval_duration", 0) / 1e9
     jetons = meta.get("usage", {}).get("completion_tokens", 0)
-    charge_froid_s = reply_froid.meta.get("load_duration", 0) / 1e9
-    reste_chaud = max(latence_chaud - eval_s, 0.0)
+    charge_froid_s = froid[2].meta.get("load_duration", 0) / 1e9
+    reste_chaud = max(total_chaud - eval_s, 0.0)
 
-    detail_chaud = ", ".join(f"{lat:.1f}" for lat in latences_chaud)
-    print(f"\nLatence à froid          : {froid:.1f} s (chargements à froid de Qwen et Gemma inclus)")
-    print(f"Latence à chaud (3 passes): {detail_chaud} s")
-    print(f"Latence à chaud (médiane): {latence_chaud:.1f} s")
-    print(f"  génération (eval Ollama): {eval_s:.1f} s pour {jetons} jetons")
-    print(f"  encodage requête + recherche (reste): ~{reste_chaud:.1f} s")
-    print(f"Chargement à froid de Gemma (métadonnée): {charge_froid_s:.1f} s")
+    print(f"\nQuestion : {question}\n")
+    print("À froid (chargement des modèles inclus)")
+    print(f"  temps jusqu'au premier mot : {fmt(froid[1])}")
+    print(f"  temps total                : {fmt(froid[0])} pour {froid[2].meta.get('usage', {}).get('completion_tokens', 0)} jetons")
+    print(f"  chargement de Gemma        : {charge_froid_s:.1f} s")
+
+    detail_premier = " / ".join(fmt(c[1]) for c in chauds)
+    detail_total = " / ".join(f"{c[0]:.1f}" for c in chauds)
+    print("\nÀ chaud (modèles résidents, cas de la production sur VPS)")
+    if premiers_chaud:
+        print(f"  temps jusqu'au premier mot (3 passes / médiane) : {detail_premier}  ->  {fmt(statistics.median(premiers_chaud))}")
+    else:
+        print(f"  temps jusqu'au premier mot (3 passes / médiane) : {detail_premier}")
+    print(f"  temps total (3 passes / médiane)                : {detail_total} s  ->  {total_chaud:.1f} s")
+    print(f"  dont génération (eval Ollama)                   : {eval_s:.1f} s pour {jetons} jetons")
+    print(f"  encodage requête + recherche (reste)            : ~{reste_chaud:.1f} s")
 
     archiver(question, reply, documents)
     print(f"\nRéponse archivée : {ARCHIVE}")

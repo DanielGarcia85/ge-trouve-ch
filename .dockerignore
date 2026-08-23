@@ -1,0 +1,19 @@
+# .dockerignore
+#
+# Restreint le contexte de build Docker (voir deploy/Dockerfile) au strict
+# nécessaire. Principe : tout est exclu par défaut, puis seuls les fichiers
+# réellement copiés dans l'image sont ré-inclus. Le contexte reste minuscule et
+# rien d'inutile ni de sensible (data/, venvs, .git, .env, memoire/) n'est envoyé
+# au démon Docker.
+
+# Tout exclure par défaut.
+*
+
+# Ré-inclure uniquement ce que le Dockerfile copie.
+!requirements.txt
+!src
+!.streamlit
+
+# Re-exclure les caches Python, même sous src/ (inutiles dans l'image).
+**/__pycache__
+**/*.pyc

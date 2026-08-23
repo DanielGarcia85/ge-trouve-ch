@@ -1,0 +1,79 @@
+# deploy/docker-compose.yml
+#
+# Orchestration des trois services de Ge-Trouve en production
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Responsabilité
+# ──────────────
+# Décrire et relier les trois conteneurs du système déployé sur le VPS :
+#   - ollama : sert les modèles (Gemma rédacteur, Qwen embeddings) ;
+#   - app    : l'interface Streamlit + le pipeline RAG (image construite ici) ;
+#   - caddy  : le proxy frontal, HTTPS automatique, seul exposé à Internet.
+# Un seul réseau privé les relie ; ils se joignent par leur nom de service.
+# Ce fichier ne pull pas les modèles et ne construit pas l'index.
+#
+# Exécution attendue (sur le VPS, depuis le dossier deploy/) :
+#   docker compose up -d --build
+
+name: ge-trouve
+
+services:
+
+  # ── Inférence locale : modèles servis par Ollama ─────────────────────
+  ollama:
+    image: ollama/ollama:0.32.6
+    restart: unless-stopped
+    environment:
+      # Garde les modèles résidents en mémoire
+      OLLAMA_KEEP_ALIVE: "-1"
+    volumes:
+      # Modèles rangés dans un volume nommé (donc sur /mnt/data via data-root).
+      - ollama-models:/root/.ollama
+    networks:
+      - interne
+
+  # ── Application : interface Streamlit + pipeline de réponse ──────────
+  app:
+    build:
+      context: ..                    # contexte de build = racine du dépôt
+      dockerfile: deploy/Dockerfile
+    image: ge-trouve-app:local
+    restart: unless-stopped
+    environment:
+      # Uniquement les valeurs qui different des defauts de config.py dans le conteneur ;
+      # les noms de modeles ne sont pas repris ici, config.py en est la source unique.
+      OLLAMA_BASE_URL: "http://ollama:11434"   # le service ollama, pas localhost
+      CHROMA_PERSIST_DIR: "/app/data/chroma"   # la base montee, pas ./data/chroma
+    volumes:
+      # Base vectorielle transférée sur l'hôte, montée en LECTURE SEULE : la prod
+      # ne fait que lire l'index (chemin hôte propre à ce VPS).
+      - /mnt/data/chroma:/app/data/chroma:ro
+    depends_on:
+      - ollama
+    networks:
+      - interne
+
+  # ── Proxy frontal : HTTPS automatique, seul point exposé ─────────────
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"      # redirige vers 443 et sert la validation Let's Encrypt
+      - "443:443"    # HTTPS public
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro    # configuration du proxy
+      - caddy-data:/data                       # certificats (persistants)
+      - caddy-config:/config
+    depends_on:
+      - app
+    networks:
+      - interne
+
+networks:
+  interne:
+    driver: bridge
+
+volumes:
+  ollama-models:
+  caddy-data:
+  caddy-config:

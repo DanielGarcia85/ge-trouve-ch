@@ -1,0 +1,16 @@
+# deploy/Caddyfile
+#
+# Proxy frontal Ge-Trouve — HTTPS automatique et relais vers l'app
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Responsabilité
+# ──────────────
+# Terminer le HTTPS (certificats Let's Encrypt/ZeroSSL obtenus et renouvelés
+# automatiquement) pour le domaine public, et relayer les requêtes vers le
+# conteneur « app » (Streamlit, port interne 8501). Caddy gère seul la mise à
+# niveau WebSocket dont Streamlit a besoin et préserve l'en-tête Host ; aucune
+# configuration supplémentaire n'est requise.
+
+ge-trouve.ch {
+    reverse_proxy app:8501
+}

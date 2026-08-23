@@ -31,7 +31,9 @@ COPY src/ ./src/
 COPY .streamlit/ ./.streamlit/
 
 # Exécution sous un utilisateur non privilégié (l'app n'a besoin d'aucun droit root).
-RUN useradd --create-home --uid 10001 appuser
+# UID 1001 = celui de danielgarcia sur le VPS, propriétaire de la base montée : le
+# conteneur lit ET écrit la base (Chroma/SQLite écrit ses fichiers WAL, même en lecture).
+RUN useradd --create-home --uid 1001 appuser
 USER appuser
 
 # Port interne de Streamlit (atteint uniquement par Caddy, jamais publié sur l'hôte).

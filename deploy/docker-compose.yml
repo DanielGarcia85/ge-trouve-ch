@@ -65,9 +65,10 @@ services:
       OLLAMA_BASE_URL: "http://ollama:11434"   # le service ollama, pas localhost
       CHROMA_PERSIST_DIR: "/app/data/chroma"   # la base montee, pas ./data/chroma
     volumes:
-      # Base vectorielle transférée sur l'hôte, montée en LECTURE SEULE : la prod
-      # ne fait que lire l'index (chemin hôte propre à ce VPS).
-      - /mnt/data/chroma:/app/data/chroma:ro
+      # Base vectorielle transférée sur l'hôte (chemin propre à ce VPS), montée en
+      # lecture-écriture : l'app n'interroge que l'index, mais Chroma/SQLite doit écrire
+      # ses fichiers de journalisation (WAL) dans le dossier, même en lecture.
+      - /mnt/data/chroma:/app/data/chroma
     depends_on:
       ollama:
         condition: service_healthy

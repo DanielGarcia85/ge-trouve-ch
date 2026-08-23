@@ -62,7 +62,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import config  # noqa: E402
 
 # ── Constantes ────────────────────────────────────────────────────────
-MODELE_EMBEDDINGS = "qwen3-embedding:0.6b"
 TAILLE_FRAGMENT = 200      # mots par fragment
 RECOUVREMENT = 40          # mots de recouvrement
 PAGES_PAR_LOT = 50         # pages encodées et écrites par lot (progression + reprise page par page)
@@ -147,7 +146,7 @@ def main():
     )
     if hasattr(splitter, "warm_up"):
         splitter.warm_up()
-    embedder = OllamaDocumentEmbedder(model=MODELE_EMBEDDINGS, url=config.OLLAMA_BASE_URL)
+    embedder = OllamaDocumentEmbedder(model=config.OLLAMA_EMBEDDING_MODEL, url=config.OLLAMA_BASE_URL)
     if hasattr(embedder, "warm_up"):
         embedder.warm_up()
     store = ChromaDocumentStore(persist_path=str(chroma_dir))

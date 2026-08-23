@@ -331,9 +331,11 @@ l'étape 4.2) et **`--streaming`** (appel comme l'app, qui relève en plus le **
 la latence perçue). Une passe à froid, trois à chaud (médiane). Départ à froid garanti par un `ollama stop`
 des deux modèles avant chaque exécution ; Streamlit fermé.
 
-**Postes.**
-- GARCIAD · Intel Core i7-12700 · 16 Go DDR4 · Windows 10 — **poste de référence**, le plus proche du palier VPS.
-- DANIELGARCIA · AMD Ryzen 7 7840HS · 32 Go DDR5 · Windows 11 — **contraste** : CPU plus rapide, plus de RAM.
+**Postes** (deux machines de développement, pour situer les ordres de grandeur ; **ni l'une ni l'autre ne
+représente le VPS cible**, un Ubuntu épuré et dédié, alors que ces postes tournent sous Windows avec d'autres
+logiciels : les chiffres de production réels seront relevés sur le VPS à l'étape 5).
+- GARCIAD · Intel Core i7-12700 · 16 Go DDR4 · Windows 10.
+- DANIELGARCIA · AMD Ryzen 7 7840HS · 32 Go DDR5 · Windows 11.
 
 **Résultats à chaud (médiane sur 3 ; production = modèles résidents).**
 
@@ -358,8 +360,9 @@ des deux modèles avant chaque exécution ; Streamlit fermé.
 **Constats.**
 - **Le streaming n'ajoute aucun surcoût de calcul** : à chaud, le temps total est le même en appel direct et
   en streaming (l'écart, 132 vs 125 s sur garciad, vient du nombre de jetons, non-déterministe sans seed). Ce
-  que le streaming apporte, c'est la **latence perçue** : le premier mot en **~1 s** (garciad), alors que la
-  réponse complète met ~2 min à s'écrire. C'est la justification de la décision de streaming de l'étape 4.
+  que le streaming apporte, c'est la **latence perçue** : le premier mot en **1 à 3,5 s selon le poste**
+  (garciad ~1 s, DANIELGARCIA ~3,5 s), alors que la réponse complète met ~2 min à s'écrire. C'est la
+  justification de la décision de streaming de l'étape 4.
 - **Latence de calcul vs latence perçue** : à bien distinguer. Le calcul (temps total) est inchangé par le
   streaming ; seule la perception change, l'usager lit dès le premier mot.
 - **Débit borné par le matériel** : DANIELGARCIA (Ryzen, DDR5) génère nettement plus vite (eval 75 s contre

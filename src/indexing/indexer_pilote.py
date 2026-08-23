@@ -46,7 +46,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import config  # noqa: E402
 
 # ── Constantes ────────────────────────────────────────────────────────
-MODELE_EMBEDDINGS = "qwen3-embedding:0.6b"
 TAILLE_FRAGMENT = 200      # mots par fragment (Annexe 2)
 RECOUVREMENT = 40          # mots de recouvrement (Annexe 2)
 
@@ -114,7 +113,7 @@ def main():
         fragments_propres.append(dataclasses.replace(fragment, content=nettoyer_liens(fragment.content)))
     fragments = fragments_propres
 
-    embedder = OllamaDocumentEmbedder(model=MODELE_EMBEDDINGS, url=config.OLLAMA_BASE_URL)
+    embedder = OllamaDocumentEmbedder(model=config.OLLAMA_EMBEDDING_MODEL, url=config.OLLAMA_BASE_URL)
     if hasattr(embedder, "warm_up"):
         embedder.warm_up()
     fragments = embedder.run(documents=fragments)["documents"]

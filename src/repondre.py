@@ -41,7 +41,6 @@ import config  # noqa: E402
 from generation.consignes import CONSIGNE_ACTIVE  # noqa: E402
 
 # ── Constantes ────────────────────────────────────────────────────────
-MODELE_EMBEDDINGS = "qwen3-embedding:0.6b"
 TOP_K = 5
 TACHE = "Given a web search query, retrieve relevant passages that answer the query"
 # Régime de production acté à la clôture de l'étape 2 : température basse (réponses fondées et
@@ -79,7 +78,7 @@ def construire_pipeline(consigne=None, options=None, streaming_callback=None):
         ChatMessage.from_user(GABARIT_UTILISATEUR),
     ]
     pipe = Pipeline()
-    pipe.add_component("embedder", OllamaTextEmbedder(model=MODELE_EMBEDDINGS, url=config.OLLAMA_BASE_URL))
+    pipe.add_component("embedder", OllamaTextEmbedder(model=config.OLLAMA_EMBEDDING_MODEL, url=config.OLLAMA_BASE_URL))
     pipe.add_component("retriever", ChromaEmbeddingRetriever(document_store=store, top_k=TOP_K))
     pipe.add_component(
         "prompt_builder",

@@ -19,7 +19,10 @@ que la contrainte de brièveté tronquait ou appauvrissait les réponses (et n'�
 pas souhaitée), V3 affine la consigne : réponse complète et fondée, noms exacts,
 orientation hors corpus, sans pression de brièveté. V3 devient `CONSIGNE_ACTIVE` à la
 clôture (2.5). À l'étape 3, le corpus préserve les hyperliens ; V4 (V3 plus la reprise
-des liens utiles des extraits) devient à son tour la variante active.
+des liens utiles des extraits) devient à son tour la variante active. À l'étape 4, l'interface
+affiche les pages sources dans une barre latérale : la liste « Sources » en fin de réponse fait
+alors doublon (et allonge la génération). V5 (V4 sans cette citation des pages, liens fonctionnels
+du corps conservés) devient la variante active.
 """
 
 # V0 : consigne provisoire de l'étape 1, gardée comme témoin.
@@ -74,15 +77,37 @@ V4_LIENS = V3_COMPLETE + (
     "reprends-le dans ta réponse pour que l'usager y accède directement, sans jamais en inventer."
 )
 
-# Variantes considérées (V0-V3 à l'étape 2, V4 à l'étape 3).
+# V5 : révision de l'étape 4 (interface). L'interface affiche déjà les pages sources récupérées dans
+# une barre latérale ; la liste « Sources » en fin de réponse (issue de la clause de citation de V3)
+# fait donc doublon et allonge la génération. V5 = V4 sans cette citation des pages. On conserve tout
+# le reste de V4, dont la reprise des liens fonctionnels dans le corps (guichet en ligne, formulaires),
+# qui, eux, ne figurent pas dans la barre latérale et aident l'usager à agir.
+V5_SANS_LISTE_SOURCES = (
+    "Tu es Ge-Trouve, un assistant pour les démarches administratives du canton de Genève. "
+    "Réponds à la question en t'appuyant uniquement sur les extraits fournis. Donne une réponse "
+    "complète et concrète : reprends les informations utiles des extraits (conditions, délais, "
+    "pièces à fournir, démarche à suivre), sans rien ajouter qui n'y figure pas. Écris en français "
+    "simple et clair, mais conserve les noms exacts des offices, des formulaires et des permis "
+    "(par exemple OCPM, formulaire M, permis B, permis C). Si un formulaire, un numéro de "
+    "téléphone ou une adresse figure dans les extraits, reprends-le exactement ; sinon, n'en "
+    "invente aucun. Si les extraits ne contiennent pas la réponse, dis-le clairement en une phrase "
+    "et invite l'usager à s'adresser au guichet ou au site officiel concerné, sans inventer de "
+    "lien ni d'adresse. Les extraits contiennent des liens au format [texte](url) vers des "
+    "ressources officielles (guichet en ligne, formulaires, documents) : quand un lien est utile à "
+    "la démarche demandée, reprends-le dans ta réponse pour que l'usager y accède directement, "
+    "sans jamais en inventer."
+)
+
+# Variantes considérées (V0-V3 à l'étape 2, V4 à l'étape 3, V5 à l'étape 4).
 VARIANTES = {
     "V0": V0_PROVISOIRE,
     "V1": V1_STRUCTUREE,
     "V2": V2_IGNORANCE,
     "V3": V3_COMPLETE,
     "V4": V4_LIENS,
+    "V5": V5_SANS_LISTE_SOURCES,
 }
 
-# Variante active servie par le pipeline. V4 à l'étape 3 : V3 (retenue à l'étape 2) plus la reprise
-# des liens utiles des extraits, rendue possible par le corpus qui préserve désormais les hyperliens.
-CONSIGNE_ACTIVE = V4_LIENS
+# Variante active servie par le pipeline. V5 à l'étape 4 : V4 sans la liste « Sources » en fin de
+# réponse (redondante avec la barre latérale de l'interface), liens fonctionnels du corps conservés.
+CONSIGNE_ACTIVE = V5_SANS_LISTE_SOURCES

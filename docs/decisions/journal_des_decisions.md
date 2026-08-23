@@ -8,6 +8,43 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-23 — Étape 4 : interface Streamlit et révision de la consigne (V5)
+
+**Ce qui est arrêté.** L'interface web locale (`src/app/app.py`, configuration `.streamlit/config.toml`)
+est livrée. Elle appelle directement `src/repondre.py` (pipeline consommé tel quel : consigne active,
+régime de production, top_k 5) et affiche la réponse au fil de l'eau avec ses liens cliquables ; les pages
+sources récupérées apparaissent dans une barre latérale, vidées dès l'envoi d'un prompt puis remplies à la
+réponse. Le choix de Streamlit avait été acté au chapitre 9.
+
+**Conception.** Mise en page en trois bandes figées (en-tête « Ge-Trouve » aux couleurs genevoises, champ
+de saisie et bas de page en bas, pages sources à gauche) ; seule la conversation défile. Le streaming se
+fait par un simple callback qui remplit une zone mot à mot, **sans aucun JavaScript**. Un indicateur d'état
+figé en haut à droite (en attente / génération en cours, clignotant / prêt) signale l'avancement, à la place
+d'un indicateur au niveau du message qui se cachait derrière le champ fixe.
+
+**Sous-décisions.**
+- **Diffusion progressive (streaming) retenue.** Elle ne réduit pas le temps de calcul mais la latence
+  perçue : premier mot en ~1 s à chaud, alors que la réponse complète met ~2 min à s'écrire. Contrepartie
+  assumée de la souveraineté (CPU, sans GPU ni API). Chiffres au journal des mesures (2026-08-23).
+- **Pas de préchargement des modèles côté application.** Les modèles restent résidents côté Ollama ; le
+  maintien au chaud relève du déploiement (`keep_alive`, étape 5), pas de l'application.
+- **Pas de mémoire conversationnelle.** Chaque question est traitée indépendamment (le modèle ne reçoit que
+  la question courante et ses fragments) ; l'historique reste seulement affiché à l'écran. Cohérent avec le
+  Naive RAG et le protocole d'évaluation par question (Partie 3).
+- **Révision de la consigne : V5 (révise une décision de l'étape 2).** La liste « Sources » en fin de réponse
+  (clause de V3, reprise par V4) faisait doublon avec la barre latérale ; V5 la retire, en conservant la
+  reprise des liens fonctionnels dans le corps (guichet en ligne, formulaires). Décision assumée par l'auteur.
+  Effet mesuré : réponses plus courtes, génération plus rapide (journal des mesures).
+
+**Mesures.** Latence de l'interface sur les deux postes (GARCIAD référence proche du VPS, DANIELGARCIA
+contraste plus rapide), deux modes (appel direct / streaming), à froid et à chaud, plus la RAM du pipeline
+chargé. Tableaux et constats au journal des mesures (2026-08-23) ; captures dans `resultats/interface/`.
+
+**Lien avec le mémoire.** Matière du chapitre 11 (interface). Argument à porter : distinguer **latence de
+calcul** (inchangée) et **latence perçue** (réduite à ~1 s par le streaming).
+
+---
+
 ## 2026-08-13 — Chapitre 10 complet : l'étape 3 racontée au mémoire
 
 **Nature.** Jalon rédactionnel, sans décision technique nouvelle. La section 10.6 (corpus complet :

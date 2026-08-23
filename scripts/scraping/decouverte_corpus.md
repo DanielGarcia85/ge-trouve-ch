@@ -47,7 +47,7 @@ de cadrage.
 L'outil s'utilise en ligne de commande, sur n'importe quel domaine :
 
 ```
-python scripts/scraping/decouvrir_sitemap.py <url_sitemap> [--garder seg1,seg2] [--sortie fichier.csv]
+python scripts/scraping/decouvrir_sitemap.py <url_sitemap> [--garder seg1,seg2] [--sortie fichier.csv] [--ajouter]
 ```
 
 - **`<url_sitemap>`** (obligatoire) : l'URL du sitemap du site à analyser. Elle se trouve dans le
@@ -104,8 +104,8 @@ ce sont des documents et de l'actualité.
 
 ## Ce qui est gardé, ce qui est écarté, et pourquoi
 
-**Gardé** (le substantiel citoyen) : les **pages de démarches** (les procédures « comment faire X ») et
-les **dossiers** thématiques. Après filtrage, **4 072 pages**.
+**Gardé** (le substantiel citoyen) : les **pages de démarches** (les procédures « comment faire X »),
+les **dossiers** thématiques et les **autres pages hors bruit**. Après filtrage, **4 072 pages**.
 
 **Écarté** :
 - `document/*` **en vrac** : 17 362 pages, en grande majorité sans rapport avec une démarche (vieux

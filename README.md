@@ -145,19 +145,17 @@ ge-trouve-ch/
 │   ├── repondre.py                 ← Orchestrateur (recherche + génération)
 │   ├── scraping/                   ← Aspiration des sources officielles
 │   ├── indexing/                   ← Chunking et embeddings
-│   ├── retrieval/                  ← Recherche dans la base vectorielle
-│   ├── generation/                 ← Appel au LLM local
+│   ├── generation/                 ← Consigne système et jeu de mise au point
 │   └── app/                        ← Interface web
 ├── scripts/                        ← Scripts utilitaires (hors pipeline)
 │   ├── mesures/                    ← Relevés et benchmarks locaux
 │   ├── setup/                      ← Installation des modèles Ollama
 │   └── scraping/                   ← Vérification robots.txt, exploration
-├── resultats/                      ← Nos résultats versionnés (scraping, réponses, consignes)
-├── tests/                          ← Tests sur un jeu de questions types
-├── evaluation/                     ← Scripts et résultats RAGAS
+├── resultats/                      ← Nos résultats versionnés (scraping, réponses, consignes, captures d'interface)
 ├── data/                           ← NON VERSIONNÉ (régénérable via le pipeline)
 │   ├── pages/                      ← Corpus brut scrapé (un JSON par page)
 │   └── chroma/                     ← Base vectorielle Chroma
+├── .streamlit/                     ← Configuration de l'interface Streamlit
 ├── .env.example                    ← Modèle de configuration
 ├── requirements.txt                ← Dépendances Python
 └── .gitignore

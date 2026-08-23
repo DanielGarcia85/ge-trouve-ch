@@ -7,8 +7,8 @@ de l'avancement.
 Les **sous-étapes détaillées, avec leurs commandes d'exécution**, sont ajoutées à mesure qu'on atteint
 chaque étape : elles servent de mode d'emploi pour **rejouer le jalon depuis zéro**. Une étape non encore
 atteinte n'est pas détaillée (règle de non-présomption) ; ses sous-étapes s'écrivent quand on
-y arrive. À ce jour, les étapes **0 à 3** sont détaillées plus bas (l'étape 3 est en cours, son ossature
-prévisionnelle est posée ci-dessous).
+y arrive. À ce jour, les étapes **0 à 4** sont détaillées plus bas (elles sont réalisées ; restent le
+déploiement et l'évaluation).
 
 Le détail par décision vit dans `docs/decisions/journal_des_decisions.md`, les chiffres dans
 `docs/mesures/journal_des_mesures.md`.
@@ -32,11 +32,11 @@ La consigne (prompt système) de génération, écrite et testée. Variante V3 r
 fondée sur les extraits, citation des pages sources, orientation hors corpus), régime de production acté.
 Elle remplace la consigne provisoire de l'étape 1.
 
-**Étape 3 — Corpus complet**
+**Étape 3 — Corpus complet** *(fait)*
 Le corpus complet avec son script d'ingestion reproductible, dont le périmètre est aligné sur les
 familles de démarches du futur jeu de questions d'évaluation.
 
-**Étape 4 — Interface**
+**Étape 4 — Interface** *(fait)*
 L'interface web par laquelle l'usager pose sa question.
 
 **Étape 5 — Consolidation et déploiement**
@@ -48,64 +48,65 @@ contrôle humain).
 
 ---
 
-## Sous-étapes de l'étape 0
+## Sous-étapes de l'étape 0 *(terminée)*
 
-- **0.1 Ollama et modèles** : installer Ollama, puis tirer les trois modèles. **Commande :** `.\scripts\setup\pull_modeles.ps1` (gemma4:12b, llama3.1:8b, qwen3-embedding:0.6b).
+- **0.1 Ollama et modèles** : installer Ollama, puis tirer les trois modèles. **Commande :** `./scripts/setup/pull_modeles.ps1` (gemma4:12b, llama3.1:8b, qwen3-embedding:0.6b).
 - **0.2 Python et dépendances** : le projet vit sur deux postes, donc un venv par poste (`.venvdaniel` / `.venvgarciad`) ; puis installer les paquets épinglés. **Commande :** `pip install -r requirements.txt`.
-- **0.3 Relevé du poste** : machine, RAM, disque, versions (Python, Ollama, git). **Commande :** `.\scripts\mesures\releve_poste.ps1`.
-- **0.4 Mesures de base** : débit de génération, latence et débit d'embeddings, RAM par état. **Commandes :** `python scripts\mesures\bench_generation.py` ; `python scripts\mesures\bench_embeddings.py` ; `.\scripts\mesures\releve_ram.ps1`.
+- **0.3 Relevé du poste** : machine, RAM, disque, versions (Python, Ollama, git). **Commande :** `./scripts/mesures/releve_poste.ps1`.
+- **0.4 Mesures de base** : débit de génération, latence et débit d'embeddings, RAM par état. **Commandes :** `python scripts/mesures/bench_generation.py` ; `python scripts/mesures/bench_embeddings.py` ; `./scripts/mesures/releve_ram.ps1`.
 
 ---
 
-## Sous-étapes de l'étape 1
+## Sous-étapes de l'étape 1 *(terminée)*
 
 - **1.1 État des lieux** *(lecture seule)* : dépôt propre, venv et imports, modèles Ollama, `.env`, disque.
-- **1.2 Manifeste et robots** : `manifeste_sources_pilote.csv` versionné, vérification `robots.txt`, verdict consigné. **Commandes :** `python scripts\scraping\verifier_robots.py` (contrôle robots) ; `python scripts\scraping\lister_souspages_chapeau.py` (découverte des sous-pages, appoint).
-- **1.3 Scraper** : téléchargement poli des pages du manifeste vers `data/pilote/pages/` (un JSON par page), journal dans `resultats/pilote/`. **Commande :** `python src\scraping\scrape_pilote.py`.
-- **1.4 Indexation** : découpage, embeddings Qwen, écriture dans Chroma avec métadonnées par fragment. **Commande :** `python src\indexing\indexer_pilote.py`.
-- **1.5 Pipeline de réponse** : recherche (embedder requête + retriever Chroma) puis génération (Gemma, mode direct). **Commande :** `python src\repondre.py "Où déposer ma demande de permis de séjour ?"`.
-- **1.6 Exécution et mesures** : latence de bout en bout, RAM du pipeline chargé, réponse archivée dans `resultats/pilote/`. **Commande :** `python scripts\mesures\bench_pipeline.py`.
+- **1.2 Manifeste et robots** : `src/scraping/manifeste_sources_pilote.csv` versionné, vérification `robots.txt`, verdict consigné. **Commandes :** `python scripts/scraping/verifier_robots.py` (contrôle robots) ; `python scripts/scraping/lister_souspages_chapeau.py` (découverte des sous-pages, appoint).
+- **1.3 Scraper** : téléchargement poli des pages du manifeste vers `data/pilote/pages/` (un JSON par page), journal dans `resultats/pilote/`. **Commande :** `python src/scraping/scrape_pilote.py`.
+- **1.4 Indexation** : découpage, embeddings Qwen, écriture dans Chroma avec métadonnées par fragment. **Commande :** `python src/indexing/indexer_pilote.py`.
+- **1.5 Pipeline de réponse** : recherche (embedder requête + retriever Chroma) puis génération (Gemma, mode direct). **Commande :** `python src/repondre.py "Où déposer ma demande de permis de séjour ?"`.
+- **1.6 Exécution et mesures** : latence de bout en bout, RAM du pipeline chargé, réponse archivée dans `resultats/pilote/`. **Commande :** `python scripts/mesures/bench_pipeline.py`.
 - **1.7 Clôture** : entrée au journal des décisions, mise à jour du README.
 
 ---
 
-## Sous-étapes de l'étape 2
+## Sous-étapes de l'étape 2 *(terminée)*
 
 - **2.1 État des lieux** *(lecture seule)* : dépôt propre, venv et Ollama, index pilote en place.
 - **2.2 Cadrage exécutable** : consigne externalisée dans un fichier versionné ; jeu de 8 questions de mise au point (6 tirées du corpus pilote, 2 hors corpus) ; script de comparaison (réponses et latences archivées dans `resultats/consignes/`, versionné). *(Fichiers créés : `src/generation/consignes.py`, `src/generation/questions_mise_au_point_pilote.py`, `scripts/mesures/comparer_consignes.py`.)*
 - **2.3 Variantes de consigne** : V0 (témoin, la provisoire), V1 (structurée), V2 (V1 plus l'ignorance avouée et l'orientation), puis **V3 retenue** (complète et fondée, cite les pages sources, oriente hors corpus, contacts seulement s'ils figurent dans les extraits, sans rien inventer).
-- **2.4 Essais** : variantes jouées sur les 8 questions (clés dans `A_ESSAYER`), régime modéré (température basse ; le régime « éditeur » s'est révélé trop bavard et lent sur CPU), seed fixé pour comparer à conditions égales ; grille de lecture, puis **arbitrage manuel** de la variante retenue. **Commande :** `python scripts\mesures\comparer_consignes.py` (écrit un fichier daté `comparaison_consignes_<variantes>_<date>.md`).
+- **2.4 Essais** : variantes jouées sur les 8 questions (clés dans `A_ESSAYER`), régime modéré (température basse ; le régime « éditeur » s'est révélé trop bavard et lent sur CPU), seed fixé pour comparer à conditions égales ; grille de lecture, puis **arbitrage manuel** de la variante retenue. **Commande :** `python scripts/mesures/comparer_consignes.py` (écrit un fichier daté `comparaison_consignes_<variantes>_<date>.md`).
 - **2.5 Clôture** : consigne V3 intégrée (`CONSIGNE_ACTIVE`) et régime de production acté (`OPTIONS`) ; session au journal des mesures ; entrée au journal des décisions ; rédaction de la section 10.5 du mémoire.
 
 ---
 
 ## Sous-étapes de l'étape 3 *(terminée)*
 
-Ossature prévisionnelle ; les commandes s'ajoutent à mesure de l'exécution. Le corpus est **cantonal** :
+Le corpus est **cantonal** :
 `ge.ch` et `geneve.ch`. La législation (`silgeneve.ch`), les autres communes et les assurances sociales
 restent des extensions ouvertes, activées seulement si l'évaluation révèle un manque.
 
 - **3.1 État des lieux** *(lecture seule)* : dépôt propre, venv, Ollama et les trois modèles, index pilote présent.
-- **3.2 Liens préservés (verrou, validé d'abord sur le pilote)** : adapter l'extraction pour conserver les hyperliens dans le texte ; re-scraper et ré-indexer le pilote ; vérifier que la réponse peut citer le lien du guichet en ligne. GO avant d'élargir. **Commandes :** `python src\scraping\scrape_pilote.py` (re-scrape) ; `python src\indexing\indexer_pilote.py` (ré-indexation).
-- **3.3 Manifeste du corpus** : liste des pages `ge.ch` (catalogue des démarches, pages pratiques, e-démarches publiques) et `geneve.ch` (dossier `/demarches/`), dans un `manifeste_sources.csv` complet (le manifeste pilote reste en l'état). **Commande :** `python scripts\scraping\decouvrir_sitemap.py <url_sitemap> [--garder demarches] [--sortie src\scraping\manifeste_sources.csv]` (un passage par domaine : ge.ch en mode par défaut, geneve.ch avec `--garder demarches`) ; méthode dans `scripts/scraping/decouverte_corpus.md`.
-- **3.4 Scraping complet** : `robots.txt` vérifié par domaine (refus = arrêt, aucun contournement), délai ≥ 2 s, titre extrait de chaque page, reprise (page déjà scrapée sautée), journal résumé. **Commande :** `python src\scraping\scrape_complet.py`.
-- **3.5 Indexation complète et mesures** : reconstruction propre, encodage par lots avec reprise, métadonnées par fragment (`url`, `titre`, `date_capture`, `position`) ; **liens vers les PDF/documents conservés** (le contenu des PDF n'est pas indexé à ce stade, à revoir si l'évaluation le justifie) ; contrôle qualitatif (réponse type avec lien) ; mesures au journal. **Commandes :** `python src\indexing\indexer_complet.py` ; `python src\indexing\indexer_complet.py --reprise` (après interruption).
+- **3.2 Liens préservés (verrou, validé d'abord sur le pilote)** : adapter l'extraction pour conserver les hyperliens dans le texte ; re-scraper et ré-indexer le pilote ; vérifier que la réponse peut citer le lien du guichet en ligne. GO avant d'élargir. **Commandes :** `python src/scraping/scrape_pilote.py` (re-scrape) ; `python src/indexing/indexer_pilote.py` (ré-indexation).
+- **3.3 Manifeste du corpus** : liste des pages `ge.ch` (catalogue des démarches, pages pratiques, e-démarches publiques) et `geneve.ch` (dossier `/demarches/`), dans un `manifeste_sources.csv` complet (le manifeste pilote reste en l'état). **Commande :** `python scripts/scraping/decouvrir_sitemap.py <url_sitemap> [--garder demarches] [--sortie src/scraping/manifeste_sources.csv]` (un passage par domaine : ge.ch en mode par défaut, geneve.ch avec `--garder demarches`) ; méthode dans `scripts/scraping/decouverte_corpus.md`.
+- **3.4 Scraping complet** : `robots.txt` vérifié par domaine (refus = arrêt, aucun contournement), délai ≥ 2 s, titre extrait de chaque page, reprise (page déjà scrapée sautée), journal résumé. **Commande :** `python src/scraping/scrape_complet.py`.
+- **3.5 Indexation complète et mesures** : reconstruction propre, encodage par lots avec reprise, métadonnées par fragment (`url`, `titre`, `date_capture`, `position`) ; **liens vers les PDF/documents conservés** (le contenu des PDF n'est pas indexé à ce stade, à revoir si l'évaluation le justifie) ; contrôle qualitatif (réponse type avec lien) ; mesures au journal. **Commandes :** `python src/indexing/indexer_complet.py` ; `python src/indexing/indexer_complet.py --reprise` (après interruption).
 - **3.6 Clôture** : entrée au journal des décisions (corpus arrêté et volumes, préservation des liens, PDF en liens) ; renommage `repondre_pilote.py` → `repondre.py` ; plan et documentation à jour ; rédaction de la section 10.6.
 
 ---
 
-## Sous-étapes de l'étape 4 *(à venir)*
+## Sous-étapes de l'étape 4 *(terminée)*
 
 L'interface **Streamlit** (arrêtée en 9.5) qui appelle directement `src/repondre.py` et affiche la réponse
-avec ses pages sources. Une pièce d'assemblage locale, pas un maillon RAG : le pipeline est consommé tel
-quel (consigne V3, régime de production, top_k 5), sans retouche.
+avec ses pages sources. Une pièce d'assemblage locale, pas un maillon RAG : la structure du pipeline est
+consommée telle quelle (régime de production, top_k 5). La consigne a été révisée à l'étape 4 (**V5**,
+retrait de la liste « Sources » redondante avec la barre latérale ; voir journal des décisions).
 
 - **4.1 État des lieux** *(lecture seule)* : dépôt propre, venv, Ollama et modèles, base complète présente (`data/chroma/`, 9651 fragments), `src/repondre.py` opérationnel.
-- **4.2 Mesure préalable** : latence de bout en bout sur le corpus complet (question type, régime de production ; une passe à froid puis trois à chaud, médiane, sur DANIELGARCIA au repos). Session datée au journal des mesures.
+- **4.2 Mesure préalable** : latence de bout en bout sur le corpus complet (question type, régime de production ; une passe à froid puis trois à chaud, médiane), sur les deux postes. Session datée au journal des mesures. **Commande :** `python scripts/mesures/bench_pipeline.py`.
 - **4.3 Dépendance** : `streamlit` épinglé dans `requirements.txt` (installé depuis PyPI après GO). **Commande :** `pip install streamlit`.
-- **4.4 Application** : page de conversation (titre, champ de question, réponse en markdown avec liens cliquables, bloc « Pages sources ») appelant `repondre.py`. Deux sous-décisions à proposer avant d'implémenter : diffusion progressive de la réponse (streaming) et préchargement des modèles au lancement.
-- **4.5 Exécution, captures et mesures** : test sur la question type et une question hors corpus ; captures d'écran (matière du chapitre 11) dans `resultats/interface/` ; mesures d'expérience (premier élément affiché, temps total) au journal.
-- **4.6 Clôture** : entrée au journal des décisions (structure retenue, les deux sous-décisions et leurs motifs, mesures) ; plan et documentation à jour ; prompt de retour pour Claude.ai.
+- **4.4 Application** : page de conversation Streamlit (`src/app/app.py`, config `.streamlit/config.toml`) appelant `repondre.py` (titre, champ de question, réponse en markdown avec liens cliquables, pages sources en barre latérale). Réponse **diffusée en continu** (streaming, retenu) avec **indicateur d'état** ; préchargement des modèles **écarté** (reporté à l'étape 5, via `keep_alive`) ; consigne **révisée en V5**. **Commande :** `streamlit run src/app/app.py`.
+- **4.5 Exécution, captures et mesures** : test sur la question type et une question hors corpus ; captures dans `resultats/interface/` (matière du chapitre 11) ; mesures d'expérience (temps jusqu'au premier mot, temps total) sur les deux postes, au journal. **Commandes :** `python scripts/mesures/bench_pipeline.py` (appel direct) ; `python scripts/mesures/bench_pipeline.py --streaming` (comme l'app, valide l'absence de surcoût du streaming).
+- **4.6 Clôture** : entrée au journal des décisions (structure retenue, streaming retenu et préchargement reporté, indicateur d'état, consigne V5, mesures) ; plan, `CLAUDE.md` et documentation à jour ; prompt de retour pour Claude.ai.
 
 ---
 

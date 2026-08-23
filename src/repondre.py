@@ -51,9 +51,6 @@ OPTIONS = {"temperature": 0.3, "top_p": 0.95, "top_k": 64, "num_predict": 1024, 
 TIMEOUT_GENERATION = 300  # secondes ; marge pour le chargement à froid du modèle et une génération longue
 QUESTION_DEFAUT = "Où déposer ma demande de permis de séjour ?"
 
-# Contrôle temporaire prouvant le mode direct ; à passer à False ensuite.
-CONTROLE_MODE_DIRECT = True
-
 # Message utilisateur : chaque extrait précédé de son URL, puis la question. On montre au
 # modèle la version avec liens (`texte_liens`) ; le `content` embarqué, lui, est nettoyé des URL.
 GABARIT_UTILISATEUR = (
@@ -65,12 +62,14 @@ GABARIT_UTILISATEUR = (
 )
 
 
-def construire_pipeline(consigne=None, options=None):
+def construire_pipeline(consigne=None, options=None, streaming_callback=None):
     """
     Assemble le pipeline explicite : embedder, retriever, prompt, générateur.
 
     `consigne` et `options` servent à essayer des variantes (étape 2) ; par défaut,
-    la consigne active et les options de référence.
+    la consigne active et les options de référence. `streaming_callback`, s'il est fourni,
+    est transmis au générateur pour émettre la réponse jeton par jeton (affichage progressif
+    de l'interface) ; sans lui, le comportement est inchangé.
     """
     consigne = consigne or CONSIGNE_ACTIVE
     options = options or OPTIONS
@@ -90,7 +89,8 @@ def construire_pipeline(consigne=None, options=None):
         "generator",
         OllamaChatGenerator(
             model=config.OLLAMA_MODEL, url=config.OLLAMA_BASE_URL, think=False,
-            timeout=TIMEOUT_GENERATION, generation_kwargs=options
+            timeout=TIMEOUT_GENERATION, generation_kwargs=options,
+            streaming_callback=streaming_callback,
         ),
     )
     pipe.connect("embedder.embedding", "retriever.query_embedding")
@@ -122,11 +122,11 @@ def main():
         debut = " ".join(doc.content.split()[:15])
         print(f"  - {doc.meta.get('url')}\n    {debut}…")
 
-    if CONTROLE_MODE_DIRECT:
-        print(
-            f"\n[contrôle mode direct] think=False passé au générateur ; "
-            f"réflexion dans la réponse (doit être vide) : {reponse.reasoning!r}"
-        )
+    # Vérification permanente du mode direct : la réflexion doit rester vide (think=False).
+    print(
+        f"\n[contrôle mode direct] think=False passé au générateur ; "
+        f"réflexion dans la réponse (doit être vide) : {reponse.reasoning!r}"
+    )
 
 
 if __name__ == "__main__":

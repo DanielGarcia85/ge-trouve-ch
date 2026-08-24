@@ -14,3 +14,8 @@
 ge-trouve.ch {
     reverse_proxy app:8501
 }
+
+# www redirige vers l'adresse canonique (sans www), en conservant le chemin demandé.
+www.ge-trouve.ch {
+    redir https://ge-trouve.ch{uri} permanent
+}

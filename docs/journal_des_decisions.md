@@ -8,6 +8,33 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-25 — Chapitre 11 complet : Partie 2 rédigée en entier (jalon rédactionnel)
+
+**Nature.** Jalon **rédactionnel** (la Partie 2 du mémoire est désormais écrite en entier), pas une décision
+technique nouvelle.
+
+**Ce qui est fait (mémoire).** Chapitre 11 achevé : la section 11.3 raconte le déploiement au grain
+défendable (serveur et souveraineté, avec la nuance du modèle ouvert exécuté localement ; sécurisation ;
+les quatre services du compose ; base copiée et montée ; mise en ligne sans aucun fichier de secrets ;
+livraison continue par runner auto-hébergé ; incident mémoire et garde-fou « une génération à la fois » ;
+latence **corrigée** : premier mot en 1,5 à 2 min pour une **nouvelle** question, l'ancien « ~1 s » identifié
+comme artefact de cache). Notes de bas de page 75 (conteneur) et 76 (livraison continue et runner).
+**Figure 11.1** créée et insérée (VPS suisse ; boîte Docker Compose englobant caddy, app, ollama et
+ollama-pull ; base Chroma sur le disque de l'hôte montée dans app ; runner à l'intérieur ; usager et dépôt
+public à l'extérieur). **Annexe 3** (captures) posée. **Annexe 2 refondue** au grain médian (tableaux de
+référence conservés, un tableau de mesures par étape, gros tableaux des étapes 0 et 4 remplacés par leurs
+conclusions, correctif du cache intégré, convention V0-V5 ancrée). **Harmonisation de la latence** dans tout
+le document (10.4 et 10.5 en fourchettes avec « question rejouée » ; 11.2 renvoyant la mesure à la 11.3).
+
+**Décision d'allègement.** Les mentions DDR restent comme **étiquettes de spécification** (aucun argument ne
+s'y appuie plus) ; l'allègement **en volume** des chapitres 2 et 4 est **différé en fin de mémoire**, si le
+temps le permet. Aucune fiche Zotero nouvelle.
+
+**Lien avec le mémoire.** Partie 2 **rédigée en entier** ; reste la **Partie 3** (chapitre 12, sur
+l'évaluation de l'étape 6).
+
+---
+
 ## 2026-08-25 — Étape 5 exécutée : déploiement en production et CI/CD en ligne
 
 **Ce qui est fait.** Le système est **en ligne** sur le VPS Infomaniak Serveur Cloud (6 vCPU / 18 Go,

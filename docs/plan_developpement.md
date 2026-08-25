@@ -110,7 +110,7 @@ retrait de la liste « Sources » redondante avec la barre latérale ; voir jour
 
 ---
 
-## Sous-étapes de l'étape 5 *(terminée ; 5.7 en cours)*
+## Sous-étapes de l'étape 5 *(terminée)*
 
 Déploiement du système sur un VPS Infomaniak (Serveur Cloud, 6 vCPU / 18 Go, Ubuntu 24.04 LTS, datacenter
 suisse), conteneurisé avec Docker Compose (services Ollama, application Streamlit, reverse proxy Caddy) et
@@ -173,10 +173,36 @@ des décisions et des incidents au journal des décisions (entrée du 25.08).
   `/srv/apps/ge-trouve-ch` puis `docker compose up -d --build`. Approbation exigée pour les workflows de
   forks (Settings → Actions → General). **Déploiement automatisé et validé.**
 
-- **5.7 Mesures de production et clôture** *(en cours)* : mesures sur le VPS réel (débits de prefill et de
+- **5.7 Mesures de production et clôture** *(terminée)* : mesures sur le VPS réel (débits de prefill et de
   génération, incident OOM, RAM) au journal des mesures ; garde-fou `OLLAMA_NUM_PARALLEL=1` ajouté après
   l'OOM ; guide de reconstruction de la base (`docs/reconstruire_la_base.md`) ; entrée d'exécution au
-  journal des décisions (25.08). Reste : rédaction du chapitre 11.
+  journal des décisions (25.08) ; **chapitre 11 rédigé** (Partie 2 complète).
+
+---
+
+## Sous-étapes de l'étape 6 — Évaluation (Partie 3)
+
+Le système évalué est le **pipeline de production figé** (consigne V5, régime acté, top_k 5) : aucune
+retouche pendant l'étape. Le jeu de questions est **d'auteur** (20 questions genevoises) et doit rester
+**étanche** : jamais exécuté avant le run officiel, aucun recouvrement avec les 8 questions de mise au point.
+
+- **6.1 Jeu d'évaluation outillé** : fichier versionné (20 questions : `id`, `question`, `registre`, `theme`,
+  `type`, `reponse_reference`, `pages_sources`) ; pour chaque question « avec réponse », vérifier la
+  couverture dans le corpus et rédiger une réponse de référence sourcée (2-4 phrases, URL) ; pour les « hors
+  périmètre », l'aveu et l'orientation attendus. Contrôle d'étanchéité. **Validation du fichier complet
+  (questions et références relues) avant toute exécution.** **Commit :** `feat: jeu d'evaluation (20 questions, references sourcees)`.
+- **6.2 Banc d'évaluation** : script d'exécution (une passe par question du pipeline de production, sans
+  seed ; archivage complet dans `resultats/evaluation/` : question, fragments + URL, réponse, latence) ;
+  script RAGAS (v0.4.x épinglée ; quatre métriques : précision et rappel du contexte, fidélité, pertinence)
+  avec juge local `llama3.1:8b` (température 0) et embeddings d'évaluation locaux (Qwen), branchement local.
+- **6.3 Run officiel** : exécuter le banc sur les 20 questions (poste DANIELGARCIA au repos), puis RAGAS ;
+  scores par question et agrégés au journal des mesures ; aucune relance sélective.
+- **6.4 Contrôle humain et classement des erreurs** : grille sur 8 réponses (les 4 hors périmètre + 4
+  tirées au sort) ; verdicts du contrôle humain ; classement des défauts sur les sept points de Barnett et al.
+  (Tableau 7.1) ; consignation au journal des mesures.
+- **6.5 Clôture** : entrée au journal des décisions ; plan et CLAUDE.md à jour ; commits
+  (`feat: banc d'evaluation ragas` ; `docs: mesures et decisions, etape 6`) ; prompt de retour pour
+  Claude.ai (jeu, scores, latences, grille, classement Barnett, incidents, commits, état git) en `.txt`.
 
 ---
 

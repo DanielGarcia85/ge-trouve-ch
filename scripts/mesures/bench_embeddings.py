@@ -27,7 +27,7 @@ from haystack_integrations.components.embedders.ollama import (
 OLLAMA_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
 MODELE = "qwen3-embedding:0.6b"
 PHRASE = "Où déposer ma demande de permis de séjour ?"
-FICHIER = Path(__file__).parent / "data" / "paragraphes_bench.txt"
+FICHIER = Path(__file__).parent / "paragraphes_bench.txt"
 TAILLE_LOT = 100
 
 

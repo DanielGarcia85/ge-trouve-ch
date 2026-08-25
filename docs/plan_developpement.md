@@ -7,11 +7,10 @@ de l'avancement.
 Les **sous-étapes détaillées, avec leurs commandes d'exécution**, sont ajoutées à mesure qu'on atteint
 chaque étape : elles servent de mode d'emploi pour **rejouer le jalon depuis zéro**. Une étape non encore
 atteinte n'est pas détaillée (règle de non-présomption) ; ses sous-étapes s'écrivent quand on
-y arrive. À ce jour, les étapes **0 à 4** sont détaillées plus bas (elles sont réalisées ; restent le
-déploiement et l'évaluation).
+y arrive. À ce jour, les étapes **0 à 5** sont détaillées plus bas (réalisées ; reste l'évaluation, Partie 3).
 
-Le détail par décision vit dans `docs/decisions/journal_des_decisions.md`, les chiffres dans
-`docs/mesures/journal_des_mesures.md`.
+Le détail par décision vit dans `docs/journal_des_decisions.md`, les chiffres dans
+`docs/journal_des_mesures.md`.
 
 ---
 
@@ -39,8 +38,9 @@ familles de démarches du futur jeu de questions d'évaluation.
 **Étape 4 — Interface** *(fait)*
 L'interface web par laquelle l'usager pose sa question.
 
-**Étape 5 — Consolidation et déploiement**
-Mesures consolidées, choix du palier VPS, puis déploiement.
+**Étape 5 — Consolidation et déploiement** *(fait)*
+Mesures consolidées, choix du palier VPS, puis déploiement conteneurisé (Docker Compose, Caddy, HTTPS)
+et CI/CD (runner GitHub auto-hébergé). Système en ligne sur `ge-trouve.ch`.
 
 **Étape 6 — Évaluation** *(Partie 3)*
 L'évaluation du système selon le protocole du chapitre 7 (RAGAS, jeu de questions genevoises,
@@ -61,7 +61,7 @@ contrôle humain).
 
 - **1.1 État des lieux** *(lecture seule)* : dépôt propre, venv et imports, modèles Ollama, `.env`, disque.
 - **1.2 Manifeste et robots** : `src/scraping/manifeste_sources_pilote.csv` versionné, vérification `robots.txt`, verdict consigné. **Commandes :** `python scripts/scraping/verifier_robots.py` (contrôle robots) ; `python scripts/scraping/lister_souspages_chapeau.py` (découverte des sous-pages, appoint).
-- **1.3 Scraper** : téléchargement poli des pages du manifeste vers `data/pilote/pages/` (un JSON par page), journal dans `resultats/pilote/`. **Commande :** `python src/scraping/scrape_pilote.py`.
+- **1.3 Scraper** : téléchargement poli des pages du manifeste vers `data/pages/pilote/` (un JSON par page), journal dans `resultats/pilote/`. **Commande :** `python src/scraping/scrape_pilote.py`.
 - **1.4 Indexation** : découpage, embeddings Qwen, écriture dans Chroma avec métadonnées par fragment. **Commande :** `python src/indexing/indexer_pilote.py`.
 - **1.5 Pipeline de réponse** : recherche (embedder requête + retriever Chroma) puis génération (Gemma, mode direct). **Commande :** `python src/repondre.py "Où déposer ma demande de permis de séjour ?"`.
 - **1.6 Exécution et mesures** : latence de bout en bout, RAM du pipeline chargé, réponse archivée dans `resultats/pilote/`. **Commande :** `python scripts/mesures/bench_pipeline.py`.
@@ -110,22 +110,73 @@ retrait de la liste « Sources » redondante avec la barre latérale ; voir jour
 
 ---
 
-## Sous-étapes de l'étape 5 *(à venir)*
+## Sous-étapes de l'étape 5 *(terminée ; 5.7 en cours)*
 
 Déploiement du système sur un VPS Infomaniak (Serveur Cloud, 6 vCPU / 18 Go, Ubuntu 24.04 LTS, datacenter
 suisse), conteneurisé avec Docker Compose (services Ollama, application Streamlit, reverse proxy Caddy) et
 livré par un pipeline GitHub Actions avec un runner self-hosted sur le VPS. Principe : rendre le service
 vivant d'abord (5.1 à 5.4), brancher le pipeline ensuite (5.5 et 5.6). L'organisation des fichiers et le
-patron du runner reprennent une infrastructure existante de l'auteur (serveur « Danny Boy »), en adaptant
+patron du runner reprennent une infrastructure existante d'un autre projet, en adaptant
 nginx en Caddy et sans base PostgreSQL (la seule donnée persistante est la base Chroma, régénérable).
 
-- **5.1 Préparation du serveur** *(après souscription)* : accès SSH par clé, mises à jour, comptes dédiés (`danielgarcia` admin, `github-runner` service), groupes `docker` et `deploy`, pare-feu UFW (22, 80, 443), durcissement SSH (authentification par clé seule, login root désactivé, fail2ban), installation de Docker et du plugin Compose. **Commandes :** `apt update && apt upgrade` ; `ufw allow 22,80,443 && ufw enable` ; installation Docker via `get.docker.com`.
-- **5.2 Conteneurisation** : `Dockerfile` de l'application Streamlit ; `docker-compose.yml` orchestrant les services **ollama**, **app** et **caddy** (volumes pour les modèles Ollama et la base Chroma, réseau interne, `restart: unless-stopped`). Organisation FHS : `/srv/apps/ge-trouve` (app et compose), `/srv/infra/proxy` (Caddy). **Commande :** `docker compose up -d --build`.
-- **5.3 Modèles et base vectorielle** : `ollama pull` de Gemma et Qwen dans le volume du conteneur Ollama ; transfert de la base Chroma (`data/chroma/`, non versionnée) vers le volume monté ; maintien des modèles au chaud (`OLLAMA_KEEP_ALIVE` sans expiration). **Commandes :** `docker compose exec ollama ollama pull gemma4:12b` ; `docker compose exec ollama ollama pull qwen3-embedding:0.6b` ; `rsync` de la base depuis le poste de dev.
-- **5.4 Domaine, proxy et HTTPS** : enregistrement DNS (`ge-trouve.ch` vers l'IP du VPS) ; `Caddyfile` (proxy vers l'app Streamlit, HTTPS automatique) ; l'app n'est jamais joignable directement. Test HTTPS de bout en bout avec la question type. **Service vivant.** **Commande :** `docker compose up -d`.
-- **5.5 Runner GitHub self-hosted** : installation d'un GitHub Actions Runner sur l'hôte (`/opt/runners/github`), exécuté par le compte `github-runner` via un service systemd (patron repris de Danny Boy). **Commandes :** `./config.sh --url <dépôt> --token <jeton>` ; `./svc.sh install` ; `./svc.sh start`.
-- **5.6 Pipeline CI/CD** : `.github/workflows/deploy.yml` : sur push `main`, vérifications rapides (compilation Python) puis déploiement par le runner (`git pull` puis `docker compose up -d --build` dans `/srv/apps/ge-trouve`). **Déploiement automatisé.**
-- **5.7 Mesures de production, sécurité et clôture** : mesures sur le VPS réel (latence, RAM, à froid et à chaud) au journal des mesures ; rédaction d'un **document d'infrastructure** (aide-mémoire sur le modèle de Danny Boy : architecture, organisation des fichiers, flux de déploiement, points de sécurité) ; entrée au journal des décisions (architecture de déploiement) ; plan et documentation à jour.
+Les commandes ci-dessous sont **celles réellement exécutées** sur le VPS Infomaniak Serveur Cloud
+(6 vCPU / 18 Go, Ubuntu 24.04 LTS), pour qu'un tiers puisse reproduire l'installation de zéro. Détail
+des décisions et des incidents au journal des décisions (entrée du 25.08).
+
+- **5.1 Préparation et sécurisation du serveur** *(terminée)* : mise à jour puis reboot ; compte admin
+  `danielgarcia` (sudo, clé SSH ed25519) ; **durcissement SSH** (clé seule, root désactivé) ; **UFW** ;
+  **fail2ban** ; **Docker** avec son stockage déplacé sur le disque de données `/mnt/data`. **Commandes :**
+  `sudo apt update && sudo apt upgrade -y && sudo reboot` ;
+  `sudo adduser danielgarcia && sudo usermod -aG sudo danielgarcia` (+ clé publique dans
+  `~danielgarcia/.ssh/authorized_keys`) ;
+  fichier `/etc/ssh/sshd_config.d/99-hardening.conf` (`PermitRootLogin no`, `PasswordAuthentication no`,
+  `PubkeyAuthentication yes`) puis `sudo sshd -t && sudo systemctl reload ssh` ;
+  `sudo ufw allow 22,80,443/tcp && sudo ufw enable` ;
+  `sudo apt install -y fail2ban` + jail `sshd` dans `/etc/fail2ban/jail.local` ;
+  Docker : `curl -fsSL https://get.docker.com | sudo sh`, data-root sur `/mnt/data/docker`
+  (`/etc/docker/daemon.json`), `sudo usermod -aG docker danielgarcia`.
+  À compléter côté **manager Infomaniak** : ouvrir 22, 80 et 443 au pare-feu de l'hébergeur.
+  Contenus utiles : `/etc/docker/daemon.json` = `{ "data-root": "/mnt/data/docker" }` ; jail fail2ban
+  `[sshd]` avec `enabled = true`, `maxretry = 5`, `findtime = 10m`, `bantime = 1h`. Préalable : le disque
+  de données de 250 Go est fourni et monté sur `/mnt/data` par Infomaniak au provisionnement.
+
+- **5.2 Conteneurisation** *(terminée)* : dossier `deploy/` versionné : `Dockerfile` (image de l'app,
+  `python:3.13-slim`, utilisateur non privilégié UID 1001), `docker-compose.yml` (services **ollama**,
+  **ollama-pull**, **app**, **caddy** ; volumes nommés pour les modèles et les certificats ; base Chroma en
+  montage lié ; réseau interne ; `restart: unless-stopped`), `Caddyfile`, `.dockerignore`. Dépôt cloné sur
+  le VPS dans `/srv/apps/ge-trouve-ch`. **Commandes :**
+  `sudo mkdir -p /srv/apps && sudo chown $USER:$USER /srv/apps` ;
+  `git clone https://github.com/DanielGarcia85/ge-trouve-ch.git` ;
+  `cd deploy && docker compose config && docker compose build`.
+
+- **5.3 Modèles et base vectorielle** *(terminée)* : les modèles sont tirés **automatiquement** par le
+  service one-shot `ollama-pull` (qui lit `config.MODELES_A_TIRER`), pas à la main ; la base Chroma (non
+  versionnée) est **copiée une fois** du poste de dev vers `/mnt/data/chroma`, montée en lecture-écriture.
+  **Commandes :** `sudo mkdir -p /mnt/data/chroma && sudo chown danielgarcia:danielgarcia /mnt/data/chroma` ;
+  depuis le poste de dev, `scp -r data/chroma/* danielgarcia@<ip>:/mnt/data/chroma/` ;
+  `docker compose up -d ollama-pull` (tire Gemma et Qwen) puis `docker compose up -d --build app`.
+
+- **5.4 Domaine, proxy et HTTPS** *(terminée)* : enregistrements DNS **A** `ge-trouve.ch` et
+  `www.ge-trouve.ch` vers l'IP du VPS (zone DNS Infomaniak) ; Caddy obtient seul les certificats (challenge
+  HTTP sur le port 80) et redirige `www` vers l'apex ; l'app n'est jamais joignable directement (seul Caddy
+  publie 80/443). **Service en ligne.** **Commande :** `docker compose up -d` (démarre Caddy).
+
+- **5.5 Runner GitHub self-hosted** *(terminée)* : compte de service dédié `github-runner` (sans sudo,
+  groupe `docker`), runner installé dans `/opt/runners/ge-trouve` et exécuté en **service systemd**.
+  **Commandes :** `sudo useradd -m -s /bin/bash github-runner && sudo usermod -aG docker github-runner` ;
+  `sudo chown -R github-runner:github-runner /srv/apps/ge-trouve-ch` ;
+  en tant que `github-runner` : téléchargement du runner (commandes et `<jeton>` fournis par GitHub → Settings → Actions → Runners → « New self-hosted runner », image Linux x64) + `./config.sh --url <dépôt> --token <jeton> --name ge-trouve-vps --unattended` ;
+  en tant que `danielgarcia` : `sudo ./svc.sh install github-runner && sudo ./svc.sh start`.
+
+- **5.6 Pipeline CI/CD** *(terminée)* : `.github/workflows/deploy.yml`, déclenché **uniquement** sur push
+  `main` (jamais sur pull request, pour protéger le dépôt public) : `git pull --ff-only` dans
+  `/srv/apps/ge-trouve-ch` puis `docker compose up -d --build`. Approbation exigée pour les workflows de
+  forks (Settings → Actions → General). **Déploiement automatisé et validé.**
+
+- **5.7 Mesures de production et clôture** *(en cours)* : mesures sur le VPS réel (débits de prefill et de
+  génération, incident OOM, RAM) au journal des mesures ; garde-fou `OLLAMA_NUM_PARALLEL=1` ajouté après
+  l'OOM ; guide de reconstruction de la base (`docs/reconstruire_la_base.md`) ; entrée d'exécution au
+  journal des décisions (25.08). Reste : rédaction du chapitre 11.
 
 ---
 

@@ -431,3 +431,48 @@ modèles résidents plus la génération, cohérent avec le budget mémoire du c
 **À approfondir en Partie 3.** Mesurer la latence de production en **mode direct** (`think=False`, comme
 l'application) sur le vrai prompt RAG ; évaluer une réduction du prefill (moins de fragments, `num_ctx`
 plus petit) si la latence pénalise l'expérience.
+
+---
+
+## 2026-08-25 — Étape 5, latence du pipeline en production (mode direct, vrai prompt)
+
+Mesure propre qui **complète** le relevé `ollama run` ci-dessus (lequel avait la réflexion active) : le
+pipeline complet, **en mode direct** (`think=False`) et sur le **vrai prompt RAG**, mesuré sur le VPS.
+
+**Protocole.** `scripts/mesures/bench_pipeline.py --streaming` exécuté **dans le conteneur `app`** (script
+copié par `docker cp`, il n'est pas dans l'image). Question type, modèles résidents (`keep_alive=-1`),
+régime de production. Le bench fait une passe puis trois **sur la même question**, ce qui révèle un effet de
+cache décrit plus bas.
+
+**Résultats.**
+
+| Cas | Premier mot | Total | Jetons |
+|---|---|---|---|
+| **Nouvelle question** (cache-miss, passe 1, modèle déjà résident) | **87,7 s** | 145,9 s | 414 |
+| **Question identique répétée** (cache-hit, médiane sur 3) | 1,2 s | 65,3 s | 449 |
+
+Débits : **prefill ~23 tokens/s** (les ~2000 jetons du prompt en ~87 s), **génération ~7 tokens/s** (449
+jetons en 64 s). Chargement de Gemma : 0,5 s (résident).
+
+**Lecture (importante).** L'écart entre 87,7 s et 1,2 s n'est **pas** le chargement du modèle (0,5 s) : c'est
+le **cache de prefill d'Ollama**. Le bench répétant le même prompt, Ollama calcule le prefill une fois
+(87,7 s) puis le **réutilise** (1,2 s). Donc :
+- pour une **nouvelle** question (le cas réel d'un usager), **le premier mot arrive après ~87 s** (le prefill
+  complet du prompt de ~2000 jetons), puis la réponse se génère à ~7 tokens/s ;
+- le « 1,2 s à chaud » ne vaut que pour une **question identique répétée immédiatement** (un seul emplacement
+  de cache avec `NUM_PARALLEL=1` : une autre question entre-temps écrase le cache).
+
+Confirmé par l'usage réel dans le navigateur : un premier « bonjour » met ~2 min avant le premier mot, un
+« bonjour » répété aussitôt répond en 2-3 s.
+
+**Correction d'un constat antérieur.** Le « premier mot en 1 à 3,5 s à chaud » relevé à l'étape 4 (postes de
+dev, 2026-08-23) relève **du même artefact de cache** (même question rejouée), et non de la latence d'une
+nouvelle question. Le streaming **lisse la génération** (les mots arrivent à ~7 tokens/s) mais **ne masque
+pas** le prefill de ~87 s d'une nouvelle question.
+
+**RAM (pendant le bench).** `free -h` : **16 Gi / 17 utilisés, ~1,1 Gi disponibles** (deux modèles résidents
++ génération). `ollama ps` : Gemma et Qwen chargés (`Forever`), 100 % CPU. Le palier 18 Go est **au taquet**,
+ce qui justifie le garde-fou `OLLAMA_NUM_PARALLEL=1`.
+
+**À approfondir en Partie 3.** Réduire le prefill d'une nouvelle question (moins de fragments que top-5,
+`num_ctx` plus petit) et mesurer l'effet sur le premier mot : c'est le principal levier de latence.

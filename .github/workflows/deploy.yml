@@ -1,16 +1,27 @@
 # .github/workflows/deploy.yml
 #
 # Déploiement continu de Ge-Trouve sur le VPS.
-# Sur chaque push vers main, le runner auto-hébergé (sur le VPS) met à jour le
-# dépôt de déploiement (git pull) puis (re)construit et relance les conteneurs.
-# Ne se déclenche QUE sur push vers main, jamais sur une pull request : une PR
-# d'un fork ne peut donc rien exécuter sur le runner (dépôt public).
+# Sur push vers main touchant le code, la config ou les dépendances de l'app (filtre
+# paths), le runner auto-hébergé (sur le VPS) met à jour le dépôt de déploiement
+# (git pull) puis (re)construit et relance les conteneurs. Un push purement documentaire
+# ne déclenche rien ; un déclenchement manuel reste possible (workflow_dispatch).
+# Jamais sur une pull request : une PR d'un fork ne peut donc rien exécuter sur le
+# runner (dépôt public).
 
 name: Déploiement
 
 on:
   push:
     branches: [main]
+    # Déploie seulement quand le code, la config ou les dépendances de l'app changent
+    # (un push purement documentaire ne déclenche donc rien).
+    paths:
+      - 'src/**'
+      - 'deploy/**'
+      - 'requirements.txt'
+      - '.streamlit/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:            # déclenchement manuel à la demande (bouton « Run workflow »)
 
 # Un seul déploiement à la fois : deux pushs rapprochés s'enchaînent au lieu de se chevaucher.
 concurrency:

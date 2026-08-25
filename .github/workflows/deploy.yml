@@ -1,0 +1,32 @@
+# .github/workflows/deploy.yml
+#
+# Déploiement continu de Ge-Trouve sur le VPS.
+# Sur chaque push vers main, le runner auto-hébergé (sur le VPS) met à jour le
+# dépôt de déploiement (git pull) puis (re)construit et relance les conteneurs.
+# Ne se déclenche QUE sur push vers main, jamais sur une pull request : une PR
+# d'un fork ne peut donc rien exécuter sur le runner (dépôt public).
+
+name: Déploiement
+
+on:
+  push:
+    branches: [main]
+
+# Un seul déploiement à la fois : deux pushs rapprochés s'enchaînent au lieu de se chevaucher.
+concurrency:
+  group: deploiement-vps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Mettre à jour le dépôt de déploiement
+        run: |
+          cd /srv/apps/ge-trouve-ch
+          git pull --ff-only
+
+      - name: Construire et (re)démarrer les conteneurs
+        run: |
+          cd /srv/apps/ge-trouve-ch/deploy
+          docker compose up -d --build

@@ -1,0 +1,101 @@
+<svg viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#475569"/></marker>
+    <marker id="ab" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1D4ED8"/></marker>
+    <marker id="ao" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#B45309"/></marker>
+  </defs>
+
+  <text x="500" y="42" text-anchor="middle" font-size="16.5" fill="#334155">En production, tout s'exécute dans le serveur suisse : seul caddy est exposé au web, et même la livraison vit à l'intérieur.</text>
+
+  <!-- Cadre VPS -->
+  <rect x="272" y="70" width="698" height="500" rx="14" fill="#F8FAFC" stroke="#334155" stroke-width="2.6"/>
+  <rect x="292" y="86" width="22" height="22" fill="#D52B1E"/>
+  <rect x="300" y="90" width="6" height="14" fill="#FFFFFF"/>
+  <rect x="296" y="94" width="14" height="6" fill="#FFFFFF"/>
+  <text x="324" y="103" font-size="17.5" font-weight="700" fill="#334155">VPS Infomaniak, datacenter suisse</text>
+  <text x="324" y="124" font-size="14.5" fill="#64748B">Ubuntu 24.04 · 6 vCPU · 18 Go · processeur seul</text>
+
+  <!-- Boîte Docker Compose -->
+  <rect x="292" y="146" width="658" height="276" rx="12" fill="#FDFEFF" stroke="#2563EB" stroke-width="2"/>
+  <g fill="#DBEAFE" stroke="#2563EB" stroke-width="1.6">
+    <rect x="306" y="164" width="13" height="9" rx="1.5"/>
+    <rect x="321" y="164" width="13" height="9" rx="1.5"/>
+    <rect x="313" y="153" width="13" height="9" rx="1.5"/>
+  </g>
+  <text x="344" y="175" font-size="15.5" font-weight="700" fill="#1D4ED8">Docker Compose</text>
+
+  <!-- caddy -->
+  <rect x="308" y="188" width="150" height="130" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <path d="M375,206 a8,8 0 0 1 16,0" fill="none" stroke="#1D4ED8" stroke-width="2.4"/>
+  <rect x="371" y="206" width="24" height="16" rx="3" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="2"/>
+  <text x="383" y="252" text-anchor="middle" font-size="17" font-weight="700" fill="#1D4ED8">caddy</text>
+  <text x="383" y="276" text-anchor="middle" font-size="14.5" fill="#1E3A8A">HTTPS automatique,</text>
+  <text x="383" y="296" text-anchor="middle" font-size="14.5" fill="#1E3A8A">seul exposé (80, 443)</text>
+
+  <!-- app -->
+  <rect x="488" y="188" width="180" height="130" rx="10" fill="#F0FDF4" stroke="#059669" stroke-width="2"/>
+  <text x="578" y="232" text-anchor="middle" font-size="17" font-weight="700" fill="#065F46">app</text>
+  <text x="578" y="258" text-anchor="middle" font-size="14.5" fill="#14532D">Streamlit + pipeline</text>
+  <text x="578" y="280" text-anchor="middle" font-size="14.5" fill="#14532D">exécutée sans privilèges</text>
+
+  <!-- ollama -->
+  <rect x="698" y="188" width="180" height="130" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2"/>
+  <text x="788" y="222" text-anchor="middle" font-size="17" font-weight="700" fill="#334155">ollama</text>
+  <text x="788" y="248" text-anchor="middle" font-size="14.5" fill="#475569">Gemma 4 12B et Qwen</text>
+  <text x="788" y="270" text-anchor="middle" font-size="14.5" fill="#475569">modèles résidents,</text>
+  <text x="788" y="292" text-anchor="middle" font-size="14.5" fill="#475569">une génération à la fois</text>
+
+  <!-- ollama-pull -->
+  <rect x="662" y="352" width="252" height="60" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="788" y1="350" x2="788" y2="324" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#ag)"/>
+  <text x="788" y="376" text-anchor="middle" font-size="15.5" font-weight="700" fill="#475569">ollama-pull</text>
+  <text x="788" y="396" text-anchor="middle" font-size="14" fill="#64748B">éphémère : provisionne les modèles</text>
+
+  <!-- flèches internes -->
+  <line x1="458" y1="253" x2="482" y2="253" stroke="#475569" stroke-width="2.4" marker-end="url(#ag)"/>
+  <line x1="668" y1="236" x2="692" y2="236" stroke="#475569" stroke-width="2.4" marker-end="url(#ag)"/>
+
+  <!-- Base Chroma (hors Docker, dans le VPS) -->
+  <path d="M534,452 v40" stroke="#F59E0B" stroke-width="2" fill="none"/>
+  <path d="M662,452 v40" stroke="#F59E0B" stroke-width="2" fill="none"/>
+  <ellipse cx="598" cy="492" rx="64" ry="13" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <rect x="534" y="452" width="128" height="40" fill="#FEF3C7"/>
+  <ellipse cx="598" cy="452" rx="64" ry="13" fill="#FDE68A" stroke="#F59E0B" stroke-width="2"/>
+  <text x="598" y="528" text-anchor="middle" font-size="16.5" font-weight="700" fill="#92400E">Base Chroma</text>
+  <text x="598" y="549" text-anchor="middle" font-size="14.5" fill="#78350F">sur le disque de l'hôte</text>
+  <line x1="598" y1="437" x2="598" y2="322" stroke="#B45309" stroke-width="2.2" marker-end="url(#ao)"/>
+  <text x="612" y="436" font-size="13.5" fill="#92400E">montée dans app (recherche)</text>
+
+  <!-- runner (dans le VPS, hors Docker) -->
+  <rect x="298" y="452" width="200" height="98" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+  <g stroke="#475569" stroke-width="2" fill="none">
+    <circle cx="330" cy="478" r="8"/>
+    <path d="M330,466 v-5 M330,490 v5 M318,478 h-5 M342,478 h5 M321,469 l-4,-4 M339,469 l4,-4 M321,487 l-4,4 M339,487 l4,4"/>
+  </g>
+  <text x="424" y="484" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">runner GitHub</text>
+  <text x="398" y="512" text-anchor="middle" font-size="13.5" fill="#475569">auto-hébergé, compte dédié</text>
+  <text x="398" y="532" text-anchor="middle" font-size="13.5" fill="#475569">redéploie : docker compose up</text>
+  <line x1="398" y1="450" x2="398" y2="428" stroke="#64748B" stroke-width="2.4" marker-end="url(#ag)"/>
+
+  <!-- Usager (extérieur) -->
+  <circle cx="120" cy="190" r="16" fill="#FFFFFF" stroke="#334155" stroke-width="2.2"/>
+  <path d="M92,230 a28,20 0 0 1 56,0" fill="#E2E8F0" stroke="#334155" stroke-width="2.2"/>
+  <text x="120" y="258" text-anchor="middle" font-size="16.5" font-weight="700" fill="#334155">Usager</text>
+  <text x="120" y="278" text-anchor="middle" font-size="14.5" fill="#64748B">navigateur</text>
+  <text x="216" y="240" text-anchor="middle" font-size="14" fill="#1D4ED8">ge-trouve.ch</text>
+  <line x1="164" y1="253" x2="302" y2="253" stroke="#1D4ED8" stroke-width="2.6" marker-end="url(#ab)"/>
+
+  <!-- Dépôt GitHub (extérieur) -->
+  <rect x="30" y="462" width="170" height="86" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+  <g fill="#475569">
+    <circle cx="56" cy="486" r="5.2"/><circle cx="56" cy="522" r="5.2"/><circle cx="82" cy="504" r="5.2"/>
+  </g>
+  <path d="M56,491 v26 M59,499 L77,503" stroke="#475569" stroke-width="2.2" fill="none"/>
+  <text x="142" y="498" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">Dépôt public</text>
+  <text x="142" y="520" text-anchor="middle" font-size="14.5" fill="#64748B">GitHub</text>
+  <line x1="200" y1="522" x2="292" y2="522" stroke="#475569" stroke-width="2.4" marker-end="url(#ag)"/>
+  <text x="239" y="498" text-anchor="middle" font-size="14" fill="#475569">push</text>
+  <text x="239" y="514" text-anchor="middle" font-size="14" fill="#475569">sur main</text>
+
+  <text x="500" y="614" text-anchor="middle" font-size="15.5" fill="#475569">Aucun appel vers un service d'intelligence artificielle externe : questions et réponses ne quittent pas le serveur.</text>
+</svg>

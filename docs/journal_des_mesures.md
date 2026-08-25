@@ -163,7 +163,7 @@ Verdict : **feu vert** pour les 23 URL du manifeste, délai ≥ 2 s, agent ident
 - Durée ≈ 51 s, **dominée par le délai de politesse** (2 s × 22 intervalles) ; le temps de requête et
   d'extraction ne pèse que ~7 s au total. C'est ce délai, pas le matériel, qui fixera le temps à l'échelle
   du corpus complet.
-- Sortie : un JSON par page dans `data/pilote/pages/` (corpus brut, non versionné), plus le journal
+- Sortie : un JSON par page dans `data/pages/pilote/` (corpus brut, non versionné), plus le journal
   `resultats/pilote/journal_scraping_pilote.md` (versionné).
 
 **Index Chroma (1.4).** Artefact indépendant de la machine (construit sur DANIELGARCIA).
@@ -274,7 +274,7 @@ puis GARCIAD (11.08, V0/V3). Le détail des réponses est archivé dans le dép�
 **Ancrage vérifié à la source.** Les détails les plus spécifiques produits par V3 (SEFRI, délai « 6 à
 8 semaines », permis Ci et carte de légitimation DFAE, pays à accord d'établissement, personnel académique)
 ont été **retrouvés dans les pages sources correspondantes** du corpus pilote (recherche plein texte sur
-`data/pilote/pages/`). V3 n'invente pas : sa richesse vient des extraits. Constat central pour la fidélité
+`data/pages/pilote/`). V3 n'invente pas : sa richesse vient des extraits. Constat central pour la fidélité
 (chapitre 7).
 
 ---
@@ -383,3 +383,51 @@ logiciels : les chiffres de production réels seront relevés sur le VPS à l'é
 
 **Captures de l'interface** : `resultats/interface/capture_repos.PNG` (au repos) et
 `resultats/interface/capture_reponse.PNG` (avec une réponse).
+
+---
+
+## 2026-08-25 — Étape 5, mesure de production sur le VPS (débits Ollama, incident OOM)
+
+**Serveur (production).** VPS Infomaniak Serveur Cloud · **AMD EPYC-Genoa** (6 vCPU : 2 sockets × 3 cœurs,
+1 thread/cœur) · **18 Go de RAM** · Ubuntu 24.04.4 LTS · datacenter suisse · **CPU seul (pas de GPU)**.
+Modèles résidents (`OLLAMA_KEEP_ALIVE=-1`) : Gemma 8,9 Go + Qwen 2,4 Go.
+
+**Versions.** Docker Engine 29.7.2 · image `ollama/ollama:0.32.6` · même pile Haystack/Chroma que les postes de dev.
+
+**Protocole.** Débits bruts du LLM mesurés avec `ollama run gemma4:12b --verbose` (deux passes), modèle à
+chaud, question courte. **Réserve importante :** cette commande **n'a pas passé `think=False`**, donc la
+**réflexion (thinking) était active**, contrairement à la production (mode direct). Les **durées totales et
+le nombre de jetons ne sont donc pas représentatifs** de la production ; seuls les **débits** (tokens/s),
+vitesses matérielles, le sont.
+
+**Débits bruts (Gemma 4 12B, Q4_K_M, à chaud).**
+
+| Passe | Prefill (traitement du prompt) | Génération |
+|---|---|---|
+| 1 | 20,35 tokens/s (40 jetons en 1,97 s) | 8,05 tokens/s |
+| 2 | 21,61 tokens/s (40 jetons en 1,85 s) | 8,36 tokens/s |
+
+Chargement à chaud ≈ 0,6 s (modèle résident).
+
+**Ce que ça dit de la latence de production.**
+- Le **délai avant le premier mot** est dominé par le **prefill**. Le prompt RAG réel fait ~2000 jetons
+  (consigne + 5 fragments) : à ~21 tokens/s, son prefill vaut **≈ 95-100 s**. C'est l'explication des
+  **~2 min avant le premier mot** observés dans l'interface en ligne.
+- La **génération** tourne à ~8 tokens/s : une réponse de plusieurs centaines de jetons met encore une à
+  deux minutes à s'écrire (le streaming la rend lisible au fil de l'eau).
+- Le VPS reste **plus lent que les postes de dev**, et surtout le **prefill du long prompt** pèse lourd :
+  c'est la **contrepartie assumée de la souveraineté** (CPU sans GPU). Le streaming lisse la génération
+  **mais ne masque pas le délai de prefill**.
+
+**Incident mémoire (OOM).** Avec les deux modèles résidents (≈ 11 Go) et une **génération concurrente**
+(un `ollama run` lancé pendant qu'une requête du navigateur tournait), les 18 Go ont été saturés : le noyau
+(OOM killer) a tué `llama-server` (~16 Go), rendant le serveur injoignable. **Parade retenue :
+`OLLAMA_NUM_PARALLEL=1`** (une génération à la fois). Constat : le palier 18 Go est **juste** pour deux
+modèles résidents plus la génération, cohérent avec le budget mémoire du chapitre 4.
+
+**Résilience.** Après redémarrage du serveur, les conteneurs (`restart: unless-stopped`) sont remontés
+**seuls**, sans intervention.
+
+**À approfondir en Partie 3.** Mesurer la latence de production en **mode direct** (`think=False`, comme
+l'application) sur le vrai prompt RAG ; évaluer une réduction du prefill (moins de fragments, `num_ctx`
+plus petit) si la latence pénalise l'expérience.

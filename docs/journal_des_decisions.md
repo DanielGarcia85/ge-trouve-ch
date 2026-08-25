@@ -8,6 +8,56 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-25 — Étape 5 exécutée : déploiement en production et CI/CD en ligne
+
+**Ce qui est fait.** Le système est **en ligne** sur le VPS Infomaniak Serveur Cloud (6 vCPU / 18 Go,
+Ubuntu 24.04 LTS, datacenter suisse, IP publique dédiée), servi en **HTTPS** sur `ge-trouve.ch`, et
+**déployé automatiquement à chaque push** sur `main`. Marche à suivre reproductible détaillée dans
+`docs/plan_developpement.md` (5.1 à 5.7).
+
+**Serveur et sécurité.** Compte admin **`danielgarcia`** (sudo, clé SSH ed25519) ; login root SSH
+désactivé et authentification **par clé seule** (fichier de durcissement `sshd_config.d/99-hardening.conf`) ;
+**UFW** (22/80/443) et **fail2ban** (jail sshd) ; pare-feu Infomaniak (niveau manager) ouvert sur 22/80/443.
+**Docker** installé depuis le dépôt officiel, avec **data-root déplacé sur `/mnt/data`** (disque de 250 Go)
+pour que modèles et images ne saturent pas les 19 Go du disque système.
+
+**Conteneurisation (`deploy/`).** `Dockerfile` (image de l'app, utilisateur non privilégié **UID 1001**
+aligné sur `danielgarcia`, propriétaire de la base montée) ; `docker-compose.yml` (services **ollama**,
+**ollama-pull**, **app**, **caddy** ; `restart: unless-stopped`) ; `Caddyfile` (HTTPS automatique Let's
+Encrypt, redirection `www` vers l'apex) ; `.dockerignore`. Le provisionnement des modèles est **automatisé**
+par un service one-shot **`ollama-pull`** (image de l'app) qui exécute `src/pull_modeles.py`, lequel lit
+`config.MODELES_A_TIRER` (source **unique** des noms de modèles). Base Chroma **copiée une fois** sur `/mnt/data/chroma` (scp), montée en
+**lecture-écriture** (Chroma/SQLite écrit ses fichiers WAL même pour de simples lectures).
+
+**CI/CD.** Runner GitHub Actions **auto-hébergé** sur le VPS, sous un compte dédié **`github-runner`**
+(sans sudo, groupe `docker`), en **service systemd** (`/opt/runners/ge-trouve`). Workflow
+`.github/workflows/deploy.yml` : déclenché **uniquement** sur push `main` (jamais sur pull request, pour
+protéger le dépôt public d'un fork malveillant), fait `git pull` dans `/srv/apps/ge-trouve-ch` puis
+`docker compose up -d --build`. Approbation exigée pour les workflows de forks (Settings → Actions).
+
+**Décisions et incidents en cours d'exécution.**
+- **Suppression du mécanisme `.env`** : `config.py` lit les variables d'environnement du shell (posées par
+  le compose) puis ses valeurs par défaut ; aucun secret (souveraineté), donc **aucun fichier `.env`**.
+  `OLLAMA_MODEL` renommé **`OLLAMA_GENERATION_MODEL`** (symétrie avec `OLLAMA_EMBEDDING_MODEL`) ; ajout de
+  `MODELES_A_TIRER` (liste unique des modèles à provisionner).
+- **Incident OOM** : les deux modèles gardés résidents (`keep_alive=-1`, ≈ 11 Go) plus une génération
+  concurrente ont saturé les 18 Go, le noyau (OOM killer) a tué `llama-server`, serveur injoignable.
+  **Parade : `OLLAMA_NUM_PARALLEL=1`** (une génération à la fois). Constat à relier au budget mémoire du
+  chapitre 4 : le palier 18 Go est **juste**.
+- **Résilience** : après reboot, `restart: unless-stopped` + démon Docker systemd ont **relancé le service
+  seul**, sans intervention.
+- Base **copiée** (pas reconstruite) pour rester identique à la base mesurée et évaluée ; reconstruction
+  documentée dans `docs/reconstruire_la_base.md`.
+
+**Écarts avec le plan de conception (23.08).** Pas de dossier `/srv/infra` ni de groupe `deploy` (inutiles :
+Caddy est un conteneur du compose, la seule donnée hôte est la base Chroma) ; transfert de la base par
+**`scp`** (et non `rsync`) ; provisionnement des modèles **automatisé** (et non manuel) ; le workflow
+déploie sans étape de tests Python (déploiement pur).
+
+**Lien avec le mémoire.** Partie 2, chapitre 11 (déploiement) ; mesures de production au journal des mesures.
+
+---
+
 ## 2026-08-23 — Étape 5 : architecture de déploiement (VPS souverain, Docker, CI/CD)
 
 **Ce qui est arrêté.** Le système sera déployé sur un **VPS Infomaniak Serveur Cloud** (datacenter suisse),
@@ -26,7 +76,7 @@ Ordre d'exécution : service vivant d'abord, pipeline ensuite. Sous-étapes dét
   et groupes dédiés (`docker`, `deploy`) plutôt que root. Ces mesures reprennent et devancent les
   recommandations de durcissement d'une infrastructure antérieure de l'auteur.
 - **Patron éprouvé** : l'organisation des fichiers (`/srv/apps`, `/srv/infra`, `/opt/runners`) et le flux du
-  runner GitHub sont repris d'un serveur existant de l'auteur (adaptation : Caddy au lieu de nginx, pas de
+  runner GitHub sont repris d'un serveur existant d'un autre projet perso (adaptation : Caddy au lieu de nginx, pas de
   base PostgreSQL, la seule donnée persistante étant la base Chroma).
 
 **Cadre à garder en tête.** Le déploiement et le CI/CD sont un **apport d'ingénierie et de vitrine** (dépôt
@@ -165,7 +215,7 @@ restent des extensions possibles, activées seulement si l'évaluation (Partie 3
 qui remplace la consigne provisoire de l'étape 1. Décision arrêtée après essais comparés.
 
 **Lien avec le mémoire.** Partie 2 (développement), section 10.5 (consigne). Latences et ancrage vérifié
-alimentent l'Annexe 2 ; détail chiffré dans `docs/mesures/journal_des_mesures.md`.
+alimentent l'Annexe 2 ; détail chiffré dans `docs/journal_des_mesures.md`.
 
 **Ce qui est tranché.**
 - **Consigne retenue : V3** (`src/generation/consignes.py`, `CONSIGNE_ACTIVE`). Elle demande une réponse
@@ -251,7 +301,7 @@ reproductible (10.6 = étape 3).
 Pas une décision de choix (la pile est arrêtée en Partie 1), mais sa première mise en œuvre.
 
 **Lien avec le mémoire.** Partie 2 (développement). Les mesures alimentent l'Annexe 2 ; la réponse
-archivée est citée en prose dans le mémoire. Détail chiffré : `docs/mesures/journal_des_mesures.md`.
+archivée est citée en prose dans le mémoire. Détail chiffré : `docs/journal_des_mesures.md`.
 
 **Ce qui est construit.**
 - Manifeste versionné de 23 URL `www.ge.ch` (permis de séjour), avec vérification robots.txt
@@ -343,7 +393,7 @@ déploiement et palier VPS = étape 5.
 développement et premiers relevés. Ouvre la Partie 2 (développement).
 
 **Lien avec le mémoire.** Partie 2 (développement), phase amont. Les mesures datées alimenteront
-l'Annexe 2 ; le détail chiffré est consigné dans `docs/mesures/journal_des_mesures.md`.
+l'Annexe 2 ; le détail chiffré est consigné dans `docs/journal_des_mesures.md`.
 
 **Ce qui est fait (les deux postes).**
 - Ollama installé sur les deux postes (0.32.5 sur DANIELGARCIA, 0.32.6 sur GARCIAD), inférence CPU

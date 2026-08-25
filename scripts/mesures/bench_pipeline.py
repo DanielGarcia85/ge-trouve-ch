@@ -26,6 +26,7 @@ total) et isole ce que l'interface apporte (le premier mot en ~1 s).
 """
 
 import argparse
+import shutil
 import statistics
 import subprocess
 import sys
@@ -137,9 +138,13 @@ def main():
     print(f"\nRéponse archivée : {ARCHIVE}")
 
     print("\n=== RAM du pipeline chargé (Qwen + Gemma + Chroma résidents) ===")
-    subprocess.run(
-        ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(RELEVE_RAM)]
-    )
+    if RELEVE_RAM.exists() and shutil.which("powershell"):
+        subprocess.run(
+            ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(RELEVE_RAM)]
+        )
+    else:
+        print("  (relevé RAM PowerShell indisponible ici ; sur le VPS Linux, relever avec "
+              "`free -h` et `docker compose exec ollama ollama ps`)")
 
 
 if __name__ == "__main__":

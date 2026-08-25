@@ -27,6 +27,9 @@ services:
     environment:
       # Garde les modèles résidents en mémoire
       OLLAMA_KEEP_ALIVE: "-1"
+      # Une seule génération à la fois : évite l'empilement de caches mémoire (KV) qui
+      # a provoqué un OOM (18 Go trop justes pour deux générations concurrentes).
+      OLLAMA_NUM_PARALLEL: "1"
     volumes:
       # Modèles rangés dans un volume nommé (donc sur /mnt/data via data-root).
       - ollama-models:/root/.ollama

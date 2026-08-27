@@ -1,0 +1,40 @@
+{
+  "id": 19,
+  "question": "Quels sont les horaires de la ligne 12 des TPG ?",
+  "type": "hors_perimetre",
+  "registre": "courant",
+  "collectivite": "hors périmètre",
+  "theme": "horaires-tpg",
+  "reponse_reference": "Les horaires d'une ligne des Transports publics genevois (TPG) ne figurent pas dans le corpus des démarches administratives. Le système doit le reconnaître et orienter la personne vers les TPG (tpg.ch).",
+  "pages_sources_reference": [],
+  "reponse_systeme": "Les extraits fournis ne contiennent pas d'informations concernant les horaires de la ligne 12 des TPG. Je vous invite à vous adresser au guichet ou au site officiel concerné pour obtenir cette information.",
+  "latence_s": 110.11,
+  "reflexion": null,
+  "fragments": [
+    {
+      "rang": 1,
+      "url": "https://www.ge.ch/spc-abonnement-tpg-exoneration-redevance-radio/tv/abonnement-tpg-beneficiaires-pc-avs/ai",
+      "contexte": "également vous accompagner par téléphone au 00800 022 021 20 (appel gratuit).\n\n**vous pouvez renouveler votre abonnement en vous présentant directement aux guichets TPG de Rive, de Cornavin ou de Lancy-Pont-Rouge, du lundi au vendredi, de 9h à 16h, avec une pièce d'identité et votre numéro de bénéficiaire SPC**.\n\nDernière mise à jour: 23 juin 2025"
+    },
+    {
+      "rang": 2,
+      "url": "https://www.ge.ch/spc-abonnement-tpg-exoneration-redevance-radio/tv/abonnement-tpg-beneficiaires-pc-avs/ai",
+      "contexte": "## Abonnement TPG pour bénéficiaires de PC AVS/AI\n\nLes bénéficiaires de [prestations complémentaires AVS/AI](https://www.ge.ch/prestations-complementaires-avs/ai) ont droit à un abonnement TPG/unireso annuel donnant l'accès aux transports publics sur l'ensemble du réseau genevois à tarif extrêmement réduit.\n\n### Pour qui\n\nLes abonnements TPG/unireso pour bénéficiaires de prestations complémentaires AVS/AI concernent les bénéficiaires principaux mais aussi les personnes prises en compte dans leur calcul (époux ou épouse et enfants à charge).\n\n### Prix\n\nLa participation demandée aux bénéficiaires de prestation complémentaires AVS/AI pour obtenir un abonnement annuel TPG/unireso est de 66 francs par an et par personne.\n\n### Comment\n\n**Il faut demander les abonnements TPG/unireso du SPC** **aux guichets TPG de Rive, de Cornavin ou de Lancy-Pont-Rouge, du lundi au vendredi, de 9h à 16h, avec une pièce d'identité et le numéro de bénéficiaire SPC**. Ces abonnements sont chargés sur une carte SwissPass. Ils sont valables un an.\n\n**acheter ou renouveler un abonnement en ligne sur le site:**Un guide pour vous aider à renouveler votre abonnement en ligne est disponible à l'adresse\n\n[webshop.tpg.ch](https://webshop.tpg.ch).\n[www.tpg.ch/fr/faq-webshop](https://www.tpg.ch/fr/faq-webshop).\n\nLe service client des TPG peut également vous accompagner par téléphone au 00800 022 021 20 (appel gratuit).\n\n**vous pouvez renouveler votre abonnement en vous présentant directement aux guichets TPG de Rive, de Cornavin ou de Lancy-Pont-Rouge, du lundi au vendredi, de 9h à 16h, avec une "
+    },
+    {
+      "rang": 3,
+      "url": "https://www.ge.ch/dossier/bus-tosa-innovation-mobilite-au-service-genevois/ligne-23-premiere-mondiale/line-23-world-premiere",
+      "contexte": "Line 23 was chosen since it is a key line that connects major current or future transport links and centres in and around Geneva: the Praille-Acacias-Vernets suburb, the Perly, Chancy, Pont-Butin link, the Vernier link, the future Etang district, the airport, the Palexpo site and the Ferney link.\n\nTOSA therefore adds value and dynamism to this historical line in zone 2 of Geneva’s transport network, which covers a corridor pinpointed in the Mobility 2030 cantonal planning process as a major prospective public transport link.\n\nAt the time of entry into service of TOSA technology on line 23, no equivalent cable-free electric bus lines exist in terms of distance, transport capacity and above all charging time at the bus terminal. The main electric bus experiments currently being carried out involve shorter lines, with either smaller-capacity vehicles or a longer charging time at the bus terminal.\n\n## Vehicles and infrastructure\n\nTo ensure a frequency of one bus every 10 minutes at peak times, 12 articulated buses need to be operated on line 23.\n\nAs regards the infrastructure, 12 of the line’s 50 bus stops are equipped with a flash feeding station: eight in the P+R P47 direction and four in the Tours-de-Carouge direction (distributed unequally owing to "
+    },
+    {
+      "rang": 4,
+      "url": "https://www.ge.ch/dossier/bus-tosa-innovation-mobilite-au-service-genevois/ligne-23-premiere-mondiale/ligne-23",
+      "contexte": "de la ligne 23 nécessite 12 bus articulés pour pouvoir garantir une cadence de 10’ en heure de pointe.\n\nDu côté des infrastructures, sur les 50 arrêts que compte la ligne, 12 arrêts sont équipés d’une station de recharge flash : 8 en direction du P+R P47 et 4 en direction des Tours-de-Carouge, dissymétrie imputable à la topographie. En plus de 2 stations de recharge terminales en bout de ligne, une troisième, située à l’aéroport, permettra de garantir la souplesse d’exploitation nécessaire en cas de congestion notamment dans le secteur de Palexpo lors de certaines manifestations.\n\nFinalement, 4 stations de recharge de dépôt sont installées au dépôt de la Jonction."
+    },
+    {
+      "rang": 5,
+      "url": "https://www.ge.ch/dossier/bus-tosa-innovation-mobilite-au-service-genevois/ligne-23-premiere-mondiale/ligne-23",
+      "contexte": "La ligne 23 a été choisie car il s’agit d’une ligne de ceinture qui reliera des axes et pôles importants, actuels ou en devenir, du territoire genevois : Secteur Praille-Acacias-Vernets, axe de Perly, Chancy, Pont-Butin, axe de Vernier, futur quartier de l’Etang, Aéroport, Palexpo et axe de Ferney.\n\nTOSA est ainsi un élément valorisant et dynamisant de cette ligne historique de la 2<sup>ème</sup> couronne qui parcourt un corridor identifié, dans la planification cantonale Mobilités 2030, comme étant un futur axe fort de transports collectifs.\n\nA la mise en service de la technologie TOSA sur la ligne 23, il n’y a pas de ligne de bus électriques sans fils équivalentes en termes de distance, capacité de transport et surtout une durée de recharge au terminus. Les principales expériences de bus électriques actuellement en cours portent sur des lignes soit plus courtes, soit avec des véhicules de plus petite capacité ou avec une durée de recharge plus longue au terminus.\n\n\n#### **Les véhicules et infrastructures**\n\nL’exploitation de la ligne 23 nécessite 12 bus articulés pour pouvoir garantir une cadence de 10’ en heure de pointe.\n\nDu côté des infrastructures, sur les 50 arrêts que compte la ligne, 12 arrêts sont équipés d’une station de recharge flash : "
+    }
+  ]
+}

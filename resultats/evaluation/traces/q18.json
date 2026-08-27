@@ -1,0 +1,40 @@
+{
+  "id": 18,
+  "question": "Comment obtenir un permis de séjour dans le canton de Vaud ?",
+  "type": "hors_perimetre",
+  "registre": "courant",
+  "collectivite": "hors périmètre",
+  "theme": "permis-sejour-vaud",
+  "reponse_reference": "L'octroi d'un permis de séjour dans le canton de Vaud ne relève pas du corpus genevois. Le système doit reconnaître qu'il ne couvre que Genève et orienter la personne vers les autorités vaudoises (canton de Vaud, vd.ch).",
+  "pages_sources_reference": [],
+  "reponse_systeme": "Les extraits fournis ne contiennent aucune information concernant les démarches ou l'obtention d'un permis de séjour dans le canton de Vaud. Je vous invite à vous adresser au guichet ou au site officiel concerné pour cette demande.",
+  "latence_s": 134.35,
+  "reflexion": null,
+  "fragments": [
+    {
+      "rang": 1,
+      "url": "https://www.ge.ch/arriver-dans-canton-geneve-toutes-informations-pratiques",
+      "contexte": "##### Les 5 démarches indispensables\n\nSi vous souhaitez vous installer de manière permanente et durable dans le canton de Genève, vous devez effectuer dans les plus brefs délais les 5 démarches indispensables suivantes:\n\n1. Obtenir une autorisation de séjour et/ou de travail (obligatoire pour les ressortissants étrangers) ou vous [annoncer auprès de l'office cantonal de la population et des migrations](https://www.ge.ch/node/3538) si vous êtes Suisse.Les ressortissants de l'Union européenne réunissant les conditions pour obtenir un permis de séjour ou de travail, doivent s'annoncer auprès de [l'OCPM](https://www.ge.ch/node/3538) dans les 3 mois suivant leur arrivée.Les ressortissants d'Etats tiers (hors Union européenne) doivent s'annoncer personnellement à [l'OCPM](https://www.ge.ch/node/3538) dans les 14 jours suivant leur arrivée.Démarches à effectuer en vue de l'obtention d'un : \n -[permis de travail (salarié)](https://www.ge.ch/node/3437)\n -[permis de travail pour indépendant](https://www.ge.ch/node/3442)\n -[permis de séjour sans activité lucrative](https://www.ge.ch/node/3432)\n -[permis de séjour pour étudiant](https://www.ge.ch/node/3387)\n -[permis de séjour pour les membres de votre famille (regroupement familial)](https://www.ge.ch/node/4391)\n2. Inscrire à l'école vos enfants en âge de scolarité obligatoire (de 4 à 15 ans) : - [enfants de 4 à 11 ans](https://www.ge.ch/node/1737)\n -[enfants de 12 à 15 ans](https://www.ge.ch/node/3045)\n Les jeunes âgés de 16 à 18 ans ont[l'obligation d'être en formation](https://www.ge.ch/filieres-formation-enseignement-secondaire-ii)\n Vous pouvez[placer vos enfants à la crèche ou dans une autre "
+    },
+    {
+      "rang": 2,
+      "url": "https://www.ge.ch/conflit-ukraine/demander-statut-protection-permis",
+      "contexte": "auraient obtenu le permis S doivent s'adresser aux consulats des pays dans lesquels ils entendent se rendre avant d'entreprendre un voyage à l'étranger et ce, afin de clarifier les conditions d'entrée.\n\n[Une personne ayant obtenu le statut S en Suisse peut-elle résider en France ?](https://www.ge.ch#edg-1649337699101)\n\nNon. Les personnes qui ont obtenu un permis S en Suisse ne peuvent pas résider en France.\n\n[Une personne ayant obtenu le statut S peut-elle changer de canton ?](https://www.ge.ch#edg-1651740041611)\n\nLes demandes de changement de canton doivent être adressées par écrit au Secrétariat d'Etat aux migrations (SEM) selon les informations figurant sous le dernier point de la [rubrique \"Attribution cantonale\"](https://www.sem.admin.ch/sem/fr/home/sem/aktuell/ukraine-krieg.html#-1432657130).\n\n\nDernière mise à jour: 23 avril 2026"
+    },
+    {
+      "rang": 3,
+      "url": "https://www.ge.ch/demander-permis-sejour-etudiant/reponses-aux-questions-frequentes-permis-etude",
+      "contexte": "**Je suis étranger et vais commencer mes études à Genève tout en restant domicilié en France, ai-je besoin d'un permis ?**\n\nNon. Si vous avez une carte de séjour et résidez en France, vous pouvez venir étudier à Genève sans avoir besoin de vous annoncer à l'OCPM.\n\nPar contre, si vous devez effectuer un stage (même non payé) ou désirez travailler dans le canton, il convient de déposer une [demande permis de travail frontalier](https://www.ge.ch/demander-permis-travail-frontalier). Il n'existe aucun droit à l'octroi d'une telle autorisation. Alternativement, une prise de résidence en Suisse est exigée pour bénéficier d'une activité accessoire (art. 38 OASA) ou durant un stage (art. 39 OASA).\n\n**Je suis titulaire d'un permis B ou C, domicilié dans un autre canton et vais commencer mes études à Genève:**\n\n-  **Ai-je besoin d'un permis si je reste domicilié hors de Genève ?** \n\nNon\n\n-  **Ai-je besoin d'un permis si je viens habiter à Genève?** \n\nSi vous êtes titulaire d'un permis B durable ou C, il convient de déposer une [demande de changement de canton](https://www.ge.ch/annoncer-mon-arrivee-ocpm).\n\nSi vous êtes titulaire d'un permis pour études, il convient de déposer une [demande de permis étudiant](https://www.ge.ch/demander-permis-sejour-etudiant).\n\n**Je n'ai pas encore d'adresse définitive à Genève, comment faire?**\n\nSi vous êtes à l'étranger, et dans "
+    },
+    {
+      "rang": 4,
+      "url": "https://www.ge.ch/annoncer-mon-depart-ocpm/annoncer-mon-depart",
+      "contexte": "condition de ne pas être au chômage et qu'il n'existe aucun motif de révocation au sens de l'article 62 de la [loi sur les étrangers](https://www.admin.ch/opc/fr/classified-compilation/20020232/index.html). Les titulaires de permis C ont le droit de changer de canton s'il n'existe aucun motif de révocation au sens de l'article 63 de la [loi sur les étrangers](https://www.admin.ch/opc/fr/classified-compilation/20020232/index.html).\n\nSi vous êtes titulaire d'un permis N ou F, vous ne pouvez pas changer de canton sans avoir reçu une autorisation de la part du Secrétariat d'État aux migrations (SEM).\n\nPour obtenir cette autorisation, vous devez envoyer votre demande par écrit au SEM en expliquant les motifs pour lesquels vous souhaitez changer de canton.\n\nSecrétariat d'Etat aux migrations\n\nQuellenweg 6\n\nCH-3003 Berne-Wabern\n\nVous devez attendre la décision du SEM avant de changer de canton et annoncer votre départ au Service protection, asile et retour.\n\n### Continuer à travailler à Genève en étant résidant dans un autre canton\n\nSi vous avez un permis B, Ci ou C, vous pouvez continuer à travailler à Genève sans autorisation supplémentaire.\n\n### Continuer à travailler à Genève en étant résidant à l'étranger\n\nSi vous êtes ressortissant étranger et souhaitez poursuivre une activité lucrative à Genève en résidant à l'étranger, vous devez [demander une autorisation de travail frontalière](https://www.ge.ch/node/3427) (permis G).\n\nDes conditions particulières s'appliquent "
+    },
+    {
+      "rang": 5,
+      "url": "https://www.ge.ch/demander-permis-c",
+      "contexte": "## L'essentiel en bref\n\nLe permis C ou autorisation d'établissement peut être octroyé après un séjour de 5 ou 10 ans en Suisse.\n\nLe séjour effectué au titre d'un permis N ou F ne peut pas être pris en compte dans la durée de séjour requise de 5 ou 10 ans.\n\nLe droit au séjour est accordé pour une durée indéterminée.\n\nIl existe deux cas de figure pour l'octroi du permis C.\n\n1. Soit l'administration examine, sans demande de votre part, si vous remplissez les conditions d'octroi.\n\nC'est le cas pour les personnes suivantes, qui, ont en principe, un droit à l'octroi du permis C:\n\n- Conjoint de citoyen suisse après 5 ans de séjour en Suisse*;\n- Conjoint de titulaire de permis C après 5 ans de séjour en Suisse*;\n- Ressortissant d'un pays qui a signé un accord d'établissement avec la Suisse, à savoir:\n  - Allemagne;\n  - Autriche;\n  - Belgique;\n  - Danemark;\n  - Espagne;\n  - France;\n  - Grèce;\n  - Italie;\n  - Liechtenstein;\n  - Pays-Bas;\n  - Portugal.\n\n* Pour les conjoints de citoyen suisse ou de titulaire de permis C, la durée de 5 ans de séjour ne peut être calculée qu'à compter de la date du mariage "
+    }
+  ]
+}

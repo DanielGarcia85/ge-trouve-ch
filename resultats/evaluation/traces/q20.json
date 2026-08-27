@@ -1,0 +1,40 @@
+{
+  "id": 20,
+  "question": "Comment obtenir un visa pour travailler à l'étranger ?",
+  "type": "hors_perimetre",
+  "registre": "courant",
+  "collectivite": "hors périmètre",
+  "theme": "visa-travail-etranger",
+  "reponse_reference": "L'obtention d'un visa de travail pour un autre pays ne relève pas des démarches administratives genevoises. Le système doit reconnaître qu'il ne couvre que Genève et orienter la personne vers la représentation diplomatique (ambassade ou consulat) du pays de destination.",
+  "pages_sources_reference": [],
+  "reponse_systeme": "Les extraits fournis ne contiennent pas d'informations concernant les démarches pour obtenir un visa afin de travailler à l'étranger. Je vous invite à vous adresser au guichet ou au site officiel concerné.",
+  "latence_s": 111.66,
+  "reflexion": null,
+  "fragments": [
+    {
+      "rang": 1,
+      "url": "https://www.ge.ch/travailler-geneve-ayant-deja-permis-sejour",
+      "contexte": "devez déposer une demande de permis en vue de rechercher un emploi.\n\n- **Vous êtes étudiant ressortissant d'un pays membre de l'UE/AELE et avez trouvé un emploi à l'issue de vos études.**\n\nVous devez déposer une demande d'autorisation de séjour avec activité.\n\n- **Vous êtes étudiant ressortissant d'une Etat tiers (non UE/AELE) et avez trouvé un emploi à l'issue de vos études.**\n\nVotre employeur doit déposer une demande d'autorisation de séjour avec activité.\n\n- **Vous souhaitez exercer une activité indépendante à Genève.**\n\nVous devez déposer une demande d'autorisation pour activité indépendante.\n\n- **Vous êtes de nationalité étrangère et souhaitez exercer une activité lucrative à Genève sans y résider.**\n\nVous ou votre employeur devez déposer une demande d'autorisation de travail frontalière.\n\nDernière mise à jour: 23 octobre 2025"
+    },
+    {
+      "rang": 2,
+      "url": "https://www.ge.ch/demander-permis-resider-travailler-geneve/activite-salariee-ressortissant-etat-tiers",
+      "contexte": "peut :\n\n- octroyer une autre autorisation que celle initialement demandée\n- assortir l'autorisation octroyée de limites et de conditions, comme par exemple :\n\t\n  - l'autorisation est limitée dans le temps\n  - le renouvellement ou la prolongation de l’autorisation est soumis à la réalisation des objectifs annoncés dans la demande par l'employeur.\n\nDans certains cas, les décisions favorables sont ensuite transmises pour approbation au Secrétariat d'Etat aux migrations.\n\nPour les personnes au bénéfice d’une autorisation d’entrée avec prise d’emploi ou d’une assurance d’autorisation de séjour, l’activité lucrative est autorisée dès l'entrée en Suisse. Dans tous les autres cas, l'employé a le droit de travailler uniquement s'il a reçu son permis de travail.\n\nEmployer des ressortissants étrangers sans autorisation de travail est une infraction pénale qui peut faire l'objet d'une dénonciation.\n\n### Pièces à joindre\n\n#### Contrat de travail de plus de 4 mois\n\n- Formulaire M – uniquement pour les demandes effectuées par courrier\n- copie couleur de la pièce d'identité du candidat en cours de validité;\n- 1 photo portrait avec nom et prénom au verso;\n- CV, copie des diplômes et certificats de travail du candidat;\n- lettre de motivation de l'employeur décrivant la situation, ses projets et les raisons de l'engagement. Vous pouvez vous inspirer de la [marche à "
+    },
+    {
+      "rang": 3,
+      "url": "https://www.ge.ch/demander-permis-sejour-travailleur-independant",
+      "contexte": "## L'essentiel en bref\n\nToute personne de nationalité étrangère qui souhaite vivre à Genève et y exercer une activité lucrative comme indépendant doit obtenir une autorisation de séjour avec activité, communément appelée \"permis de travail\".\n\nLes démarches pour obtenir un permis de travail s'effectuent auprès de l'office cantonal de la population et des migrations (OCPM). Elles sont différentes selon la nationalité de la personne. Une distinction est fait entre les [ressortissants des pays membres de l'UE/AELE](https://www.sem.admin.ch/sem/fr/home/themen/fza_schweiz-eu-efta/eu-efta_buerger_schweiz.html) et les ressortissants de tous les autres pays, appelés \"Etats tiers\".\n\nLes ressortissants d'Etat tiers ne bénéficient pas d'un accès facilité au marché suisse de l'emploi et ils doivent notamment démontrer l'intérêt économique de leur demande. Seuls les cadres, spécialistes et travailleurs qualifiés peuvent être admis sur le marché du travail, sous réserve de la disponibilité d'une unité du contingent.\n\nLeurs demandes sont également examinées par la direction de la main-d'oeuvre étrangère au sein de l'office cantonal de l'inspection et des relations du travail (OCIRT). C'est cet office qui est compétent pour rendre une décision préalable avant toute prise d'emploi d'une personne qui n'a pas le droit de travailler. Pour ce faire, l'OCIRT présente la demande pour préavis à la commission tripartite pour l'économie.\n\n**BREXIT**- Depuis le 1er janvier "
+    },
+    {
+      "rang": 4,
+      "url": "https://www.ge.ch/travailler-geneve-ayant-deja-permis-sejour",
+      "contexte": "regroupement familial.**\n\nRenseignez-vous sur les possibilités d'accès à l'emploi.\n\n- **Vous êtes titulaire d'un permis N (requérant d'asile) et souhaitez exercer une activité lucrative.**\n\nVotre employeur doit déposer une demande d'autorisation de travail.\n\n- **Vous êtes titulaire d'un permis S, d'un livret F ou B réfugié et souhaitez exercer une activité lucrative.**\n\nVotre employeur doit annoncer votre prise d'emploi.\n\n- **Vous êtes membre de la famille d'une personne titulaire d'une carte de légitimation du DFAE et souhaitez exercer une activité lucrative.**\n\nVous ou votre employeur devez déposer une demande de permis (permis Ci) pour accéder au marché du travail.\n\n- **Vous êtes étudiant et souhaitez travailler pendant vos études.**\n\nVous ou votre employeur devez déposer une demande d'autorisation de travail accessoire.\n\n- **Vous êtes étudiant ressortissant d'un pays membre de l'UE/AELE, avez achevé votre formation et souhaitez rechercher un emploi.**\n\nVous devez déposer une demande de permis en vue de rechercher un emploi.\n\n- **Vous êtes étudiant ressortissant d'un Etat tiers (non UE/AELE), avez achevé votre formation et souhaitez rechercher un emploi.**\n\nVous devez déposer une demande de permis en vue de rechercher un emploi.\n\n- **Vous êtes étudiant ressortissant d'un pays membre de l'UE/AELE et avez trouvé un emploi à l'issue de vos études.**\n\nVous devez déposer une demande d'autorisation de séjour avec activité.\n\n- "
+    },
+    {
+      "rang": 5,
+      "url": "https://www.ge.ch/employer-du-personnel-maison/engager-du-personnel-maison-provenant-etranger",
+      "contexte": "## Engager du personnel de maison provenant de l'étranger\n\nVous souhaitez engagez un travailleur ou une travailleuse provenant d'un pays étranger pour vous aider à domicile?\n\n1. Vous devez vérifier si il ou elle dispose d'un permis de travail de l'[OCPM](https://www.ge.ch/organisation/office-cantonal-population-migrations-ocpm) avant la prise d'emploi.\n Si elle n'en a pas, il faut[suivre la procédure de demande adéquate](https://www.ge.ch/node/3437) .\n2. Vous devez vérifier si il ou elle [doit être imposé-e à la source](https://www.ge.ch/node/31311) .\nSi c'est le cas, vous avez des obligations fiscales à respecter.\n\nPour le personnel au pair étranger, veuillez consulter [notre chapitre dédié à ce thème](https://www.ge.ch/node/28400).\n\nDernière mise à jour: 16 décembre 2025"
+    }
+  ]
+}

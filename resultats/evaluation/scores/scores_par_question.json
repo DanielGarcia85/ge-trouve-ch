@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "naturalisation",
+    "question": "Comment demander la naturalisation suisse à Genève ?",
+    "scores": {
+      "answer_relevancy": 0.7893037207313883,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "llm_context_precision_without_reference": 0.99999999998
+    }
+  },
+  {
+    "id": 2,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "mariage-civil",
+    "question": "Quels documents faut-il pour se marier civilement à Genève ?",
+    "scores": {
+      "answer_relevancy": 0.6583484968679238,
+      "context_recall": 0.8333333333333334,
+      "faithfulness": 0.375,
+      "llm_context_precision_without_reference": 0.9999999999666667
+    }
+  },
+  {
+    "id": 3,
+    "type": "avec_reponse",
+    "registre": "familier",
+    "theme": "echange-permis-conduire",
+    "question": "C'est où pour échanger mon permis de conduire étranger ?",
+    "scores": {
+      "answer_relevancy": 0.655889064126448,
+      "context_recall": 1.0,
+      "faithfulness": 0.8235294117647058,
+      "llm_context_precision_without_reference": 0.99999999998
+    }
+  },
+  {
+    "id": 4,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "creche",
+    "question": "Comment inscrire mon enfant dans une crèche de la Ville de Genève ?",
+    "scores": {
+      "answer_relevancy": 0.6588854127632352,
+      "context_recall": 0.8,
+      "faithfulness": 0.7272727272727273,
+      "llm_context_precision_without_reference": 0.32499999998375
+    }
+  },
+  {
+    "id": 5,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "subside-assurance-maladie",
+    "question": "Comment obtenir un subside pour mon assurance-maladie ?",
+    "scores": {
+      "answer_relevancy": 0.6242783061578719,
+      "context_recall": NaN,
+      "faithfulness": 1.0,
+      "llm_context_precision_without_reference": 0.99999999998
+    }
+  },
+  {
+    "id": 6,
+    "type": "avec_reponse",
+    "registre": "familier",
+    "theme": "chomage",
+    "question": "J'ai perdu mon travail : quelles démarches pour toucher le chômage à Genève ?",
+    "scores": {
+      "answer_relevancy": 0.7148541588572416,
+      "context_recall": 0.75,
+      "faithfulness": 0.6086956521739131,
+      "llm_context_precision_without_reference": 0.8041666666465626
+    }
+  },
+  {
+    "id": 7,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "arrivee-autre-canton",
+    "question": "Comment annoncer mon arrivée à Genève quand je viens d'un autre canton ?",
+    "scores": {
+      "answer_relevancy": 0.9115886357093231,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "llm_context_precision_without_reference": 0.9999999999666667
+    }
+  },
+  {
+    "id": 8,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "naissance",
+    "question": "Quelles démarches après une naissance à Genève ?",
+    "scores": {
+      "answer_relevancy": 0.7595951424421171,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "llm_context_precision_without_reference": 0.99999999998
+    }
+  },
+  {
+    "id": 9,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "bourse-etudes",
+    "question": "Comment demander une bourse d'études cantonale ?",
+    "scores": {
+      "answer_relevancy": 0.7093821103212944,
+      "context_recall": 1.0,
+      "faithfulness": 0.8571428571428571,
+      "llm_context_precision_without_reference": 0.99999999998
+    }
+  },
+  {
+    "id": 10,
+    "type": "avec_reponse",
+    "registre": "précis",
+    "theme": "impot-source",
+    "question": "Comment fonctionne l'impôt à la source pour un titulaire de permis B ?",
+    "scores": {
+      "answer_relevancy": 0.6270837462039324,
+      "context_recall": 1.0,
+      "faithfulness": 0.8333333333333334,
+      "llm_context_precision_without_reference": 0.99999999998
+    }
+  },
+  {
+    "id": 11,
+    "type": "avec_reponse",
+    "registre": "familier",
+    "theme": "demenagement-intracantonal",
+    "question": "Je déménage à l'intérieur du canton : je dois faire quoi ?",
+    "scores": {
+      "answer_relevancy": 0.6682955506093463,
+      "context_recall": 1.0,
+      "faithfulness": 0.8333333333333334,
+      "llm_context_precision_without_reference": 0.8874999999778125
+    }
+  },
+  {
+    "id": 12,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "attestation-residence",
+    "question": "Comment obtenir une attestation de résidence ?",
+    "scores": {
+      "answer_relevancy": 0.7780249552082527,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "llm_context_precision_without_reference": 0.99999999998
+    }
+  },
+  {
+    "id": 13,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "amende-ordre",
+    "question": "Comment contester une amende d'ordre reçue à Genève ?",
+    "scores": {
+      "answer_relevancy": 0.710751623706467,
+      "context_recall": 1.0,
+      "faithfulness": 0.9,
+      "llm_context_precision_without_reference": 0.8055555555287036
+    }
+  },
+  {
+    "id": 14,
+    "type": "avec_reponse",
+    "registre": "précis",
+    "theme": "ocpm-coordonnees",
+    "question": "Quels sont les horaires et l'adresse de l'office cantonal de la population ?",
+    "scores": {
+      "answer_relevancy": 0.7159317752615841,
+      "context_recall": 0.5,
+      "faithfulness": 0.8,
+      "llm_context_precision_without_reference": 0.8666666666377778
+    }
+  },
+  {
+    "id": 15,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "inscription-ecole-primaire",
+    "question": "Comment inscrire mon enfant à l'école primaire à Genève ?",
+    "scores": {
+      "answer_relevancy": 0.7965995656402572,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "llm_context_precision_without_reference": 0.99999999998
+    }
+  },
+  {
+    "id": 16,
+    "type": "avec_reponse",
+    "registre": "courant",
+    "theme": "permis-circulation",
+    "question": "Comment obtenir un permis de circulation pour mon véhicule ?",
+    "scores": {
+      "answer_relevancy": 0.5994513840535031,
+      "context_recall": 1.0,
+      "faithfulness": 0.8666666666666667,
+      "llm_context_precision_without_reference": 0.94999999997625
+    }
+  },
+  {
+    "id": 17,
+    "type": "hors_perimetre",
+    "registre": "courant",
+    "theme": "rente-avs",
+    "question": "Comment calculer ma future rente AVS ?",
+    "scores": {
+      "answer_relevancy": 0.6318731413859515,
+      "context_recall": 1.0,
+      "faithfulness": 0.7142857142857143,
+      "llm_context_precision_without_reference": 0.499999999975
+    }
+  },
+  {
+    "id": 18,
+    "type": "hors_perimetre",
+    "registre": "courant",
+    "theme": "permis-sejour-vaud",
+    "question": "Comment obtenir un permis de séjour dans le canton de Vaud ?",
+    "scores": {
+      "answer_relevancy": 0.0,
+      "context_recall": 1.0,
+      "faithfulness": 0.0,
+      "llm_context_precision_without_reference": 0.0
+    }
+  },
+  {
+    "id": 19,
+    "type": "hors_perimetre",
+    "registre": "courant",
+    "theme": "horaires-tpg",
+    "question": "Quels sont les horaires de la ligne 12 des TPG ?",
+    "scores": {
+      "answer_relevancy": 0.0,
+      "context_recall": 0.5,
+      "faithfulness": 0.0,
+      "llm_context_precision_without_reference": 0.0
+    }
+  },
+  {
+    "id": 20,
+    "type": "hors_perimetre",
+    "registre": "courant",
+    "theme": "visa-travail-etranger",
+    "question": "Comment obtenir un visa pour travailler à l'étranger ?",
+    "scores": {
+      "answer_relevancy": 0.0,
+      "context_recall": 1.0,
+      "faithfulness": 0.5,
+      "llm_context_precision_without_reference": 0.0
+    }
+  }
+]

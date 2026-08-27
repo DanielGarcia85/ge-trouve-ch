@@ -1,0 +1,41 @@
+{
+  "provenance": {
+    "juge": "llama3.1:8b",
+    "embeddings_evaluation": "qwen3-embedding:0.6b",
+    "metriques": [
+      "answer_relevancy",
+      "context_recall",
+      "faithfulness",
+      "llm_context_precision_without_reference"
+    ],
+    "nombre_questions": 20
+  },
+  "lecture": "Chaque note va de 0 (mauvais) à 1 (bon). Pour les 16 questions AVEC réponse, plus la note est haute, mieux c'est. Pour les 4 questions HORS périmètre, la lecture s'inverse : une note basse (fidélité, pertinence, précision proches de 0) signifie que le système n'a rien fabriqué, donc qu'il a correctement refusé de répondre ; on les lit question par question, pas comme une moyenne de performance. Aucune moyenne « globale » n'est calculée : mélanger les deux familles fausserait le résultat, les « zéros » des refus corrects faisant chuter le total.",
+  "libelles_metriques": {
+    "llm_context_precision_without_reference": "Précision du contexte",
+    "context_recall": "Rappel du contexte",
+    "faithfulness": "Fidélité",
+    "answer_relevancy": "Pertinence de la réponse"
+  },
+  "agregats": {
+    "avec_reponse": {
+      "nombre": 16,
+      "moyennes": {
+        "answer_relevancy": 0.7111414780412616,
+        "context_recall": 0.9255555555555556,
+        "faithfulness": 0.8515608738554711,
+        "llm_context_precision_without_reference": 0.9149305555327618
+      }
+    },
+    "hors_perimetre": {
+      "nombre": 4,
+      "moyennes": {
+        "answer_relevancy": 0.15796828534648788,
+        "context_recall": 0.875,
+        "faithfulness": 0.3035714285714286,
+        "llm_context_precision_without_reference": 0.12499999999375
+      }
+    }
+  },
+  "notes": "Q06 context_recall = 0.75 repris du run initial (le recalcul apres correction de la reference a echoue techniquement). Q05 context_recall ignore (echec technique du juge). Le rappel avec-reponse est donc agrege sur 15 des 16 questions."
+}

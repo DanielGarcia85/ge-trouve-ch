@@ -1,0 +1,43 @@
+{
+  "id": 11,
+  "question": "Je déménage à l'intérieur du canton : je dois faire quoi ?",
+  "type": "avec_reponse",
+  "registre": "familier",
+  "collectivite": "État",
+  "theme": "demenagement-intracantonal",
+  "reponse_reference": "Un changement d'adresse à l'intérieur du canton doit être annoncé dans les 14 jours à l'Office cantonal de la population et des migrations (OCPM). On transmet le formulaire C (ou un courrier libre), une copie d'une pièce d'identité et, pour les locataires, une copie du bail ; la démarche est gratuite. Les titulaires d'un permis valable reçoivent automatiquement une attestation de domicile à leur nouvelle adresse. Les personnes suisses peuvent s'adresser directement à leur commune de domicile ; l'OCPM se situe route de Chancy 88, 1213 Onex.",
+  "pages_sources_reference": [
+    "https://www.ge.ch/annoncer-changement-adresse-geneve/annoncer-changement-adresse",
+    "https://www.geneve.ch/demarches/changement-adresse-canton-geneve"
+  ],
+  "reponse_systeme": "Si vous déménagez à l'intérieur du canton de Genève, voici la marche à suivre selon le niveau scolaire de votre enfant :\n\n**Pour un enfant en école primaire ou au cycle d'orientation :**\nVous devez informer la direction de l'école (ou du cycle) dans laquelle est scolarisé votre enfant. Vous devez leur préciser :\n*   Votre nouvelle adresse ;\n*   La date à partir de laquelle elle sera valable.\n\nVous devez également fournir à la direction de l'école les pièces justificatives. Il vous est possible de demander à ce que votre enfant termine son année scolaire dans son école actuelle.",
+  "latence_s": 138.85,
+  "reflexion": null,
+  "fragments": [
+    {
+      "rang": 1,
+      "url": "https://www.ge.ch/inscrire-mon-enfant-au-cycle-orientation/demenagement-cycle-orientation",
+      "contexte": "**Déménagement à l'intérieur du canton de Genève**\n\nSi vous déménagez mais restez sur le canton de Genève, vous informez la direction du cycle dans lequel est scolarisé votre enfant en précisant votre nouvelle adresse et la date à partir de laquelle elle sera valable. Vous fournissez à la direction de l'école les pièces justificatives. Vous pouvez demander à ce que votre enfant termine son année scolaire dans son école actuelle.\n\n\n**Déménagement hors du canton de Genève**\n\nDès la rentrée 2026, les déménagements vers la France sont soumis aux nouvelles dispositions réglementaires modifiées par le Conseil d'Etat ([communiqué du 11 juin](https://www.ge.ch/document/communique-hebdomadaire-du-conseil-etat-du-11-juin-2025)).  \n\nPour toute question, veuillez consulter la page [Enfant domicilié hors canton](https://www.ge.ch/node/3065) ou notre FAQ ; toutes les situations particulières y sont traitées. \n\nSi vous déménagez dans un autre canton suisse, vous devez scolariser votre enfant dans son nouveau canton d'établissement.\n\nSeuls les enfants domiciliés sur le canton de Genève ont droit à des prestations de pédagogie spécialisée ([article 30 de la LIP)](https://silgeneve.ch/legis/data/rsg_C1_10.htm)\n\nDernière mise à jour: 6 août 2026"
+    },
+    {
+      "rang": 2,
+      "url": "https://www.ge.ch/inscrire-mon-enfant-ecole-primaire/demenagement-ecole-primaire",
+      "contexte": "## Déménagement - école primaire\n\n**Déménagement à l'intérieur du canton de Genève**\n\nSi vous déménagez mais restez sur le canton de Genève, vous informez la direction de l'école dans laquelle est scolarisé votre enfant en précisant votre nouvelle adresse et la date à partir de laquelle elle sera valable. Vous fournissez à la direction de l'école les pièces justificatives. Vous pouvez demander à ce que votre enfant termine son année scolaire dans son école actuelle.\n\n**Déménagement hors du canton de Genève**\n\nDès la rentrée 2026, les déménagements vers la France sont soumis aux nouvelles dispositions réglementaires modifiées par le Conseil d'Etat ([communiqué du 11 juin).](https://www.ge.ch/document/communique-hebdomadaire-du-conseil-etat-du-11-juin-2025) \n\nPour toute question, veuillez consulter la page [Enfant domicilié hors canton](https://www.ge.ch/node/2278) ou notre FAQ ; toutes les situations particulières y sont traitées.\n\nSi vous déménagez dans un autre canton suisse, vous devez scolariser votre enfant dans son nouveau canton d'établissement\n\nSeuls les enfants domiciliés dans le canton de Genève ont droit à des prestations de pédagogie spécialisée ([article 30 LIP)](https://silgeneve.ch/legis/data/rsg_C1_10.htm).\n\nDernière mise à jour: 6 août 2026"
+    },
+    {
+      "rang": 3,
+      "url": "https://www.ge.ch/annoncer-mon-depart-ocpm/annoncer-mon-depart",
+      "contexte": "et pour les relations personnelles.\n\n### En cas de départ définitif à l'étranger\n\nEn cas de départ définitif à l'étranger, les personnes titulaires d'une autorisation de séjour ou d'établissement s'engagent à détruire ou à renvoyer leur permis détruit (coupé en deux) par la poste à l'OCPM. Si le permis est nécessaire pour effectuer le voyage de retour, il devra être détruit une fois arrivé à destination.\n\n### En cas de changement de canton\n\nSi vous êtes Suisse ou ressortissant d'un Etat membre de l'UE/AELE, vous êtes libre de vous établir dans le canton de votre choix. Vous devez toutefois annoncer votre départ aux autorités cantonales ainsi que votre arrivée auprès des autorités cantonales et/ou communales compétentes de votre nouveau lieu de séjour.\n\nSi vous êtes ressortissant d'un Etat tiers et titulaire d'un permis B ou L vous devez demander, préalablement, une nouvelle autorisation auprès des autorités compétentes de votre futur canton de résidence. Les titulaires de permis B ont droit au changement de canton à condition de ne pas être au chômage et qu'il n'existe aucun motif de révocation au sens de l'article 62 de la [loi sur les étrangers](https://www.admin.ch/opc/fr/classified-compilation/20020232/index.html). Les titulaires de permis C ont le droit de changer de canton s'il n'existe aucun "
+    },
+    {
+      "rang": 4,
+      "url": "https://www.ge.ch/annoncer-mon-arrivee-ocpm/changement-canton-arrivee-provenance-autre-canton",
+      "contexte": "### Pour qui\n\nLes personnes étrangères qui prennent domicile à Genève alors qu'elles résidaient jusqu'alors dans un autre canton sont tenues d'annoncer leur arrivée.\n\nPour les ressortissants suisses, la procédure à suivre est celle indiquée sous: [Annonce d'arrivée à Genève pour les Suisses](https://www.ge.ch/node/3539).\n\n### Quand\n\nLes ressortissants d'un pays de l'UE/AELE doivent s'annoncer au plus tôt 30 jours avant leur arrivée et au plus tard dans les 14 jours qui suivent leur arrivée.\n\nLes ressortissants d'un pays non-membre de l'UE/AELE doivent demander l'autorisation de changer de canton 3 mois avant la date d'arrivée souhaitée.\n\n### Conditions\n\nLes titulaires de permis C ressortissants d'un pays non-membre de l'UE/AELE ont le droit de changer de canton pour autant qu'il n'y ait pas de motif de révocation de leur autorisation au sens de l'article 63 de la Loi sur les étrangers et l'intégration.\n\nLes titulaires de permis B ressortissants d'un pays non-membre de l'UE/AELE ont le droit de changer de canton s'ils ne sont pas au chômage et qu'il n'y a pas de motif de révocation de leur autorisation au sens de l'article 62 de la Loi sur les étrangers et l'intégration.\n\nLes formalités de départ doivent être effectuées auprès des autorités compétentes du canton de provenance.\n\nLes personnes titulaires d'un titre de "
+    },
+    {
+      "rang": 5,
+      "url": "https://www.ge.ch/annoncer-changement-situation-donnees-personnelles-ocpm",
+      "contexte": "## L'essentiel en bref\n\nToute personne inscrite dans le registre des habitants qui réside dans le canton de Genève est tenue d'informer l'office cantonal de la population et des migrations (OCPM) dans les cas de figure suivants:\n\n- En cas de changement d'adresse dans le canton:\n\n- En cas de départ du canton:\n\n- En cas de changement d'état civil suite à un événement à l'étranger:\n\n- En cas de changement d'état civil suite à un événement en Suisse:\n\nTout événement d'état civil ou changement de nom qui a lieu en Suisse est communiqué directement par l'arrondissement d'état civil compétent à l'OCPM pour modification des registres des habitants. Il n'est dès lors pas utile de le communiquer à nouveau.\n\n\n- En cas de changement de nom, prénom ou sexe suite à un événement d'état civil ou une décision à l'étranger:\n\n- En cas de changement de nationalité:\n\n- En cas de séparation:\n\n- En cas de naissance:\n\nDernière mise à jour: 6 août 2025"
+    }
+  ]
+}

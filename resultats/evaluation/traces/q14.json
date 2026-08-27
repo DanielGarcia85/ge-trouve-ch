@@ -1,0 +1,42 @@
+{
+  "id": 14,
+  "question": "Quels sont les horaires et l'adresse de l'office cantonal de la population ?",
+  "type": "avec_reponse",
+  "registre": "précis",
+  "collectivite": "État",
+  "theme": "ocpm-coordonnees",
+  "reponse_reference": "L'Office cantonal de la population et des migrations (OCPM) se situe route de Chancy 88, 1213 Onex (tél. +41 22 546 48 88). Les horaires de guichet ne figurent pas sur les pages consultées ; pour les connaître, il faut consulter ge.ch ou contacter l'office directement.",
+  "pages_sources_reference": [
+    "https://www.geneve.ch/demarches/changement-adresse-canton-geneve"
+  ],
+  "reponse_systeme": "L'Office cantonal de la population et des migrations est situé à l'adresse suivante :\n\nRoute de Chancy 88\n1213 Onex\n\nVous pouvez également le contacter par téléphone au +41 22 546 48 88.",
+  "latence_s": 99.86,
+  "reflexion": null,
+  "fragments": [
+    {
+      "rang": 1,
+      "url": "https://www.geneve.ch/demarches/changement-adresse-canton-geneve",
+      "contexte": "Cette démarche permet d'annoncer un changement d'adresse à l'intérieur du canton de Genève.\n\n## Horaires de l'état civil\n\nDe 8h30 à 11h45 et de 13h à 16h.\n\n## Pour les Suisses\n\nLes Confédérées et Confédérés peuvent s'adresser à leur **commune de résidence**. Le [Service de l'état civil](https://www.geneve.ch/autorites-administration/administration-municipale/departement-cohesion-sociale-solidarite/services-municipaux/service-civil) est compétent pour la Ville de Genève.\n\n## Dans les autres cas\n\nLes personnes étrangères ou les familles dont tous les membres, parents et enfants, ne sont pas Suisses doivent s'adresser à l'**Office cantonal de la population et des migrations**.\n\n \n\n## \n            Contact\n              Service de l'état civil\n\n          \n\n        37 Rue de la Mairie\n\n1207\n\nGenève\n\nSuisse\n\nTél. fixe : +41224186650\n\nFax. +41224186651\n\n## \n      [Office cantonal de la population et des migrations](https://www.geneve.ch/office-cantonal-population-migrations-geneve)\n    \n\n    Route de Chancy 88\n\n1213 Onex\n\nTél. +41 22 546 48 88[Site web de l'Office cantonal de la population et des migrations](https://www.ge.ch/organisation/office-cantonal-population-migrations)\n\n\n[Voir sur le plan](https://www.google.com/maps/@46.186027334167,6.1059997579852,15z)\n\n## Liens externes\n\nArticle modifié le 22.06.2026 à 11:26"
+    },
+    {
+      "rang": 2,
+      "url": "https://www.ge.ch/exigences-preserver-qualite-zone-5-villa/se-renseigner-tout-complement-dossier",
+      "contexte": "   Pour toute question relative au territoire cantonal, aux projets et plans d'aménagement\n\n\nOuverture du guichet (David-Dufour, 5e étage) et réception téléphonique (022 546 73 00)\n\nlundi - vendredi\n\n09:00-12:00\n\n14:00-16:00\n\n\nOuverture du guichet (David-Dufour, 5e étage) et réception téléphonique (022 546 73 00)\n\nlundi - vendredi\n\n09:00-12:00\n\n14:00-16:00\n\nDernière mise à jour: 10 novembre 2025"
+    },
+    {
+      "rang": 3,
+      "url": "https://www.ge.ch/agente-agent-detention-brevete-travailler-geneve/postuler-detention",
+      "contexte": "en toute confidentialité et resteront propriété de l'Office cantonal de la détention pendant la durée du processus de recrutement.*\n\n### Nous contacter\n\n**Office cantonal de la détention**\n\nRoute des Acacias 82\n\n1227 Carouge\n\nT. [+41 22 546 32 29](tel:+41%2022%20427%2067%2000)\n\nE-mail : [devenez.detention@etat.ge.ch](mailto:devenez.detention@etat.ge.ch)\n\nDernière mise à jour: 12 juin 2026"
+    },
+    {
+      "rang": 4,
+      "url": "https://www.ge.ch/prestations-cas-incapacite-passagere-totale-partielle-travail-pcm",
+      "contexte": "et vous pouvez y accéder en cliquant sur ces deux boutons :\n\n### Nous contacter\n\nOffice cantonal de l'emploi\n\nPrestations cantonales en cas d'incapacité passagère, totale ou partielle de travail (PCM)\n\nRue des Gares 16 – Case postale 2555\n\n1211 Genève 2\n\n+41 22 546 33 35, de 9h à 12h et de 14h à 16h \n\nE-mail : [pcm@etat.ge.ch](mailto:pcm@etat.ge.ch)\n\nDernière mise à jour: 6 août 2026"
+    },
+    {
+      "rang": 5,
+      "url": "https://www.ge.ch/obtenir-renseignements-personne-etablie-geneve",
+      "contexte": "## L'essentiel en bref\n\nL'office cantonal de la population et des migrations est autorisé à fournir au public, contre paiement d'une taxe, des renseignements sur toute personne inscrite dans le registre des habitants du canton (adresse actuelle ou année de naissance par exemple).\n\nCes demandes de renseignements sont strictement encadrées. Elles sont traitées selon le Règlement F 2 20.08. Toute demande sortant du cadre du Règlement précité est traitée suivant la Loi sur l'information du public, l'accès aux documents et la protection des données personnelles (LIPAD).\n\n- Vous recherchez l'adresse actuelle d'une personne inscrite dans le registre des habitants ?\n\n- Vous recherchez d'autres informations en lien avec une personne inscrite dans le registre des habitants ?\n\nCes renseignements ne peuvent être transmis que si la personne qui en fait la demande est en mesure de démontrer un intérêt légitime à les obtenir.\n\n### Bases légales\n\nDernière mise à jour: 22 janvier 2026"
+    }
+  ]
+}

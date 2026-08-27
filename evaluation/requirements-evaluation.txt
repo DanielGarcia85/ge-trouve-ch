@@ -1,0 +1,13 @@
+# evaluation/requirements-evaluation.txt
+# Dépendances de l'évaluation (Partie 3), hors production : installées seulement sur le poste de dev.
+
+# Cadre d'évaluation RAG (quatre métriques du chapitre 7), licence Apache-2.0
+ragas==0.4.3
+
+# Socle LangChain de RAGAS, épinglé en 0.3.x : ragas 0.4.3 importe un chemin retiré du 1.x.
+# langchain-ollama sert le juge (Llama 3.1) et l'encodeur (Qwen) en local via Ollama.
+langchain-core==0.3.86
+langchain==0.3.30
+langchain-community==0.3.31
+langchain-openai==0.3.35
+langchain-ollama==0.3.10

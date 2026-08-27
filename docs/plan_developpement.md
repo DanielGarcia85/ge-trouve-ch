@@ -213,8 +213,7 @@ retouche pendant l'étape. Le jeu de questions est **d'auteur** (20 questions ge
 **Réalisé (27.08.2026).** Les cinq sous-étapes sont exécutées. Le contrôle humain (6.4) a porté sur
 **5 réponses**, soit un quart du jeu, conforme au chapitre 7.4. Une **vérification indépendante des
 références** a précédé la notation finale (9 retouches mineures). Scores au journal des mesures, incidents au
-journal des décisions (entrée « Étape 6 terminée »). Restent la **rédaction du chapitre 12** et les
-**commits**.
+journal des décisions (entrée « Étape 6 terminée »). Le **chapitre 12** est rédigé (28.08.2026) et les **commits** faits : l'étape 6 est close.
 
 ---
 

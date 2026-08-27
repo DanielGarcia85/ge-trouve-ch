@@ -519,7 +519,7 @@ appels concurrents).
 | 19 | ligne 12 TPG | HP | 0,00 | 0,50 | 0,00 | 0,00 |
 | 20 | visa étranger | HP | 0,00 | 1,00 | 0,50 | 0,00 |
 
-**Moyennes — questions avec réponse (16 ; rappel agrégé sur 15, Q05 exclu).**
+**Moyennes des questions avec réponse (16 ; rappel agrégé sur 15, Q05 exclu).**
 
 | Métrique | Moyenne |
 |---|---|

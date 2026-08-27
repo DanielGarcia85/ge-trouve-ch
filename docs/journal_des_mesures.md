@@ -476,3 +476,59 @@ ce qui justifie le garde-fou `OLLAMA_NUM_PARALLEL=1`.
 
 **À approfondir en Partie 3.** Réduire le prefill d'une nouvelle question (moins de fragments que top-5,
 `num_ctx` plus petit) et mesurer l'effet sur le premier mot : c'est le principal levier de latence.
+
+
+---
+
+## 2026-08-27 — Étape 6, run d'évaluation — poste DANIELGARCIA
+
+**Poste.** DANIELGARCIA · AMD Ryzen 7 7840HS · 32 Go · CPU. OneDrive suspendu.
+
+**Banc (latences, dépendantes du matériel).** 20 questions posées au pipeline de production figé, une
+passe, sans seed. Total 3956 s (~66 min), ~198 s par question (de 116 à 342 s selon la longueur de la
+réponse). Premier appel à froid (chargement de Gemma) ; le délai client du banc a été relevé à 1200 s
+pour l'absorber.
+
+**Notation RAGAS (indépendante du matériel).** Juge local Llama 3.1 8B (température 0), encodeur
+Qwen3-Embedding-0.6B, quatre métriques de RAGAS 0.4.3, en série (le juge sur CPU ne supporte pas les
+appels concurrents).
+
+**Scores par question** (0 à 1). Pour les questions « avec réponse » (AR), plus haut = mieux ; pour les
+« hors périmètre » (HP), la lecture est **inversée** : un score bas signale un refus, comportement attendu.
+
+| Q | Thème | Type | Précision | Rappel | Fidélité | Pertinence |
+|---|---|---|---|---|---|---|
+| 01 | naturalisation | AR | 1,00 | 1,00 | 1,00 | 0,79 |
+| 02 | mariage civil | AR | 1,00 | 0,83 | 0,38 | 0,66 |
+| 03 | permis de conduire | AR | 1,00 | 1,00 | 0,82 | 0,66 |
+| 04 | crèche | AR | 0,33 | 0,80 | 0,73 | 0,66 |
+| 05 | subside | AR | 1,00 | n/a | 1,00 | 0,62 |
+| 06 | chômage | AR | 0,80 | 0,75 | 0,61 | 0,71 |
+| 07 | arrivée autre canton | AR | 1,00 | 1,00 | 1,00 | 0,91 |
+| 08 | naissance | AR | 1,00 | 1,00 | 1,00 | 0,76 |
+| 09 | bourse d'études | AR | 1,00 | 1,00 | 0,86 | 0,71 |
+| 10 | impôt à la source | AR | 1,00 | 1,00 | 0,83 | 0,63 |
+| 11 | déménagement | AR | 0,89 | 1,00 | 0,83 | 0,67 |
+| 12 | attestation de résidence | AR | 1,00 | 1,00 | 1,00 | 0,78 |
+| 13 | amende d'ordre | AR | 0,81 | 1,00 | 0,90 | 0,71 |
+| 14 | coordonnées OCPM | AR | 0,87 | 0,50 | 0,80 | 0,72 |
+| 15 | école primaire | AR | 1,00 | 1,00 | 1,00 | 0,80 |
+| 16 | permis de circulation | AR | 0,95 | 1,00 | 0,87 | 0,60 |
+| 17 | rente AVS | HP | 0,50 | 1,00 | 0,71 | 0,63 |
+| 18 | permis Vaud | HP | 0,00 | 1,00 | 0,00 | 0,00 |
+| 19 | ligne 12 TPG | HP | 0,00 | 0,50 | 0,00 | 0,00 |
+| 20 | visa étranger | HP | 0,00 | 1,00 | 0,50 | 0,00 |
+
+**Moyennes — questions avec réponse (16 ; rappel agrégé sur 15, Q05 exclu).**
+
+| Métrique | Moyenne |
+|---|---|
+| Précision du contexte | 0,92 |
+| Rappel du contexte | 0,93 |
+| Fidélité | 0,85 |
+| Pertinence de la réponse | 0,71 |
+
+Les 4 hors périmètre ne sont **pas** agrégés en performance (lecture inversée) : Vaud et TPG à 0 (refus
+corrects), AVS (Q17) sur-répond. Détail complet dans `resultats/evaluation/scores/`.
+
+**Écart.** Q05 rappel ignoré (échec technique du juge).

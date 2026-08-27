@@ -7,7 +7,7 @@ de l'avancement.
 Les **sous-étapes détaillées, avec leurs commandes d'exécution**, sont ajoutées à mesure qu'on atteint
 chaque étape : elles servent de mode d'emploi pour **rejouer le jalon depuis zéro**. Une étape non encore
 atteinte n'est pas détaillée (règle de non-présomption) ; ses sous-étapes s'écrivent quand on
-y arrive. À ce jour, les étapes **0 à 5** sont détaillées plus bas (réalisées ; reste l'évaluation, Partie 3).
+y arrive. À ce jour, les étapes **0 à 6** sont toutes détaillées et réalisées (étapes 0 à 5 = Partie 2 ; étape 6 = Partie 3, évaluation).
 
 Le détail par décision vit dans `docs/journal_des_decisions.md`, les chiffres dans
 `docs/journal_des_mesures.md`.
@@ -106,7 +106,7 @@ retrait de la liste « Sources » redondante avec la barre latérale ; voir jour
 - **4.3 Dépendance** : `streamlit` épinglé dans `requirements.txt` (installé depuis PyPI après GO). **Commande :** `pip install streamlit`.
 - **4.4 Application** : page de conversation Streamlit (`src/app/app.py`, config `.streamlit/config.toml`) appelant `repondre.py` (titre, champ de question, réponse en markdown avec liens cliquables, pages sources en barre latérale). Réponse **diffusée en continu** (streaming, retenu) avec **indicateur d'état** ; préchargement des modèles **écarté** (reporté à l'étape 5, via `keep_alive`) ; consigne **révisée en V5**. **Commande :** `streamlit run src/app/app.py`.
 - **4.5 Exécution, captures et mesures** : test sur la question type et une question hors corpus ; captures dans `resultats/interface/` (matière du chapitre 11) ; mesures d'expérience (temps jusqu'au premier mot, temps total) sur les deux postes, au journal. **Commandes :** `python scripts/mesures/bench_pipeline.py` (appel direct) ; `python scripts/mesures/bench_pipeline.py --streaming` (comme l'app, valide l'absence de surcoût du streaming).
-- **4.6 Clôture** : entrée au journal des décisions (structure retenue, streaming retenu et préchargement reporté, indicateur d'état, consigne V5, mesures) ; plan, `CLAUDE.md` et documentation à jour ; prompt de retour pour Claude.ai.
+- **4.6 Clôture** : entrée au journal des décisions (structure retenue, streaming retenu et préchargement reporté, indicateur d'état, consigne V5, mesures) ; plan et documentation à jour.
 
 ---
 
@@ -180,29 +180,41 @@ des décisions et des incidents au journal des décisions (entrée du 25.08).
 
 ---
 
-## Sous-étapes de l'étape 6 — Évaluation (Partie 3)
+## Sous-étapes de l'étape 6 — Évaluation (Partie 3) *(terminée)*
 
 Le système évalué est le **pipeline de production figé** (consigne V5, régime acté, top_k 5) : aucune
 retouche pendant l'étape. Le jeu de questions est **d'auteur** (20 questions genevoises) et doit rester
 **étanche** : jamais exécuté avant le run officiel, aucun recouvrement avec les 8 questions de mise au point.
 
-- **6.1 Jeu d'évaluation outillé** : fichier versionné (20 questions : `id`, `question`, `registre`, `theme`,
-  `type`, `reponse_reference`, `pages_sources`) ; pour chaque question « avec réponse », vérifier la
-  couverture dans le corpus et rédiger une réponse de référence sourcée (2-4 phrases, URL) ; pour les « hors
-  périmètre », l'aveu et l'orientation attendus. Contrôle d'étanchéité. **Validation du fichier complet
-  (questions et références relues) avant toute exécution.** **Commit :** `feat: jeu d'evaluation (20 questions, references sourcees)`.
-- **6.2 Banc d'évaluation** : script d'exécution (une passe par question du pipeline de production, sans
-  seed ; archivage complet dans `resultats/evaluation/` : question, fragments + URL, réponse, latence) ;
-  script RAGAS (v0.4.x épinglée ; quatre métriques : précision et rappel du contexte, fidélité, pertinence)
-  avec juge local `llama3.1:8b` (température 0) et embeddings d'évaluation locaux (Qwen), branchement local.
-- **6.3 Run officiel** : exécuter le banc sur les 20 questions (poste DANIELGARCIA au repos), puis RAGAS ;
-  scores par question et agrégés au journal des mesures ; aucune relance sélective.
-- **6.4 Contrôle humain et classement des erreurs** : grille sur 8 réponses (les 4 hors périmètre + 4
-  tirées au sort) ; verdicts du contrôle humain ; classement des défauts sur les sept points de Barnett et al.
-  (Tableau 7.1) ; consignation au journal des mesures.
-- **6.5 Clôture** : entrée au journal des décisions ; plan et CLAUDE.md à jour ; commits
-  (`feat: banc d'evaluation ragas` ; `docs: mesures et decisions, etape 6`) ; prompt de retour pour
-  Claude.ai (jeu, scores, latences, grille, classement Barnett, incidents, commits, état git) en `.txt`.
+- **6.1 Jeu d'évaluation** — fichier de données `evaluation/jeu_evaluation.py` : les 20 questions et leurs
+  réponses de référence (champs `id`, `question`, `registre`, `collectivite`, `theme`, `type`,
+  `reponse_reference`, `pages_sources`). Les références sont rédigées **à la main depuis le corpus brut**
+  (`data/pages/complet/`), jamais via le système, et validées avant toute exécution. **Produit :** le jeu
+  figé, entrée de toutes les sous-étapes suivantes.
+- **6.2 Outillage** — trois scripts dans `evaluation/` : `executer_banc.py` (le banc), `calculer_ragas.py`
+  (la notation), `verifier_cablage.py` (test de câblage du juge sur un échantillon bidon, à lancer une fois
+  avant le run). Dépendances d'évaluation à part, hors production : `evaluation/requirements-evaluation.txt`
+  (RAGAS 0.4.3 + pile LangChain 0.3.x), installées sur le poste de dev par
+  `pip install -r evaluation/requirements-evaluation.txt`.
+- **6.3 Run officiel** — sur le poste de développement au repos, OneDrive suspendu, dans cet ordre :
+  1. `python evaluation/executer_banc.py` : pose les 20 questions au pipeline figé (une passe, sans seed) et
+     **produit** une trace par question dans `resultats/evaluation/traces/` (`q01.json`…`q20.json` : question,
+     réponse, fragments + URL, latence) plus `run_info.json`.
+  2. `python evaluation/calculer_ragas.py` : lit les traces, calcule les 4 métriques (juge `llama3.1:8b`
+     température 0, encodeur `qwen3-embedding:0.6b`, en série) et **produit** `resultats/evaluation/scores/`
+     (`scores_par_question.json` et `scores_agreges.json`).
+  Scores consignés au journal des mesures ; une seule passe, aucune relance sélective.
+- **6.4 Contrôle humain** — fichier `resultats/evaluation/controle_humain.md` : grille sur **un quart** des
+  réponses (5 sur 20, tirées au hasard), remplie **à la main et à l'aveugle** (avant de voir les scores
+  RAGAS) ; verdicts sur les 5 critères et classement des défauts sur les 7 points de Barnett (Tableau 7.1).
+- **6.5 Clôture** — entrées aux journaux (décisions et mesures), plan et documentation à jour, commits, et
+  synthèse des résultats pour la rédaction du chapitre 12.
+
+**Réalisé (27.08.2026).** Les cinq sous-étapes sont exécutées. Le contrôle humain (6.4) a porté sur
+**5 réponses**, soit un quart du jeu, conforme au chapitre 7.4. Une **vérification indépendante des
+références** a précédé la notation finale (9 retouches mineures). Scores au journal des mesures, incidents au
+journal des décisions (entrée « Étape 6 terminée »). Restent la **rédaction du chapitre 12** et les
+**commits**.
 
 ---
 

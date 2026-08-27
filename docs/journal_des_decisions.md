@@ -8,6 +8,18 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-27 — Étape 6 terminée : évaluation exécutée
+
+Protocole du chapitre 7 appliqué au pipeline de production figé (consigne V5, régime acté, top_k 5), sans aucune retouche pendant l'étape. Banc exécuté sur les 20 questions d'auteur (une passe, sans seed, poste de développement) ; notation RAGAS 0.4.3 par le juge local Llama 3.1 8B et l'encodeur Qwen3-Embedding, quatre métriques. Une vérification indépendante des 16 réponses de référence a conduit à 9 retouches mineures, appliquées avant la notation finale. Scores clés (questions avec réponse) : précision du contexte 0.92, rappel 0.93, fidélité 0.85, pertinence 0.71 ; les 4 hors périmètre se lisent séparément (un score bas y signale un refus, le comportement attendu). Écarts consignés : Q05 rappel ignoré (échec technique du juge) ; le juge sur CPU impose une notation en série (délai client du banc relevé à 1200 s au premier appel à froid). Constats : récupération forte, fidélité bonne avec des erreurs de fusion de passages voisins (pas d'invention ex nihilo), pertinence tirée vers le bas par la verbosité, aveu d'ignorance inconstant. Le contrôle humain (entrée du jour) confirme ces scores et rattrape un angle mort du juge (Q08, fidèle mais hors sujet). Détail au journal des mesures et dans `resultats/evaluation/`. Reste la rédaction du chapitre 12.
+
+---
+
+## 2026-08-27 — Étape 6.4 : contrôle humain
+
+Relecture à l'aveugle de 5 réponses sur 20 (Q01, Q05, Q08, Q14, Q17), confrontées aux captures du corpus du 13.08.2026, selon les 5 critères du protocole et la grille de Barnett et al. 2024. Résultats : Q05 sans défaut ; Q01 incomplète (n° 7) avec une fusion erronée (permis Ci) ; Q08 exacte mais hors sujet, section pertinente non extraite (n° 4) ; Q14 exacte mais absence des horaires non avouée (n° 1), rien d'inventé ; Q17 (hors périmètre) sans aveu ni bonne cible (n° 1 + n° 6). Constat transversal : aucune invention ex nihilo ; les erreurs factuelles sont des fusions d'extraits voisins. Critère « bien orientée » précisé : hors périmètre uniquement. Détail dans le fichier de contrôle. Confrontation aux scores RAGAS à suivre (chapitre 12).
+
+---
+
 ## 2026-08-25 — Chapitre 11 complet : Partie 2 rédigée en entier (jalon rédactionnel)
 
 **Nature.** Jalon **rédactionnel** (la Partie 2 du mémoire est désormais écrite en entier), pas une décision

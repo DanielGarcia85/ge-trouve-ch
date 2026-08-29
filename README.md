@@ -24,6 +24,8 @@ Assistant conversationnel RAG en français pour les démarches administratives d
 | **Année** | 2026 |
 | **Mémoire** | `memoire/TB_Ge-Trouve_DanielGarcia.docx` |
 
+Le travail est documenté dans un **mémoire** de Bachelor (`memoire/TB_Ge-Trouve_DanielGarcia.docx`) : le document écrit qui accompagne ce dépôt et développe toute la démarche, de la revue de la littérature RAG et des choix de technologies jusqu'à la construction du système et à son évaluation. Ce dépôt en est la réalisation logicielle.
+
 **Question de recherche :** dans quelle mesure un système RAG appliqué à des documents administratifs en français produit-il des réponses fiables et pertinentes pour des utilisateurs non-experts ?
 
 ## Pourquoi Ge-Trouve

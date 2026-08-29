@@ -8,6 +8,16 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-29 — Logo et favicon, réglages centralisés dans config.py
+
+Deux ajouts techniques.
+
+Logo et favicon : un logo (une loupe contenant une coche, aux couleurs genevoises, dégradé du jaune #F2B705 vers le rouge #C8102E, coche #1F2430) est rangé dans un nouveau dossier `src/app/assets/` (source vectorielle `logo_ge-trouve.svg`, raster `logo_ge-trouve.png`). Le favicon de l'onglet est branché dans `src/app/app.py` via `st.set_page_config(page_icon=...)`, avec un chemin construit depuis le fichier (`pathlib`) pour fonctionner en local comme en conteneur, et un repli sur l'icône par défaut si l'actif manque. Le PNG est retenu plutôt que le `.ico` (support Streamlit fiable ; il sert aussi de logo en tête du README). L'emplacement est sous `src/`, seul dossier copié dans l'image Docker (favicon présent en production). Retouches CSS mineures au passage (indicateur d'état remonté sur mobile, espacement du bas de page et de la barre latérale).
+
+Réglages centralisés : les réglages du pipeline de réponse (`TOP_K`, `OPTIONS_GENERATION`, `TIMEOUT_GENERATION`) quittent `src/repondre.py` pour `src/config.py`, le point unique de configuration ; `repondre.py` et le banc `evaluation/executer_banc.py` les lisent désormais depuis `config`. Cela aligne le code sur ce que le README annonçait déjà (les réglages se lisent dans `config.py`).
+
+---
+
 ## 2026-08-29 — Refonte complète du README
 
 Le README est entièrement refondu, avec une nouvelle structure : présentation du projet, résultats d'évaluation, guide d'installation, déploiement, licence et citation. La licence reste MIT pour le code seul, les documents administratifs indexés demeurant la propriété de leurs ayants droit. Les décisions figées du README sont conservées : aucune émoticône, schéma d'architecture montrant l'utilisateur, le reverse proxy et la voie d'indexation hors ligne, formulation prudente sur l'absence de concurrent identifié, déclaration de l'usage de l'IA en deux énoncés (aucun service d'IA externe en production, modèle open source exécuté localement), sans pondérations ni calendrier.

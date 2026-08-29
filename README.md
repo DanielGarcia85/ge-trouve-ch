@@ -1,4 +1,8 @@
+
+
 # Ge-Trouve
+
+<img src="src/app/assets/logo_ge-trouve.png" align="right" width="60">
 
 Assistant conversationnel RAG en français pour les démarches administratives du canton de Genève. Exécution entièrement locale sur un serveur suisse, réponses sourcées vers les pages officielles.
 
@@ -12,7 +16,8 @@ Assistant conversationnel RAG en français pour les démarches administratives d
 
 | | |
 |---|---|
-| **Type** | Travail de Bachelor (module 66-62) |
+| **Titre** | Ge-Trouve : Conception, développement et évaluation d'un assistant conversationnel RAG en français pour les démarches administratives du canton de Genève |
+| **Type** | Travail de Bachelor |
 | **Institution** | Haute école de gestion de Genève (HEG-Genève), filière Informatique de gestion |
 | **Auteur** | Daniel Garcia |
 | **Directeur de mémoire** | Frédéric Mencier |
@@ -21,11 +26,11 @@ Assistant conversationnel RAG en français pour les démarches administratives d
 
 **Question de recherche :** dans quelle mesure un système RAG appliqué à des documents administratifs en français produit-il des réponses fiables et pertinentes pour des utilisateurs non-experts ?
 
-## Le problème et la réponse
+## Pourquoi Ge-Trouve
 
-L'information administrative genevoise est publique, mais dispersée sur des milliers de pages et rédigée dans une langue administrative. Pour un usager qui ne sait pas où chercher (personnes âgées, nouveaux arrivants), l'accès reste difficile. Ge-Trouve accepte une question en langage courant (« Où déposer ma demande de permis de séjour ? »), retrouve les passages pertinents dans les pages officielles indexées, puis rédige une réponse simple qui cite ses sources.
+L'information administrative genevoise est publique, mais dispersée sur des milliers de pages et rédigée dans une langue administrative. Pour un usager qui ne sait pas où chercher (personnes âgées, nouveaux arrivants), l'accès reste difficile. Ge-Trouve accepte une question en langage courant (« Où déposer ma demande de permis de séjour ? »), retrouve les passages pertinents dans les pages officielles indexées, puis rédige une réponse simple qui cite ses sources, pour que chacun puisse vérifier.
 
-À ce jour, aucun assistant conversationnel destiné aux citoyens genevois n'a pu être identifié. Le précédent le plus proche est le chatbot IA de fr.ch, lancé par le canton de Fribourg en mars 2026 ; il ne couvre pas Genève.
+À ce jour, aucun assistant conversationnel destiné aux citoyens genevois n'a pu être identifié. Le précédent le plus proche est le [chatbot IA de fr.ch](https://www.fr.ch/le-chatbot-ia-de-frch), lancé par le canton de Fribourg en mars 2026 : un assistant voisin, qui interroge les sources officielles du canton et cite ses sources, mais couvre Fribourg et non Genève.
 
 ## Fonctionnalités
 
@@ -35,30 +40,6 @@ L'information administrative genevoise est publique, mais dispersée sur des mil
 - Refus explicite (« je ne sais pas ») quand la question sort du corpus, avec orientation
 - Affichage de la réponse en *streaming*, mot à mot
 - Aucune donnée d'usager ne quitte le serveur ; aucun compte, aucun historique conservé
-
-## Architecture
-
-```
-                        EN LIGNE (à chaque question)
-┌──────────┐  HTTPS   ┌───────┐    ┌───────────────┐    ┌──────────────────────────┐
-│Utilisateur│ ───────► │ Caddy │ ─► │ Streamlit     │ ─► │ Pipeline Haystack        │
-└──────────┘          │(proxy)│    │ (src/app)     │    │ 1. encodage question     │
-                      └───────┘    └───────────────┘    │    (Qwen3-Embedding)     │
-                                                        │ 2. recherche top-5       │
-                                                        │    (Chroma)              │
-                                                        │ 3. prompt + génération   │
-                                                        │    (Gemma 4 12B, Ollama) │
-                                                        └──────────────────────────┘
-                                                     Réponse sourcée, en streaming
-
-                        HORS LIGNE (indexation, en amont)
-┌──────────────────┐    ┌──────────┐    ┌───────────┐    ┌────────────┐    ┌────────┐
-│ Manifeste des    │ ─► │ Scraping │ ─► │ Découpage │ ─► │ Embeddings │ ─► │ Chroma │
-│ sources (4 322)  │    │          │    │ (chunking)│    │            │    │ (base) │
-└──────────────────┘    └──────────┘    └───────────┘    └────────────┘    └────────┘
-```
-
-Tout s'exécute sur une seule machine. En production comme au développement, aucun appel n'est émis vers un service d'intelligence artificielle externe.
 
 ## Pile technique
 
@@ -78,6 +59,24 @@ Tout s'exécute sur une seule machine. En production comme au développement, au
 | Évaluation | [RAGAS](https://docs.ragas.io/) + LangChain-Ollama | 0.4.3 | Métriques RAG, juge local (machine de développement uniquement) |
 
 Toutes les licences des composants sont permissives (Apache 2.0, MIT). Versions épinglées dans `requirements.txt`.
+
+## Architecture
+
+```
+                        EN LIGNE (à chaque question)
+┌───────────┐  HTTPS   ┌───────┐    ┌───────────────┐    ┌──────────────────────────┐
+│Utilisateur│ ───────► │ Caddy │ ─► │ Streamlit     │ ─► │ Pipeline Haystack        │
+└───────────┘          │(proxy)│    │ (src/app)     │    │ 1. encodage (Qwen)       │
+                       └───────┘    └───────────────┘    │ 2. recherche (Chroma)    │◄┐
+                                                         │ 3. génération (Gemma)    │ │
+                                                         └──────────────────────────┘ │
+                        HORS LIGNE (indexation, en amont)                             │
+┌──────────────┐  ┌──────────┐  ┌───────────┐  ┌────────────┐  ┌──────────────┐       │
+│ Manifeste    │─►│ Scraping │─►│ Découpage │─►│ Embeddings │─►│ Chroma (base)│───────┘
+└──────────────┘  └──────────┘  └───────────┘  └────────────┘  └──────────────┘
+```
+
+Tout s'exécute sur une seule machine. En production comme au développement, aucun appel n'est émis vers un service d'intelligence artificielle externe.
 
 ## Corpus et sources de données
 
@@ -136,14 +135,18 @@ ollama pull llama3.1:8b   # facultatif : repli et juge d'évaluation
 
 ### Construire l'index
 
-La base vectorielle n'est pas versionnée ; elle se construit depuis le manifeste des sources :
+La base vectorielle n'est pas versionnée : elle se reconstruit depuis un **manifeste des sources**, un fichier CSV qui liste les URL officielles à aspirer et leur date de capture (`src/scraping/manifeste_sources.csv`).
+
+Ce manifeste se prépare avec les outils de `scripts/scraping/` : `verifier_robots.py` (respect des `robots.txt`), `decouvrir_sitemap.py` (collecte des URL depuis les sitemaps) et `lister_souspages_chapeau.py` (sous-pages des pages chapeau) ; la démarche est décrite dans `scripts/scraping/decouverte_corpus.md`.
+
+Une fois le manifeste en place, deux commandes reconstruisent tout :
 
 ```bash
-python src/scraping/scrape_complet.py     # aspiration des pages (~2,5 h, délai de politesse inclus)
+python src/scraping/scrape_complet.py     # aspire les pages listées au manifeste (~2,5 h, délai de politesse inclus)
 python src/indexing/indexer_complet.py    # découpage, embeddings, écriture Chroma (~3,3 h sur CPU)
 ```
 
-L'ingestion est idempotente et reprend où elle s'est arrêtée en cas d'interruption.
+L'ingestion est idempotente et reprend où elle s'est arrêtée en cas d'interruption. Le guide pas à pas complet est dans [`docs/reconstruire_la_base.md`](docs/reconstruire_la_base.md).
 
 ### Lancer l'assistant
 
@@ -151,7 +154,7 @@ L'ingestion est idempotente et reprend où elle s'est arrêtée en cas d'interru
 streamlit run src/app/app.py
 ```
 
-L'application s'ouvre dans le navigateur. Le tout premier appel charge les modèles en mémoire (compter une à deux minutes) ; les réglages (modèles, top-k, échantillonnage) se lisent dans `src/config.py` et se surchargent par variables d'environnement.
+L'application s'ouvre dans le navigateur. Le tout premier appel charge les modèles en mémoire (compter une à deux minutes par réponse) ; les réglages (modèles, top-k, échantillonnage) se lisent dans `src/config.py` et se surchargent par variables d'environnement.
 
 ## Déploiement en production
 
@@ -176,6 +179,7 @@ Points d'exploitation : la base Chroma est construite en local puis copiée sur 
 ge-trouve-ch/
 ├── src/
 │   ├── app/app.py               # interface Streamlit
+│   ├── app/assets/              # logo et favicon (SVG, PNG)
 │   ├── repondre.py              # pipeline de réponse (point d'entrée)
 │   ├── config.py                # configuration centralisée (modèles, réglages)
 │   ├── pull_modeles.py          # provisionnement des modèles Ollama
@@ -183,10 +187,14 @@ ge-trouve-ch/
 │   ├── indexing/                # découpage, embeddings, écriture Chroma
 │   └── generation/              # consignes de génération (versions V0 à V5)
 ├── scripts/
-│   ├── scraping/                # découverte sitemap, vérification robots.txt
-│   ├── mesures/                 # bancs de mesure (latence, comparaison de consignes)
-│   └── setup/                   # provisionnement des modèles Ollama (PowerShell)
-├── evaluation/                  # harnais RAGAS : 20 questions, banc, notation
+│   ├── scraping/                # découverte du corpus (sitemap, robots.txt)
+│   ├── mesures/                 # bancs de mesure (latence, mémoire, consignes)
+│   └── setup/                   # pull des modèles Ollama (PowerShell)
+├── evaluation/                  # harnais RAGAS (Partie 3 ; deps : requirements-evaluation.txt)
+│   ├── jeu_evaluation.py        # les 20 questions et leurs réponses de référence
+│   ├── executer_banc.py         # rejoue le pipeline figé et produit les traces
+│   ├── calculer_ragas.py        # notation RAGAS (juge et encodeur locaux)
+│   └── verifier_cablage.py      # test de câblage du juge
 ├── resultats/
 │   ├── pilote/                  # journaux et réponses du corpus pilote
 │   ├── complet/                 # journaux et réponses du corpus complet
@@ -194,6 +202,7 @@ ge-trouve-ch/
 │   ├── consignes/               # réponses archivées des essais de consignes
 │   └── evaluation/              # scores RAGAS, traces, contrôle humain
 ├── deploy/                      # Dockerfile, docker-compose.yml, Caddyfile
+├── .streamlit/config.toml       # configuration de l'interface Streamlit
 ├── .github/workflows/           # déploiement continu (deploy.yml)
 ├── docs/
 │   ├── architecture.md          # documentation technique
@@ -206,7 +215,7 @@ ge-trouve-ch/
 
 ## Limites connues
 
-- **Latence** : sur le serveur de production (CPU seul), le premier mot d'une réponse à une question nouvelle apparaît après environ 90 secondes (traitement du prompt), puis la réponse s'écrit en continu. C'est le prix assumé de l'exécution locale souveraine.
+- **Latence** : sur le serveur de production (CPU seul), le premier mot d'une réponse à une question nouvelle apparaît après **90 à 120 secondes** (traitement du prompt), puis la réponse s'écrit en continu. C'est le prix assumé de l'exécution locale souveraine sur un VPS modeste.
 - Une seule génération à la fois (contrainte mémoire du palier de serveur).
 - Pas de mémoire conversationnelle : chaque question est traitée indépendamment.
 - Couverture limitée aux pages HTML du périmètre indexé ; les PDF et formulaires ne sont pas encore ingérés.
@@ -241,9 +250,9 @@ Le **code** de ce dépôt est publié sous licence **MIT**. Les **contenus admin
 ```bibtex
 @misc{garcia2026getrouve,
   author = {Garcia, Daniel},
-  title  = {ge-trouve.ch : Conception, développement et évaluation d'un assistant
-            conversationnel RAG en français pour l'accessibilité aux démarches
-            administratives du canton de Genève},
+  title  = {Ge-Trouve : Conception, développement et évaluation d'un assistant
+            conversationnel RAG en français pour les démarches administratives
+            du canton de Genève},
   school = {Haute école de gestion de Genève (HEG-GE)},
   year   = {2026},
   note   = {Travail de Bachelor, filière Informatique de gestion},

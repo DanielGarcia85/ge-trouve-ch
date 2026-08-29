@@ -134,6 +134,12 @@ st.markdown(
         body:has([data-testid="stSidebar"][aria-expanded="true"]) .pied { left: 21rem; }
       }
 
+      /* Barre latérale ouverte : elle passe devant l'indicateur d'état, qui reste visible
+         dans l'espace qu'elle ne couvre pas (au lieu de disparaître). */
+      body:has([data-testid="stSidebar"][aria-expanded="true"]) [data-testid="stSidebar"] {
+        z-index: 1000000 !important;
+      }
+
       /* Marges du contenu : sous l'en-tête figé (haut) et au-dessus du champ + bas de page (bas),
          pour que la conversation défile entièrement sans être masquée. `!important` car Streamlit
          impose ses propres marges au conteneur principal. */

@@ -178,21 +178,29 @@ ge-trouve-ch/
 │   ├── app/app.py               # interface Streamlit
 │   ├── repondre.py              # pipeline de réponse (point d'entrée)
 │   ├── config.py                # configuration centralisée (modèles, réglages)
+│   ├── pull_modeles.py          # provisionnement des modèles Ollama
 │   ├── scraping/                # manifeste des sources et scrapers
 │   ├── indexing/                # découpage, embeddings, écriture Chroma
 │   └── generation/              # consignes de génération (versions V0 à V5)
 ├── scripts/
 │   ├── scraping/                # découverte sitemap, vérification robots.txt
-│   └── mesures/                 # bancs de mesure (latence, comparaison de consignes)
-├── evaluation/                  # jeu de 20 questions et réponses de référence
+│   ├── mesures/                 # bancs de mesure (latence, comparaison de consignes)
+│   └── setup/                   # provisionnement des modèles Ollama (PowerShell)
+├── evaluation/                  # harnais RAGAS : 20 questions, banc, notation
 ├── resultats/
+│   ├── pilote/                  # journaux et réponses du corpus pilote
+│   ├── complet/                 # journaux et réponses du corpus complet
+│   ├── interface/               # captures de l'interface
 │   ├── consignes/               # réponses archivées des essais de consignes
 │   └── evaluation/              # scores RAGAS, traces, contrôle humain
-├── deploy/                      # docker-compose.yml, Caddyfile
-├── .github/workflows/           # déploiement continu
+├── deploy/                      # Dockerfile, docker-compose.yml, Caddyfile
+├── .github/workflows/           # déploiement continu (deploy.yml)
 ├── docs/
-│   ├── decisions/journal-des-decisions.md   # une entrée datée par décision
-│   └── mesures/journal-des-mesures.md       # toutes les mesures, datées et reproductibles
+│   ├── architecture.md          # documentation technique
+│   ├── plan_developpement.md    # plan des étapes (Partie 2 et Partie 3)
+│   ├── reconstruire_la_base.md  # guide de régénération du corpus et de la base
+│   ├── journal_des_decisions.md # une entrée datée par décision
+│   └── journal_des_mesures.md   # toutes les mesures, datées et reproductibles
 └── memoire/                     # mémoire (docx), bibliographie (.ris), figures (SVG)
 ```
 
@@ -215,7 +223,7 @@ ge-trouve-ch/
 
 ## Méthode et traçabilité
 
-Chaque choix technique est instruit dans le mémoire sur sources primaires datées, puis consigné dans le [journal des décisions](docs/decisions/journal-des-decisions.md). Chaque mesure (latences, mémoire, débits, scores) est datée et reproductible dans le [journal des mesures](docs/mesures/journal-des-mesures.md). La bibliographie complète du mémoire vit dans `memoire/bibliographie/GE-Trouve.ris`.
+Chaque choix technique est instruit dans le mémoire sur sources primaires datées, puis consigné dans le [journal des décisions](docs/journal_des_decisions.md). Chaque mesure (latences, mémoire, débits, scores) est datée et reproductible dans le [journal des mesures](docs/journal_des_mesures.md). La bibliographie complète du mémoire vit dans `memoire/bibliographie/GE-Trouve.ris`.
 
 ## Déclaration d'usage de l'IA
 

@@ -8,6 +8,18 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-29 — Refonte complète du README
+
+Le README est entièrement refondu, avec une nouvelle structure : présentation du projet, résultats d'évaluation, guide d'installation, déploiement, licence et citation. La licence reste MIT pour le code seul, les documents administratifs indexés demeurant la propriété de leurs ayants droit. Les décisions figées du README sont conservées : aucune émoticône, schéma d'architecture montrant l'utilisateur, le reverse proxy et la voie d'indexation hors ligne, formulation prudente sur l'absence de concurrent identifié, déclaration de l'usage de l'IA en deux énoncés (aucun service d'IA externe en production, modèle open source exécuté localement), sans pondérations ni calendrier.
+
+---
+
+## 2026-08-28 et 29 — Intégration du retour du directeur et rédaction finale
+
+Jalon rédactionnel : le retour du directeur est intégré et la rédaction du mémoire est achevée. Deux nouvelles sections au chapitre 8, 8.4 « L'analyse du besoin » et 8.5 « L'existant et le positionnement », appuyées par une analyse SWOT (Figure 8.1) et une analyse PESTEL (Figure 8.2) et par douze sources « Existant » ajoutées à la bibliographie. Les liminaires et la fermeture sont écrits : conclusion (réponse à la question de recherche, leviers, limites, perspectives), introduction, résumé et remerciements. L'image filée de l'orchestre (chef et musiciens) et la parenté des candidats ont été entièrement retirées du document. Restent l'allègement des chapitres 2 et 4 et la passe finale (mise à jour des champs et des listes, bibliographie, PDF, Compilatio) avant la remise du 31 août.
+
+---
+
 ## 2026-08-28 — Chapitre 12 rédigé : Partie 3 complète
 
 Jalon rédactionnel : le chapitre 12 (résultats de l'évaluation) est inséré au mémoire, quatre sections et une fermeture. La section 12.1 raconte le protocole exécuté (20 questions d'auteur, 16 avec réponse et 4 hors périmètre, références bâties depuis le corpus, étanchéité totale) et consigne un constat d'honnêteté : le branchement direct Haystack-RAGAS n'a pas pu être établi avec la version retenue de la bibliothèque, RAGAS a été enveloppé par ses composants LangChain pour Ollama, et le critère d'intégration du chapitre 3 n'aura donc pas servi ; la Figure 12.1 (nouvelle) schématise ce câblage. La 12.2 présente les moyennes sur les questions avec réponse (précision 0,92, rappel 0,93 agrégé sur 15 avec la réserve Q05, fidélité 0,85, pertinence 0,71) : récupération forte, fidélité aux erreurs de fusion sans invention, pertinence tirée par la verbosité. La 12.3 traite les hors périmètre cas par cas et le garde-fou humain (cinq relectures à l'aveugle, grille controle_humain.md), dont la question 8, fidèle mais hors sujet, attrapée par l'humain seul : l'angle mort de RAGAS. La 12.4 classe les défauts sur quatre des sept points de Barnett (trois jamais apparus) et esquisse les leviers sans les développer (consigne plus courte, échantillonnage centralisé dans src/config.py, changement de modèle en une ligne relayé par le CI/CD, palier de serveur), le contrôle humain restant à conserver ; la conclusion développera. Deux annexes nouvelles : l'Annexe 4 (les 20 questions verbatim avec leurs quatre scores, la ligne Moyenne AR, la réserve Q05, les cinq verdicts humains, renvoi aux traces du dépôt) et l'Annexe 5 (calcul des quatre métriques en deux étages, illustrée par annexe_5_metriques_ragas.svg). Un seul appel de citation ajouté (fiche RAGAS existante), aucune fiche Zotero nouvelle. Restent la conclusion, l'introduction à ajuster et le résumé, côté rédaction.

@@ -1,0 +1,39 @@
+<svg viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <text x="500" y="38" text-anchor="middle" font-size="16" fill="#334155">Le positionnement de Ge-Trouve en quatre quadrants : l'interne en haut, l'environnement en bas.</text>
+
+  <text x="40" y="72" font-size="13.5" fill="#64748B">ORIGINE INTERNE</text>
+
+  <rect x="40" y="82" width="452" height="252" rx="12" fill="#F0FDF4" stroke="#059669" stroke-width="2"/>
+  <text x="64" y="114" font-size="17" font-weight="700" fill="#065F46">Forces</text>
+  <text x="64" y="146" font-size="14" fill="#14532D">· Souveraineté totale : modèle ouvert exécuté</text>
+  <text x="78" y="166" font-size="14" fill="#14532D">sur un serveur suisse, sans API externe</text>
+  <text x="64" y="192" font-size="14" fill="#14532D">· Réponses sourcées vers les pages officielles</text>
+  <text x="64" y="218" font-size="14" fill="#14532D">· Corpus dédié aux démarches genevoises</text>
+  <text x="64" y="244" font-size="14" fill="#14532D">· Coût d'exploitation modeste</text>
+  <text x="64" y="270" font-size="14" fill="#14532D">· Code et journaux publics</text>
+  <text x="64" y="296" font-size="14" fill="#14532D">· Évaluation publiée, protocole reproductible</text>
+
+  <rect x="508" y="82" width="452" height="252" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+  <text x="532" y="114" font-size="17" font-weight="700" fill="#92400E">Faiblesses</text>
+  <text x="532" y="146" font-size="14" fill="#78350F">· Latence élevée sur processeur</text>
+  <text x="532" y="172" font-size="14" fill="#78350F">· Une seule génération à la fois</text>
+  <text x="532" y="198" font-size="14" fill="#78350F">· Pas de mémoire conversationnelle</text>
+  <text x="532" y="224" font-size="14" fill="#78350F">· Couverture partielle des sites officiels</text>
+  <text x="532" y="250" font-size="14" fill="#78350F">· Projet individuel, maintenance non garantie</text>
+
+  <text x="40" y="374" font-size="13.5" fill="#64748B">ORIGINE EXTERNE</text>
+
+  <rect x="40" y="384" width="452" height="236" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="64" y="416" font-size="17" font-weight="700" fill="#1D4ED8">Opportunités</text>
+  <text x="64" y="448" font-size="14" fill="#1E3A8A">· Extension à d'autres cantons ou aux communes</text>
+  <text x="64" y="474" font-size="14" fill="#1E3A8A">· Adoption ou reprise institutionnelle</text>
+  <text x="64" y="500" font-size="14" fill="#1E3A8A">· Modèles ouverts plus rapides à venir</text>
+  <text x="64" y="526" font-size="14" fill="#1E3A8A">· Précédent fribourgeois qui légitime la demande</text>
+
+  <rect x="508" y="384" width="452" height="236" rx="12" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="532" y="416" font-size="17" font-weight="700" fill="#B91C1C">Menaces</text>
+  <text x="532" y="448" font-size="14" fill="#7F1D1D">· Aperçus IA de Google : instantanés, gratuits,</text>
+  <text x="546" y="468" font-size="14" fill="#7F1D1D">déjà dans le réflexe de recherche</text>
+  <text x="532" y="494" font-size="14" fill="#7F1D1D">· Évolution des sites sources cassant la collecte</text>
+  <text x="532" y="520" font-size="14" fill="#7F1D1D">· Exigences réglementaires croissantes sur l'IA</text>
+</svg>

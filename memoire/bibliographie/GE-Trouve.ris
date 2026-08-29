@@ -1,35 +1,30 @@
-TY  - MGZN
-TI  - Cinq chatbots de l’administration fédérale
-AU  - Chavanne, Yannick
-T2  - ICTjournal
-AB  - Cinq projets de chatbots, développés par divers départements fédéraux suisses, utilisent l’IA pour simplifier l’accès aux informations, tant pour les fonctionnaires administratifs que pour les citoyens et les entreprises.
-DA  - 2024/10/17/
-PY  - 2024
-LA  - fr
-UR  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
-Y2  - 2026/03/19/13:26:03
-L2  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
-ER  - 
-
 TY  - GEN
-TI  - Ragas: Automated Evaluation of Retrieval Augmented Generation
-AU  - Es, Shahul
-AU  - James, Jithin
-AU  - Espinosa-Anke, Luis
-AU  - Schockaert, Steven
-AB  - We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAG systems are composed of a retrieval and an LLM based generation module, and provide LLMs with knowledge from a reference textual database, which enables them to act as a natural language layer between a user and textual databases, reducing the risk of hallucinations. Evaluating RAG architectures is, however, challenging because there are several dimensions to consider: the ability of the retrieval system to identify relevant and focused context passages, the ability of the LLM to exploit such passages in a faithful way, or the quality of the generation itself. With Ragas, we put forward a suite of metrics which can be used to evaluate these different dimensions \textit{without having to rely on ground truth human annotations}. We posit that such a framework can crucially contribute to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs.
-DA  - 2023/09/26/
-PY  - 2023
-DO  - 10.48550/arXiv.2309.15217
+TI  - Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+AU  - Lewis, Patrick
+AU  - Perez, Ethan
+AU  - Piktus, Aleksandra
+AU  - Petroni, Fabio
+AU  - Karpukhin, Vladimir
+AU  - Goyal, Naman
+AU  - Küttler, Heinrich
+AU  - Lewis, Mike
+AU  - Yih, Wen-tau
+AU  - Rocktäschel, Tim
+AU  - Riedel, Sebastian
+AU  - Kiela, Douwe
+AB  - Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.
+DA  - 2020/05/22/
+PY  - 2020
+DO  - 10.48550/arXiv.2005.11401
 DP  - arXiv.org
 PB  - arXiv
-ST  - Ragas
-UR  - http://arxiv.org/abs/2309.15217
-Y2  - 2026/03/19/10:12:50
-L1  - http://arxiv.org/pdf/2309.15217v2
-L2  - http://arxiv.org/abs/2309.15217
-N1  - Comment: Reference-free (not tied to having ground truth available) evaluation framework for retrieval agumented generation
+UR  - http://arxiv.org/abs/2005.11401
+Y2  - 2026/03/19/10:52:35
+L1  - http://arxiv.org/pdf/2005.11401v4
+L2  - http://arxiv.org/abs/2005.11401
+N1  - Comment: Accepted at NeurIPS 2020
 KW  - Computer Science - Computation and Language
+KW  - Computer Science - Machine Learning
 ER  - 
 
 TY  - GEN
@@ -61,47 +56,82 @@ KW  - Computer Science - Artificial Intelligence
 ER  - 
 
 TY  - GEN
-TI  - Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
-AU  - Lewis, Patrick
-AU  - Perez, Ethan
-AU  - Piktus, Aleksandra
-AU  - Petroni, Fabio
-AU  - Karpukhin, Vladimir
-AU  - Goyal, Naman
-AU  - Küttler, Heinrich
-AU  - Lewis, Mike
-AU  - Yih, Wen-tau
-AU  - Rocktäschel, Tim
-AU  - Riedel, Sebastian
-AU  - Kiela, Douwe
-AB  - Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.
-DA  - 2020/05/22/
-PY  - 2020
-DO  - 10.48550/arXiv.2005.11401
+TI  - Ragas: Automated Evaluation of Retrieval Augmented Generation
+AU  - Es, Shahul
+AU  - James, Jithin
+AU  - Espinosa-Anke, Luis
+AU  - Schockaert, Steven
+AB  - We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAG systems are composed of a retrieval and an LLM based generation module, and provide LLMs with knowledge from a reference textual database, which enables them to act as a natural language layer between a user and textual databases, reducing the risk of hallucinations. Evaluating RAG architectures is, however, challenging because there are several dimensions to consider: the ability of the retrieval system to identify relevant and focused context passages, the ability of the LLM to exploit such passages in a faithful way, or the quality of the generation itself. With Ragas, we put forward a suite of metrics which can be used to evaluate these different dimensions \textit{without having to rely on ground truth human annotations}. We posit that such a framework can crucially contribute to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs.
+DA  - 2023/09/26/
+PY  - 2023
+DO  - 10.48550/arXiv.2309.15217
 DP  - arXiv.org
 PB  - arXiv
-UR  - http://arxiv.org/abs/2005.11401
-Y2  - 2026/03/19/10:52:35
-L1  - http://arxiv.org/pdf/2005.11401v4
-L2  - http://arxiv.org/abs/2005.11401
-N1  - Comment: Accepted at NeurIPS 2020
+ST  - Ragas
+UR  - http://arxiv.org/abs/2309.15217
+Y2  - 2026/03/19/10:12:50
+L1  - http://arxiv.org/pdf/2309.15217v2
+L2  - http://arxiv.org/abs/2309.15217
+N1  - Comment: Reference-free (not tied to having ground truth available) evaluation framework for retrieval agumented generation
 KW  - Computer Science - Computation and Language
-KW  - Computer Science - Machine Learning
+ER  - 
+
+TY  - MGZN
+TI  - Cinq chatbots de l’administration fédérale
+AU  - Chavanne, Yannick
+T2  - ICTjournal
+AB  - Cinq projets de chatbots, développés par divers départements fédéraux suisses, utilisent l’IA pour simplifier l’accès aux informations, tant pour les fonctionnaires administratifs que pour les citoyens et les entreprises.
+DA  - 2024/10/17/
+PY  - 2024
+LA  - fr
+UR  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
+Y2  - 2026/03/19/13:26:03
+L2  - https://www.ictjournal.ch/articles/2024-10-17/cinq-chatbots-de-ladministration-federale
 ER  - 
 
 TY  - GEN
-TI  - Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers
-AU  - Sharma, Chaitanya
-AB  - Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm to enhance large language models (LLMs) by conditioning generation on external evidence retrieved at inference time. While RAG addresses critical limitations of parametric knowledge storage-such as factual inconsistency and domain inflexibility-it introduces new challenges in retrieval quality, grounding fidelity, pipeline efficiency, and robustness against noisy or adversarial inputs. This survey provides a comprehensive synthesis of recent advances in RAG systems, offering a taxonomy that categorizes architectures into retriever-centric, generator-centric, hybrid, and robustness-oriented designs. We systematically analyze enhancements across retrieval optimization, context filtering, decoding control, and efficiency improvements, supported by comparative performance analyses on short-form and multi-hop question answering tasks. Furthermore, we review state-of-the-art evaluation frameworks and benchmarks, highlighting trends in retrieval-aware evaluation, robustness testing, and federated retrieval settings. Our analysis reveals recurring trade-offs between retrieval precision and generation flexibility, efficiency and faithfulness, and modularity and coordination. We conclude by identifying open challenges and future research directions, including adaptive retrieval architectures, real-time retrieval integration, structured reasoning over multi-hop evidence, and privacy-preserving retrieval mechanisms. This survey aims to consolidate current knowledge in RAG research and serve as a foundation for the next generation of retrieval-augmented language modeling systems.
-DA  - 2025/05/28/
-PY  - 2025
-DO  - 10.48550/arXiv.2506.00054
+TI  - Survey of Hallucination in Natural Language Generation
+AU  - Ji, Ziwei
+AU  - Lee, Nayeon
+AU  - Frieske, Rita
+AU  - Yu, Tiezheng
+AU  - Su, Dan
+AU  - Xu, Yan
+AU  - Ishii, Etsuko
+AU  - Bang, Yejin
+AU  - Chen, Delong
+AU  - Dai, Wenliang
+AU  - Chan, Ho Shu
+AU  - Madotto, Andrea
+AU  - Fung, Pascale
+AB  - Natural Language Generation (NLG) has improved exponentially in recent years thanks to the development of sequence-to-sequence deep learning technologies such as Transformer-based language models. This advancement has led to more fluent and coherent NLG, leading to improved development in downstream tasks such as abstractive summarization, dialogue generation and data-to-text generation. However, it is also apparent that deep learning based generation is prone to hallucinate unintended text, which degrades the system performance and fails to meet user expectations in many real-world scenarios. To address this issue, many studies have been presented in measuring and mitigating hallucinated texts, but these have never been reviewed in a comprehensive manner before. In this survey, we thus provide a broad overview of the research progress and challenges in the hallucination problem in NLG. The survey is organized into two parts: (1) a general overview of metrics, mitigation methods, and future directions; (2) an overview of task-specific research progress on hallucinations in the following downstream tasks, namely abstractive summarization, dialogue generation, generative question answering, data-to-text generation, machine translation, and visual-language generation; and (3) hallucinations in large language models (LLMs). This survey serves to facilitate collaborative efforts among researchers in tackling the challenge of hallucinated texts in NLG.
+DA  - 2022/02/08/
+PY  - 2022
+DO  - 10.48550/arXiv.2202.03629
 LA  - en
 PB  - arXiv
-ST  - Retrieval-Augmented Generation
-UR  - https://arxiv.org/abs/2506.00054v1
-Y2  - 2026/04/29/12:24:32
-L1  - https://arxiv.org/pdf/2506.00054
+UR  - https://arxiv.org/abs/2202.03629
+Y2  - 2026/04/29/12:15:20
+L1  - https://arxiv.org/pdf/2202.03629
+ER  - 
+
+TY  - GEN
+TI  - REALM: Retrieval-Augmented Language Model Pre-Training
+AU  - Guu, Kelvin
+AU  - Lee, Kenton
+AU  - Tung, Zora
+AU  - Pasupat, Panupong
+AU  - Chang, Ming-Wei
+AB  - Language model pre-training has been shown to capture a surprising amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network, requiring ever-larger networks to cover more facts. To capture knowledge in a more modular and interpretable way, we augment language model pre-training with a latent knowledge retriever, which allows the model to retrieve and attend over documents from a large corpus such as Wikipedia, used during pre-training, fine-tuning and inference. For the first time, we show how to pre-train such a knowledge retriever in an unsupervised manner, using masked language modeling as the learning signal and backpropagating through a retrieval step that considers millions of documents. We demonstrate the effectiveness of Retrieval-Augmented Language Model pre-training (REALM) by fine-tuning on the challenging task of Open-domain Question Answering (Open-QA). We compare against state-of-the-art models for both explicit and implicit knowledge storage on three popular Open-QA benchmarks, and find that we outperform all previous methods by a significant margin (4-16% absolute accuracy), while also providing qualitative benefits such as interpretability and modularity.
+DA  - 2020/02/10/
+PY  - 2020
+DO  - 10.48550/arXiv.2002.08909
+LA  - en
+PB  - arXiv
+ST  - REALM
+UR  - https://arxiv.org/abs/2002.08909
+Y2  - 2026/04/29/12:18:25
+L1  - https://arxiv.org/pdf/2002.08909
 ER  - 
 
 TY  - GEN
@@ -146,48 +176,18 @@ L1  - https://arxiv.org/pdf/2112.04426
 ER  - 
 
 TY  - GEN
-TI  - REALM: Retrieval-Augmented Language Model Pre-Training
-AU  - Guu, Kelvin
-AU  - Lee, Kenton
-AU  - Tung, Zora
-AU  - Pasupat, Panupong
-AU  - Chang, Ming-Wei
-AB  - Language model pre-training has been shown to capture a surprising amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network, requiring ever-larger networks to cover more facts. To capture knowledge in a more modular and interpretable way, we augment language model pre-training with a latent knowledge retriever, which allows the model to retrieve and attend over documents from a large corpus such as Wikipedia, used during pre-training, fine-tuning and inference. For the first time, we show how to pre-train such a knowledge retriever in an unsupervised manner, using masked language modeling as the learning signal and backpropagating through a retrieval step that considers millions of documents. We demonstrate the effectiveness of Retrieval-Augmented Language Model pre-training (REALM) by fine-tuning on the challenging task of Open-domain Question Answering (Open-QA). We compare against state-of-the-art models for both explicit and implicit knowledge storage on three popular Open-QA benchmarks, and find that we outperform all previous methods by a significant margin (4-16% absolute accuracy), while also providing qualitative benefits such as interpretability and modularity.
-DA  - 2020/02/10/
-PY  - 2020
-DO  - 10.48550/arXiv.2002.08909
+TI  - Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers
+AU  - Sharma, Chaitanya
+AB  - Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm to enhance large language models (LLMs) by conditioning generation on external evidence retrieved at inference time. While RAG addresses critical limitations of parametric knowledge storage-such as factual inconsistency and domain inflexibility-it introduces new challenges in retrieval quality, grounding fidelity, pipeline efficiency, and robustness against noisy or adversarial inputs. This survey provides a comprehensive synthesis of recent advances in RAG systems, offering a taxonomy that categorizes architectures into retriever-centric, generator-centric, hybrid, and robustness-oriented designs. We systematically analyze enhancements across retrieval optimization, context filtering, decoding control, and efficiency improvements, supported by comparative performance analyses on short-form and multi-hop question answering tasks. Furthermore, we review state-of-the-art evaluation frameworks and benchmarks, highlighting trends in retrieval-aware evaluation, robustness testing, and federated retrieval settings. Our analysis reveals recurring trade-offs between retrieval precision and generation flexibility, efficiency and faithfulness, and modularity and coordination. We conclude by identifying open challenges and future research directions, including adaptive retrieval architectures, real-time retrieval integration, structured reasoning over multi-hop evidence, and privacy-preserving retrieval mechanisms. This survey aims to consolidate current knowledge in RAG research and serve as a foundation for the next generation of retrieval-augmented language modeling systems.
+DA  - 2025/05/28/
+PY  - 2025
+DO  - 10.48550/arXiv.2506.00054
 LA  - en
 PB  - arXiv
-ST  - REALM
-UR  - https://arxiv.org/abs/2002.08909
-Y2  - 2026/04/29/12:18:25
-L1  - https://arxiv.org/pdf/2002.08909
-ER  - 
-
-TY  - GEN
-TI  - Survey of Hallucination in Natural Language Generation
-AU  - Ji, Ziwei
-AU  - Lee, Nayeon
-AU  - Frieske, Rita
-AU  - Yu, Tiezheng
-AU  - Su, Dan
-AU  - Xu, Yan
-AU  - Ishii, Etsuko
-AU  - Bang, Yejin
-AU  - Chen, Delong
-AU  - Dai, Wenliang
-AU  - Chan, Ho Shu
-AU  - Madotto, Andrea
-AU  - Fung, Pascale
-AB  - Natural Language Generation (NLG) has improved exponentially in recent years thanks to the development of sequence-to-sequence deep learning technologies such as Transformer-based language models. This advancement has led to more fluent and coherent NLG, leading to improved development in downstream tasks such as abstractive summarization, dialogue generation and data-to-text generation. However, it is also apparent that deep learning based generation is prone to hallucinate unintended text, which degrades the system performance and fails to meet user expectations in many real-world scenarios. To address this issue, many studies have been presented in measuring and mitigating hallucinated texts, but these have never been reviewed in a comprehensive manner before. In this survey, we thus provide a broad overview of the research progress and challenges in the hallucination problem in NLG. The survey is organized into two parts: (1) a general overview of metrics, mitigation methods, and future directions; (2) an overview of task-specific research progress on hallucinations in the following downstream tasks, namely abstractive summarization, dialogue generation, generative question answering, data-to-text generation, machine translation, and visual-language generation; and (3) hallucinations in large language models (LLMs). This survey serves to facilitate collaborative efforts among researchers in tackling the challenge of hallucinated texts in NLG.
-DA  - 2022/02/08/
-PY  - 2022
-DO  - 10.48550/arXiv.2202.03629
-LA  - en
-PB  - arXiv
-UR  - https://arxiv.org/abs/2202.03629
-Y2  - 2026/04/29/12:15:20
-L1  - https://arxiv.org/pdf/2202.03629
+ST  - Retrieval-Augmented Generation
+UR  - https://arxiv.org/abs/2506.00054v1
+Y2  - 2026/04/29/12:24:32
+L1  - https://arxiv.org/pdf/2506.00054
 ER  - 
 
 TY  - GEN
@@ -216,42 +216,23 @@ KW  - Computer Science - Machine Learning
 ER  - 
 
 TY  - GEN
-TI  - A Survey of Large Language Models
-AU  - Zhao, Wayne Xin
-AU  - Zhou, Kun
-AU  - Li, Junyi
-AU  - Tang, Tianyi
-AU  - Wang, Xiaolei
-AU  - Hou, Yupeng
-AU  - Min, Yingqian
-AU  - Zhang, Beichen
-AU  - Zhang, Junjie
-AU  - Dong, Zican
-AU  - Du, Yifan
-AU  - Yang, Chen
-AU  - Chen, Yushuo
-AU  - Chen, Zhipeng
-AU  - Jiang, Jinhao
-AU  - Ren, Ruiyang
-AU  - Li, Yifan
-AU  - Tang, Xinyu
-AU  - Liu, Zikang
-AU  - Liu, Peiyu
-AU  - Nie, Jian-Yun
-AU  - Wen, Ji-Rong
-AB  - Language is essentially a complex, intricate system of human expressions governed by grammatical rules. It poses a significant challenge to develop capable AI algorithms for comprehending and grasping a language. As a major approach, language modeling has been widely studied for language understanding and generation in the past two decades, evolving from statistical language models to neural language models. Recently, pre-trained language models (PLMs) have been proposed by pre-training Transformer models over large-scale corpora, showing strong capabilities in solving various NLP tasks. Since researchers have found that model scaling can lead to performance improvement, they further study the scaling effect by increasing the model size to an even larger size. Interestingly, when the parameter scale exceeds a certain level, these enlarged language models not only achieve a significant performance improvement but also show some special abilities that are not present in small-scale language models. To discriminate the difference in parameter scale, the research community has coined the term large language models (LLM) for the PLMs of significant size. Recently, the research on LLMs has been largely advanced by both academia and industry, and a remarkable progress is the launch of ChatGPT, which has attracted widespread attention from society. The technical evolution of LLMs has been making an important impact on the entire AI community, which would revolutionize the way how we develop and use AI algorithms. In this survey, we review the recent advances of LLMs by introducing the background, key findings, and mainstream techniques. In particular, we focus on four major aspects of LLMs, namely pre-training, adaptation tuning, utilization, and capacity evaluation. Besides, we also summarize the available resources for developing LLMs and discuss the remaining issues for future directions.
-DA  - 2023/03/31/
-PY  - 2023
-DO  - 10.48550/arXiv.2303.18223
+TI  - BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+AU  - Devlin, Jacob
+AU  - Chang, Ming-Wei
+AU  - Lee, Kenton
+AU  - Toutanova, Kristina
+AB  - We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).
+DA  - 2018/10/11/
+PY  - 2018
+DO  - 10.48550/arXiv.1810.04805
 DP  - arXiv.org
 PB  - arXiv
-UR  - http://arxiv.org/abs/2303.18223
-Y2  - 2026/07/01/15:07:30
-L1  - http://arxiv.org/pdf/2303.18223v19
-L2  - http://arxiv.org/abs/2303.18223
-N1  - Comment: ongoing work; 144 pages, 1081 citations
+ST  - BERT
+UR  - http://arxiv.org/abs/1810.04805
+Y2  - 2026/07/01/14:09:51
+L1  - http://arxiv.org/pdf/1810.04805v2
+L2  - http://arxiv.org/abs/1810.04805
 KW  - Computer Science - Computation and Language
-KW  - Computer Science - Artificial Intelligence
 ER  - 
 
 TY  - GEN
@@ -301,51 +282,42 @@ KW  - Computer Science - Computation and Language
 ER  - 
 
 TY  - GEN
-TI  - BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
-AU  - Devlin, Jacob
-AU  - Chang, Ming-Wei
-AU  - Lee, Kenton
-AU  - Toutanova, Kristina
-AB  - We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).
-DA  - 2018/10/11/
-PY  - 2018
-DO  - 10.48550/arXiv.1810.04805
+TI  - A Survey of Large Language Models
+AU  - Zhao, Wayne Xin
+AU  - Zhou, Kun
+AU  - Li, Junyi
+AU  - Tang, Tianyi
+AU  - Wang, Xiaolei
+AU  - Hou, Yupeng
+AU  - Min, Yingqian
+AU  - Zhang, Beichen
+AU  - Zhang, Junjie
+AU  - Dong, Zican
+AU  - Du, Yifan
+AU  - Yang, Chen
+AU  - Chen, Yushuo
+AU  - Chen, Zhipeng
+AU  - Jiang, Jinhao
+AU  - Ren, Ruiyang
+AU  - Li, Yifan
+AU  - Tang, Xinyu
+AU  - Liu, Zikang
+AU  - Liu, Peiyu
+AU  - Nie, Jian-Yun
+AU  - Wen, Ji-Rong
+AB  - Language is essentially a complex, intricate system of human expressions governed by grammatical rules. It poses a significant challenge to develop capable AI algorithms for comprehending and grasping a language. As a major approach, language modeling has been widely studied for language understanding and generation in the past two decades, evolving from statistical language models to neural language models. Recently, pre-trained language models (PLMs) have been proposed by pre-training Transformer models over large-scale corpora, showing strong capabilities in solving various NLP tasks. Since researchers have found that model scaling can lead to performance improvement, they further study the scaling effect by increasing the model size to an even larger size. Interestingly, when the parameter scale exceeds a certain level, these enlarged language models not only achieve a significant performance improvement but also show some special abilities that are not present in small-scale language models. To discriminate the difference in parameter scale, the research community has coined the term large language models (LLM) for the PLMs of significant size. Recently, the research on LLMs has been largely advanced by both academia and industry, and a remarkable progress is the launch of ChatGPT, which has attracted widespread attention from society. The technical evolution of LLMs has been making an important impact on the entire AI community, which would revolutionize the way how we develop and use AI algorithms. In this survey, we review the recent advances of LLMs by introducing the background, key findings, and mainstream techniques. In particular, we focus on four major aspects of LLMs, namely pre-training, adaptation tuning, utilization, and capacity evaluation. Besides, we also summarize the available resources for developing LLMs and discuss the remaining issues for future directions.
+DA  - 2023/03/31/
+PY  - 2023
+DO  - 10.48550/arXiv.2303.18223
 DP  - arXiv.org
 PB  - arXiv
-ST  - BERT
-UR  - http://arxiv.org/abs/1810.04805
-Y2  - 2026/07/01/14:09:51
-L1  - http://arxiv.org/pdf/1810.04805v2
-L2  - http://arxiv.org/abs/1810.04805
+UR  - http://arxiv.org/abs/2303.18223
+Y2  - 2026/07/01/15:07:30
+L1  - http://arxiv.org/pdf/2303.18223v19
+L2  - http://arxiv.org/abs/2303.18223
+N1  - Comment: ongoing work; 144 pages, 1081 citations
 KW  - Computer Science - Computation and Language
-ER  - 
-
-TY  - JOUR
-TI  - Evaluating chatbot architectures for public service delivery: balancing functionality, safety, ethics, and adaptability
-AU  - Papadopoulos, Theodoros
-AU  - Alexopoulos, Charalampos Harris
-AU  - Charalabidis, Yannis
-T2  - Frontiers in Political Science
-AB  - The increasing integration of AI-driven interfaces into public service channels has catalyzed a vibrant discourse on the interplay between technological innovation and the traditional values of public governance. This discussion invites a critical exploration of how emerging chatbot architectures can be aligned with ethical principles and resilient public sector practices. While there is research assessing the potential benefits of integrating chatbots in service delivery, existing evaluation approaches often lack specificity to the unique context of public administration, failing to adequately balance technical performance with crucial ethical considerations, safety requirements, and core public service principles like transparency, fairness, and accountability. This research addresses this critical gap by developing and applying a structured evaluation framework specifically designed for assessing diverse chatbot architectures within the public sector. The methodology offers actionable insights to guide the selection and implementation of chatbot solutions that enhance citizen engagement, streamline government services, and uphold key public service values. A key contribution is the introduction of fifteen pre-assessed evaluation criteria, encompassing areas such as input understanding, error handling, legal compliance, safety, and personalization, which are applied to four distinct chatbot architectures. Our findings indicate that while no single architecture is universally optimal, hybrid retrieval-augmented generation (RAG) systems emerge as the most balanced approach, effectively mitigating the risks of pure generative models while retaining their adaptability. Ultimately, this work provides actionable guidance for policymakers and researchers, supporting informed decisions on the responsible use of chatbots and emphasizing the critical balance between innovation and public trust.
-DA  - 2025/10/01/
-PY  - 2025
-DO  - 10.3389/fpos.2025.1601440
-DP  - Frontiers
-VL  - 7
-J2  - Front. Polit. Sci.
-LA  - English
-PB  - Frontiers
-SN  - 2673-3145
-ST  - Evaluating chatbot architectures for public service delivery
-UR  - https://www.frontiersin.org/journals/political-science/articles/10.3389/fpos.2025.1601440/full
-Y2  - 2026/07/11/06:54:23
-L1  - https://www.frontiersin.org/articles/10.3389/fpos.2025.1601440/pdf
-KW  - AI ethics
-KW  - chatbots
-KW  - evaluation framework
-KW  - LLMs
-KW  - politics of technology
-KW  - public service delivery
+KW  - Computer Science - Artificial Intelligence
 ER  - 
 
 TY  - ELEC
@@ -387,145 +359,402 @@ Y2  - 2026/07/11/07:19:33
 L2  - https://www.bk.admin.ch/fr/intelligence-artificielle
 ER  - 
 
-TY  - GEN
-TI  - Apertus: Democratizing Open and Compliant LLMs for Global Language Environments
-AU  - Project Apertus
-AU  - Hernández-Cano, Alejandro
-AU  - Hägele, Alexander
-AU  - Huang, Allen Hao
-AU  - Romanou, Angelika
-AU  - Solergibert, Antoni-Joan
-AU  - Pasztor, Barna
-AU  - Messmer, Bettina
-AU  - Garbaya, Dhia
-AU  - Ďurech, Eduard Frank
-AU  - Hakimi, Ido
-AU  - Giraldo, Juan García
-AU  - Ismayilzada, Mete
-AU  - Foroutan, Negar
-AU  - Moalla, Skander
-AU  - Chen, Tiancheng
-AU  - Sabolčec, Vinko
-AU  - Xu, Yixuan
-AU  - Aerni, Michael
-AU  - AlKhamissi, Badr
-AU  - Mariñas, Inés Altemir
-AU  - Amani, Mohammad Hossein
-AU  - Ansaripour, Matin
-AU  - Badanin, Ilia
-AU  - Benoit, Harold
-AU  - Boros, Emanuela
-AU  - Browning, Nicholas
-AU  - Bösch, Fabian
-AU  - Böther, Maximilian
-AU  - Canova, Niklas
-AU  - Challier, Camille
-AU  - Charmillot, Clement
-AU  - Coles, Jonathan
-AU  - Deriu, Jan
-AU  - Devos, Arnout
-AU  - Drescher, Lukas
-AU  - Dzenhaliou, Daniil
-AU  - Ehrmann, Maud
-AU  - Fan, Dongyang
-AU  - Fan, Simin
-AU  - Gao, Silin
-AU  - Gila, Miguel
-AU  - Grandury, María
-AU  - Hashemi, Diba
-AU  - Hoyle, Alexander
-AU  - Jiang, Jiaming
-AU  - Klein, Mark
-AU  - Kucharavy, Andrei
-AU  - Kucherenko, Anastasiia
-AU  - Lübeck, Frederike
-AU  - Machacek, Roman
-AU  - Manitaras, Theofilos
-AU  - Marfurt, Andreas
-AU  - Matoba, Kyle
-AU  - Matrenok, Simon
-AU  - Mendonça, Henrique
-AU  - Mohamed, Fawzi Roberto
-AU  - Montariol, Syrielle
-AU  - Mouchel, Luca
-AU  - Najem-Meyer, Sven
-AU  - Ni, Jingwei
-AU  - Oliva, Gennaro
-AU  - Pagliardini, Matteo
-AU  - Palme, Elia
-AU  - Panferov, Andrei
-AU  - Paoletti, Léo
-AU  - Passerini, Marco
-AU  - Pavlov, Ivan
-AU  - Poiroux, Auguste
-AU  - Ponkshe, Kaustubh
-AU  - Ranchin, Nathan
-AU  - Rando, Javi
-AU  - Sauser, Mathieu
-AU  - Saydaliev, Jakhongir
-AU  - Sayfiddinov, Muhammad Ali
-AU  - Schneider, Marian
-AU  - Schuppli, Stefano
-AU  - Scialanga, Marco
-AU  - Semenov, Andrei
-AU  - Shridhar, Kumar
-AU  - Singhal, Raghav
-AU  - Sotnikova, Anna
-AU  - Sternfeld, Alexander
-AU  - Tarun, Ayush Kumar
-AU  - Teiletche, Paul
-AU  - Vamvas, Jannis
-AU  - Yao, Xiaozhe
-AU  - Zhao, Hao
-AU  - Ilic, Alexander
-AU  - Klimovic, Ana
-AU  - Krause, Andreas
-AU  - Gulcehre, Caglar
-AU  - Rosenthal, David
-AU  - Ash, Elliott
-AU  - Tramèr, Florian
-AU  - VandeVondele, Joost
-AU  - Veraldi, Livio
-AU  - Rajman, Martin
-AU  - Schulthess, Thomas
-AU  - Hoefler, Torsten
-AU  - Bosselut, Antoine
-AU  - Jaggi, Martin
-AU  - Schlag, Imanol
-AB  - We present Apertus, a fully open suite of large language models (LLMs) designed to address two systemic shortcomings in today's open model ecosystem: data compliance and multilingual representation. Unlike many prior models that release weights without reproducible data pipelines or regard for content-owner rights, Apertus models are pretrained exclusively on openly available data, retroactively respecting `robots.txt` exclusions and filtering for non-permissive, toxic, and personally identifiable content. To mitigate risks of memorization, we adopt the Goldfish objective during pretraining, strongly suppressing verbatim recall of data while retaining downstream task performance. The Apertus models also expand multilingual coverage, training on 15T tokens from over 1800 languages, with ~40% of pretraining data allocated to non-English content. Released at 8B and 70B scales, Apertus approaches state-of-the-art results among fully open models on multilingual benchmarks, rivalling or surpassing open-weight counterparts. Beyond model weights, we release all scientific artifacts from our development cycle with a permissive license, including data preparation scripts, checkpoints, evaluation suites, and training code, enabling transparent audit and extension.
-DA  - 2025/09/17/
+TY  - JOUR
+TI  - Evaluating chatbot architectures for public service delivery: balancing functionality, safety, ethics, and adaptability
+AU  - Papadopoulos, Theodoros
+AU  - Alexopoulos, Charalampos Harris
+AU  - Charalabidis, Yannis
+T2  - Frontiers in Political Science
+AB  - The increasing integration of AI-driven interfaces into public service channels has catalyzed a vibrant discourse on the interplay between technological innovation and the traditional values of public governance. This discussion invites a critical exploration of how emerging chatbot architectures can be aligned with ethical principles and resilient public sector practices. While there is research assessing the potential benefits of integrating chatbots in service delivery, existing evaluation approaches often lack specificity to the unique context of public administration, failing to adequately balance technical performance with crucial ethical considerations, safety requirements, and core public service principles like transparency, fairness, and accountability. This research addresses this critical gap by developing and applying a structured evaluation framework specifically designed for assessing diverse chatbot architectures within the public sector. The methodology offers actionable insights to guide the selection and implementation of chatbot solutions that enhance citizen engagement, streamline government services, and uphold key public service values. A key contribution is the introduction of fifteen pre-assessed evaluation criteria, encompassing areas such as input understanding, error handling, legal compliance, safety, and personalization, which are applied to four distinct chatbot architectures. Our findings indicate that while no single architecture is universally optimal, hybrid retrieval-augmented generation (RAG) systems emerge as the most balanced approach, effectively mitigating the risks of pure generative models while retaining their adaptability. Ultimately, this work provides actionable guidance for policymakers and researchers, supporting informed decisions on the responsible use of chatbots and emphasizing the critical balance between innovation and public trust.
+DA  - 2025/10/01/
 PY  - 2025
-DO  - 10.48550/arXiv.2509.14233
+DO  - 10.3389/fpos.2025.1601440
+DP  - Frontiers
+VL  - 7
+J2  - Front. Polit. Sci.
+LA  - English
+PB  - Frontiers
+SN  - 2673-3145
+ST  - Evaluating chatbot architectures for public service delivery
+UR  - https://www.frontiersin.org/journals/political-science/articles/10.3389/fpos.2025.1601440/full
+Y2  - 2026/07/11/06:54:23
+L1  - https://www.frontiersin.org/articles/10.3389/fpos.2025.1601440/pdf
+KW  - AI ethics
+KW  - chatbots
+KW  - evaluation framework
+KW  - LLMs
+KW  - politics of technology
+KW  - public service delivery
+ER  - 
+
+TY  - GEN
+TI  - Engineering RAG Systems for Real-World Applications: Design, Development, and Evaluation
+AU  - Hasan, Md Toufique
+AU  - Waseem, Muhammad
+AU  - Kemell, Kai-Kristian
+AU  - Khan, Ayman Asad
+AU  - Saari, Mika
+AU  - Abrahamsson, Pekka
+AB  - Retrieval-Augmented Generation (RAG) systems are emerging as a key approach for grounding Large Language Models (LLMs) in external knowledge, addressing limitations in factual accuracy and contextual relevance. However, there is a lack of empirical studies that report on the development of RAG-based implementations grounded in real-world use cases, evaluated through general user involvement, and accompanied by systematic documentation of lessons learned. This paper presents five domain-specific RAG applications developed for real-world scenarios across governance, cybersecurity, agriculture, industrial research, and medical diagnostics. Each system incorporates multilingual OCR, semantic retrieval via vector embeddings, and domain-adapted LLMs, deployed through local servers or cloud APIs to meet distinct user needs. A web-based evaluation involving a total of 100 participants assessed the systems across six dimensions: (i) Ease of Use, (ii) Relevance, (iii) Transparency, (iv) Responsiveness, (v) Accuracy, and (vi) Likelihood of Recommendation. Based on user feedback and our development experience, we documented twelve key lessons learned, highlighting technical, operational, and ethical challenges affecting the reliability and usability of RAG systems in practice.
+DA  - 2025/06/25/
+PY  - 2025
+DO  - 10.48550/arXiv.2506.20869
 DP  - arXiv.org
 PB  - arXiv
-ST  - Apertus
-UR  - http://arxiv.org/abs/2509.14233
-Y2  - 2026/07/16/14:40:46
-L1  - http://arxiv.org/pdf/2509.14233v2
-L2  - http://arxiv.org/abs/2509.14233
+ST  - Engineering RAG Systems for Real-World Applications
+UR  - http://arxiv.org/abs/2506.20869
+Y2  - 2026/07/13/14:08:27
+L1  - http://arxiv.org/pdf/2506.20869v3
+L2  - http://arxiv.org/abs/2506.20869
+N1  - Comment: Published in the Proceedings of the 51st Euromicro Conference on Software Engineering and Advanced Applications, SEAA 2025. Lecture Notes in Computer Science, volume 16082, pages 143-158. Springer, 2026
+KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Information Retrieval
+KW  - Computer Science - Software Engineering
+ER  - 
+
+TY  - GEN
+TI  - Seven Failure Points When Engineering a Retrieval Augmented Generation System
+AU  - Barnett, Scott
+AU  - Kurniawan, Stefanus
+AU  - Thudumu, Srikanth
+AU  - Brannelly, Zach
+AU  - Abdelrazek, Mohamed
+AB  - Software engineers are increasingly adding semantic search capabilities to applications using a strategy known as Retrieval Augmented Generation (RAG). A RAG system involves finding documents that semantically match a query and then passing the documents to a large language model (LLM) such as ChatGPT to extract the right answer using an LLM. RAG systems aim to: a) reduce the problem of hallucinated responses from LLMs, b) link sources/references to generated responses, and c) remove the need for annotating documents with meta-data. However, RAG systems suffer from limitations inherent to information retrieval systems and from reliance on LLMs. In this paper, we present an experience report on the failure points of RAG systems from three case studies from separate domains: research, education, and biomedical. We share the lessons learned and present 7 failure points to consider when designing a RAG system. The two key takeaways arising from our work are: 1) validation of a RAG system is only feasible during operation, and 2) the robustness of a RAG system evolves rather than designed in at the start. We conclude with a list of potential research directions on RAG systems for the software engineering community.
+DA  - 2024/01/11/
+PY  - 2024
+DO  - 10.48550/arXiv.2401.05856
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2401.05856
+Y2  - 2026/07/13/14:13:44
+L1  - http://arxiv.org/pdf/2401.05856v1
+L2  - http://arxiv.org/abs/2401.05856
+KW  - Computer Science - Artificial Intelligence
+KW  - Computer Science - Software Engineering
+ER  - 
+
+TY  - GEN
+TI  - Retrieval-augmented generation in multilingual settings
+AU  - Chirkova, Nadezhda
+AU  - Rau, David
+AU  - Déjean, Hervé
+AU  - Formal, Thibault
+AU  - Clinchant, Stéphane
+AU  - Nikoulina, Vassilina
+AB  - Retrieval-augmented generation (RAG) has recently emerged as a promising solution for incorporating up-to-date or domain-specific knowledge into large language models (LLMs) and improving LLM factuality, but is predominantly studied in English-only settings. In this work, we consider RAG in the multilingual setting (mRAG), i.e. with user queries and the datastore in 13 languages, and investigate which components and with which adjustments are needed to build a well-performing mRAG pipeline, that can be used as a strong baseline in future works. Our findings highlight that despite the availability of high-quality off-the-shelf multilingual retrievers and generators, task-specific prompt engineering is needed to enable generation in user languages. Moreover, current evaluation metrics need adjustments for multilingual setting, to account for variations in spelling named entities. The main limitations to be addressed in future works include frequent code-switching in non-Latin alphabet languages, occasional fluency errors, wrong reading of the provided documents, or irrelevant retrieval. We release the code for the resulting mRAG baseline pipeline at https://github.com/naver/bergen.
+DA  - 2024/07/01/
+PY  - 2024
+DO  - 10.48550/arXiv.2407.01463
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2407.01463
+Y2  - 2026/07/13/14:26:43
+L1  - http://arxiv.org/pdf/2407.01463v1
+L2  - http://arxiv.org/abs/2407.01463
 KW  - Computer Science - Computation and Language
 KW  - Computer Science - Artificial Intelligence
-KW  - Computer Science - Machine Learning
 ER  - 
 
 TY  - COMP
-TI  - Apertus 8B Instruct
-AU  - Swiss AI Initiative
+TI  - LangChain
+AU  - Chase, Harrison
+AB  - The agent engineering platform.
+DA  - 2022/10//
+PY  - 2022
+DP  - GitHub
+LA  - Python
+PB  - LangChain, Inc.
+ST  - LangChain
+UR  - https://github.com/langchain-ai/langchain
+Y2  - 2026/07/13/14:53:10
+N1  - <div data-schema-version="9"><p>Documentation : <a href="https://docs.langchain.com/" rel="noopener noreferrer nofollow">https://docs.langchain.com/</a></p>
+<p></p>
+<p>Documentation integration : <a href="https://docs.langchain.com/oss/python/integrations/providers/overview" rel="noopener noreferrer nofollow">https://docs.langchain.com/oss/python/integrations/providers/overview</a></p>
+<p></p>
+<p>Documentation integration Ollama : <a href="https://docs.langchain.com/oss/python/integrations/providers/ollama" rel="noopener noreferrer nofollow">https://docs.langchain.com/oss/python/integrations/providers/ollama</a></p>
+<p></p>
+<p>Repo GitHub : <a href="https://github.com/langchain-ai/langchain" rel="noopener noreferrer nofollow">https://github.com/langchain-ai/langchain</a></p>
+</div>
+ER  - 
+
+TY  - COMP
+TI  - LlamaIndex
+AU  - Liu, Jerry
+AB  - LlamaIndex is the leading document agent and OCR platform
+DA  - 2022/11//
+PY  - 2022
+DP  - GitHub
+LA  - Python
+PB  - LlamaIndex, Inc.
+ST  - LlamaIndex
+UR  - https://github.com/run-llama/llama_index
+Y2  - 2026/07/13/14:53:44
+N1  - <div data-schema-version="9"><p>Documentation : <a href="https://developers.llamaindex.ai/python/framework/" rel="noopener noreferrer nofollow">https://developers.llamaindex.ai/python/framework/</a></p>
+<p></p>
+<p>Documentation integration Ollama : <a href="https://developers.llamaindex.ai/python/framework/integrations/llm/ollama/" rel="noopener noreferrer nofollow">https://developers.llamaindex.ai/python/framework/integrations/llm/ollama/</a></p>
+<p></p>
+<p>Repo GitHub : <a href="https://github.com/run-llama/llama_index" rel="noopener noreferrer nofollow">https://github.com/run-llama/llama_index</a></p>
+</div>
+ER  - 
+
+TY  - COMP
+TI  - Haystack: the end-to-end NLP framework for pragmatic builders
+AU  - Pietsch, Malte
+AU  - Möller, Timo
+AU  - Kostic, Bogdan
+AU  - Risch, Julian
+AU  - Pippi, Massimiliano
+AU  - Jobanputra, Mayank
+AU  - Zanzottera, Sara
+AU  - Cerza, Silvano
+AU  - Blagojevic, Vladimir
+AU  - Stadelmann, Thomas
+AU  - Soni, Tanay
+AU  - Lee, Sebastian
+AB  - Open-source AI orchestration framework for building context-engineered, production-ready LLM applications. Design modular pipelines and agent workflows with explicit control over retrieval, routing, memory, and generation. Built for scalable agents, RAG, multimodal applications, semantic search, and conversational systems.
+DA  - 2019/11//
+PY  - 2019
+DP  - GitHub
+LA  - Python
+PB  - deepset GmbH
+ST  - Haystack
+UR  - https://github.com/deepset-ai/haystack
+Y2  - 2026/07/13/14:54:37
+N1  - <div data-schema-version="9"><p>Documentation : <a href="https://docs.haystack.deepset.ai/docs/intro" rel="noopener noreferrer nofollow">https://docs.haystack.deepset.ai/docs/intro</a></p>
+<p></p>
+<p>Documentation integration : <a href="https://haystack.deepset.ai/integrations" rel="noopener noreferrer nofollow">https://haystack.deepset.ai/integrations</a></p>
+<p></p>
+<p>Documentation integration Ollama : <a href="https://haystack.deepset.ai/integrations/ollama" rel="noopener noreferrer nofollow">https://haystack.deepset.ai/integrations/ollama</a></p>
+<p></p>
+<p>Repo GitHub : <a href="https://github.com/deepset-ai/haystack" rel="noopener noreferrer nofollow">https://github.com/deepset-ai/haystack</a></p>
+<p></p>
+<p>Repo integration GitHub : <a href="https://github.com/deepset-ai/haystack-core-integrations" rel="noopener noreferrer nofollow">https://github.com/deepset-ai/haystack-core-integrations</a></p>
+</div>
+ER  - 
+
+TY  - COMP
+TI  - Openrag
+AU  - Linagora
+AB  - An open source, modular, lightweight, and extensible RAG application stack, designed for anyone and everyone.
+DA  - 2025/07//
+PY  - 2025
+DP  - GitHub
+LA  - Python
+PB  - Linagora
+ST  - OpenRAG
+UR  - https://github.com/linagora/openrag
+Y2  - 2026/07/14/12:54:06
+N1  - <div data-schema-version="9"><p>Documentation : <a href="https://linagora.github.io/openrag/" rel="noopener noreferrer nofollow">https://linagora.github.io/openrag/</a></p>
+<p></p>
+<p>Documentation integration Ollama : aucune page dédiée (constaté le 14.07.2026)</p>
+<p></p>
+<p>Site : <a href="https://open-rag.ai/" rel="noopener noreferrer nofollow">https://open-rag.ai</a></p>
+<p></p>
+<p>Repo GitHub : <a href="https://github.com/linagora/openrag" rel="noopener noreferrer nofollow">https://github.com/linagora/openrag</a></p>
+</div>
+ER  - 
+
+TY  - COMP
+TI  - Ministral 3 8B Instruct
+AU  - Mistral AI
 AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
-DA  - 2025/09//
+DA  - 2025/12//
 PY  - 2025
 DP  - Hugging Face
-PB  - Swiss AI Initiative
-ST  - Apertus 8B
-UR  - https://huggingface.co/swiss-ai/Apertus-8B-Instruct-2509
-Y2  - 2026/07/16/14:39:21
-L2  - https://huggingface.co/swiss-ai/Apertus-8B-Instruct-2509
-N1  - <div data-schema-version="9"><p>Consortium : EPFL, ETH Zurich et CSCS (Swiss AI Initiative)<br></p>
-<p>Article : Apertus: Democratizing Open and Compliant LLMs for Global Language Environments,</p>
+PB  - Mistral AI
+ST  - Ministral 3 8B
+UR  - https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512
+Y2  - 2026/07/16/13:26:02
+L2  - https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512
+N1  - <div data-schema-version="9"><p>Annonce officielle : <a href="https://mistral.ai/news/mistral-3/" rel="noopener noreferrer nofollow">https://mistral.ai/news/mistral-3/</a><br></p>
+<p>GGUF officiels : <a href="https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF" rel="noopener noreferrer nofollow">https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF</a><br></p>
+<p>Collection Ministral 3 : <a href="https://huggingface.co/collections/mistralai/ministral-3" rel="noopener noreferrer nofollow">https://huggingface.co/collections/mistralai/ministral-3</a><br></p>
+<p>Attention homonyme : Ministral-8B-Instruct-2410 (octobre 2024, Mistral Research License, non commercial) est un modèle antérieur distinct : <a href="https://huggingface.co/mistralai/Ministral-8B-Instruct-2410" rel="noopener noreferrer nofollow">https://huggingface.co/mistralai/Ministral-8B-Instruct-2410</a></p>
+</div>
+ER  - 
+
+TY  - GEN
+TI  - Ministral 3
+AU  - Liu, Alexander H.
+AU  - Khandelwal, Kartik
+AU  - Subramanian, Sandeep
+AU  - Jouault, Victor
+AU  - Rastogi, Abhinav
+AU  - Sadé, Adrien
+AU  - Jeffares, Alan
+AU  - Jiang, Albert
+AU  - Cahill, Alexandre
+AU  - Gavaudan, Alexandre
+AU  - Sablayrolles, Alexandre
+AU  - Héliou, Amélie
+AU  - You, Amos
+AU  - Ehrenberg, Andy
+AU  - Lo, Andy
+AU  - Eliseev, Anton
+AU  - Calvi, Antonia
+AU  - Sooriyarachchi, Avinash
+AU  - Bout, Baptiste
+AU  - Rozière, Baptiste
+AU  - Monicault, Baudouin De
+AU  - Lanfranchi, Clémence
+AU  - Barreau, Corentin
+AU  - Courtot, Cyprien
+AU  - Grattarola, Daniele
+AU  - Dabert, Darius
+AU  - Casas, Diego de las
+AU  - Chane-Sane, Elliot
+AU  - Ahmed, Faruk
+AU  - Berrada, Gabrielle
+AU  - Ecrepont, Gaëtan
+AU  - Guinet, Gauthier
+AU  - Novikov, Georgii
+AU  - Kunsch, Guillaume
+AU  - Lample, Guillaume
+AU  - Martin, Guillaume
+AU  - Gupta, Gunshi
+AU  - Ludziejewski, Jan
+AU  - Rute, Jason
+AU  - Studnia, Joachim
+AU  - Amar, Jonas
+AU  - Delas, Joséphine
+AU  - Roberts, Josselin Somerville
+AU  - Yadav, Karmesh
+AU  - Chandu, Khyathi
+AU  - Jain, Kush
+AU  - Aitchison, Laurence
+AU  - Fainsin, Laurent
+AU  - Blier, Léonard
+AU  - Zhao, Lingxiao
+AU  - Martin, Louis
+AU  - Saulnier, Lucile
+AU  - Gao, Luyu
+AU  - Buyl, Maarten
+AU  - Jennings, Margaret
+AU  - Pellat, Marie
+AU  - Prins, Mark
+AU  - Poirée, Mathieu
+AU  - Guillaumin, Mathilde
+AU  - Dinot, Matthieu
+AU  - Futeral, Matthieu
+AU  - Darrin, Maxime
+AU  - Augustin, Maximilian
+AU  - Chiquier, Mia
+AU  - Schimpf, Michel
+AU  - Grinsztajn, Nathan
+AU  - Gupta, Neha
+AU  - Raghuraman, Nikhil
+AU  - Bousquet, Olivier
+AU  - Duchenne, Olivier
+AU  - Wang, Patricia
+AU  - Platen, Patrick von
+AU  - Jacob, Paul
+AU  - Wambergue, Paul
+AU  - Kurylowicz, Paula
+AU  - Muddireddy, Pavankumar Reddy
+AU  - Chagniot, Philomène
+AU  - Stock, Pierre
+AU  - Agrawal, Pravesh
+AU  - Torroba, Quentin
+AU  - Sauvestre, Romain
+AU  - Soletskyi, Roman
+AU  - Menneer, Rupert
+AU  - Vaze, Sagar
+AU  - Barry, Samuel
+AU  - Gandhi, Sanchit
+AU  - Waghjale, Siddhant
+AU  - Gandhi, Siddharth
+AU  - Ghosh, Soham
+AU  - Mishra, Srijan
+AU  - Aithal, Sumukh
+AU  - Antoniak, Szymon
+AU  - Scao, Teven Le
+AU  - Cachet, Théo
+AU  - Sorg, Theo Simon
+AU  - Lavril, Thibaut
+AU  - Saada, Thiziri Nait
+AU  - Chabal, Thomas
+AU  - Foubert, Thomas
+AU  - Robert, Thomas
+AU  - Wang, Thomas
+AU  - Lawson, Tim
+AU  - Bewley, Tom
+AU  - Bewley, Tom
+AU  - Edwards, Tom
+AU  - Jamil, Umar
+AU  - Tomasini, Umberto
+AU  - Nemychnikova, Valeriia
+AU  - Phung, Van
+AU  - Maladière, Vincent
+AU  - Richard, Virgile
+AU  - Bouaziz, Wassim
+AU  - Li, Wen-Ding
+AU  - Marshall, William
+AU  - Li, Xinghui
+AU  - Yang, Xinyu
+AU  - Ouahidi, Yassine El
+AU  - Wang, Yihan
+AU  - Tang, Yunhao
+AU  - Ramzi, Zaccharie
+AB  - We introduce the Ministral 3 series, a family of parameter-efficient dense language models designed for compute and memory constrained applications, available in three model sizes: 3B, 8B, and 14B parameters. For each model size, we release three variants: a pretrained base model for general-purpose use, an instruction finetuned, and a reasoning model for complex problem-solving. In addition, we present our recipe to derive the Ministral 3 models through Cascade Distillation, an iterative pruning and continued training with distillation technique. Each model comes with image understanding capabilities, all under the Apache 2.0 license.
+DA  - 2026/01/13/
+PY  - 2026
+DO  - 10.48550/arXiv.2601.08584
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2601.08584
+Y2  - 2026/07/16/13:33:04
+L1  - http://arxiv.org/pdf/2601.08584v1
+L2  - http://arxiv.org/abs/2601.08584
+N1  - Comment: Release page: https://mistral.ai/news/mistral-3 ; Models available at https://huggingface.co/collections/mistralai/ministral-3
+KW  - Computer Science - Computation and Language
+ER  - 
+
+TY  - COMP
+TI  - Qwen3.5 9B Instruct
+AU  - Qwen Team
+AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
+DA  - 2026/03//
+PY  - 2026
+DP  - Hugging Face
+PB  - Alibaba Cloud
+ST  - Qwen3.5 9B
+UR  - https://huggingface.co/Qwen/Qwen3.5-9B
+Y2  - 2026/07/16/13:46:09
+L2  - https://huggingface.co/Qwen/Qwen3.5-9B
+N1  - <div data-schema-version="9"><p>Organisation GitHub : <a href="https://github.com/QwenLM" rel="noopener noreferrer nofollow">https://github.com/QwenLM</a></p>
 <p></p>
-<p>arXiv:2509.14233 : <a href="https://arxiv.org/abs/2509.14233" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2509.14233</a><br></p>
-<p>Annonce EPFL : <a href="https://ai.epfl.ch/apertus-a-fully-open-transparent-multilingual-language-model/" rel="noopener noreferrer nofollow">https://ai.epfl.ch/apertus-a-fully-open-transparent-multilingual-language-model/</a><br>Entièrement ouvert : poids, données et recettes d'entraînement publiés ; plus de 1 000 langues ; données conformes (opt-out des ayants droit respecté)<br></p>
-<p>Vigilance : pas de version Ollama officielle, uniquement des conversions communautaires (ex. <a href="https://ollama.com/MichelRosselli/apertus" rel="noopener noreferrer nofollow">https://ollama.com/MichelRosselli/apertus</a>)</p>
+<p>Annonce : <a href="https://qwen.ai/blog?id=qwen3.5" rel="noopener noreferrer nofollow">https://qwen.ai/blog?id=qwen3.5</a></p>
+<p></p>
+<p>Rapport technique de la lignée (Qwen3) : <a href="https://arxiv.org/abs/2505.09388" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2505.09388</a></p>
+<p></p>
+<p>Modèle multimodal : 10B paramètres affichés (9B langage + encodeur vision)</p>
+<p></p>
+<p>Vigilance : la model card recommande vLLM/SGLang et ne mentionne pas Ollama ; support Ollama à vérifier (architecture hybride Gated DeltaNet)</p>
+<p></p>
+<p>Paramètres : les « 10B » affichés sur la card = 9B pour le modèle de langage + un encodeur de vision ; côté texte, c'est bien un 9B.</p>
+<p></p>
+<p>Vigilance exécution : la card recommande vLLM, SGLang et KTransformers et ne mentionne jamais Ollama ; support Ollama à vérifier spécifiquement (fait de portrait pour 4.3).</p>
+<p></p>
+<p>Annonce : <a href="https://qwen.ai/blog?id=qwen3.5" rel="noopener noreferrer nofollow">https://qwen.ai/blog?id=qwen3.5</a></p>
+</div>
+ER  - 
+
+TY  - COMP
+TI  - Gemma 4 12B Instruct
+AU  - Google DeepMind
+AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
+DA  - 2026/06//
+PY  - 2026
+DP  - Hugging Face
+PB  - Google DeepMind
+ST  - Gemma 4 12B
+UR  - https://huggingface.co/google/gemma-4-12B-it
+Y2  - 2026/07/16/14:04:56
+L2  - https://huggingface.co/google/gemma-4-12B-it
+N1  - <div data-schema-version="9"><p>Rapport technique : Gemma 4 Technical Report, arXiv:2607.02770 : <a href="https://arxiv.org/abs/2607.02770" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2607.02770</a><br></p>
+<p>Documentation officielle : <a href="https://ai.google.dev/gemma/docs/core" rel="noopener noreferrer nofollow">https://ai.google.dev/gemma/docs/core</a><br></p>
+<p>Checkpoints quantifiés officiels (QAT Q4_0) : <a href="https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-unquantized" rel="noopener noreferrer nofollow">https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-unquantized</a><br></p>
+<p>Modèle « Unified » : multimodal sans encodeurs séparés, 12B dense ; famille lancée au printemps 2026, variante 12B ajoutée en juin</p>
 </div>
 ER  - 
 
@@ -848,401 +1077,233 @@ KW  - Computer Science - Artificial Intelligence
 ER  - 
 
 TY  - COMP
-TI  - Gemma 4 12B Instruct
-AU  - Google DeepMind
+TI  - Apertus 8B Instruct
+AU  - Swiss AI Initiative
 AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
-DA  - 2026/06//
-PY  - 2026
+DA  - 2025/09//
+PY  - 2025
 DP  - Hugging Face
-PB  - Google DeepMind
-ST  - Gemma 4 12B
-UR  - https://huggingface.co/google/gemma-4-12B-it
-Y2  - 2026/07/16/14:04:56
-L2  - https://huggingface.co/google/gemma-4-12B-it
-N1  - <div data-schema-version="9"><p>Rapport technique : Gemma 4 Technical Report, arXiv:2607.02770 : <a href="https://arxiv.org/abs/2607.02770" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2607.02770</a><br></p>
-<p>Documentation officielle : <a href="https://ai.google.dev/gemma/docs/core" rel="noopener noreferrer nofollow">https://ai.google.dev/gemma/docs/core</a><br></p>
-<p>Checkpoints quantifiés officiels (QAT Q4_0) : <a href="https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-unquantized" rel="noopener noreferrer nofollow">https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-unquantized</a><br></p>
-<p>Modèle « Unified » : multimodal sans encodeurs séparés, 12B dense ; famille lancée au printemps 2026, variante 12B ajoutée en juin</p>
-</div>
-ER  - 
-
-TY  - COMP
-TI  - Qwen3.5 9B Instruct
-AU  - Qwen Team
-AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
-DA  - 2026/03//
-PY  - 2026
-DP  - Hugging Face
-PB  - Alibaba Cloud
-ST  - Qwen3.5 9B
-UR  - https://huggingface.co/Qwen/Qwen3.5-9B
-Y2  - 2026/07/16/13:46:09
-L2  - https://huggingface.co/Qwen/Qwen3.5-9B
-N1  - <div data-schema-version="9"><p>Organisation GitHub : <a href="https://github.com/QwenLM" rel="noopener noreferrer nofollow">https://github.com/QwenLM</a></p>
+PB  - Swiss AI Initiative
+ST  - Apertus 8B
+UR  - https://huggingface.co/swiss-ai/Apertus-8B-Instruct-2509
+Y2  - 2026/07/16/14:39:21
+L2  - https://huggingface.co/swiss-ai/Apertus-8B-Instruct-2509
+N1  - <div data-schema-version="9"><p>Consortium : EPFL, ETH Zurich et CSCS (Swiss AI Initiative)<br></p>
+<p>Article : Apertus: Democratizing Open and Compliant LLMs for Global Language Environments,</p>
 <p></p>
-<p>Annonce : <a href="https://qwen.ai/blog?id=qwen3.5" rel="noopener noreferrer nofollow">https://qwen.ai/blog?id=qwen3.5</a></p>
-<p></p>
-<p>Rapport technique de la lignée (Qwen3) : <a href="https://arxiv.org/abs/2505.09388" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2505.09388</a></p>
-<p></p>
-<p>Modèle multimodal : 10B paramètres affichés (9B langage + encodeur vision)</p>
-<p></p>
-<p>Vigilance : la model card recommande vLLM/SGLang et ne mentionne pas Ollama ; support Ollama à vérifier (architecture hybride Gated DeltaNet)</p>
-<p></p>
-<p>Paramètres : les « 10B » affichés sur la card = 9B pour le modèle de langage + un encodeur de vision ; côté texte, c'est bien un 9B.</p>
-<p></p>
-<p>Vigilance exécution : la card recommande vLLM, SGLang et KTransformers et ne mentionne jamais Ollama ; support Ollama à vérifier spécifiquement (fait de portrait pour 4.3).</p>
-<p></p>
-<p>Annonce : <a href="https://qwen.ai/blog?id=qwen3.5" rel="noopener noreferrer nofollow">https://qwen.ai/blog?id=qwen3.5</a></p>
+<p>arXiv:2509.14233 : <a href="https://arxiv.org/abs/2509.14233" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2509.14233</a><br></p>
+<p>Annonce EPFL : <a href="https://ai.epfl.ch/apertus-a-fully-open-transparent-multilingual-language-model/" rel="noopener noreferrer nofollow">https://ai.epfl.ch/apertus-a-fully-open-transparent-multilingual-language-model/</a><br>Entièrement ouvert : poids, données et recettes d'entraînement publiés ; plus de 1 000 langues ; données conformes (opt-out des ayants droit respecté)<br></p>
+<p>Vigilance : pas de version Ollama officielle, uniquement des conversions communautaires (ex. <a href="https://ollama.com/MichelRosselli/apertus" rel="noopener noreferrer nofollow">https://ollama.com/MichelRosselli/apertus</a>)</p>
 </div>
 ER  - 
 
 TY  - GEN
-TI  - Ministral 3
-AU  - Liu, Alexander H.
-AU  - Khandelwal, Kartik
-AU  - Subramanian, Sandeep
-AU  - Jouault, Victor
-AU  - Rastogi, Abhinav
-AU  - Sadé, Adrien
-AU  - Jeffares, Alan
-AU  - Jiang, Albert
-AU  - Cahill, Alexandre
-AU  - Gavaudan, Alexandre
-AU  - Sablayrolles, Alexandre
-AU  - Héliou, Amélie
-AU  - You, Amos
-AU  - Ehrenberg, Andy
-AU  - Lo, Andy
-AU  - Eliseev, Anton
-AU  - Calvi, Antonia
-AU  - Sooriyarachchi, Avinash
-AU  - Bout, Baptiste
-AU  - Rozière, Baptiste
-AU  - Monicault, Baudouin De
-AU  - Lanfranchi, Clémence
-AU  - Barreau, Corentin
-AU  - Courtot, Cyprien
-AU  - Grattarola, Daniele
-AU  - Dabert, Darius
-AU  - Casas, Diego de las
-AU  - Chane-Sane, Elliot
-AU  - Ahmed, Faruk
-AU  - Berrada, Gabrielle
-AU  - Ecrepont, Gaëtan
-AU  - Guinet, Gauthier
-AU  - Novikov, Georgii
-AU  - Kunsch, Guillaume
-AU  - Lample, Guillaume
-AU  - Martin, Guillaume
-AU  - Gupta, Gunshi
-AU  - Ludziejewski, Jan
-AU  - Rute, Jason
-AU  - Studnia, Joachim
-AU  - Amar, Jonas
-AU  - Delas, Joséphine
-AU  - Roberts, Josselin Somerville
-AU  - Yadav, Karmesh
-AU  - Chandu, Khyathi
-AU  - Jain, Kush
-AU  - Aitchison, Laurence
-AU  - Fainsin, Laurent
-AU  - Blier, Léonard
-AU  - Zhao, Lingxiao
-AU  - Martin, Louis
-AU  - Saulnier, Lucile
-AU  - Gao, Luyu
-AU  - Buyl, Maarten
-AU  - Jennings, Margaret
-AU  - Pellat, Marie
-AU  - Prins, Mark
-AU  - Poirée, Mathieu
-AU  - Guillaumin, Mathilde
-AU  - Dinot, Matthieu
-AU  - Futeral, Matthieu
-AU  - Darrin, Maxime
-AU  - Augustin, Maximilian
-AU  - Chiquier, Mia
-AU  - Schimpf, Michel
-AU  - Grinsztajn, Nathan
-AU  - Gupta, Neha
-AU  - Raghuraman, Nikhil
-AU  - Bousquet, Olivier
-AU  - Duchenne, Olivier
-AU  - Wang, Patricia
-AU  - Platen, Patrick von
-AU  - Jacob, Paul
-AU  - Wambergue, Paul
-AU  - Kurylowicz, Paula
-AU  - Muddireddy, Pavankumar Reddy
-AU  - Chagniot, Philomène
-AU  - Stock, Pierre
-AU  - Agrawal, Pravesh
-AU  - Torroba, Quentin
-AU  - Sauvestre, Romain
-AU  - Soletskyi, Roman
-AU  - Menneer, Rupert
-AU  - Vaze, Sagar
-AU  - Barry, Samuel
-AU  - Gandhi, Sanchit
-AU  - Waghjale, Siddhant
-AU  - Gandhi, Siddharth
-AU  - Ghosh, Soham
-AU  - Mishra, Srijan
-AU  - Aithal, Sumukh
-AU  - Antoniak, Szymon
-AU  - Scao, Teven Le
-AU  - Cachet, Théo
-AU  - Sorg, Theo Simon
-AU  - Lavril, Thibaut
-AU  - Saada, Thiziri Nait
-AU  - Chabal, Thomas
-AU  - Foubert, Thomas
-AU  - Robert, Thomas
-AU  - Wang, Thomas
-AU  - Lawson, Tim
-AU  - Bewley, Tom
-AU  - Bewley, Tom
-AU  - Edwards, Tom
-AU  - Jamil, Umar
-AU  - Tomasini, Umberto
-AU  - Nemychnikova, Valeriia
-AU  - Phung, Van
-AU  - Maladière, Vincent
-AU  - Richard, Virgile
-AU  - Bouaziz, Wassim
-AU  - Li, Wen-Ding
-AU  - Marshall, William
-AU  - Li, Xinghui
-AU  - Yang, Xinyu
-AU  - Ouahidi, Yassine El
-AU  - Wang, Yihan
-AU  - Tang, Yunhao
-AU  - Ramzi, Zaccharie
-AB  - We introduce the Ministral 3 series, a family of parameter-efficient dense language models designed for compute and memory constrained applications, available in three model sizes: 3B, 8B, and 14B parameters. For each model size, we release three variants: a pretrained base model for general-purpose use, an instruction finetuned, and a reasoning model for complex problem-solving. In addition, we present our recipe to derive the Ministral 3 models through Cascade Distillation, an iterative pruning and continued training with distillation technique. Each model comes with image understanding capabilities, all under the Apache 2.0 license.
-DA  - 2026/01/13/
-PY  - 2026
-DO  - 10.48550/arXiv.2601.08584
+TI  - Apertus: Democratizing Open and Compliant LLMs for Global Language Environments
+AU  - Project Apertus
+AU  - Hernández-Cano, Alejandro
+AU  - Hägele, Alexander
+AU  - Huang, Allen Hao
+AU  - Romanou, Angelika
+AU  - Solergibert, Antoni-Joan
+AU  - Pasztor, Barna
+AU  - Messmer, Bettina
+AU  - Garbaya, Dhia
+AU  - Ďurech, Eduard Frank
+AU  - Hakimi, Ido
+AU  - Giraldo, Juan García
+AU  - Ismayilzada, Mete
+AU  - Foroutan, Negar
+AU  - Moalla, Skander
+AU  - Chen, Tiancheng
+AU  - Sabolčec, Vinko
+AU  - Xu, Yixuan
+AU  - Aerni, Michael
+AU  - AlKhamissi, Badr
+AU  - Mariñas, Inés Altemir
+AU  - Amani, Mohammad Hossein
+AU  - Ansaripour, Matin
+AU  - Badanin, Ilia
+AU  - Benoit, Harold
+AU  - Boros, Emanuela
+AU  - Browning, Nicholas
+AU  - Bösch, Fabian
+AU  - Böther, Maximilian
+AU  - Canova, Niklas
+AU  - Challier, Camille
+AU  - Charmillot, Clement
+AU  - Coles, Jonathan
+AU  - Deriu, Jan
+AU  - Devos, Arnout
+AU  - Drescher, Lukas
+AU  - Dzenhaliou, Daniil
+AU  - Ehrmann, Maud
+AU  - Fan, Dongyang
+AU  - Fan, Simin
+AU  - Gao, Silin
+AU  - Gila, Miguel
+AU  - Grandury, María
+AU  - Hashemi, Diba
+AU  - Hoyle, Alexander
+AU  - Jiang, Jiaming
+AU  - Klein, Mark
+AU  - Kucharavy, Andrei
+AU  - Kucherenko, Anastasiia
+AU  - Lübeck, Frederike
+AU  - Machacek, Roman
+AU  - Manitaras, Theofilos
+AU  - Marfurt, Andreas
+AU  - Matoba, Kyle
+AU  - Matrenok, Simon
+AU  - Mendonça, Henrique
+AU  - Mohamed, Fawzi Roberto
+AU  - Montariol, Syrielle
+AU  - Mouchel, Luca
+AU  - Najem-Meyer, Sven
+AU  - Ni, Jingwei
+AU  - Oliva, Gennaro
+AU  - Pagliardini, Matteo
+AU  - Palme, Elia
+AU  - Panferov, Andrei
+AU  - Paoletti, Léo
+AU  - Passerini, Marco
+AU  - Pavlov, Ivan
+AU  - Poiroux, Auguste
+AU  - Ponkshe, Kaustubh
+AU  - Ranchin, Nathan
+AU  - Rando, Javi
+AU  - Sauser, Mathieu
+AU  - Saydaliev, Jakhongir
+AU  - Sayfiddinov, Muhammad Ali
+AU  - Schneider, Marian
+AU  - Schuppli, Stefano
+AU  - Scialanga, Marco
+AU  - Semenov, Andrei
+AU  - Shridhar, Kumar
+AU  - Singhal, Raghav
+AU  - Sotnikova, Anna
+AU  - Sternfeld, Alexander
+AU  - Tarun, Ayush Kumar
+AU  - Teiletche, Paul
+AU  - Vamvas, Jannis
+AU  - Yao, Xiaozhe
+AU  - Zhao, Hao
+AU  - Ilic, Alexander
+AU  - Klimovic, Ana
+AU  - Krause, Andreas
+AU  - Gulcehre, Caglar
+AU  - Rosenthal, David
+AU  - Ash, Elliott
+AU  - Tramèr, Florian
+AU  - VandeVondele, Joost
+AU  - Veraldi, Livio
+AU  - Rajman, Martin
+AU  - Schulthess, Thomas
+AU  - Hoefler, Torsten
+AU  - Bosselut, Antoine
+AU  - Jaggi, Martin
+AU  - Schlag, Imanol
+AB  - We present Apertus, a fully open suite of large language models (LLMs) designed to address two systemic shortcomings in today's open model ecosystem: data compliance and multilingual representation. Unlike many prior models that release weights without reproducible data pipelines or regard for content-owner rights, Apertus models are pretrained exclusively on openly available data, retroactively respecting `robots.txt` exclusions and filtering for non-permissive, toxic, and personally identifiable content. To mitigate risks of memorization, we adopt the Goldfish objective during pretraining, strongly suppressing verbatim recall of data while retaining downstream task performance. The Apertus models also expand multilingual coverage, training on 15T tokens from over 1800 languages, with ~40% of pretraining data allocated to non-English content. Released at 8B and 70B scales, Apertus approaches state-of-the-art results among fully open models on multilingual benchmarks, rivalling or surpassing open-weight counterparts. Beyond model weights, we release all scientific artifacts from our development cycle with a permissive license, including data preparation scripts, checkpoints, evaluation suites, and training code, enabling transparent audit and extension.
+DA  - 2025/09/17/
+PY  - 2025
+DO  - 10.48550/arXiv.2509.14233
 DP  - arXiv.org
 PB  - arXiv
-UR  - http://arxiv.org/abs/2601.08584
-Y2  - 2026/07/16/13:33:04
-L1  - http://arxiv.org/pdf/2601.08584v1
-L2  - http://arxiv.org/abs/2601.08584
-N1  - Comment: Release page: https://mistral.ai/news/mistral-3 ; Models available at https://huggingface.co/collections/mistralai/ministral-3
+ST  - Apertus
+UR  - http://arxiv.org/abs/2509.14233
+Y2  - 2026/07/16/14:40:46
+L1  - http://arxiv.org/pdf/2509.14233v2
+L2  - http://arxiv.org/abs/2509.14233
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Machine Learning
+KW  - Computer Science - Artificial Intelligence
+ER  - 
+
+TY  - GEN
+TI  - Qwen3 Technical Report
+AU  - Yang, An
+AU  - Li, Anfeng
+AU  - Yang, Baosong
+AU  - Zhang, Beichen
+AU  - Hui, Binyuan
+AU  - Zheng, Bo
+AU  - Yu, Bowen
+AU  - Gao, Chang
+AU  - Huang, Chengen
+AU  - Lv, Chenxu
+AU  - Zheng, Chujie
+AU  - Liu, Dayiheng
+AU  - Zhou, Fan
+AU  - Huang, Fei
+AU  - Hu, Feng
+AU  - Ge, Hao
+AU  - Wei, Haoran
+AU  - Lin, Huan
+AU  - Tang, Jialong
+AU  - Yang, Jian
+AU  - Tu, Jianhong
+AU  - Zhang, Jianwei
+AU  - Yang, Jianxin
+AU  - Yang, Jiaxi
+AU  - Zhou, Jing
+AU  - Zhou, Jingren
+AU  - Lin, Junyang
+AU  - Dang, Kai
+AU  - Bao, Keqin
+AU  - Yang, Kexin
+AU  - Yu, Le
+AU  - Deng, Lianghao
+AU  - Li, Mei
+AU  - Xue, Mingfeng
+AU  - Li, Mingze
+AU  - Zhang, Pei
+AU  - Wang, Peng
+AU  - Zhu, Qin
+AU  - Men, Rui
+AU  - Gao, Ruize
+AU  - Liu, Shixuan
+AU  - Luo, Shuang
+AU  - Li, Tianhao
+AU  - Tang, Tianyi
+AU  - Yin, Wenbiao
+AU  - Ren, Xingzhang
+AU  - Wang, Xinyu
+AU  - Zhang, Xinyu
+AU  - Ren, Xuancheng
+AU  - Fan, Yang
+AU  - Su, Yang
+AU  - Zhang, Yichang
+AU  - Zhang, Yinger
+AU  - Wan, Yu
+AU  - Liu, Yuqiong
+AU  - Wang, Zekun
+AU  - Cui, Zeyu
+AU  - Zhang, Zhenru
+AU  - Zhou, Zhipeng
+AU  - Qiu, Zihan
+AB  - In this work, we present Qwen3, the latest version of the Qwen model family. Qwen3 comprises a series of large language models (LLMs) designed to advance performance, efficiency, and multilingual capabilities. The Qwen3 series includes models of both dense and Mixture-of-Expert (MoE) architectures, with parameter scales ranging from 0.6 to 235 billion. A key innovation in Qwen3 is the integration of thinking mode (for complex, multi-step reasoning) and non-thinking mode (for rapid, context-driven responses) into a unified framework. This eliminates the need to switch between different models--such as chat-optimized models (e.g., GPT-4o) and dedicated reasoning models (e.g., QwQ-32B)--and enables dynamic mode switching based on user queries or chat templates. Meanwhile, Qwen3 introduces a thinking budget mechanism, allowing users to allocate computational resources adaptively during inference, thereby balancing latency and performance based on task complexity. Moreover, by leveraging the knowledge from the flagship models, we significantly reduce the computational resources required to build smaller-scale models, while ensuring their highly competitive performance. Empirical evaluations demonstrate that Qwen3 achieves state-of-the-art results across diverse benchmarks, including tasks in code generation, mathematical reasoning, agent tasks, etc., competitive against larger MoE models and proprietary models. Compared to its predecessor Qwen2.5, Qwen3 expands multilingual support from 29 to 119 languages and dialects, enhancing global accessibility through improved cross-lingual understanding and generation capabilities. To facilitate reproducibility and community-driven research and development, all Qwen3 models are publicly accessible under Apache 2.0.
+DA  - 2025/05/14/
+PY  - 2025
+DO  - 10.48550/arXiv.2505.09388
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2505.09388
+Y2  - 2026/07/16/22:52:06
+L1  - http://arxiv.org/pdf/2505.09388v1
+L2  - http://arxiv.org/abs/2505.09388
 KW  - Computer Science - Computation and Language
 ER  - 
 
-TY  - COMP
-TI  - Ministral 3 8B Instruct
-AU  - Mistral AI
-AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
-DA  - 2025/12//
-PY  - 2025
-DP  - Hugging Face
-PB  - Mistral AI
-ST  - Ministral 3 8B
-UR  - https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512
-Y2  - 2026/07/16/13:26:02
-L2  - https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512
-N1  - <div data-schema-version="9"><p>Annonce officielle : <a href="https://mistral.ai/news/mistral-3/" rel="noopener noreferrer nofollow">https://mistral.ai/news/mistral-3/</a><br></p>
-<p>GGUF officiels : <a href="https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF" rel="noopener noreferrer nofollow">https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF</a><br></p>
-<p>Collection Ministral 3 : <a href="https://huggingface.co/collections/mistralai/ministral-3" rel="noopener noreferrer nofollow">https://huggingface.co/collections/mistralai/ministral-3</a><br></p>
-<p>Attention homonyme : Ministral-8B-Instruct-2410 (octobre 2024, Mistral Research License, non commercial) est un modèle antérieur distinct : <a href="https://huggingface.co/mistralai/Ministral-8B-Instruct-2410" rel="noopener noreferrer nofollow">https://huggingface.co/mistralai/Ministral-8B-Instruct-2410</a></p>
-</div>
-ER  - 
-
-TY  - COMP
-TI  - Openrag
-AU  - Linagora
-AB  - An open source, modular, lightweight, and extensible RAG application stack, designed for anyone and everyone.
-DA  - 2025/07//
-PY  - 2025
-DP  - GitHub
-LA  - Python
-PB  - Linagora
-ST  - OpenRAG
-UR  - https://github.com/linagora/openrag
-Y2  - 2026/07/14/12:54:06
-N1  - <div data-schema-version="9"><p>Documentation : <a href="https://linagora.github.io/openrag/" rel="noopener noreferrer nofollow">https://linagora.github.io/openrag/</a></p>
-<p></p>
-<p>Documentation integration Ollama : aucune page dédiée (constaté le 14.07.2026)</p>
-<p></p>
-<p>Site : <a href="https://open-rag.ai/" rel="noopener noreferrer nofollow">https://open-rag.ai</a></p>
-<p></p>
-<p>Repo GitHub : <a href="https://github.com/linagora/openrag" rel="noopener noreferrer nofollow">https://github.com/linagora/openrag</a></p>
-</div>
-ER  - 
-
-TY  - COMP
-TI  - LlamaIndex
-AU  - Liu, Jerry
-AB  - LlamaIndex is the leading document agent and OCR platform
-DA  - 2022/11//
-PY  - 2022
-DP  - GitHub
-LA  - Python
-PB  - LlamaIndex, Inc.
-ST  - LlamaIndex
-UR  - https://github.com/run-llama/llama_index
-Y2  - 2026/07/13/14:53:44
-N1  - <div data-schema-version="9"><p>Documentation : <a href="https://developers.llamaindex.ai/python/framework/" rel="noopener noreferrer nofollow">https://developers.llamaindex.ai/python/framework/</a></p>
-<p></p>
-<p>Documentation integration Ollama : <a href="https://developers.llamaindex.ai/python/framework/integrations/llm/ollama/" rel="noopener noreferrer nofollow">https://developers.llamaindex.ai/python/framework/integrations/llm/ollama/</a></p>
-<p></p>
-<p>Repo GitHub : <a href="https://github.com/run-llama/llama_index" rel="noopener noreferrer nofollow">https://github.com/run-llama/llama_index</a></p>
-</div>
-ER  - 
-
-TY  - COMP
-TI  - LangChain
-AU  - Chase, Harrison
-AB  - The agent engineering platform.
-DA  - 2022/10//
-PY  - 2022
-DP  - GitHub
-LA  - Python
-PB  - LangChain, Inc.
-ST  - LangChain
-UR  - https://github.com/langchain-ai/langchain
-Y2  - 2026/07/13/14:53:10
-N1  - <div data-schema-version="9"><p>Documentation : <a href="https://docs.langchain.com/" rel="noopener noreferrer nofollow">https://docs.langchain.com/</a></p>
-<p></p>
-<p>Documentation integration : <a href="https://docs.langchain.com/oss/python/integrations/providers/overview" rel="noopener noreferrer nofollow">https://docs.langchain.com/oss/python/integrations/providers/overview</a></p>
-<p></p>
-<p>Documentation integration Ollama : <a href="https://docs.langchain.com/oss/python/integrations/providers/ollama" rel="noopener noreferrer nofollow">https://docs.langchain.com/oss/python/integrations/providers/ollama</a></p>
-<p></p>
-<p>Repo GitHub : <a href="https://github.com/langchain-ai/langchain" rel="noopener noreferrer nofollow">https://github.com/langchain-ai/langchain</a></p>
-</div>
-ER  - 
-
-TY  - GEN
-TI  - Seven Failure Points When Engineering a Retrieval Augmented Generation System
-AU  - Barnett, Scott
-AU  - Kurniawan, Stefanus
-AU  - Thudumu, Srikanth
-AU  - Brannelly, Zach
-AU  - Abdelrazek, Mohamed
-AB  - Software engineers are increasingly adding semantic search capabilities to applications using a strategy known as Retrieval Augmented Generation (RAG). A RAG system involves finding documents that semantically match a query and then passing the documents to a large language model (LLM) such as ChatGPT to extract the right answer using an LLM. RAG systems aim to: a) reduce the problem of hallucinated responses from LLMs, b) link sources/references to generated responses, and c) remove the need for annotating documents with meta-data. However, RAG systems suffer from limitations inherent to information retrieval systems and from reliance on LLMs. In this paper, we present an experience report on the failure points of RAG systems from three case studies from separate domains: research, education, and biomedical. We share the lessons learned and present 7 failure points to consider when designing a RAG system. The two key takeaways arising from our work are: 1) validation of a RAG system is only feasible during operation, and 2) the robustness of a RAG system evolves rather than designed in at the start. We conclude with a list of potential research directions on RAG systems for the software engineering community.
-DA  - 2024/01/11/
-PY  - 2024
-DO  - 10.48550/arXiv.2401.05856
-DP  - arXiv.org
-PB  - arXiv
-UR  - http://arxiv.org/abs/2401.05856
-Y2  - 2026/07/13/14:13:44
-L1  - http://arxiv.org/pdf/2401.05856v1
-L2  - http://arxiv.org/abs/2401.05856
-KW  - Computer Science - Artificial Intelligence
-KW  - Computer Science - Software Engineering
-ER  - 
-
-TY  - COMP
-TI  - Haystack: the end-to-end NLP framework for pragmatic builders
-AU  - Pietsch, Malte
-AU  - Möller, Timo
-AU  - Kostic, Bogdan
-AU  - Risch, Julian
-AU  - Pippi, Massimiliano
-AU  - Jobanputra, Mayank
-AU  - Zanzottera, Sara
-AU  - Cerza, Silvano
-AU  - Blagojevic, Vladimir
-AU  - Stadelmann, Thomas
-AU  - Soni, Tanay
-AU  - Lee, Sebastian
-AB  - Open-source AI orchestration framework for building context-engineered, production-ready LLM applications. Design modular pipelines and agent workflows with explicit control over retrieval, routing, memory, and generation. Built for scalable agents, RAG, multimodal applications, semantic search, and conversational systems.
-DA  - 2019/11//
-PY  - 2019
-DP  - GitHub
-LA  - Python
-PB  - deepset GmbH
-ST  - Haystack
-UR  - https://github.com/deepset-ai/haystack
-Y2  - 2026/07/13/14:54:37
-N1  - <div data-schema-version="9"><p>Documentation : <a href="https://docs.haystack.deepset.ai/docs/intro" rel="noopener noreferrer nofollow">https://docs.haystack.deepset.ai/docs/intro</a></p>
-<p></p>
-<p>Documentation integration : <a href="https://haystack.deepset.ai/integrations" rel="noopener noreferrer nofollow">https://haystack.deepset.ai/integrations</a></p>
-<p></p>
-<p>Documentation integration Ollama : <a href="https://haystack.deepset.ai/integrations/ollama" rel="noopener noreferrer nofollow">https://haystack.deepset.ai/integrations/ollama</a></p>
-<p></p>
-<p>Repo GitHub : <a href="https://github.com/deepset-ai/haystack" rel="noopener noreferrer nofollow">https://github.com/deepset-ai/haystack</a></p>
-<p></p>
-<p>Repo integration GitHub : <a href="https://github.com/deepset-ai/haystack-core-integrations" rel="noopener noreferrer nofollow">https://github.com/deepset-ai/haystack-core-integrations</a></p>
-</div>
-ER  - 
-
-TY  - GEN
-TI  - Engineering RAG Systems for Real-World Applications: Design, Development, and Evaluation
-AU  - Hasan, Md Toufique
-AU  - Waseem, Muhammad
-AU  - Kemell, Kai-Kristian
-AU  - Khan, Ayman Asad
-AU  - Saari, Mika
-AU  - Abrahamsson, Pekka
-AB  - Retrieval-Augmented Generation (RAG) systems are emerging as a key approach for grounding Large Language Models (LLMs) in external knowledge, addressing limitations in factual accuracy and contextual relevance. However, there is a lack of empirical studies that report on the development of RAG-based implementations grounded in real-world use cases, evaluated through general user involvement, and accompanied by systematic documentation of lessons learned. This paper presents five domain-specific RAG applications developed for real-world scenarios across governance, cybersecurity, agriculture, industrial research, and medical diagnostics. Each system incorporates multilingual OCR, semantic retrieval via vector embeddings, and domain-adapted LLMs, deployed through local servers or cloud APIs to meet distinct user needs. A web-based evaluation involving a total of 100 participants assessed the systems across six dimensions: (i) Ease of Use, (ii) Relevance, (iii) Transparency, (iv) Responsiveness, (v) Accuracy, and (vi) Likelihood of Recommendation. Based on user feedback and our development experience, we documented twelve key lessons learned, highlighting technical, operational, and ethical challenges affecting the reliability and usability of RAG systems in practice.
-DA  - 2025/06/25/
-PY  - 2025
-DO  - 10.48550/arXiv.2506.20869
-DP  - arXiv.org
-PB  - arXiv
-ST  - Engineering RAG Systems for Real-World Applications
-UR  - http://arxiv.org/abs/2506.20869
-Y2  - 2026/07/13/14:08:27
-L1  - http://arxiv.org/pdf/2506.20869v3
-L2  - http://arxiv.org/abs/2506.20869
-N1  - Comment: Published in the Proceedings of the 51st Euromicro Conference on Software Engineering and Advanced Applications, SEAA 2025. Lecture Notes in Computer Science, volume 16082, pages 143-158. Springer, 2026
-KW  - Computer Science - Artificial Intelligence
-KW  - Computer Science - Software Engineering
-KW  - Computer Science - Information Retrieval
-ER  - 
-
-TY  - GEN
-TI  - Retrieval-augmented generation in multilingual settings
-AU  - Chirkova, Nadezhda
-AU  - Rau, David
-AU  - Déjean, Hervé
-AU  - Formal, Thibault
-AU  - Clinchant, Stéphane
-AU  - Nikoulina, Vassilina
-AB  - Retrieval-augmented generation (RAG) has recently emerged as a promising solution for incorporating up-to-date or domain-specific knowledge into large language models (LLMs) and improving LLM factuality, but is predominantly studied in English-only settings. In this work, we consider RAG in the multilingual setting (mRAG), i.e. with user queries and the datastore in 13 languages, and investigate which components and with which adjustments are needed to build a well-performing mRAG pipeline, that can be used as a strong baseline in future works. Our findings highlight that despite the availability of high-quality off-the-shelf multilingual retrievers and generators, task-specific prompt engineering is needed to enable generation in user languages. Moreover, current evaluation metrics need adjustments for multilingual setting, to account for variations in spelling named entities. The main limitations to be addressed in future works include frequent code-switching in non-Latin alphabet languages, occasional fluency errors, wrong reading of the provided documents, or irrelevant retrieval. We release the code for the resulting mRAG baseline pipeline at https://github.com/naver/bergen.
-DA  - 2024/07/01/
-PY  - 2024
-DO  - 10.48550/arXiv.2407.01463
-DP  - arXiv.org
-PB  - arXiv
-UR  - http://arxiv.org/abs/2407.01463
-Y2  - 2026/07/13/14:26:43
-L1  - http://arxiv.org/pdf/2407.01463v1
-L2  - http://arxiv.org/abs/2407.01463
-KW  - Computer Science - Computation and Language
-KW  - Computer Science - Artificial Intelligence
-ER  - 
-
-TY  - COMP
-TI  - Llama 3.1 8B Instruct
-AU  - Meta
-AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
-CY  - Meta
-DA  - 2024/07//
-PY  - 2024
-DP  - Hugging Face
-ST  - Llama 3.1 8B
-UR  - https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
-Y2  - 2026/07/16/19:33:29
-L2  - https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
-N1  - <div data-schema-version="9"><p>Licence : Llama 3.1 Community License (licence commerciale sur mesure de Meta, non Apache) : <a href="https://www.llama.com/llama3_1/license" rel="noopener noreferrer nofollow">https://www.llama.com/llama3_1/license</a></p>
-<p></p>
-<p>Article de référence : « The Llama 3 Herd of Models », arXiv:2407.21783 (fiche article importée à part) : <a href="https://arxiv.org/abs/2407.21783" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2407.21783</a> . Vigilance : la card HF lie arXiv:2204.05149 (empreinte carbone, 2022), qui n'est pas l'article du modèle.</p>
-<p></p>
-<p>Disponible sur Ollama sans formalité, contrairement aux fichiers Hugging Face derrière formulaire Meta (gated) : <a href="https://ollama.com/library/llama3.1" rel="noopener noreferrer nofollow">https://ollama.com/library/llama3.1</a></p>
-<p></p>
-<p>Langues : 8 supportées dont le français (EN, DE, FR, IT, PT, HI, ES, TH) ; MMLU français 5-shot : 62,34 pour le 8B (tableau multilingue de la card).</p>
-<p></p>
-<p>Caractéristiques : contexte 128k ; ~15T jetons d'entraînement ; données arrêtées à décembre 2023 ; modèle statique.</p>
-<p></p>
-<p>Llama 4 (avril 2025) : successeurs Scout et Maverick écartés du comparatif ; architectures MoE de 109 et 400 milliards de paramètres totaux (17 milliards actifs par jeton, 16 et 128 experts), gabarits hors de portée d'un serveur de 12 Go ; annonce Meta : <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" rel="noopener noreferrer nofollow">https://ai.meta.com/blog/llama-4-multimodal-intelligence/</a> . Traitement prévu dans le mémoire : note-URL en 4.3, comme Phi-4, pas de fiche Zotero.</p>
-<p></p>
-<p>Pérennité 2026 : Meta réoriente sa stratégie vers des modèles fermés (Muse Spark avril 2026, Behemoth abandonné, Llama 5 repoussé à 2027) ; source : Wikipedia « Llama » citant The Guardian du 09.04.2026 : <a href="https://en.wikipedia.org/wiki/Llama_(language_model)" rel="noopener noreferrer nofollow">https://en.wikipedia.org/wiki/Llama_(language_model)</a></p>
+TY  - ELEC
+TI  - Apertus
+AU  - Rosselli, Michel
+T2  - Ollama
+AB  - Apertus is a 70B and 8B parameter language model designed to push the boundaries of fully-open multilingual and transparent models.
+DA  - 2026///
+PY  - 2026
+UR  - https://ollama.com/MichelRosselli/apertus
+Y2  - 2026/07/16/20:34:09
+L2  - https://ollama.com/MichelRosselli/apertus
+N1  - <div data-schema-version="9"><p>matière précieuse pour 4.3 : 2 882 téléchargements ; cinq variantes dont le 8b-instruct-2509 en Q4_K_M à 5,1 Go, contexte 64K ; le README déclare noir sur blanc « unofficial Ollama upload by MichelRosselli », « I am not the original author », et détaille la chaîne de provenance : poids officiels swiss-ai sur Hugging Face, quantification GGUF par Unsloth, fusion et empaquetage par MichelRosselli via llama.cpp. La conversion est donc doublement communautaire, exactement ce que le critère du support Ollama devra peser</p>
 </div>
 ER  - 
 
@@ -1826,80 +1887,98 @@ KW  - Computer Science - Artificial Intelligence
 KW  - Computer Science - Computer Vision and Pattern Recognition
 ER  - 
 
-TY  - ENCYC
-TI  - Llama (language model)
-AU  - Wikipedia
-T2  - Wikipedia
-AB  - Llama ("Large Language Model Meta AI" serving as a backronym) is a family of large language models (LLMs) released by Meta AI starting in February 2023.
-Llama models come in different sizes, ranging from 1 billion to 2 trillion parameters. Initially only a foundation model, starting with Llama 2, Meta AI released instruction fine-tuned versions alongside foundation models.
-Model weights for the first version of Llama were only available to researchers on a case-by-case basis, under a non-commercial license. Unauthorized copies of the first model were shared via BitTorrent. Subsequent versions of Llama were made accessible outside academia and released under licenses that permitted some commercial use.
-Alongside the release of Llama 3, Meta rolled out Meta AI, an AI assistant built on Llama. Meta AI has a dedicated website and is available on Facebook and WhatsApp. The latest version is Llama 4, released in April 2025.
-In April 2026, Meta Superintelligence Labs released Muse Spark as a replacement for Llama.
-DA  - 2026/07/11/
-PY  - 2026
-DP  - Wikipedia
-LA  - en
-UR  - https://en.wikipedia.org/w/index.php?title=Llama_(language_model)&oldid=1363576201
-Y2  - 2026/07/16/19:51:16
-L2  - https://en.wikipedia.org/w/index.php?title=Llama_(language_model)&oldid=1363576201
+TY  - GEN
+TI  - The Lucie-7B LLM and the Lucie Training Dataset: Open resources for multilingual language generation
+AU  - Gouvert, Olivier
+AU  - Hunter, Julie
+AU  - Louradour, Jérôme
+AU  - Cerisara, Christophe
+AU  - Dufraisse, Evan
+AU  - Sy, Yaya
+AU  - Rivière, Laura
+AU  - Lorré, Jean-Pierre
+AU  - community, OpenLLM-France
+AB  - We present both the Lucie Training Dataset and the Lucie-7B foundation model. The Lucie Training Dataset is a multilingual collection of textual corpora centered around French and designed to offset anglo-centric biases found in many datasets for large language model pretraining. Its French data is pulled not only from traditional web sources, but also from French cultural heritage documents, filling an important gap in modern datasets. Beyond French, which makes up the largest share of the data, we added documents to support several other European languages, including English, Spanish, German, and Italian. Apart from its value as a resource for French language and culture, an important feature of this dataset is that it prioritizes data rights by minimizing copyrighted material. In addition, building on the philosophy of past open projects, it is redistributed in the form used for training and its processing is described on Hugging Face and GitHub. The Lucie-7B foundation model is trained on equal amounts of data in French and English -- roughly 33% each -- in an effort to better represent cultural aspects of French-speaking communities. We also describe two instruction fine-tuned models, Lucie-7B-Instruct-v1.1 and Lucie-7B-Instruct-human-data, which we release as demonstrations of Lucie-7B in use. These models achieve promising results compared to state-of-the-art models, demonstrating that an open approach prioritizing data rights can still deliver strong performance. We see these models as an initial step toward developing more performant, aligned models in the near future. Model weights for Lucie-7B and the Lucie instruct models, along with intermediate checkpoints for the former, are published on Hugging Face, while model training and data preparation code is available on GitHub. This makes Lucie-7B one of the first OSI compliant language models according to the new OSI definition.
+DA  - 2025/03/15/
+PY  - 2025
+DO  - 10.48550/arXiv.2503.12294
+DP  - arXiv.org
+PB  - arXiv
+ST  - The Lucie-7B LLM and the Lucie Training Dataset
+UR  - http://arxiv.org/abs/2503.12294
+Y2  - 2026/07/16/20:28:32
+L1  - http://arxiv.org/pdf/2503.12294v1
+L2  - http://arxiv.org/abs/2503.12294
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Artificial Intelligence
 ER  - 
 
-TY  - ENCYC
-TI  - Apertus (LLM)
-AU  - Wikipedia
-T2  - Wikipedia
-AB  - Apertus is a public large language model, developed by the Swiss AI Initiative (a collaboration between EPFL, ETH Zurich, and the Swiss National Supercomputing Centre). It was released on September 2, 2025, under the free and open-source Apache 2.0 license.
-Designed initially for business and research use cases around the world, Apertus was trained on over 1800 languages, and comes in 8 billion or 70 billion parameter versions and is available on Hugging Face for download. The model was developed aiming to adhere to European copyright law, and is one of the first examples of AI as a public good in the vein of AI Sovereignty. It is also the first large model to comply with the European Union's Artificial Intelligence Act. At its launch, the model creators emphasized multilinguality, transparency, and auditability as priorities in contrast to commercial frontier model. While international reception was largely positive, the first iteration was significantly behind the capabilities of frontier models and needs adaptation for many use cases with chatbots being a secondary but not a primary use case.
-As of late 2025, it was considered the largest and most capable fully open model. The capability of future models will depend in part on how much more funding can be secured.
-DA  - 2026/07/14/
-PY  - 2026
-DP  - Wikipedia
-LA  - en
-UR  - https://en.wikipedia.org/w/index.php?title=Apertus_(LLM)&oldid=1364089718
-Y2  - 2026/07/16/19:51:40
-L2  - https://en.wikipedia.org/w/index.php?title=Apertus_(LLM)&oldid=1364089718
+TY  - COMP
+TI  - Llama 3.1 8B Instruct
+AU  - Meta
+AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
+CY  - Meta
+DA  - 2024/07//
+PY  - 2024
+DP  - Hugging Face
+ST  - Llama 3.1 8B
+UR  - https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+Y2  - 2026/07/16/19:33:29
+L2  - https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+N1  - <div data-schema-version="9"><p>Licence : Llama 3.1 Community License (licence commerciale sur mesure de Meta, non Apache) : <a href="https://www.llama.com/llama3_1/license" rel="noopener noreferrer nofollow">https://www.llama.com/llama3_1/license</a></p>
+<p></p>
+<p>Article de référence : « The Llama 3 Herd of Models », arXiv:2407.21783 (fiche article importée à part) : <a href="https://arxiv.org/abs/2407.21783" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2407.21783</a> . Vigilance : la card HF lie arXiv:2204.05149 (empreinte carbone, 2022), qui n'est pas l'article du modèle.</p>
+<p></p>
+<p>Disponible sur Ollama sans formalité, contrairement aux fichiers Hugging Face derrière formulaire Meta (gated) : <a href="https://ollama.com/library/llama3.1" rel="noopener noreferrer nofollow">https://ollama.com/library/llama3.1</a></p>
+<p></p>
+<p>Langues : 8 supportées dont le français (EN, DE, FR, IT, PT, HI, ES, TH) ; MMLU français 5-shot : 62,34 pour le 8B (tableau multilingue de la card).</p>
+<p></p>
+<p>Caractéristiques : contexte 128k ; ~15T jetons d'entraînement ; données arrêtées à décembre 2023 ; modèle statique.</p>
+<p></p>
+<p>Llama 4 (avril 2025) : successeurs Scout et Maverick écartés du comparatif ; architectures MoE de 109 et 400 milliards de paramètres totaux (17 milliards actifs par jeton, 16 et 128 experts), gabarits hors de portée d'un serveur de 12 Go ; annonce Meta : <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" rel="noopener noreferrer nofollow">https://ai.meta.com/blog/llama-4-multimodal-intelligence/</a> . Traitement prévu dans le mémoire : note-URL en 4.3, comme Phi-4, pas de fiche Zotero.</p>
+<p></p>
+<p>Pérennité 2026 : Meta réoriente sa stratégie vers des modèles fermés (Muse Spark avril 2026, Behemoth abandonné, Llama 5 repoussé à 2027) ; source : Wikipedia « Llama » citant The Guardian du 09.04.2026 : <a href="https://en.wikipedia.org/wiki/Llama_(language_model)" rel="noopener noreferrer nofollow">https://en.wikipedia.org/wiki/Llama_(language_model)</a></p>
+</div>
 ER  - 
 
-TY  - ENCYC
-TI  - Gemma (language model)
-AU  - Wikipedia
-T2  - Wikipedia
-AB  - Gemma is a series of source-available large language models developed by Google DeepMind. It is based on similar technologies as Gemini. The first version was released in February 2024, followed by Gemma 2 in June 2024, Gemma 3 in March 2025, and the open-weights Gemma 4 in April 2026. Variants of Gemma have also been developed, such as the vision-language model PaliGemma and the model MedGemma for medical consultation topics.
-DA  - 2026/07/13/
-PY  - 2026
-DP  - Wikipedia
-LA  - en
-UR  - https://en.wikipedia.org/w/index.php?title=Gemma_(language_model)&oldid=1363969951
-Y2  - 2026/07/16/19:52:04
-L2  - https://en.wikipedia.org/w/index.php?title=Gemma_(language_model)&oldid=1363969951
+TY  - COMP
+TI  - gpt-oss-20b
+AU  - OpenAI
+AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
+DA  - 2025/08//
+PY  - 2025
+DP  - Hugging Face
+PB  - OpenAI
+ST  - gpt-oss-20b
+UR  - https://huggingface.co/openai/gpt-oss-20b
+Y2  - 2026/07/16/20:14:25
+L2  - https://huggingface.co/openai/gpt-oss-20b
+N1  - <div data-schema-version="9"><p>Motif d'écartement double, entièrement sourcé chez l'éditeur : (1) mémoire : seuil officiel d'exécution « avec seulement 16 Go de mémoire » (annonce) / « run within 16GB of memory » (card), supérieur au budget de 12 Go du serveur cible avant même d'y loger le système et l'application ; (2) langue : entraînement « principalement en anglais » selon l'annonce, le français n'est revendiqué nulle part.</p>
+<p></p>
+<p>Annonce officielle du 5 août 2025, version française consultée et capturée : <a href="https://openai.com/fr-CA/index/introducing-gpt-oss/" rel="noopener noreferrer nofollow">https://openai.com/fr-CA/index/introducing-gpt-oss/</a> (URL canonique anglaise : <a href="https://openai.com/index/introducing-gpt-oss/" rel="noopener noreferrer nofollow">https://openai.com/index/introducing-gpt-oss/</a> )</p>
+<p></p>
+<p>Article model card : « gpt-oss-120b &amp; gpt-oss-20b Model Card », arXiv:2508.10925 (août 2025), importé à part ; auteur unique = le collectif OpenAI, basculé en institution : <a href="https://arxiv.org/abs/2508.10925" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2508.10925</a></p>
+<p></p>
+<p>Architecture : MoE, 21 milliards de paramètres dont 3,6 milliards actifs par jeton (32 experts, 4 actifs) ; contexte 128k ; quantification native MXFP4 ; le compteur Safetensors de la card affiche 22B.</p>
+<p></p>
+<p>Exécution locale : Ollama documenté sur la card même (ollama pull gpt-oss:20b) : <a href="https://ollama.com/library/gpt-oss" rel="noopener noreferrer nofollow">https://ollama.com/library/gpt-oss</a> ; dépôt GitHub : <a href="https://github.com/openai/gpt-oss" rel="noopener noreferrer nofollow">https://github.com/openai/gpt-oss</a></p>
+<p></p>
+<p>Vigilance citation : la fiche logiciel et l'article arXiv rendront tous deux (OpenAI 2025) ; Zotero les distinguera en 2025a/2025b, à contrôler à la génération de la bibliographie.</p>
+</div>
 ER  - 
 
-TY  - ENCYC
-TI  - Qwen
-AU  - Wikipedia
-T2  - Wikipedia
-AB  - Qwen (also known as Tongyi Qianwen, Chinese: 通义千问; pinyin: Tōngyì Qiānwèn) is a family of large language models developed by Alibaba Cloud. Many Qwen models are distributed under the free and open-source Apache 2.0 license, the source-available Qwen License, or the non-commercial Qwen Research License; other proprietary Qwen models are served through Alibaba Cloud.
-DA  - 2026/07/12/
+TY  - COMP
+TI  - gpt-oss
+AU  - OpenAI
+AB  - gpt-oss-120b and gpt-oss-20b are two open-weight language models by OpenAI
+DA  - 2026/07/16/
 PY  - 2026
-DP  - Wikipedia
-LA  - en
-UR  - https://en.wikipedia.org/w/index.php?title=Qwen&oldid=1363796490
-Y2  - 2026/07/16/19:54:31
-L2  - https://en.wikipedia.org/w/index.php?title=Qwen&oldid=1363796490
-ER  - 
-
-TY  - ENCYC
-TI  - Mistral AI
-AU  - Wikipedia
-T2  - Wikipedia
-AB  - Mistral AI SAS (French: [mistʁal]) is a French artificial intelligence (AI) company headquartered in Paris. Founded in 2023, it develops large language models (LLMs), some of which are open-source. As of 2025, the company has a valuation of more than US$14 billion.
-DA  - 2026/07/10/
-PY  - 2026
-DP  - Wikipedia
-LA  - en
-UR  - https://en.wikipedia.org/w/index.php?title=Mistral_AI&oldid=1363446098#Mistral_Large_3_and_Ministral_3
-Y2  - 2026/07/16/19:54:57
-L2  - https://en.wikipedia.org/w/index.php?title=Mistral_AI&oldid=1363446098#Mistral_Large_3_and_Ministral_3
+DP  - GitHub
+LA  - Python
+PB  - OpenAI
+ST  - gpt-oss
+UR  - https://github.com/openai/gpt-oss
+Y2  - 2026/07/16/20:18:15
 ER  - 
 
 TY  - COMP
@@ -1924,6 +2003,174 @@ N1  - <div data-schema-version="9"><p>Motif d'écartement : le gabarit. 744 mill
 <p></p>
 <p>Vigilance : l'éditeur met en avant une ouverture totale (« Pure Open », MIT, sans restriction régionale) ; l'écartement tient au seul gabarit, ni à la licence ni à l'ouverture.</p>
 </div>
+ER  - 
+
+TY  - COMP
+TI  - Lucie-7B Instruct
+AU  - OpenLLM-France
+AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
+DA  - 2025/02//
+PY  - 2025
+DP  - Hugging Face
+UR  - https://huggingface.co/OpenLLM-France/Lucie-7B-Instruct-v1.1
+Y2  - 2026/07/16/20:19:41
+L2  - https://huggingface.co/OpenLLM-France/Lucie-7B-Instruct-v1.1
+N1  - <div data-schema-version="9"><p>Motifs d'écartement, tous auto-déclarés sur la card : instruction « light » ; « would need further training before being implemented in pipelines for specific use-cases » ; « susceptible to hallucinations ». Écartement respectueux : modèle conçu pour le français (environ un tiers du corpus de pré-entraînement, données patrimoniales) mais déclaré par son propre éditeur inadapté, en l'état, à un pipeline spécialisé.</p>
+<p></p>
+<p>Contexte, formulation corrigée : entraînement d'instruction sur des séquences de 4 096 jetons ; fenêtre effective mesurée à 22K jetons (needle-in-a-haystack), base Lucie-7B à 32K. Ne pas écrire « contexte limité à 4 096 ».</p>
+<p></p>
+<p>Détail utile au mémoire : la card recommande elle-même d'implanter le modèle dans un pipeline RAG pour améliorer l'exactitude de ses réponses.</p>
+<p></p>
+<p>Article : « The Lucie-7B LLM and the Lucie Training Dataset: Open resources for multilingual language generation », arXiv:2503.12294 (v1 15.03.2025), importé à part, PDF déposé au projet (résumé prévu) : <a href="https://arxiv.org/abs/2503.12294" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2503.12294</a> . Citations : article (Gouvert et al. 2025), fiche logiciel (OpenLLM-France 2025).</p>
+<p></p>
+<p>Exécution locale : page Ollama de l'éditeur, tag v1.1 (4,1 Go), ollama run OpenLLM-France/Lucie-7B-Instruct : <a href="https://ollama.com/OpenLLM-France/Lucie-7B-Instruct" rel="noopener noreferrer nofollow">https://ollama.com/OpenLLM-France/Lucie-7B-Instruct</a> (readme de cette page resté sur le texte de la v1, constaté le 16.07.2026) ; GGUF officiels : <a href="https://huggingface.co/OpenLLM-France/Lucie-7B-Instruct-v1.1-gguf" rel="noopener noreferrer nofollow">https://huggingface.co/OpenLLM-France/Lucie-7B-Instruct-v1.1-gguf</a></p>
+<p></p>
+<p>Adoption au 16.07.2026 : 654 téléchargements sur le dernier mois, aucun Inference Provider (card) ; 1 001 téléchargements cumulés côté Ollama. v1.1 remplace la Lucie-7B-Instruct originale de janvier 2025.</p>
+<p></p>
+<p>Éditeur : créée par des membres de Linagora et de la communauté OpenLLM-France ; même maison que l'OpenRag écarté au chapitre 3. Vigilance citations : (Linagora 2025) = OpenRag, (OpenLLM-France 2025) = Lucie.</p>
+</div>
+ER  - 
+
+TY  - GEN
+TI  - gpt-oss-120b & gpt-oss-20b Model Card
+AU  - OpenAI
+AU  - Agarwal, Sandhini
+AU  - Ahmad, Lama
+AU  - Ai, Jason
+AU  - Altman, Sam
+AU  - Applebaum, Andy
+AU  - Arbus, Edwin
+AU  - Arora, Rahul K.
+AU  - Bai, Yu
+AU  - Baker, Bowen
+AU  - Bao, Haiming
+AU  - Barak, Boaz
+AU  - Bennett, Ally
+AU  - Bertao, Tyler
+AU  - Brett, Nivedita
+AU  - Brevdo, Eugene
+AU  - Brockman, Greg
+AU  - Bubeck, Sebastien
+AU  - Chang, Che
+AU  - Chen, Kai
+AU  - Chen, Mark
+AU  - Cheung, Enoch
+AU  - Clark, Aidan
+AU  - Cook, Dan
+AU  - Dukhan, Marat
+AU  - Dvorak, Casey
+AU  - Fives, Kevin
+AU  - Fomenko, Vlad
+AU  - Garipov, Timur
+AU  - Georgiev, Kristian
+AU  - Glaese, Mia
+AU  - Gogineni, Tarun
+AU  - Goucher, Adam
+AU  - Gross, Lukas
+AU  - Guzman, Katia Gil
+AU  - Hallman, John
+AU  - Hehir, Jackie
+AU  - Heidecke, Johannes
+AU  - Helyar, Alec
+AU  - Hu, Haitang
+AU  - Huet, Romain
+AU  - Huh, Jacob
+AU  - Jain, Saachi
+AU  - Johnson, Zach
+AU  - Koch, Chris
+AU  - Kofman, Irina
+AU  - Kundel, Dominik
+AU  - Kwon, Jason
+AU  - Kyrylov, Volodymyr
+AU  - Le, Elaine Ya
+AU  - Leclerc, Guillaume
+AU  - Lennon, James Park
+AU  - Lessans, Scott
+AU  - Lezcano-Casado, Mario
+AU  - Li, Yuanzhi
+AU  - Li, Zhuohan
+AU  - Lin, Ji
+AU  - Liss, Jordan
+AU  - Lily
+AU  - Liu
+AU  - Liu, Jiancheng
+AU  - Lu, Kevin
+AU  - Lu, Chris
+AU  - Martinovic, Zoran
+AU  - McCallum, Lindsay
+AU  - McGrath, Josh
+AU  - McKinney, Scott
+AU  - McLaughlin, Aidan
+AU  - Mei, Song
+AU  - Mostovoy, Steve
+AU  - Mu, Tong
+AU  - Myles, Gideon
+AU  - Neitz, Alexander
+AU  - Nichol, Alex
+AU  - Pachocki, Jakub
+AU  - Paino, Alex
+AU  - Palmie, Dana
+AU  - Pantuliano, Ashley
+AU  - Parascandolo, Giambattista
+AU  - Park, Jongsoo
+AU  - Pathak, Leher
+AU  - Paz, Carolina
+AU  - Peran, Ludovic
+AU  - Pimenov, Dmitry
+AU  - Pokrass, Michelle
+AU  - Proehl, Elizabeth
+AU  - Qiu, Huida
+AU  - Raila, Gaby
+AU  - Raso, Filippo
+AU  - Ren, Hongyu
+AU  - Richardson, Kimmy
+AU  - Robinson, David
+AU  - Rotsted, Bob
+AU  - Salman, Hadi
+AU  - Sanjeev, Suvansh
+AU  - Schwarzer, Max
+AU  - Sculley, D.
+AU  - Sikchi, Harshit
+AU  - Simon, Kendal
+AU  - Singhal, Karan
+AU  - Song, Yang
+AU  - Stuckey, Dane
+AU  - Sun, Zhiqing
+AU  - Tillet, Philippe
+AU  - Toizer, Sam
+AU  - Tsimpourlas, Foivos
+AU  - Vyas, Nikhil
+AU  - Wallace, Eric
+AU  - Wang, Xin
+AU  - Wang, Miles
+AU  - Watkins, Olivia
+AU  - Weil, Kevin
+AU  - Wendling, Amy
+AU  - Whinnery, Kevin
+AU  - Whitney, Cedric
+AU  - Wong, Hannah
+AU  - Yang, Lin
+AU  - Yang, Yu
+AU  - Yasunaga, Michihiro
+AU  - Ying, Kristen
+AU  - Zaremba, Wojciech
+AU  - Zhan, Wenting
+AU  - Zhang, Cyril
+AU  - Zhang, Brian
+AU  - Zhang, Eddie
+AU  - Zhao, Shengjia
+AB  - We present gpt-oss-120b and gpt-oss-20b, two open-weight reasoning models that push the frontier of accuracy and inference cost. The models use an efficient mixture-of-expert transformer architecture and are trained using large-scale distillation and reinforcement learning. We optimize the models to have strong agentic capabilities (deep research browsing, python tool use, and support for developer-provided functions), all while using a rendered chat format that enables clear instruction following and role delineation. Both models achieve strong results on benchmarks ranging from mathematics, coding, and safety. We release the model weights, inference implementations, tool environments, and tokenizers under an Apache 2.0 license to enable broad use and further research.
+DA  - 2025/08/08/
+PY  - 2025
+DO  - 10.48550/arXiv.2508.10925
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2508.10925
+Y2  - 2026/07/16/20:17:08
+L1  - http://arxiv.org/pdf/2508.10925v1
+L2  - http://arxiv.org/abs/2508.10925
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Artificial Intelligence
 ER  - 
 
 TY  - GEN
@@ -2129,353 +2376,93 @@ KW  - Computer Science - Computation and Language
 KW  - Computer Science - Machine Learning
 ER  - 
 
-TY  - COMP
-TI  - gpt-oss-20b
-AU  - OpenAI
-AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
-DA  - 2025/08//
-PY  - 2025
-DP  - Hugging Face
-PB  - OpenAI
-ST  - gpt-oss-20b
-UR  - https://huggingface.co/openai/gpt-oss-20b
-Y2  - 2026/07/16/20:14:25
-L2  - https://huggingface.co/openai/gpt-oss-20b
-N1  - <div data-schema-version="9"><p>Motif d'écartement double, entièrement sourcé chez l'éditeur : (1) mémoire : seuil officiel d'exécution « avec seulement 16 Go de mémoire » (annonce) / « run within 16GB of memory » (card), supérieur au budget de 12 Go du serveur cible avant même d'y loger le système et l'application ; (2) langue : entraînement « principalement en anglais » selon l'annonce, le français n'est revendiqué nulle part.</p>
-<p></p>
-<p>Annonce officielle du 5 août 2025, version française consultée et capturée : <a href="https://openai.com/fr-CA/index/introducing-gpt-oss/" rel="noopener noreferrer nofollow">https://openai.com/fr-CA/index/introducing-gpt-oss/</a> (URL canonique anglaise : <a href="https://openai.com/index/introducing-gpt-oss/" rel="noopener noreferrer nofollow">https://openai.com/index/introducing-gpt-oss/</a> )</p>
-<p></p>
-<p>Article model card : « gpt-oss-120b &amp; gpt-oss-20b Model Card », arXiv:2508.10925 (août 2025), importé à part ; auteur unique = le collectif OpenAI, basculé en institution : <a href="https://arxiv.org/abs/2508.10925" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2508.10925</a></p>
-<p></p>
-<p>Architecture : MoE, 21 milliards de paramètres dont 3,6 milliards actifs par jeton (32 experts, 4 actifs) ; contexte 128k ; quantification native MXFP4 ; le compteur Safetensors de la card affiche 22B.</p>
-<p></p>
-<p>Exécution locale : Ollama documenté sur la card même (ollama pull gpt-oss:20b) : <a href="https://ollama.com/library/gpt-oss" rel="noopener noreferrer nofollow">https://ollama.com/library/gpt-oss</a> ; dépôt GitHub : <a href="https://github.com/openai/gpt-oss" rel="noopener noreferrer nofollow">https://github.com/openai/gpt-oss</a></p>
-<p></p>
-<p>Vigilance citation : la fiche logiciel et l'article arXiv rendront tous deux (OpenAI 2025) ; Zotero les distinguera en 2025a/2025b, à contrôler à la génération de la bibliographie.</p>
-</div>
+TY  - ENCYC
+TI  - Mistral AI
+AU  - Wikipedia
+T2  - Wikipedia
+AB  - Mistral AI SAS (French: [mistʁal]) is a French artificial intelligence (AI) company headquartered in Paris. Founded in 2023, it develops large language models (LLMs), some of which are open-source. As of 2025, the company has a valuation of more than US$14 billion.
+DA  - 2026/07/10/
+PY  - 2026
+DP  - Wikipedia
+LA  - en
+UR  - https://en.wikipedia.org/w/index.php?title=Mistral_AI&oldid=1363446098#Mistral_Large_3_and_Ministral_3
+Y2  - 2026/07/16/19:54:57
+L2  - https://en.wikipedia.org/w/index.php?title=Mistral_AI&oldid=1363446098#Mistral_Large_3_and_Ministral_3
 ER  - 
 
-TY  - GEN
-TI  - gpt-oss-120b & gpt-oss-20b Model Card
-AU  - OpenAI
-AU  - Agarwal, Sandhini
-AU  - Ahmad, Lama
-AU  - Ai, Jason
-AU  - Altman, Sam
-AU  - Applebaum, Andy
-AU  - Arbus, Edwin
-AU  - Arora, Rahul K.
-AU  - Bai, Yu
-AU  - Baker, Bowen
-AU  - Bao, Haiming
-AU  - Barak, Boaz
-AU  - Bennett, Ally
-AU  - Bertao, Tyler
-AU  - Brett, Nivedita
-AU  - Brevdo, Eugene
-AU  - Brockman, Greg
-AU  - Bubeck, Sebastien
-AU  - Chang, Che
-AU  - Chen, Kai
-AU  - Chen, Mark
-AU  - Cheung, Enoch
-AU  - Clark, Aidan
-AU  - Cook, Dan
-AU  - Dukhan, Marat
-AU  - Dvorak, Casey
-AU  - Fives, Kevin
-AU  - Fomenko, Vlad
-AU  - Garipov, Timur
-AU  - Georgiev, Kristian
-AU  - Glaese, Mia
-AU  - Gogineni, Tarun
-AU  - Goucher, Adam
-AU  - Gross, Lukas
-AU  - Guzman, Katia Gil
-AU  - Hallman, John
-AU  - Hehir, Jackie
-AU  - Heidecke, Johannes
-AU  - Helyar, Alec
-AU  - Hu, Haitang
-AU  - Huet, Romain
-AU  - Huh, Jacob
-AU  - Jain, Saachi
-AU  - Johnson, Zach
-AU  - Koch, Chris
-AU  - Kofman, Irina
-AU  - Kundel, Dominik
-AU  - Kwon, Jason
-AU  - Kyrylov, Volodymyr
-AU  - Le, Elaine Ya
-AU  - Leclerc, Guillaume
-AU  - Lennon, James Park
-AU  - Lessans, Scott
-AU  - Lezcano-Casado, Mario
-AU  - Li, Yuanzhi
-AU  - Li, Zhuohan
-AU  - Lin, Ji
-AU  - Liss, Jordan
-AU  - Lily
-AU  - Liu
-AU  - Liu, Jiancheng
-AU  - Lu, Kevin
-AU  - Lu, Chris
-AU  - Martinovic, Zoran
-AU  - McCallum, Lindsay
-AU  - McGrath, Josh
-AU  - McKinney, Scott
-AU  - McLaughlin, Aidan
-AU  - Mei, Song
-AU  - Mostovoy, Steve
-AU  - Mu, Tong
-AU  - Myles, Gideon
-AU  - Neitz, Alexander
-AU  - Nichol, Alex
-AU  - Pachocki, Jakub
-AU  - Paino, Alex
-AU  - Palmie, Dana
-AU  - Pantuliano, Ashley
-AU  - Parascandolo, Giambattista
-AU  - Park, Jongsoo
-AU  - Pathak, Leher
-AU  - Paz, Carolina
-AU  - Peran, Ludovic
-AU  - Pimenov, Dmitry
-AU  - Pokrass, Michelle
-AU  - Proehl, Elizabeth
-AU  - Qiu, Huida
-AU  - Raila, Gaby
-AU  - Raso, Filippo
-AU  - Ren, Hongyu
-AU  - Richardson, Kimmy
-AU  - Robinson, David
-AU  - Rotsted, Bob
-AU  - Salman, Hadi
-AU  - Sanjeev, Suvansh
-AU  - Schwarzer, Max
-AU  - Sculley, D.
-AU  - Sikchi, Harshit
-AU  - Simon, Kendal
-AU  - Singhal, Karan
-AU  - Song, Yang
-AU  - Stuckey, Dane
-AU  - Sun, Zhiqing
-AU  - Tillet, Philippe
-AU  - Toizer, Sam
-AU  - Tsimpourlas, Foivos
-AU  - Vyas, Nikhil
-AU  - Wallace, Eric
-AU  - Wang, Xin
-AU  - Wang, Miles
-AU  - Watkins, Olivia
-AU  - Weil, Kevin
-AU  - Wendling, Amy
-AU  - Whinnery, Kevin
-AU  - Whitney, Cedric
-AU  - Wong, Hannah
-AU  - Yang, Lin
-AU  - Yang, Yu
-AU  - Yasunaga, Michihiro
-AU  - Ying, Kristen
-AU  - Zaremba, Wojciech
-AU  - Zhan, Wenting
-AU  - Zhang, Cyril
-AU  - Zhang, Brian
-AU  - Zhang, Eddie
-AU  - Zhao, Shengjia
-AB  - We present gpt-oss-120b and gpt-oss-20b, two open-weight reasoning models that push the frontier of accuracy and inference cost. The models use an efficient mixture-of-expert transformer architecture and are trained using large-scale distillation and reinforcement learning. We optimize the models to have strong agentic capabilities (deep research browsing, python tool use, and support for developer-provided functions), all while using a rendered chat format that enables clear instruction following and role delineation. Both models achieve strong results on benchmarks ranging from mathematics, coding, and safety. We release the model weights, inference implementations, tool environments, and tokenizers under an Apache 2.0 license to enable broad use and further research.
-DA  - 2025/08/08/
-PY  - 2025
-DO  - 10.48550/arXiv.2508.10925
-DP  - arXiv.org
-PB  - arXiv
-UR  - http://arxiv.org/abs/2508.10925
-Y2  - 2026/07/16/20:17:08
-L1  - http://arxiv.org/pdf/2508.10925v1
-L2  - http://arxiv.org/abs/2508.10925
-KW  - Computer Science - Computation and Language
-KW  - Computer Science - Artificial Intelligence
+TY  - ENCYC
+TI  - Qwen
+AU  - Wikipedia
+T2  - Wikipedia
+AB  - Qwen (also known as Tongyi Qianwen, Chinese: 通义千问; pinyin: Tōngyì Qiānwèn) is a family of large language models developed by Alibaba Cloud. Many Qwen models are distributed under the free and open-source Apache 2.0 license, the source-available Qwen License, or the non-commercial Qwen Research License; other proprietary Qwen models are served through Alibaba Cloud.
+DA  - 2026/07/12/
+PY  - 2026
+DP  - Wikipedia
+LA  - en
+UR  - https://en.wikipedia.org/w/index.php?title=Qwen&oldid=1363796490
+Y2  - 2026/07/16/19:54:31
+L2  - https://en.wikipedia.org/w/index.php?title=Qwen&oldid=1363796490
 ER  - 
 
-TY  - COMP
+TY  - ENCYC
+TI  - Gemma (language model)
+AU  - Wikipedia
+T2  - Wikipedia
+AB  - Gemma is a series of source-available large language models developed by Google DeepMind. It is based on similar technologies as Gemini. The first version was released in February 2024, followed by Gemma 2 in June 2024, Gemma 3 in March 2025, and the open-weights Gemma 4 in April 2026. Variants of Gemma have also been developed, such as the vision-language model PaliGemma and the model MedGemma for medical consultation topics.
+DA  - 2026/07/13/
+PY  - 2026
+DP  - Wikipedia
+LA  - en
+UR  - https://en.wikipedia.org/w/index.php?title=Gemma_(language_model)&oldid=1363969951
+Y2  - 2026/07/16/19:52:04
+L2  - https://en.wikipedia.org/w/index.php?title=Gemma_(language_model)&oldid=1363969951
+ER  - 
+
+TY  - ENCYC
+TI  - Apertus (LLM)
+AU  - Wikipedia
+T2  - Wikipedia
+AB  - Apertus is a public large language model, developed by the Swiss AI Initiative (a collaboration between EPFL, ETH Zurich, and the Swiss National Supercomputing Centre). It was released on September 2, 2025, under the free and open-source Apache 2.0 license.
+Designed initially for business and research use cases around the world, Apertus was trained on over 1800 languages, and comes in 8 billion or 70 billion parameter versions and is available on Hugging Face for download. The model was developed aiming to adhere to European copyright law, and is one of the first examples of AI as a public good in the vein of AI Sovereignty. It is also the first large model to comply with the European Union's Artificial Intelligence Act. At its launch, the model creators emphasized multilinguality, transparency, and auditability as priorities in contrast to commercial frontier model. While international reception was largely positive, the first iteration was significantly behind the capabilities of frontier models and needs adaptation for many use cases with chatbots being a secondary but not a primary use case.
+As of late 2025, it was considered the largest and most capable fully open model. The capability of future models will depend in part on how much more funding can be secured.
+DA  - 2026/07/14/
+PY  - 2026
+DP  - Wikipedia
+LA  - en
+UR  - https://en.wikipedia.org/w/index.php?title=Apertus_(LLM)&oldid=1364089718
+Y2  - 2026/07/16/19:51:40
+L2  - https://en.wikipedia.org/w/index.php?title=Apertus_(LLM)&oldid=1364089718
+ER  - 
+
+TY  - ENCYC
+TI  - Llama (language model)
+AU  - Wikipedia
+T2  - Wikipedia
+AB  - Llama ("Large Language Model Meta AI" serving as a backronym) is a family of large language models (LLMs) released by Meta AI starting in February 2023.
+Llama models come in different sizes, ranging from 1 billion to 2 trillion parameters. Initially only a foundation model, starting with Llama 2, Meta AI released instruction fine-tuned versions alongside foundation models.
+Model weights for the first version of Llama were only available to researchers on a case-by-case basis, under a non-commercial license. Unauthorized copies of the first model were shared via BitTorrent. Subsequent versions of Llama were made accessible outside academia and released under licenses that permitted some commercial use.
+Alongside the release of Llama 3, Meta rolled out Meta AI, an AI assistant built on Llama. Meta AI has a dedicated website and is available on Facebook and WhatsApp. The latest version is Llama 4, released in April 2025.
+In April 2026, Meta Superintelligence Labs released Muse Spark as a replacement for Llama.
+DA  - 2026/07/11/
+PY  - 2026
+DP  - Wikipedia
+LA  - en
+UR  - https://en.wikipedia.org/w/index.php?title=Llama_(language_model)&oldid=1363576201
+Y2  - 2026/07/16/19:51:16
+L2  - https://en.wikipedia.org/w/index.php?title=Llama_(language_model)&oldid=1363576201
+ER  - 
+
+TY  - ELEC
 TI  - gpt-oss
-AU  - OpenAI
-AB  - gpt-oss-120b and gpt-oss-20b are two open-weight language models by OpenAI
-DA  - 2026/07/16/
-PY  - 2026
-DP  - GitHub
-LA  - Python
-PB  - OpenAI
-ST  - gpt-oss
-UR  - https://github.com/openai/gpt-oss
-Y2  - 2026/07/16/20:18:15
-ER  - 
-
-TY  - COMP
-TI  - Lucie-7B Instruct
-AU  - OpenLLM-France
-AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
-DA  - 2025/02//
-PY  - 2025
-DP  - Hugging Face
-UR  - https://huggingface.co/OpenLLM-France/Lucie-7B-Instruct-v1.1
-Y2  - 2026/07/16/20:19:41
-L2  - https://huggingface.co/OpenLLM-France/Lucie-7B-Instruct-v1.1
-N1  - <div data-schema-version="9"><p>Motifs d'écartement, tous auto-déclarés sur la card : instruction « light » ; « would need further training before being implemented in pipelines for specific use-cases » ; « susceptible to hallucinations ». Écartement respectueux : modèle conçu pour le français (environ un tiers du corpus de pré-entraînement, données patrimoniales) mais déclaré par son propre éditeur inadapté, en l'état, à un pipeline spécialisé.</p>
-<p></p>
-<p>Contexte, formulation corrigée : entraînement d'instruction sur des séquences de 4 096 jetons ; fenêtre effective mesurée à 22K jetons (needle-in-a-haystack), base Lucie-7B à 32K. Ne pas écrire « contexte limité à 4 096 ».</p>
-<p></p>
-<p>Détail utile au mémoire : la card recommande elle-même d'implanter le modèle dans un pipeline RAG pour améliorer l'exactitude de ses réponses.</p>
-<p></p>
-<p>Article : « The Lucie-7B LLM and the Lucie Training Dataset: Open resources for multilingual language generation », arXiv:2503.12294 (v1 15.03.2025), importé à part, PDF déposé au projet (résumé prévu) : <a href="https://arxiv.org/abs/2503.12294" rel="noopener noreferrer nofollow">https://arxiv.org/abs/2503.12294</a> . Citations : article (Gouvert et al. 2025), fiche logiciel (OpenLLM-France 2025).</p>
-<p></p>
-<p>Exécution locale : page Ollama de l'éditeur, tag v1.1 (4,1 Go), ollama run OpenLLM-France/Lucie-7B-Instruct : <a href="https://ollama.com/OpenLLM-France/Lucie-7B-Instruct" rel="noopener noreferrer nofollow">https://ollama.com/OpenLLM-France/Lucie-7B-Instruct</a> (readme de cette page resté sur le texte de la v1, constaté le 16.07.2026) ; GGUF officiels : <a href="https://huggingface.co/OpenLLM-France/Lucie-7B-Instruct-v1.1-gguf" rel="noopener noreferrer nofollow">https://huggingface.co/OpenLLM-France/Lucie-7B-Instruct-v1.1-gguf</a></p>
-<p></p>
-<p>Adoption au 16.07.2026 : 654 téléchargements sur le dernier mois, aucun Inference Provider (card) ; 1 001 téléchargements cumulés côté Ollama. v1.1 remplace la Lucie-7B-Instruct originale de janvier 2025.</p>
-<p></p>
-<p>Éditeur : créée par des membres de Linagora et de la communauté OpenLLM-France ; même maison que l'OpenRag écarté au chapitre 3. Vigilance citations : (Linagora 2025) = OpenRag, (OpenLLM-France 2025) = Lucie.</p>
-</div>
-ER  - 
-
-TY  - GEN
-TI  - The Lucie-7B LLM and the Lucie Training Dataset: Open resources for multilingual language generation
-AU  - Gouvert, Olivier
-AU  - Hunter, Julie
-AU  - Louradour, Jérôme
-AU  - Cerisara, Christophe
-AU  - Dufraisse, Evan
-AU  - Sy, Yaya
-AU  - Rivière, Laura
-AU  - Lorré, Jean-Pierre
-AU  - community, OpenLLM-France
-AB  - We present both the Lucie Training Dataset and the Lucie-7B foundation model. The Lucie Training Dataset is a multilingual collection of textual corpora centered around French and designed to offset anglo-centric biases found in many datasets for large language model pretraining. Its French data is pulled not only from traditional web sources, but also from French cultural heritage documents, filling an important gap in modern datasets. Beyond French, which makes up the largest share of the data, we added documents to support several other European languages, including English, Spanish, German, and Italian. Apart from its value as a resource for French language and culture, an important feature of this dataset is that it prioritizes data rights by minimizing copyrighted material. In addition, building on the philosophy of past open projects, it is redistributed in the form used for training and its processing is described on Hugging Face and GitHub. The Lucie-7B foundation model is trained on equal amounts of data in French and English -- roughly 33% each -- in an effort to better represent cultural aspects of French-speaking communities. We also describe two instruction fine-tuned models, Lucie-7B-Instruct-v1.1 and Lucie-7B-Instruct-human-data, which we release as demonstrations of Lucie-7B in use. These models achieve promising results compared to state-of-the-art models, demonstrating that an open approach prioritizing data rights can still deliver strong performance. We see these models as an initial step toward developing more performant, aligned models in the near future. Model weights for Lucie-7B and the Lucie instruct models, along with intermediate checkpoints for the former, are published on Hugging Face, while model training and data preparation code is available on GitHub. This makes Lucie-7B one of the first OSI compliant language models according to the new OSI definition.
-DA  - 2025/03/15/
-PY  - 2025
-DO  - 10.48550/arXiv.2503.12294
-DP  - arXiv.org
-PB  - arXiv
-ST  - The Lucie-7B LLM and the Lucie Training Dataset
-UR  - http://arxiv.org/abs/2503.12294
-Y2  - 2026/07/16/20:28:32
-L1  - http://arxiv.org/pdf/2503.12294v1
-L2  - http://arxiv.org/abs/2503.12294
-KW  - Computer Science - Computation and Language
-KW  - Computer Science - Artificial Intelligence
-ER  - 
-
-TY  - ELEC
-TI  - Apertus
-AU  - Rosselli, Michel
+AU  - Ollama
 T2  - Ollama
-AB  - Apertus is a 70B and 8B parameter language model designed to push the boundaries of fully-open multilingual and transparent models.
-DA  - 2026///
-PY  - 2026
-UR  - https://ollama.com/MichelRosselli/apertus
-Y2  - 2026/07/16/20:34:09
-L2  - https://ollama.com/MichelRosselli/apertus
-N1  - <div data-schema-version="9"><p>matière précieuse pour 4.3 : 2 882 téléchargements ; cinq variantes dont le 8b-instruct-2509 en Q4_K_M à 5,1 Go, contexte 64K ; le README déclare noir sur blanc « unofficial Ollama upload by MichelRosselli », « I am not the original author », et détaille la chaîne de provenance : poids officiels swiss-ai sur Hugging Face, quantification GGUF par Unsloth, fusion et empaquetage par MichelRosselli via llama.cpp. La conversion est donc doublement communautaire, exactement ce que le critère du support Ollama devra peser</p>
-</div>
-ER  - 
-
-TY  - GEN
-TI  - Qwen3 Technical Report
-AU  - Yang, An
-AU  - Li, Anfeng
-AU  - Yang, Baosong
-AU  - Zhang, Beichen
-AU  - Hui, Binyuan
-AU  - Zheng, Bo
-AU  - Yu, Bowen
-AU  - Gao, Chang
-AU  - Huang, Chengen
-AU  - Lv, Chenxu
-AU  - Zheng, Chujie
-AU  - Liu, Dayiheng
-AU  - Zhou, Fan
-AU  - Huang, Fei
-AU  - Hu, Feng
-AU  - Ge, Hao
-AU  - Wei, Haoran
-AU  - Lin, Huan
-AU  - Tang, Jialong
-AU  - Yang, Jian
-AU  - Tu, Jianhong
-AU  - Zhang, Jianwei
-AU  - Yang, Jianxin
-AU  - Yang, Jiaxi
-AU  - Zhou, Jing
-AU  - Zhou, Jingren
-AU  - Lin, Junyang
-AU  - Dang, Kai
-AU  - Bao, Keqin
-AU  - Yang, Kexin
-AU  - Yu, Le
-AU  - Deng, Lianghao
-AU  - Li, Mei
-AU  - Xue, Mingfeng
-AU  - Li, Mingze
-AU  - Zhang, Pei
-AU  - Wang, Peng
-AU  - Zhu, Qin
-AU  - Men, Rui
-AU  - Gao, Ruize
-AU  - Liu, Shixuan
-AU  - Luo, Shuang
-AU  - Li, Tianhao
-AU  - Tang, Tianyi
-AU  - Yin, Wenbiao
-AU  - Ren, Xingzhang
-AU  - Wang, Xinyu
-AU  - Zhang, Xinyu
-AU  - Ren, Xuancheng
-AU  - Fan, Yang
-AU  - Su, Yang
-AU  - Zhang, Yichang
-AU  - Zhang, Yinger
-AU  - Wan, Yu
-AU  - Liu, Yuqiong
-AU  - Wang, Zekun
-AU  - Cui, Zeyu
-AU  - Zhang, Zhenru
-AU  - Zhou, Zhipeng
-AU  - Qiu, Zihan
-AB  - In this work, we present Qwen3, the latest version of the Qwen model family. Qwen3 comprises a series of large language models (LLMs) designed to advance performance, efficiency, and multilingual capabilities. The Qwen3 series includes models of both dense and Mixture-of-Expert (MoE) architectures, with parameter scales ranging from 0.6 to 235 billion. A key innovation in Qwen3 is the integration of thinking mode (for complex, multi-step reasoning) and non-thinking mode (for rapid, context-driven responses) into a unified framework. This eliminates the need to switch between different models--such as chat-optimized models (e.g., GPT-4o) and dedicated reasoning models (e.g., QwQ-32B)--and enables dynamic mode switching based on user queries or chat templates. Meanwhile, Qwen3 introduces a thinking budget mechanism, allowing users to allocate computational resources adaptively during inference, thereby balancing latency and performance based on task complexity. Moreover, by leveraging the knowledge from the flagship models, we significantly reduce the computational resources required to build smaller-scale models, while ensuring their highly competitive performance. Empirical evaluations demonstrate that Qwen3 achieves state-of-the-art results across diverse benchmarks, including tasks in code generation, mathematical reasoning, agent tasks, etc., competitive against larger MoE models and proprietary models. Compared to its predecessor Qwen2.5, Qwen3 expands multilingual support from 29 to 119 languages and dialects, enhancing global accessibility through improved cross-lingual understanding and generation capabilities. To facilitate reproducibility and community-driven research and development, all Qwen3 models are publicly accessible under Apache 2.0.
-DA  - 2025/05/14/
-PY  - 2025
-DO  - 10.48550/arXiv.2505.09388
-DP  - arXiv.org
-PB  - arXiv
-UR  - http://arxiv.org/abs/2505.09388
-Y2  - 2026/07/16/22:52:06
-L1  - http://arxiv.org/pdf/2505.09388v1
-L2  - http://arxiv.org/abs/2505.09388
-KW  - Computer Science - Computation and Language
-ER  - 
-
-TY  - NEWS
-TI  - Les États-Unis lèvent leurs restrictions sur les modèles d'IA les plus puissants d'Anthropic
-AU  - France 24
-T2  - France 24
-AB  - La société Anthropic a annoncé, mardi, que le ministère du Commerce américain "a levé les contrôles d'exportation sur Claude Fable 5 et Mythos 5", imposés le 12 juin, sans préciser si cette réintégration…
-DA  - 2026/07/01/
-PY  - 2026
-LA  - fr
-UR  - https://www.france24.com/fr/am%C3%A9riques/20260701-etats-unis-levent-restrictions-modeles-intelligence-artificielle-puissants-anthropic-commerce-claude-mythos-s%C3%A9curite-nationale
-Y2  - 2026/07/17/14:11:13
-L2  - https://www.france24.com/fr/am%C3%A9riques/20260701-etats-unis-levent-restrictions-modeles-intelligence-artificielle-puissants-anthropic-commerce-claude-mythos-s%C3%A9curite-nationale
-ER  - 
-
-TY  - ELEC
-TI  - OpenLLM-France/Lucie-7B-Instruct
-AU  - OpenLLM-France
-T2  - Ollama
-AB  - Lucie-7B-Instruct is a fine-tuned version of Lucie-7B, an open-source, multilingual causal language model created by OpenLLM-France.
+AB  - OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases.
 DA  - 2025///
 PY  - 2025
-UR  - https://ollama.com/OpenLLM-France/Lucie-7B-Instruct
-Y2  - 2026/07/17/07:50:31
-L2  - https://ollama.com/OpenLLM-France/Lucie-7B-Instruct
-N1  - <div data-schema-version="9"><p>environ 1 000 téléchargements ; distribution assurée par l'éditeur lui-même, contraste direct avec Apertus ; tag v1.1 disponible ; Q4_K_M de 4,1 Go ; les métadonnées du paquet affichent un contexte de 32 000, à ne pas confondre avec les 22 000 mesurés pour l'instruct dans l'article, vigilance déjà actée.</p>
+UR  - https://ollama.com/library/gpt-oss
+Y2  - 2026/07/17/07:30:07
+L2  - https://ollama.com/gpt-oss
+N1  - <div data-schema-version="9"><p>9,7 millions de téléchargements, étiquettes tools/thinking/cloud, variantes 20b et 120b. La page est signée Ollama de bout en bout (« Ollama partners with OpenAI... », « Ollama is supporting the MXFP4 format natively ») et confirme deux faits : le MXFP4 natif à 4,25 bits et les 16 Go minimum pour le 20b.</p>
 </div>
 ER  - 
 
@@ -2498,99 +2485,208 @@ N1  - <div data-schema-version="9"><p>mise en ligne mars 2026 ; variantes 0.8b �
 ER  - 
 
 TY  - ELEC
-TI  - gpt-oss
-AU  - Ollama
+TI  - OpenLLM-France/Lucie-7B-Instruct
+AU  - OpenLLM-France
 T2  - Ollama
-AB  - OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases.
+AB  - Lucie-7B-Instruct is a fine-tuned version of Lucie-7B, an open-source, multilingual causal language model created by OpenLLM-France.
 DA  - 2025///
 PY  - 2025
-UR  - https://ollama.com/library/gpt-oss
-Y2  - 2026/07/17/07:30:07
-L2  - https://ollama.com/gpt-oss
-N1  - <div data-schema-version="9"><p>9,7 millions de téléchargements, étiquettes tools/thinking/cloud, variantes 20b et 120b. La page est signée Ollama de bout en bout (« Ollama partners with OpenAI... », « Ollama is supporting the MXFP4 format natively ») et confirme deux faits : le MXFP4 natif à 4,25 bits et les 16 Go minimum pour le 20b.</p>
+UR  - https://ollama.com/OpenLLM-France/Lucie-7B-Instruct
+Y2  - 2026/07/17/07:50:31
+L2  - https://ollama.com/OpenLLM-France/Lucie-7B-Instruct
+N1  - <div data-schema-version="9"><p>environ 1 000 téléchargements ; distribution assurée par l'éditeur lui-même, contraste direct avec Apertus ; tag v1.1 disponible ; Q4_K_M de 4,1 Go ; les métadonnées du paquet affichent un contexte de 32 000, à ne pas confondre avec les 22 000 mesurés pour l'instruct dans l'article, vigilance déjà actée.</p>
 </div>
 ER  - 
 
-TY  - ELEC
-TI  - Classement - compar:IA, le comparateur d'IA conversationnelles
-AU  - compar:IA
-T2  - compar:IA
-AB  - compar:IA est un outil permettant de comparer à l’aveugle différents modèles d'IA conversationnelle pour sensibiliser aux enjeux de l'IA générative (biais, impact environmental) et constituer des jeux de données de préférence en français.
-DA  - 2026///
+TY  - NEWS
+TI  - Les États-Unis lèvent leurs restrictions sur les modèles d'IA les plus puissants d'Anthropic
+AU  - France 24
+T2  - France 24
+AB  - La société Anthropic a annoncé, mardi, que le ministère du Commerce américain "a levé les contrôles d'exportation sur Claude Fable 5 et Mythos 5", imposés le 12 juin, sans préciser si cette réintégration…
+DA  - 2026/07/01/
 PY  - 2026
 LA  - fr
-ST  - Classement - compar
-UR  - https://comparia.beta.gouv.fr/ranking
-Y2  - 2026/07/17/
-L2  - https://comparia.beta.gouv.fr/ranking
-N1  - <div data-schema-version="9"><p>export CSV du 18.07.2026 archivé au dossier</p>
-</div>
-ER  - 
-
-TY  - ELEC
-TI  - ministral-3
-AU  - Ollama
-T2  - Ollama
-AB  - The Ministral 3 family is designed for edge deployment, capable of running on a wide range of hardware.
-DA  - 2025///
-PY  - 2025
-UR  - https://ollama.com/library/ministral-3
-Y2  - 2026/07/17/22:15:10
-L2  - https://ollama.com/ministral-3
-ER  - 
-
-TY  - ELEC
-TI  - qwen3.5
-AU  - Ollama
-T2  - Ollama
-AB  - Qwen 3.5 is a family of open-source multimodal models that delivers exceptional utility and performance.
-DA  - 2026///
-PY  - 2026
-UR  - https://ollama.com/library/qwen3.5
-Y2  - 2026/07/17/23:05:41
-L2  - https://ollama.com/qwen3.5
-N1  - <div data-schema-version="9"><p>Bibliothèque officielle d'Ollama, mise en ligne en mars 2026. Variantes disponibles : 0.8b, 2b, 4b, 9b, 27b, 35b, 122b, plus des versions cloud.</p>
-<p></p>
-<p>Le paquet 9b par défaut, celui du comparatif : quantification Q4_K_M, 6,6 Go, 9,65 milliards de paramètres (encodeur de vision intégré, d'où l'écart avec les « 9 milliards » du nom), contexte 262 144 jetons, licence Apache 2.0 jointe au paquet. Métadonnées détaillées de cette variante : <a href="https://ollama.com/library/qwen3.5:9b" rel="noopener noreferrer nofollow">https://ollama.com/library/qwen3.5:9b</a></p>
-<p></p>
-<p>Environ 15,7 millions de téléchargements au relevé du 17.07.2026 (compteur volatil, à revérifier à l'écran avant toute citation). Étiquettes : vision, tools, thinking.</p>
-<p></p>
-<p>Vigilance : la carte Hugging Face de l'éditeur recommande vLLM et SGLang et ne mentionne jamais Ollama ; ce canal officiel existe donc sans être revendiqué par l'éditeur</p>
-</div>
-ER  - 
-
-TY  - ELEC
-TI  - gemma4
-AU  - Ollama
-T2  - Ollama
-AB  - Gemma 4 models are designed to deliver frontier-level performance at each size. They are well-suited for reasoning, agentic workflows, coding, and multimodal understanding.
-DA  - 2026///
-PY  - 2026
-UR  - https://ollama.com/library/gemma4
-Y2  - 2026/07/17/23:10:59
-L2  - https://ollama.com/gemma4
-N1  - <div data-schema-version="9"><p>famille mise en ligne au printemps 2026, le 12B unifié en juin ; variantes e2b, e4b, 12b, 26b, 31b ; le paquet 12b par défaut est un <strong>Q4_K_M de 7,6 Go</strong> (7,4 Go de poids, 11,9 milliards de paramètres, plus un projecteur de vision de 52 millions), Apache 2.0 ; environ 18,3 millions de téléchargements à mon relevé, volatil ; réflexion commutable par jeton de contrôle ; capture datée.</p>
-</div>
+UR  - https://www.france24.com/fr/am%C3%A9riques/20260701-etats-unis-levent-restrictions-modeles-intelligence-artificielle-puissants-anthropic-commerce-claude-mythos-s%C3%A9curite-nationale
+Y2  - 2026/07/17/14:11:13
+L2  - https://www.france24.com/fr/am%C3%A9riques/20260701-etats-unis-levent-restrictions-modeles-intelligence-artificielle-puissants-anthropic-commerce-claude-mythos-s%C3%A9curite-nationale
 ER  - 
 
 TY  - GEN
-TI  - MTEB: Massive Text Embedding Benchmark
-AU  - Muennighoff, Niklas
-AU  - Tazi, Nouamane
-AU  - Magne, Loïc
-AU  - Reimers, Nils
-AB  - Text embeddings are commonly evaluated on a small set of datasets from a single task not covering their possible applications to other tasks. It is unclear whether state-of-the-art embeddings on semantic textual similarity (STS) can be equally well applied to other tasks like clustering or reranking. This makes progress in the field difficult to track, as various models are constantly being proposed without proper evaluation. To solve this problem, we introduce the Massive Text Embedding Benchmark (MTEB). MTEB spans 8 embedding tasks covering a total of 58 datasets and 112 languages. Through the benchmarking of 33 models on MTEB, we establish the most comprehensive benchmark of text embeddings to date. We find that no particular text embedding method dominates across all tasks. This suggests that the field has yet to converge on a universal text embedding method and scale it up sufficiently to provide state-of-the-art results on all embedding tasks. MTEB comes with open-source code and a public leaderboard at https://github.com/embeddings-benchmark/mteb.
-DA  - 2022/10/13/
-PY  - 2022
-DO  - 10.48550/arXiv.2210.07316
+TI  - M3-Embedding: Multi-Linguality, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation
+AU  - Chen, Jianlv
+AU  - Xiao, Shitao
+AU  - Zhang, Peitian
+AU  - Luo, Kun
+AU  - Lian, Defu
+AU  - Liu, Zheng
+AB  - In this paper, we introduce a new embedding model called M3-Embedding, which is distinguished for its versatility in \textit{Multi-Linguality}, \textit{Multi-Functionality}, and \textit{Multi-Granularity}. It provides a uniform support for the semantic retrieval of more than 100 working languages. It can simultaneously accomplish the three common retrieval functionalities: dense retrieval, multi-vector retrieval, and sparse retrieval. Besides, it is also capable of processing inputs of different granularities, spanning from short sentences to long documents of up to 8,192 tokens. The effective training of M3-Embedding presents a series of technical contributions. Notably, we propose a novel self-knowledge distillation approach, where the relevance scores from different retrieval functionalities can be integrated as the teacher signal to enhance the training quality. We also optimize the batching strategy, which enables a large batch size and high training throughput to improve the discriminativeness of embeddings. M3-Embedding exhibits a superior performance in our experiment, leading to new state-of-the-art results on multilingual, cross-lingual, and long-document retrieval benchmarks.
+DA  - 2024/02/05/
+PY  - 2024
+DO  - 10.48550/arXiv.2402.03216
 DP  - arXiv.org
 PB  - arXiv
-ST  - MTEB
-UR  - http://arxiv.org/abs/2210.07316
-Y2  - 2026/07/19/00:11:57
-L1  - http://arxiv.org/pdf/2210.07316v3
-L2  - http://arxiv.org/abs/2210.07316
-N1  - Comment: 24 pages, 14 tables, 6 figures
+ST  - M3-Embedding
+UR  - http://arxiv.org/abs/2402.03216
+Y2  - 2026/07/19/00:17:14
+L1  - http://arxiv.org/pdf/2402.03216v5
+L2  - http://arxiv.org/abs/2402.03216
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Machine Learning
+KW  - Computer Science - Artificial Intelligence
+ER  - 
+
+TY  - GEN
+TI  - EmbeddingGemma: Powerful and Lightweight Text Representations
+AU  - Vera, Henrique Schechter
+AU  - Dua, Sahil
+AU  - Zhang, Biao
+AU  - Salz, Daniel
+AU  - Mullins, Ryan
+AU  - Panyam, Sindhu Raghuram
+AU  - Smoot, Sara
+AU  - Naim, Iftekhar
+AU  - Zou, Joe
+AU  - Chen, Feiyang
+AU  - Cer, Daniel
+AU  - Lisak, Alice
+AU  - Choi, Min
+AU  - Gonzalez, Lucas
+AU  - Sanseviero, Omar
+AU  - Cameron, Glenn
+AU  - Ballantyne, Ian
+AU  - Black, Kat
+AU  - Chen, Kaifeng
+AU  - Wang, Weiyi
+AU  - Li, Zhe
+AU  - Martins, Gus
+AU  - Lee, Jinhyuk
+AU  - Sherwood, Mark
+AU  - Ji, Juyeong
+AU  - Wu, Renjie
+AU  - Zheng, Jingxiao
+AU  - Singh, Jyotinder
+AU  - Sharma, Abheesht
+AU  - Sreepathihalli, Divyashree
+AU  - Jain, Aashi
+AU  - Elarabawy, Adham
+AU  - Co, A. J.
+AU  - Doumanoglou, Andreas
+AU  - Samari, Babak
+AU  - Hora, Ben
+AU  - Potetz, Brian
+AU  - Kim, Dahun
+AU  - Alfonseca, Enrique
+AU  - Moiseev, Fedor
+AU  - Han, Feng
+AU  - Gomez, Frank Palma
+AU  - Ábrego, Gustavo Hernández
+AU  - Zhang, Hesen
+AU  - Hui, Hui
+AU  - Han, Jay
+AU  - Gill, Karan
+AU  - Chen, Ke
+AU  - Chen, Koert
+AU  - Shanbhogue, Madhuri
+AU  - Boratko, Michael
+AU  - Suganthan, Paul
+AU  - Duddu, Sai Meher Karthik
+AU  - Mariserla, Sandeep
+AU  - Ariafar, Setareh
+AU  - Zhang, Shanfeng
+AU  - Zhang, Shijie
+AU  - Baumgartner, Simon
+AU  - Goenka, Sonam
+AU  - Qiu, Steve
+AU  - Dabral, Tanmaya
+AU  - Walker, Trevor
+AU  - Rao, Vikram
+AU  - Khawaja, Waleed
+AU  - Zhou, Wenlei
+AU  - Ren, Xiaoqi
+AU  - Xia, Ye
+AU  - Chen, Yichang
+AU  - Chen, Yi-Ting
+AU  - Dong, Zhe
+AU  - Ding, Zhongli
+AU  - Visin, Francesco
+AU  - Liu, Gaël
+AU  - Zhang, Jiageng
+AU  - Kenealy, Kathleen
+AU  - Casbon, Michelle
+AU  - Kumar, Ravin
+AU  - Mesnard, Thomas
+AU  - Gleicher, Zach
+AU  - Brick, Cormac
+AU  - Lacombe, Olivier
+AU  - Roberts, Adam
+AU  - Yin, Qin
+AU  - Sung, Yunhsuan
+AU  - Hoffmann, Raphael
+AU  - Warkentin, Tris
+AU  - Joulin, Armand
+AU  - Duerig, Tom
+AU  - Seyedhosseini, Mojtaba
+AB  - We introduce EmbeddingGemma, a new lightweight, open text embedding model based on the Gemma 3 language model family. Our innovative training recipe strategically captures knowledge from larger models via encoder-decoder initialization and geometric embedding distillation. We improve model robustness and expressiveness with a spread-out regularizer, and ensure generalizability by merging checkpoints from varied, optimized mixtures. Evaluated on the Massive Text Embedding Benchmark (MTEB) across multilingual, English, and code domains, EmbeddingGemma (300M) achieves state-of-the-art results. Notably, it outperforms prior top models, both proprietary and open, with fewer than 500M parameters, and provides performance comparable to models double its size, offering an exceptional performance-to-cost ratio. Remarkably, this lead persists when quantizing model weights or truncating embedding outputs. This makes EmbeddingGemma particularly well-suited for low-latency and high-throughput use cases such as on-device applications. We provide ablation studies exploring our key design choices. We release EmbeddingGemma to the community to promote further research.
+DA  - 2025/09/24/
+PY  - 2025
+DO  - 10.48550/arXiv.2509.20354
+DP  - arXiv.org
+PB  - arXiv
+ST  - EmbeddingGemma
+UR  - http://arxiv.org/abs/2509.20354
+Y2  - 2026/07/19/00:16:42
+L1  - http://arxiv.org/pdf/2509.20354v3
+L2  - http://arxiv.org/abs/2509.20354
+N1  - Comment: 18 pages. Models are available in HuggingFace (at https://huggingface.co/collections/google/embeddinggemma-68b9ae3a72a82f0562a80dc4), Kaggle (at https://www.kaggle.com/models/google/embeddinggemma/), and Vertex AI (at https://pantheon.corp.google.com/vertex-ai/publishers/google/model-garden/embeddinggemma)
+KW  - Computer Science - Computation and Language
+KW  - Computer Science - Artificial Intelligence
+ER  - 
+
+TY  - GEN
+TI  - Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models
+AU  - Zhang, Yanzhao
+AU  - Li, Mingxin
+AU  - Long, Dingkun
+AU  - Zhang, Xin
+AU  - Lin, Huan
+AU  - Yang, Baosong
+AU  - Xie, Pengjun
+AU  - Yang, An
+AU  - Liu, Dayiheng
+AU  - Lin, Junyang
+AU  - Huang, Fei
+AU  - Zhou, Jingren
+AB  - In this work, we introduce the Qwen3 Embedding series, a significant advancement over its predecessor, the GTE-Qwen series, in text embedding and reranking capabilities, built upon the Qwen3 foundation models. Leveraging the Qwen3 LLMs' robust capabilities in multilingual text understanding and generation, our innovative multi-stage training pipeline combines large-scale unsupervised pre-training with supervised fine-tuning on high-quality datasets. Effective model merging strategies further ensure the robustness and adaptability of the Qwen3 Embedding series. During the training process, the Qwen3 LLMs serve not only as backbone models but also play a crucial role in synthesizing high-quality, rich, and diverse training data across multiple domains and languages, thus enhancing the training pipeline. The Qwen3 Embedding series offers a spectrum of model sizes (0.6B, 4B, 8B) for both embedding and reranking tasks, addressing diverse deployment scenarios where users can optimize for either efficiency or effectiveness. Empirical evaluations demonstrate that the Qwen3 Embedding series achieves state-of-the-art results across diverse benchmarks. Notably, it excels on the multilingual evaluation benchmark MTEB for text embedding, as well as in various retrieval tasks, including code retrieval, cross-lingual retrieval and multilingual retrieval. To facilitate reproducibility and promote community-driven research and development, the Qwen3 Embedding models are publicly available under the Apache 2.0 license.
+DA  - 2025/06/05/
+PY  - 2025
+DO  - 10.48550/arXiv.2506.05176
+DP  - arXiv.org
+PB  - arXiv
+ST  - Qwen3 Embedding
+UR  - http://arxiv.org/abs/2506.05176
+Y2  - 2026/07/19/00:15:22
+L1  - http://arxiv.org/pdf/2506.05176v3
+L2  - http://arxiv.org/abs/2506.05176
+KW  - Computer Science - Computation and Language
+ER  - 
+
+TY  - GEN
+TI  - MTEB-French: Resources for French Sentence Embedding Evaluation and Analysis
+AU  - Ciancone, Mathieu
+AU  - Kerboua, Imene
+AU  - Schaeffer, Marion
+AU  - Siblini, Wissam
+AB  - Recently, numerous embedding models have been made available and widely used for various NLP tasks. The Massive Text Embedding Benchmark (MTEB) has primarily simplified the process of choosing a model that performs well for several tasks in English, but extensions to other languages remain challenging. This is why we expand MTEB to propose the first massive benchmark of sentence embeddings for French. We gather 15 existing datasets in an easy-to-use interface and create three new French datasets for a global evaluation of 8 task categories. We compare 51 carefully selected embedding models on a large scale, conduct comprehensive statistical tests, and analyze the correlation between model performance and many of their characteristics. We find out that even if no model is the best on all tasks, large multilingual models pre-trained on sentence similarity perform exceptionally well. Our work comes with open-source code, new datasets and a public leaderboard.
+DA  - 2024/05/30/
+PY  - 2024
+DO  - 10.48550/arXiv.2405.20468
+DP  - arXiv.org
+PB  - arXiv
+ST  - MTEB-French
+UR  - http://arxiv.org/abs/2405.20468
+Y2  - 2026/07/19/00:14:36
+L1  - http://arxiv.org/pdf/2405.20468v2
+L2  - http://arxiv.org/abs/2405.20468
 KW  - Computer Science - Computation and Language
 KW  - Computer Science - Machine Learning
 KW  - Computer Science - Information Retrieval
@@ -2702,272 +2798,87 @@ KW  - Computer Science - Information Retrieval
 ER  - 
 
 TY  - GEN
-TI  - MTEB-French: Resources for French Sentence Embedding Evaluation and Analysis
-AU  - Ciancone, Mathieu
-AU  - Kerboua, Imene
-AU  - Schaeffer, Marion
-AU  - Siblini, Wissam
-AB  - Recently, numerous embedding models have been made available and widely used for various NLP tasks. The Massive Text Embedding Benchmark (MTEB) has primarily simplified the process of choosing a model that performs well for several tasks in English, but extensions to other languages remain challenging. This is why we expand MTEB to propose the first massive benchmark of sentence embeddings for French. We gather 15 existing datasets in an easy-to-use interface and create three new French datasets for a global evaluation of 8 task categories. We compare 51 carefully selected embedding models on a large scale, conduct comprehensive statistical tests, and analyze the correlation between model performance and many of their characteristics. We find out that even if no model is the best on all tasks, large multilingual models pre-trained on sentence similarity perform exceptionally well. Our work comes with open-source code, new datasets and a public leaderboard.
-DA  - 2024/05/30/
-PY  - 2024
-DO  - 10.48550/arXiv.2405.20468
+TI  - MTEB: Massive Text Embedding Benchmark
+AU  - Muennighoff, Niklas
+AU  - Tazi, Nouamane
+AU  - Magne, Loïc
+AU  - Reimers, Nils
+AB  - Text embeddings are commonly evaluated on a small set of datasets from a single task not covering their possible applications to other tasks. It is unclear whether state-of-the-art embeddings on semantic textual similarity (STS) can be equally well applied to other tasks like clustering or reranking. This makes progress in the field difficult to track, as various models are constantly being proposed without proper evaluation. To solve this problem, we introduce the Massive Text Embedding Benchmark (MTEB). MTEB spans 8 embedding tasks covering a total of 58 datasets and 112 languages. Through the benchmarking of 33 models on MTEB, we establish the most comprehensive benchmark of text embeddings to date. We find that no particular text embedding method dominates across all tasks. This suggests that the field has yet to converge on a universal text embedding method and scale it up sufficiently to provide state-of-the-art results on all embedding tasks. MTEB comes with open-source code and a public leaderboard at https://github.com/embeddings-benchmark/mteb.
+DA  - 2022/10/13/
+PY  - 2022
+DO  - 10.48550/arXiv.2210.07316
 DP  - arXiv.org
 PB  - arXiv
-ST  - MTEB-French
-UR  - http://arxiv.org/abs/2405.20468
-Y2  - 2026/07/19/00:14:36
-L1  - http://arxiv.org/pdf/2405.20468v2
-L2  - http://arxiv.org/abs/2405.20468
+ST  - MTEB
+UR  - http://arxiv.org/abs/2210.07316
+Y2  - 2026/07/19/00:11:57
+L1  - http://arxiv.org/pdf/2210.07316v3
+L2  - http://arxiv.org/abs/2210.07316
+N1  - Comment: 24 pages, 14 tables, 6 figures
 KW  - Computer Science - Computation and Language
 KW  - Computer Science - Machine Learning
 KW  - Computer Science - Information Retrieval
 ER  - 
 
-TY  - GEN
-TI  - Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models
-AU  - Zhang, Yanzhao
-AU  - Li, Mingxin
-AU  - Long, Dingkun
-AU  - Zhang, Xin
-AU  - Lin, Huan
-AU  - Yang, Baosong
-AU  - Xie, Pengjun
-AU  - Yang, An
-AU  - Liu, Dayiheng
-AU  - Lin, Junyang
-AU  - Huang, Fei
-AU  - Zhou, Jingren
-AB  - In this work, we introduce the Qwen3 Embedding series, a significant advancement over its predecessor, the GTE-Qwen series, in text embedding and reranking capabilities, built upon the Qwen3 foundation models. Leveraging the Qwen3 LLMs' robust capabilities in multilingual text understanding and generation, our innovative multi-stage training pipeline combines large-scale unsupervised pre-training with supervised fine-tuning on high-quality datasets. Effective model merging strategies further ensure the robustness and adaptability of the Qwen3 Embedding series. During the training process, the Qwen3 LLMs serve not only as backbone models but also play a crucial role in synthesizing high-quality, rich, and diverse training data across multiple domains and languages, thus enhancing the training pipeline. The Qwen3 Embedding series offers a spectrum of model sizes (0.6B, 4B, 8B) for both embedding and reranking tasks, addressing diverse deployment scenarios where users can optimize for either efficiency or effectiveness. Empirical evaluations demonstrate that the Qwen3 Embedding series achieves state-of-the-art results across diverse benchmarks. Notably, it excels on the multilingual evaluation benchmark MTEB for text embedding, as well as in various retrieval tasks, including code retrieval, cross-lingual retrieval and multilingual retrieval. To facilitate reproducibility and promote community-driven research and development, the Qwen3 Embedding models are publicly available under the Apache 2.0 license.
-DA  - 2025/06/05/
-PY  - 2025
-DO  - 10.48550/arXiv.2506.05176
-DP  - arXiv.org
-PB  - arXiv
-ST  - Qwen3 Embedding
-UR  - http://arxiv.org/abs/2506.05176
-Y2  - 2026/07/19/00:15:22
-L1  - http://arxiv.org/pdf/2506.05176v3
-L2  - http://arxiv.org/abs/2506.05176
-KW  - Computer Science - Computation and Language
-ER  - 
-
-TY  - GEN
-TI  - EmbeddingGemma: Powerful and Lightweight Text Representations
-AU  - Vera, Henrique Schechter
-AU  - Dua, Sahil
-AU  - Zhang, Biao
-AU  - Salz, Daniel
-AU  - Mullins, Ryan
-AU  - Panyam, Sindhu Raghuram
-AU  - Smoot, Sara
-AU  - Naim, Iftekhar
-AU  - Zou, Joe
-AU  - Chen, Feiyang
-AU  - Cer, Daniel
-AU  - Lisak, Alice
-AU  - Choi, Min
-AU  - Gonzalez, Lucas
-AU  - Sanseviero, Omar
-AU  - Cameron, Glenn
-AU  - Ballantyne, Ian
-AU  - Black, Kat
-AU  - Chen, Kaifeng
-AU  - Wang, Weiyi
-AU  - Li, Zhe
-AU  - Martins, Gus
-AU  - Lee, Jinhyuk
-AU  - Sherwood, Mark
-AU  - Ji, Juyeong
-AU  - Wu, Renjie
-AU  - Zheng, Jingxiao
-AU  - Singh, Jyotinder
-AU  - Sharma, Abheesht
-AU  - Sreepathihalli, Divyashree
-AU  - Jain, Aashi
-AU  - Elarabawy, Adham
-AU  - Co, A. J.
-AU  - Doumanoglou, Andreas
-AU  - Samari, Babak
-AU  - Hora, Ben
-AU  - Potetz, Brian
-AU  - Kim, Dahun
-AU  - Alfonseca, Enrique
-AU  - Moiseev, Fedor
-AU  - Han, Feng
-AU  - Gomez, Frank Palma
-AU  - Ábrego, Gustavo Hernández
-AU  - Zhang, Hesen
-AU  - Hui, Hui
-AU  - Han, Jay
-AU  - Gill, Karan
-AU  - Chen, Ke
-AU  - Chen, Koert
-AU  - Shanbhogue, Madhuri
-AU  - Boratko, Michael
-AU  - Suganthan, Paul
-AU  - Duddu, Sai Meher Karthik
-AU  - Mariserla, Sandeep
-AU  - Ariafar, Setareh
-AU  - Zhang, Shanfeng
-AU  - Zhang, Shijie
-AU  - Baumgartner, Simon
-AU  - Goenka, Sonam
-AU  - Qiu, Steve
-AU  - Dabral, Tanmaya
-AU  - Walker, Trevor
-AU  - Rao, Vikram
-AU  - Khawaja, Waleed
-AU  - Zhou, Wenlei
-AU  - Ren, Xiaoqi
-AU  - Xia, Ye
-AU  - Chen, Yichang
-AU  - Chen, Yi-Ting
-AU  - Dong, Zhe
-AU  - Ding, Zhongli
-AU  - Visin, Francesco
-AU  - Liu, Gaël
-AU  - Zhang, Jiageng
-AU  - Kenealy, Kathleen
-AU  - Casbon, Michelle
-AU  - Kumar, Ravin
-AU  - Mesnard, Thomas
-AU  - Gleicher, Zach
-AU  - Brick, Cormac
-AU  - Lacombe, Olivier
-AU  - Roberts, Adam
-AU  - Yin, Qin
-AU  - Sung, Yunhsuan
-AU  - Hoffmann, Raphael
-AU  - Warkentin, Tris
-AU  - Joulin, Armand
-AU  - Duerig, Tom
-AU  - Seyedhosseini, Mojtaba
-AB  - We introduce EmbeddingGemma, a new lightweight, open text embedding model based on the Gemma 3 language model family. Our innovative training recipe strategically captures knowledge from larger models via encoder-decoder initialization and geometric embedding distillation. We improve model robustness and expressiveness with a spread-out regularizer, and ensure generalizability by merging checkpoints from varied, optimized mixtures. Evaluated on the Massive Text Embedding Benchmark (MTEB) across multilingual, English, and code domains, EmbeddingGemma (300M) achieves state-of-the-art results. Notably, it outperforms prior top models, both proprietary and open, with fewer than 500M parameters, and provides performance comparable to models double its size, offering an exceptional performance-to-cost ratio. Remarkably, this lead persists when quantizing model weights or truncating embedding outputs. This makes EmbeddingGemma particularly well-suited for low-latency and high-throughput use cases such as on-device applications. We provide ablation studies exploring our key design choices. We release EmbeddingGemma to the community to promote further research.
-DA  - 2025/09/24/
-PY  - 2025
-DO  - 10.48550/arXiv.2509.20354
-DP  - arXiv.org
-PB  - arXiv
-ST  - EmbeddingGemma
-UR  - http://arxiv.org/abs/2509.20354
-Y2  - 2026/07/19/00:16:42
-L1  - http://arxiv.org/pdf/2509.20354v3
-L2  - http://arxiv.org/abs/2509.20354
-N1  - Comment: 18 pages. Models are available in HuggingFace (at https://huggingface.co/collections/google/embeddinggemma-68b9ae3a72a82f0562a80dc4), Kaggle (at https://www.kaggle.com/models/google/embeddinggemma/), and Vertex AI (at https://pantheon.corp.google.com/vertex-ai/publishers/google/model-garden/embeddinggemma)
-KW  - Computer Science - Computation and Language
-KW  - Computer Science - Artificial Intelligence
-ER  - 
-
-TY  - GEN
-TI  - M3-Embedding: Multi-Linguality, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation
-AU  - Chen, Jianlv
-AU  - Xiao, Shitao
-AU  - Zhang, Peitian
-AU  - Luo, Kun
-AU  - Lian, Defu
-AU  - Liu, Zheng
-AB  - In this paper, we introduce a new embedding model called M3-Embedding, which is distinguished for its versatility in \textit{Multi-Linguality}, \textit{Multi-Functionality}, and \textit{Multi-Granularity}. It provides a uniform support for the semantic retrieval of more than 100 working languages. It can simultaneously accomplish the three common retrieval functionalities: dense retrieval, multi-vector retrieval, and sparse retrieval. Besides, it is also capable of processing inputs of different granularities, spanning from short sentences to long documents of up to 8,192 tokens. The effective training of M3-Embedding presents a series of technical contributions. Notably, we propose a novel self-knowledge distillation approach, where the relevance scores from different retrieval functionalities can be integrated as the teacher signal to enhance the training quality. We also optimize the batching strategy, which enables a large batch size and high training throughput to improve the discriminativeness of embeddings. M3-Embedding exhibits a superior performance in our experiment, leading to new state-of-the-art results on multilingual, cross-lingual, and long-document retrieval benchmarks.
-DA  - 2024/02/05/
-PY  - 2024
-DO  - 10.48550/arXiv.2402.03216
-DP  - arXiv.org
-PB  - arXiv
-ST  - M3-Embedding
-UR  - http://arxiv.org/abs/2402.03216
-Y2  - 2026/07/19/00:17:14
-L1  - http://arxiv.org/pdf/2402.03216v5
-L2  - http://arxiv.org/abs/2402.03216
-KW  - Computer Science - Computation and Language
-KW  - Computer Science - Artificial Intelligence
-KW  - Computer Science - Machine Learning
-ER  - 
-
 TY  - ELEC
-TI  - French · MTEB Leaderboard
-AU  - MTEB
-T2  - MTEB Leaderboard
-AB  - 25 tasks, 2 languages, 234 models — French text embedding quality across classification, clustering, pair classification, reranking, retrieval, and semantic similarity, using high-quality native Frenc
-DA  - 2026/07/20/
-PY  - 2026
-LA  - en
-UR  - https://mteb-leaderboard.hf.space/benchmark/MTEB(fra%2C%20v1)
-Y2  - 2026/07/20/15:43:57
-L2  - https://mteb-leaderboard.hf.space/benchmark/MTEB(fra%2C%20v1)
-N1  - <div data-schema-version="9"><p>French text embedding quality across classification, clustering, pair classification, reranking, retrieval, and semantic similarity, using high-quality native French datasets.</p>
-<p></p>
-<p>Périmètre affiché au relevé du 20.07.2026 : 2 langues, 25 tâches, 7 types de tâches, 117 modèles classés. Aucun des candidats pressentis dans le top 8 visible, dominé par la famille F2LLM-v2. Capture PDF du 20.07.2026 archivée au dossier.</p>
-</div>
-ER  - 
-
-TY  - ELEC
-TI  - Multilingual · MTEB Leaderboard
-AU  - MTEB
-T2  - MTEB Leaderboard
-AB  - 131 tasks, 1037 languages, 460 models — MMTEB measures multilingual text embedding quality across 250+ languages spanning classification, clustering, retrieval semantic similarity and more, driven by
-DA  - 2026/07/20/
-PY  - 2026
-LA  - en
-UR  - https://mteb-leaderboard.hf.space/benchmark/MTEB(Multilingual%2C%20v2)
-Y2  - 2026/07/20/15:43:53
-N1  - <div data-schema-version="9"><p>MMTEB measures multilingual text embedding quality across 250+ languages spanning classification, clustering, retrieval, semantic similarity and more, driven by curated community contributions.</p>
-<p></p>
-<p>Périmètre affiché au relevé du 20.07.2026 : 1 037 langues, 131 tâches, 9 types de tâches, 169 modèles classés. Dans le top 8 visible : Qwen3-Embedding-8B au rang 4, Qwen3-Embedding-4B au rang 6. Capture PDF du 20.07.2026 archivée au dossier.</p>
-</div>
-ER  - 
-
-TY  - ELEC
-TI  - qwen3-embedding
+TI  - ministral-3
 AU  - Ollama
 T2  - Ollama
-AB  - Building upon the foundational models of the Qwen3 series, Qwen3 Embedding provides a comprehensive range of text embeddings models in various sizes
+AB  - The Ministral 3 family is designed for edge deployment, capable of running on a wide range of hardware.
 DA  - 2025///
 PY  - 2025
-UR  - https://ollama.com/library/qwen3-embedding
-Y2  - 2026/07/20/07:55:42
-L2  - https://ollama.com/qwen3-embedding
-N1  - <div data-schema-version="9"><p>bibliothèque officielle, variantes 0.6b, 4b, 8b, douze tags ; environ 2,4 millions de téléchargements à ma veille, volatil ; le paquet 0.6b par défaut attendu autour de 640 Mo en F16, à confirmer sur la page de la variante ; métadonnées de la variante : <a href="https://ollama.com/library/qwen3-embedding:0.6b" rel="noopener noreferrer nofollow">https://ollama.com/library/qwen3-embedding:0.6b</a></p>
+UR  - https://ollama.com/library/ministral-3
+Y2  - 2026/07/17/22:15:10
+L2  - https://ollama.com/ministral-3
+ER  - 
+
+TY  - ELEC
+TI  - gemma4
+AU  - Ollama
+T2  - Ollama
+AB  - Gemma 4 models are designed to deliver frontier-level performance at each size. They are well-suited for reasoning, agentic workflows, coding, and multimodal understanding.
+DA  - 2026///
+PY  - 2026
+UR  - https://ollama.com/library/gemma4
+Y2  - 2026/07/17/23:10:59
+L2  - https://ollama.com/gemma4
+N1  - <div data-schema-version="9"><p>famille mise en ligne au printemps 2026, le 12B unifié en juin ; variantes e2b, e4b, 12b, 26b, 31b ; le paquet 12b par défaut est un <strong>Q4_K_M de 7,6 Go</strong> (7,4 Go de poids, 11,9 milliards de paramètres, plus un projecteur de vision de 52 millions), Apache 2.0 ; environ 18,3 millions de téléchargements à mon relevé, volatil ; réflexion commutable par jeton de contrôle ; capture datée.</p>
 </div>
 ER  - 
 
 TY  - ELEC
-TI  - embeddinggemma
+TI  - qwen3.5
 AU  - Ollama
 T2  - Ollama
-AB  - EmbeddingGemma is a 300M parameter embedding model from Google.
-DA  - 2025///
-PY  - 2025
-UR  - https://ollama.com/library/embeddinggemma
-Y2  - 2026/07/20/07:53:59
-L2  - https://ollama.com/embeddinggemma
-N1  - <div data-schema-version="9"><p>bibliothèque officielle, mise en ligne septembre 2025 ; environ 1,3 million de téléchargements à ma veille de juin 2026, compteur volatil à relever ; paquet par défaut attendu autour de 620 Mo, à confirmer à l'écran ; la documentation officielle d'Ollama l'utilise comme exemple canonique de sa fonction d'embeddings.</p>
+AB  - Qwen 3.5 is a family of open-source multimodal models that delivers exceptional utility and performance.
+DA  - 2026///
+PY  - 2026
+UR  - https://ollama.com/library/qwen3.5
+Y2  - 2026/07/17/23:05:41
+L2  - https://ollama.com/qwen3.5
+N1  - <div data-schema-version="9"><p>Bibliothèque officielle d'Ollama, mise en ligne en mars 2026. Variantes disponibles : 0.8b, 2b, 4b, 9b, 27b, 35b, 122b, plus des versions cloud.</p>
+<p></p>
+<p>Le paquet 9b par défaut, celui du comparatif : quantification Q4_K_M, 6,6 Go, 9,65 milliards de paramètres (encodeur de vision intégré, d'où l'écart avec les « 9 milliards » du nom), contexte 262 144 jetons, licence Apache 2.0 jointe au paquet. Métadonnées détaillées de cette variante : <a href="https://ollama.com/library/qwen3.5:9b" rel="noopener noreferrer nofollow">https://ollama.com/library/qwen3.5:9b</a></p>
+<p></p>
+<p>Environ 15,7 millions de téléchargements au relevé du 17.07.2026 (compteur volatil, à revérifier à l'écran avant toute citation). Étiquettes : vision, tools, thinking.</p>
+<p></p>
+<p>Vigilance : la carte Hugging Face de l'éditeur recommande vLLM et SGLang et ne mentionne jamais Ollama ; ce canal officiel existe donc sans être revendiqué par l'éditeur</p>
 </div>
 ER  - 
 
 TY  - ELEC
-TI  - bge-m3
-AU  - Ollama
-T2  - Ollama
-AB  - BGE-M3 is a new model from BAAI distinguished for its versatility in Multi-Functionality, Multi-Linguality, and Multi-Granularity.
-DA  - 2024///
-PY  - 2024
-UR  - https://ollama.com/library/bge-m3
-Y2  - 2026/07/20/07:56:56
-N1  - <div data-schema-version="9"><p>bibliothèque officielle, mise en ligne 2024 ; environ 4,7 millions de téléchargements à ma veille, le plus téléchargé des embeddings multilingues de la bibliothèque, volatil ; paquet 1,2 Go en F16, contexte 8K.</p>
-</div>
-ER  - 
-
-TY  - COMP
-TI  - bge-m3
-AU  - BAAI
-AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
-DA  - 2024///
-PY  - 2024
-DP  - Hugging Face
-ST  - bge-m3
-UR  - https://huggingface.co/BAAI/bge-m3
-Y2  - 2026/07/20/07:47:34
-L2  - https://huggingface.co/BAAI/bge-m3
-N1  - <div data-schema-version="9"><p>568 millions de paramètres, base XLM-RoBERTa ; 100+ langues ; contexte 8 192 jetons ; dimensions 1 024 ; trois modes de représentation (dense, sparse, multi-vecteur), le projet n'utilisera que le dense ; licence MIT ; article associé arXiv 2402.03216 (import n° 6 du socle).</p>
+TI  - Classement - compar:IA, le comparateur d'IA conversationnelles
+AU  - compar:IA
+T2  - compar:IA
+AB  - compar:IA est un outil permettant de comparer à l’aveugle différents modèles d'IA conversationnelle pour sensibiliser aux enjeux de l'IA générative (biais, impact environmental) et constituer des jeux de données de préférence en français.
+DA  - 2026///
+PY  - 2026
+LA  - fr
+ST  - Classement - compar
+UR  - https://comparia.beta.gouv.fr/ranking
+Y2  - 2026/07/17/
+L2  - https://comparia.beta.gouv.fr/ranking
+N1  - <div data-schema-version="9"><p>export CSV du 18.07.2026 archivé au dossier</p>
 </div>
 ER  - 
 
@@ -3001,64 +2912,158 @@ N1  - <div data-schema-version="9"><p>0,6 milliard de paramètres, série 0.6B/4
 </div>
 ER  - 
 
-TY  - GEN
-TI  - Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs
-AU  - Malkov, Yu A.
-AU  - Yashunin, D. A.
-AB  - We present a new approach for the approximate K-nearest neighbor search based on navigable small world graphs with controllable hierarchy (Hierarchical NSW, HNSW). The proposed solution is fully graph-based, without any need for additional search structures, which are typically used at the coarse search stage of the most proximity graph techniques. Hierarchical NSW incrementally builds a multi-layer structure consisting from hierarchical set of proximity graphs (layers) for nested subsets of the stored elements. The maximum layer in which an element is present is selected randomly with an exponentially decaying probability distribution. This allows producing graphs similar to the previously studied Navigable Small World (NSW) structures while additionally having the links separated by their characteristic distance scales. Starting search from the upper layer together with utilizing the scale separation boosts the performance compared to NSW and allows a logarithmic complexity scaling. Additional employment of a heuristic for selecting proximity graph neighbors significantly increases performance at high recall and in case of highly clustered data. Performance evaluation has demonstrated that the proposed general metric space search index is able to strongly outperform previous opensource state-of-the-art vector-only approaches. Similarity of the algorithm to the skip list structure allows straightforward balanced distributed implementation.
-DA  - 2016/03/30/
-PY  - 2016
-DO  - 10.48550/arXiv.1603.09320
-DP  - arXiv.org
-PB  - arXiv
-UR  - http://arxiv.org/abs/1603.09320
-Y2  - 2026/08/01/15:00:00
-L1  - http://arxiv.org/pdf/1603.09320v4
-L2  - http://arxiv.org/abs/1603.09320
-N1  - Comment: 13 pages, 15 figures
-KW  - Computer Science - Information Retrieval
-KW  - Computer Science - Computer Vision and Pattern Recognition
-KW  - Computer Science - Data Structures and Algorithms
-KW  - Computer Science - Social and Information Networks
-ER  - 
-
-TY  - GEN
-TI  - The Faiss library
-AU  - Douze, Matthijs
-AU  - Guzhva, Alexandr
-AU  - Deng, Chengqi
-AU  - Johnson, Jeff
-AU  - Szilvasy, Gergely
-AU  - Mazaré, Pierre-Emmanuel
-AU  - Lomeli, Maria
-AU  - Hosseini, Lucas
-AU  - Jégou, Hervé
-AB  - Vector databases typically manage large collections of embedding vectors. Currently, AI applications are growing rapidly, and so is the number of embeddings that need to be stored and indexed. The Faiss library is dedicated to vector similarity search, a core functionality of vector databases. Faiss is a toolkit of indexing methods and related primitives used to search, cluster, compress and transform vectors. This paper describes the trade-off space of vector search and the design principles of Faiss in terms of structure, approach to optimization and interfacing. We benchmark key features of the library and discuss a few selected applications to highlight its broad applicability.
-DA  - 2024/01/16/
+TY  - COMP
+TI  - bge-m3
+AU  - BAAI
+AB  - We’re on a journey to advance and democratize artificial intelligence through open source and open science.
+DA  - 2024///
 PY  - 2024
-DO  - 10.48550/arXiv.2401.08281
-DP  - arXiv.org
-PB  - arXiv
-UR  - http://arxiv.org/abs/2401.08281
-Y2  - 2026/08/01/15:07:24
-L1  - http://arxiv.org/pdf/2401.08281v4
-L2  - http://arxiv.org/abs/2401.08281
-KW  - Computer Science - Machine Learning
-KW  - Computer Science - Software Engineering
-KW  - Computer Science - Computer Vision and Pattern Recognition
+DP  - Hugging Face
+ST  - bge-m3
+UR  - https://huggingface.co/BAAI/bge-m3
+Y2  - 2026/07/20/07:47:34
+L2  - https://huggingface.co/BAAI/bge-m3
+N1  - <div data-schema-version="9"><p>568 millions de paramètres, base XLM-RoBERTa ; 100+ langues ; contexte 8 192 jetons ; dimensions 1 024 ; trois modes de représentation (dense, sparse, multi-vecteur), le projet n'utilisera que le dense ; licence MIT ; article associé arXiv 2402.03216 (import n° 6 du socle).</p>
+</div>
 ER  - 
 
 TY  - ELEC
-TI  - Introduction
-AU  - Chroma
-T2  - Chroma Docs
-AB  - Chroma is the open-source data infrastructure for AI. It comes with everything you need to get started built-in.
+TI  - embeddinggemma
+AU  - Ollama
+T2  - Ollama
+AB  - EmbeddingGemma is a 300M parameter embedding model from Google.
+DA  - 2025///
+PY  - 2025
+UR  - https://ollama.com/library/embeddinggemma
+Y2  - 2026/07/20/07:53:59
+L2  - https://ollama.com/embeddinggemma
+N1  - <div data-schema-version="9"><p>bibliothèque officielle, mise en ligne septembre 2025 ; environ 1,3 million de téléchargements à ma veille de juin 2026, compteur volatil à relever ; paquet par défaut attendu autour de 620 Mo, à confirmer à l'écran ; la documentation officielle d'Ollama l'utilise comme exemple canonique de sa fonction d'embeddings.</p>
+</div>
+ER  - 
+
+TY  - ELEC
+TI  - qwen3-embedding
+AU  - Ollama
+T2  - Ollama
+AB  - Building upon the foundational models of the Qwen3 series, Qwen3 Embedding provides a comprehensive range of text embeddings models in various sizes
+DA  - 2025///
+PY  - 2025
+UR  - https://ollama.com/library/qwen3-embedding
+Y2  - 2026/07/20/07:55:42
+L2  - https://ollama.com/qwen3-embedding
+N1  - <div data-schema-version="9"><p>bibliothèque officielle, variantes 0.6b, 4b, 8b, douze tags ; environ 2,4 millions de téléchargements à ma veille, volatil ; le paquet 0.6b par défaut attendu autour de 640 Mo en F16, à confirmer sur la page de la variante ; métadonnées de la variante : <a href="https://ollama.com/library/qwen3-embedding:0.6b" rel="noopener noreferrer nofollow">https://ollama.com/library/qwen3-embedding:0.6b</a></p>
+</div>
+ER  - 
+
+TY  - ELEC
+TI  - bge-m3
+AU  - Ollama
+T2  - Ollama
+AB  - BGE-M3 is a new model from BAAI distinguished for its versatility in Multi-Functionality, Multi-Linguality, and Multi-Granularity.
+DA  - 2024///
+PY  - 2024
+UR  - https://ollama.com/library/bge-m3
+Y2  - 2026/07/20/07:56:56
+N1  - <div data-schema-version="9"><p>bibliothèque officielle, mise en ligne 2024 ; environ 4,7 millions de téléchargements à ma veille, le plus téléchargé des embeddings multilingues de la bibliothèque, volatil ; paquet 1,2 Go en F16, contexte 8K.</p>
+</div>
+ER  - 
+
+TY  - ELEC
+TI  - Multilingual · MTEB Leaderboard
+AU  - MTEB
+T2  - MTEB Leaderboard
+AB  - 131 tasks, 1037 languages, 460 models — MMTEB measures multilingual text embedding quality across 250+ languages spanning classification, clustering, retrieval semantic similarity and more, driven by
+DA  - 2026/07/20/
+PY  - 2026
+LA  - en
+UR  - https://mteb-leaderboard.hf.space/benchmark/MTEB(Multilingual%2C%20v2)
+Y2  - 2026/07/20/15:43:53
+N1  - <div data-schema-version="9"><p>MMTEB measures multilingual text embedding quality across 250+ languages spanning classification, clustering, retrieval, semantic similarity and more, driven by curated community contributions.</p>
+<p></p>
+<p>Périmètre affiché au relevé du 20.07.2026 : 1 037 langues, 131 tâches, 9 types de tâches, 169 modèles classés. Dans le top 8 visible : Qwen3-Embedding-8B au rang 4, Qwen3-Embedding-4B au rang 6. Capture PDF du 20.07.2026 archivée au dossier.</p>
+</div>
+ER  - 
+
+TY  - ELEC
+TI  - French · MTEB Leaderboard
+AU  - MTEB
+T2  - MTEB Leaderboard
+AB  - 25 tasks, 2 languages, 234 models — French text embedding quality across classification, clustering, pair classification, reranking, retrieval, and semantic similarity, using high-quality native Frenc
+DA  - 2026/07/20/
+PY  - 2026
+LA  - en
+UR  - https://mteb-leaderboard.hf.space/benchmark/MTEB(fra%2C%20v1)
+Y2  - 2026/07/20/15:43:57
+L2  - https://mteb-leaderboard.hf.space/benchmark/MTEB(fra%2C%20v1)
+N1  - <div data-schema-version="9"><p>French text embedding quality across classification, clustering, pair classification, reranking, retrieval, and semantic similarity, using high-quality native French datasets.</p>
+<p></p>
+<p>Périmètre affiché au relevé du 20.07.2026 : 2 langues, 25 tâches, 7 types de tâches, 117 modèles classés. Aucun des candidats pressentis dans le top 8 visible, dominé par la famille F2LLM-v2. Capture PDF du 20.07.2026 archivée au dossier.</p>
+</div>
+ER  - 
+
+TY  - ELEC
+TI  - FAISS
+AU  - deepset
+T2  - Haystack
+AB  - A Document Store for vector search using FAISS
 DA  - 2026///
 PY  - 2026
 LA  - en
-UR  - https://docs.trychroma.com/docs/overview/introduction
-Y2  - 2026/08/01/15:08:42
-L2  - https://docs.trychroma.com/docs/overview/introduction
+UR  - https://haystack.deepset.ai/integrations/faiss/
+Y2  - 2026/08/01/15:21:14
+L2  - https://haystack.deepset.ai/integrations/faiss/
+ER  - 
+
+TY  - ELEC
+TI  - Qdrant
+AU  - deepset
+T2  - Haystack
+AB  - Use the Qdrant vector database with Haystack
+DA  - 2026///
+PY  - 2026
+LA  - en
+UR  - https://haystack.deepset.ai/integrations/qdrant-document-store/
+Y2  - 2026/08/01/15:20:31
+L2  - https://haystack.deepset.ai/integrations/qdrant-document-store/
+ER  - 
+
+TY  - ELEC
+TI  - Chroma
+AU  - deepset
+T2  - Haystack
+AB  - A Document Store for storing and retrieval from Chroma
+DA  - 2026///
+PY  - 2026
+LA  - en
+UR  - https://haystack.deepset.ai/integrations/chroma-documentstore/
+Y2  - 2026/08/01/15:19:18
+L2  - https://haystack.deepset.ai/integrations/chroma-documentstore/
+ER  - 
+
+TY  - COMP
+TI  - facebookresearch/faiss
+AU  - Meta AI
+AB  - A library for efficient similarity search and clustering of dense vectors.
+DA  - 2026/08/01/
+PY  - 2026
+DP  - GitHub
+LA  - C++
+PB  - Meta Research
+UR  - https://github.com/facebookresearch/faiss
+Y2  - 2026/08/01/15:18:26
+ER  - 
+
+TY  - COMP
+TI  - qdrant/qdrant
+AU  - Qdrant
+AB  - Qdrant - High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI. Also available in the cloud https://cloud.qdrant.io/
+DA  - 2026/08/01/
+PY  - 2026
+DP  - GitHub
+LA  - Rust
+PB  - Qdrant
+UR  - https://github.com/qdrant/qdrant
+Y2  - 2026/08/01/15:16:54
 ER  - 
 
 TY  - COMP
@@ -3087,82 +3092,77 @@ Y2  - 2026/08/01/15:16:16
 L2  - https://qdrant.tech/documentation/
 ER  - 
 
-TY  - COMP
-TI  - qdrant/qdrant
-AU  - Qdrant
-AB  - Qdrant - High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI. Also available in the cloud https://cloud.qdrant.io/
-DA  - 2026/08/01/
-PY  - 2026
-DP  - GitHub
-LA  - Rust
-PB  - Qdrant
-UR  - https://github.com/qdrant/qdrant
-Y2  - 2026/08/01/15:16:54
-ER  - 
-
-TY  - COMP
-TI  - facebookresearch/faiss
-AU  - Meta AI
-AB  - A library for efficient similarity search and clustering of dense vectors.
-DA  - 2026/08/01/
-PY  - 2026
-DP  - GitHub
-LA  - C++
-PB  - Meta Research
-UR  - https://github.com/facebookresearch/faiss
-Y2  - 2026/08/01/15:18:26
-ER  - 
-
 TY  - ELEC
-TI  - Chroma
-AU  - deepset
-T2  - Haystack
-AB  - A Document Store for storing and retrieval from Chroma
+TI  - Introduction
+AU  - Chroma
+T2  - Chroma Docs
+AB  - Chroma is the open-source data infrastructure for AI. It comes with everything you need to get started built-in.
 DA  - 2026///
 PY  - 2026
 LA  - en
-UR  - https://haystack.deepset.ai/integrations/chroma-documentstore/
-Y2  - 2026/08/01/15:19:18
-L2  - https://haystack.deepset.ai/integrations/chroma-documentstore/
+UR  - https://docs.trychroma.com/docs/overview/introduction
+Y2  - 2026/08/01/15:08:42
+L2  - https://docs.trychroma.com/docs/overview/introduction
+ER  - 
+
+TY  - GEN
+TI  - The Faiss library
+AU  - Douze, Matthijs
+AU  - Guzhva, Alexandr
+AU  - Deng, Chengqi
+AU  - Johnson, Jeff
+AU  - Szilvasy, Gergely
+AU  - Mazaré, Pierre-Emmanuel
+AU  - Lomeli, Maria
+AU  - Hosseini, Lucas
+AU  - Jégou, Hervé
+AB  - Vector databases typically manage large collections of embedding vectors. Currently, AI applications are growing rapidly, and so is the number of embeddings that need to be stored and indexed. The Faiss library is dedicated to vector similarity search, a core functionality of vector databases. Faiss is a toolkit of indexing methods and related primitives used to search, cluster, compress and transform vectors. This paper describes the trade-off space of vector search and the design principles of Faiss in terms of structure, approach to optimization and interfacing. We benchmark key features of the library and discuss a few selected applications to highlight its broad applicability.
+DA  - 2024/01/16/
+PY  - 2024
+DO  - 10.48550/arXiv.2401.08281
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/2401.08281
+Y2  - 2026/08/01/15:07:24
+L1  - http://arxiv.org/pdf/2401.08281v4
+L2  - http://arxiv.org/abs/2401.08281
+KW  - Computer Science - Machine Learning
+KW  - Computer Science - Software Engineering
+KW  - Computer Science - Computer Vision and Pattern Recognition
+ER  - 
+
+TY  - GEN
+TI  - Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs
+AU  - Malkov, Yu A.
+AU  - Yashunin, D. A.
+AB  - We present a new approach for the approximate K-nearest neighbor search based on navigable small world graphs with controllable hierarchy (Hierarchical NSW, HNSW). The proposed solution is fully graph-based, without any need for additional search structures, which are typically used at the coarse search stage of the most proximity graph techniques. Hierarchical NSW incrementally builds a multi-layer structure consisting from hierarchical set of proximity graphs (layers) for nested subsets of the stored elements. The maximum layer in which an element is present is selected randomly with an exponentially decaying probability distribution. This allows producing graphs similar to the previously studied Navigable Small World (NSW) structures while additionally having the links separated by their characteristic distance scales. Starting search from the upper layer together with utilizing the scale separation boosts the performance compared to NSW and allows a logarithmic complexity scaling. Additional employment of a heuristic for selecting proximity graph neighbors significantly increases performance at high recall and in case of highly clustered data. Performance evaluation has demonstrated that the proposed general metric space search index is able to strongly outperform previous opensource state-of-the-art vector-only approaches. Similarity of the algorithm to the skip list structure allows straightforward balanced distributed implementation.
+DA  - 2016/03/30/
+PY  - 2016
+DO  - 10.48550/arXiv.1603.09320
+DP  - arXiv.org
+PB  - arXiv
+UR  - http://arxiv.org/abs/1603.09320
+Y2  - 2026/08/01/15:00:00
+L1  - http://arxiv.org/pdf/1603.09320v4
+L2  - http://arxiv.org/abs/1603.09320
+N1  - Comment: 13 pages, 15 figures
+KW  - Computer Science - Information Retrieval
+KW  - Computer Science - Computer Vision and Pattern Recognition
+KW  - Computer Science - Data Structures and Algorithms
+KW  - Computer Science - Social and Information Networks
 ER  - 
 
 TY  - ELEC
-TI  - Qdrant
-AU  - deepset
-T2  - Haystack
-AB  - Use the Qdrant vector database with Haystack
-DA  - 2026///
-PY  - 2026
-LA  - en
-UR  - https://haystack.deepset.ai/integrations/qdrant-document-store/
-Y2  - 2026/08/01/15:20:31
-L2  - https://haystack.deepset.ai/integrations/qdrant-document-store/
-ER  - 
-
-TY  - ELEC
-TI  - FAISS
-AU  - deepset
-T2  - Haystack
-AB  - A Document Store for vector search using FAISS
-DA  - 2026///
-PY  - 2026
-LA  - en
-UR  - https://haystack.deepset.ai/integrations/faiss/
-Y2  - 2026/08/01/15:21:14
-L2  - https://haystack.deepset.ai/integrations/faiss/
-ER  - 
-
-TY  - COMP
-TI  - vibrantlabsai/ragas
+TI  - List of available metrics - Ragas
 AU  - Ragas
-AB  - Supercharge Your LLM Application Evaluations 🚀
+T2  - Ragas
+AB  - Evaluation framework for your AI Application
 DA  - 2026/08/04/
 PY  - 2026
-DP  - GitHub
-LA  - Python
-PB  - Vibrant Labs
-UR  - https://github.com/vibrantlabsai/ragas
-Y2  - 2026/08/04/15:11:25
+LA  - en
+UR  - https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
+Y2  - 2026/08/04/15:10:30
+L2  - https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
 ER  - 
 
 TY  - ELEC
@@ -3178,17 +3178,17 @@ Y2  - 2026/08/04/15:11:01
 L2  - https://docs.ragas.io/en/stable/howtos/customizations/customize_models/
 ER  - 
 
-TY  - ELEC
-TI  - List of available metrics - Ragas
+TY  - COMP
+TI  - vibrantlabsai/ragas
 AU  - Ragas
-T2  - Ragas
-AB  - Evaluation framework for your AI Application
+AB  - Supercharge Your LLM Application Evaluations 🚀
 DA  - 2026/08/04/
 PY  - 2026
-LA  - en
-UR  - https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
-Y2  - 2026/08/04/15:10:30
-L2  - https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
+DP  - GitHub
+LA  - Python
+PB  - Vibrant Labs
+UR  - https://github.com/vibrantlabsai/ragas
+Y2  - 2026/08/04/15:11:25
 ER  - 
 
 TY  - RPRT
@@ -3216,18 +3216,18 @@ Y2  - 2026/08/06/14:26:28
 ER  - 
 
 TY  - COMP
-TI  - open-webui/open-webui
-AU  - Open WebUI
-AB  - User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
+TI  - adbar/trafilatura
+AU  - Barbaresi, Adrien
+AB  - Python & Command-line tool to gather text and metadata on the Web: Crawling, scraping, extraction, output as CSV, JSON, HTML, MD, TXT, XML
 
-Interface de conversation auto-hébergée pour LLM (Ollama et API compatibles OpenAI), avec moteur RAG intégré.
-DA  - 2026/08/06/
+Outil Python d'extraction du contenu principal et des métadonnées de pages web.
+DA  - 2026/08/10/
 PY  - 2026
 DP  - GitHub
 LA  - Python
-PB  - Open WebUI
-UR  - https://github.com/open-webui/open-webui
-Y2  - 2026/08/06/17:50:45
+ST  - Trafilatura
+UR  - https://github.com/adbar/trafilatura
+Y2  - 2026/08/10/18:45:49
 ER  - 
 
 TY  - COMP
@@ -3246,21 +3246,6 @@ Y2  - 2026/08/06/17:54:22
 ER  - 
 
 TY  - COMP
-TI  - caddyserver/caddy
-AU  - Caddy
-AB  - Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
-
-Serveur web multiplateforme avec HTTPS automatique par défaut ; configuration par Caddyfile.
-DA  - 2026/08/06/
-PY  - 2026
-DP  - GitHub
-LA  - Go
-PB  - ZeroSSL
-UR  - https://github.com/caddyserver/caddy
-Y2  - 2026/08/06/18:28:38
-ER  - 
-
-TY  - COMP
 TI  - nginx/nginx
 AU  - Nginx
 AB  - The official NGINX Open Source repository.
@@ -3276,17 +3261,139 @@ Y2  - 2026/08/06/18:29:58
 ER  - 
 
 TY  - COMP
-TI  - adbar/trafilatura
-AU  - Barbaresi, Adrien
-AB  - Python & Command-line tool to gather text and metadata on the Web: Crawling, scraping, extraction, output as CSV, JSON, HTML, MD, TXT, XML
+TI  - caddyserver/caddy
+AU  - Caddy
+AB  - Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
 
-Outil Python d'extraction du contenu principal et des métadonnées de pages web.
-DA  - 2026/08/10/
+Serveur web multiplateforme avec HTTPS automatique par défaut ; configuration par Caddyfile.
+DA  - 2026/08/06/
+PY  - 2026
+DP  - GitHub
+LA  - Go
+PB  - ZeroSSL
+UR  - https://github.com/caddyserver/caddy
+Y2  - 2026/08/06/18:28:38
+ER  - 
+
+TY  - COMP
+TI  - open-webui/open-webui
+AU  - Open WebUI
+AB  - User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
+
+Interface de conversation auto-hébergée pour LLM (Ollama et API compatibles OpenAI), avec moteur RAG intégré.
+DA  - 2026/08/06/
 PY  - 2026
 DP  - GitHub
 LA  - Python
-ST  - Trafilatura
-UR  - https://github.com/adbar/trafilatura
-Y2  - 2026/08/10/18:45:49
+PB  - Open WebUI
+UR  - https://github.com/open-webui/open-webui
+Y2  - 2026/08/06/17:50:45
+ER  - 
+
+TY  - ELEC
+TI  - Nouveau chatbot IA de fr.ch : faciliter l’accès à l’information publique
+AU  - Chancellerie de l'Etat de Fribourg
+T2  - fr.ch
+AB  - Un outil innovant, développé à Fribourg et hébergé en Suisse, permet désormais à la population d’accéder rapidement aux informations officielles du canton. Disponible dès aujourd’hui, le chatbot IA de fr.ch propose des réponses précises, fondées sur des sources fiables et vérifiées.
+DA  - 2026/03/13/
+PY  - 2026
+LA  - fr
+ST  - Nouveau chatbot IA de fr.ch
+UR  - https://www.fr.ch/cha/actualites/nouveau-chatbot-ia-de-frch-faciliter-lacces-a-linformation-publique
+Y2  - 2026/08/28/11:45:05
+L2  - https://www.fr.ch/cha/actualites/nouveau-chatbot-ia-de-frch-faciliter-lacces-a-linformation-publique
+ER  - 
+
+TY  - BLOG
+TI  - Un chatbot IA souverain pour l'Etat de Fribourg
+AU  - Dénervaud, Thomas
+T2  - Liip
+DA  - 2026/06/15/
+PY  - 2026
+LA  - fr
+UR  - https://www.liip.ch/fr/blog/un-chatbot-ia-souverain-pour-l-etat-de-fribourg
+Y2  - 2026/08/28/11:47:27
+L2  - https://www.liip.ch/fr/blog/un-chatbot-ia-souverain-pour-l-etat-de-fribourg
+ER  - 
+
+TY  - NEWS
+TI  - Des chatbots «sauvages» créés pour les villes suisses
+AU  - Busslinger, Boris
+T2  - Le Temps
+AB  - Certaines villes suisses disposent désormais de chatbots qui répondent aux questions concernant l’administration communale. Développé par la société Liip, le service intéresse déjà en plus haut lieu
+DA  - 2024/01/05/
+PY  - 2024
+DP  - www.letemps.ch
+LA  - fr
+SN  - 1423-3967
+UR  - https://www.letemps.ch/cyber/des-chatbots-sauvages-crees-pour-les-villes-suisses
+Y2  - 2026/08/28/11:50:22
+L2  - https://www.letemps.ch/cyber/des-chatbots-sauvages-crees-pour-les-villes-suisses
+ER  - 
+
+TY  - ELEC
+TI  - IA : connaissez-vous Albert ?
+AU  - Gouvernement français
+T2  - info.gouv.fr
+AB  - Le 23 avril 2024, à la maison France services de Sceaux (Hauts-de-Seine) le Premier ministre Gabriel Attal, présentait « Albert », une intelligence artificielle en charge de la transformation numérique de l’État.
+DA  - 2024/05/22/
+PY  - 2024
+LA  - fr
+ST  - IA
+UR  - https://www.info.gouv.fr/actualite/ia-connaissez-vous-albert
+Y2  - 2026/08/28/11:51:22
+L2  - https://www.info.gouv.fr/actualite/ia-connaissez-vous-albert
+ER  - 
+
+TY  - BLOG
+TI  - Albert, l’outil d’IA générative, ne sera pas généralisé
+AU  - Agence France-Presse
+T2  - weka.fr
+AB  - L'outil d'intelligence artificielle (IA) générative Albert, développé en interne par l'administration française et expérimenté dans 48 maisons France Services, ne sera pas généralisé "dans sa forme actuelle".
+DA  - 2026/01/12/
+PY  - 2026
+LA  - fr-FR
+ST  - DINUM
+UR  - https://www.weka.fr/actualite/administration/article/albert-l-outil-d-ia-generative-experimente-a-france-services-ne-sera-pas-generalise-209194/
+Y2  - 2026/08/28/11:52:50
+L2  - https://www.weka.fr/actualite/administration/article/albert-l-outil-d-ia-generative-experimente-a-france-services-ne-sera-pas-generalise-209194/
+ER  - 
+
+TY  - ELEC
+TI  - Intelligence artificielle : Genève mise sur la collaboration
+AU  - État de Genève
+T2  - ge.ch
+AB  - En unissant leurs expertises, l’office cantonal des systèmes d’information et du numérique (OCSIN) et ses partenaires accélèrent les projets d’intelligence artificielle au bénéfice des services publics. Comment ces collaborations se traduisent-elles concrètement et pour quels avantages ?
+DA  - 2026/08/25/
+PY  - 2026
+LA  - fr
+ST  - Intelligence artificielle
+UR  - https://www.ge.ch/node/44214
+Y2  - 2026/08/28/11:55:52
+L2  - https://www.ge.ch/node/44214
+ER  - 
+
+TY  - ELEC
+TI  - Explorer les données du territoire à l'aide d'un assistant conversationnel
+AU  - État de Genève (SITG)
+T2  - sitg.ge.ch
+DA  - 2026/04/27/
+PY  - 2026
+UR  - https://sitg.ge.ch/actualites/experimentation-dun-assistant-conversationnel-pour-explorer-les-donnees-du-territoire
+Y2  - 2026/08/28/11:56:51
+L2  - https://sitg.ge.ch/actualites/experimentation-dun-assistant-conversationnel-pour-explorer-les-donnees-du-territoire
+ER  - 
+
+TY  - ELEC
+TI  - La Belgique encadre le déploiement de l’IA dans les services publics
+AU  - Lokmane-Khelil, Samia
+T2  - acteurspublics.fr
+AB  - Les utilisateurs de services publics en ligne devront être informés lors d'échanges avec une intelligence artificielle. De plus, le texte garantit à chaque usager le droit d’interagir avec un humain au lieu d’une IA.
+DA  - 2025/09/08/
+PY  - 2025
+LA  - fr-FR
+UR  - https://acteurspublics.fr/articles/la-belgique-encadre-le-deploiement-de-lia-dans-les-services-publics/
+Y2  - 2026/08/28/11:58:52
+L2  - https://acteurspublics.fr/articles/la-belgique-encadre-le-deploiement-de-lia-dans-les-services-publics/
 ER  - 
 

@@ -1,0 +1,50 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <text x="500" y="38" text-anchor="middle" font-size="16" fill="#334155">Six regards sur l'environnement du projet.</text>
+
+  <rect x="40" y="70" width="290" height="230" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <circle cx="72" cy="102" r="14" fill="#1D4ED8"/><text x="72" y="107" text-anchor="middle" font-size="14.5" font-weight="700" fill="#FFFFFF">P</text>
+  <text x="96" y="107" font-size="16" font-weight="700" fill="#1D4ED8">Politique</text>
+  <text x="60" y="142" font-size="14" fill="#1E3A8A">Stratégie cantonale de</text>
+  <text x="60" y="162" font-size="14" fill="#1E3A8A">souveraineté numérique ;</text>
+  <text x="60" y="182" font-size="14" fill="#1E3A8A">collaborations publiques</text>
+  <text x="60" y="202" font-size="14" fill="#1E3A8A">autour de l'IA (OCSIN).</text>
+
+  <rect x="355" y="70" width="290" height="230" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="387" cy="102" r="14" fill="#B45309"/><text x="387" y="107" text-anchor="middle" font-size="14.5" font-weight="700" fill="#FFFFFF">E</text>
+  <text x="411" y="107" font-size="16" font-weight="700" fill="#92400E">Économique</text>
+  <text x="375" y="142" font-size="14" fill="#78350F">Serveur modeste à coût fixe ;</text>
+  <text x="375" y="162" font-size="14" fill="#78350F">pas d'API facturée à l'usage ;</text>
+  <text x="375" y="182" font-size="14" fill="#78350F">loin du budget d'une</text>
+  <text x="375" y="202" font-size="14" fill="#78350F">solution d'agence.</text>
+
+  <rect x="670" y="70" width="290" height="230" rx="12" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <circle cx="702" cy="102" r="14" fill="#6D28D9"/><text x="702" y="107" text-anchor="middle" font-size="14.5" font-weight="700" fill="#FFFFFF">S</text>
+  <text x="726" y="107" font-size="16" font-weight="700" fill="#6D28D9">Socioculturel</text>
+  <text x="690" y="142" font-size="14" fill="#5B21B6">Public rebuté par la</text>
+  <text x="690" y="162" font-size="14" fill="#5B21B6">recherche en ligne ;</text>
+  <text x="690" y="182" font-size="14" fill="#5B21B6">vulnérabilité numérique large</text>
+  <text x="690" y="202" font-size="14" fill="#5B21B6">(40 % des citoyens en Belgique).</text>
+
+  <rect x="40" y="330" width="290" height="230" rx="12" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/>
+  <circle cx="72" cy="362" r="14" fill="#334155"/><text x="72" y="367" text-anchor="middle" font-size="14.5" font-weight="700" fill="#FFFFFF">T</text>
+  <text x="96" y="367" font-size="16" font-weight="700" fill="#334155">Technologique</text>
+  <text x="60" y="402" font-size="14" fill="#475569">Modèles ouverts arrivés</text>
+  <text x="60" y="422" font-size="14" fill="#475569">à maturité ; briques open</text>
+  <text x="60" y="442" font-size="14" fill="#475569">source éprouvées (Haystack,</text>
+  <text x="60" y="462" font-size="14" fill="#475569">Ollama, Chroma).</text>
+
+  <rect x="355" y="330" width="290" height="230" rx="12" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+  <circle cx="387" cy="362" r="14" fill="#047857"/><text x="387" y="367" text-anchor="middle" font-size="14.5" font-weight="700" fill="#FFFFFF">E</text>
+  <text x="411" y="367" font-size="16" font-weight="700" fill="#047857">Environnemental</text>
+  <text x="375" y="402" font-size="14" fill="#065F46">Inférence sur processeur,</text>
+  <text x="375" y="422" font-size="14" fill="#065F46">sans ferme de calcul dédiée :</text>
+  <text x="375" y="442" font-size="14" fill="#065F46">un choix sobre.</text>
+
+  <rect x="670" y="330" width="290" height="230" rx="12" fill="#FFF1F2" stroke="#F43F5E" stroke-width="2"/>
+  <circle cx="702" cy="362" r="14" fill="#BE123C"/><text x="702" y="367" text-anchor="middle" font-size="14.5" font-weight="700" fill="#FFFFFF">L</text>
+  <text x="726" y="367" font-size="16" font-weight="700" fill="#BE123C">Légal</text>
+  <text x="690" y="402" font-size="14" fill="#9F1239">Cadre cantonal sur l'IA</text>
+  <text x="690" y="422" font-size="14" fill="#9F1239">publique ; exigences à</text>
+  <text x="690" y="442" font-size="14" fill="#9F1239">anticiper : transparence,</text>
+  <text x="690" y="462" font-size="14" fill="#9F1239">droit d'obtenir un humain.</text>
+</svg>

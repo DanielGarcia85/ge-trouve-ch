@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Ge-Trouve : jaune et rouge genevois, fondu intermédiaire sur la diagonale, loupe + coche noires -->
+  <defs>
+    <linearGradient id="geneve" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2B705"/>
+      <stop offset="0.36" stop-color="#F2B705"/>
+      <stop offset="0.76" stop-color="#C8102E"/>
+      <stop offset="1" stop-color="#C8102E"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="url(#geneve)"/>
+  <circle cx="222" cy="222" r="110" fill="none" stroke="#1F2430" stroke-width="52"/>
+  <line x1="303" y1="303" x2="398" y2="398" stroke="#1F2430" stroke-width="56" stroke-linecap="round"/>
+  <polyline points="166,226 206,266 274,190" fill="none" stroke="#1F2430" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

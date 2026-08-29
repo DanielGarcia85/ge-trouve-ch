@@ -65,7 +65,16 @@ def interroger(question, sur_jeton):
 
 
 # ── Configuration de la page et styles ─────────────────────────────────
-st.set_page_config(page_title="Ge-Trouve", layout="centered", initial_sidebar_state="expanded")
+# Chemin du favicon construit depuis ce fichier (pas le répertoire de lancement) : fonctionne
+# en local (lancé depuis la racine) comme en conteneur (/app). Repli sur l'icône par défaut de
+# Streamlit si l'actif est absent.
+FAVICON = Path(__file__).resolve().parent / "assets" / "logo_ge-trouve.png"
+st.set_page_config(
+    page_title="Ge-Trouve",
+    page_icon=str(FAVICON) if FAVICON.exists() else None,
+    layout="centered",
+    initial_sidebar_state="expanded",
+)
 
 st.markdown(
     """
@@ -81,7 +90,7 @@ st.markdown(
 
       /* Indicateur d'état, figé en haut à droite. Point de couleur : vert = prêt,
          orange (clignotant) = génération en cours. */
-      .etat { position: fixed; top: 4.2rem; right: 2.5rem; z-index: 1100;
+      .etat { position: fixed; top: 1rem; right: 2.5rem; z-index: 1100;
               display: inline-flex; align-items: center; gap: 0.45rem;
               padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
               border: 1px solid #E5E7EB; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
@@ -104,20 +113,20 @@ st.markdown(
       /* Avertissement « vérifiez à la source », collé au bas de la barre latérale (visible
          seulement quand elle est ouverte). */
       .avert-lateral { display: none; position: fixed; bottom: 0; left: 0; width: 21rem; z-index: 1000;
-                       margin: 0; padding: 0.6rem 1.5rem; color: #9CA3AF; font-size: 0.75rem !important; line-height: 1.3; }
+                       margin: 0; padding: 0.6rem 1.5rem 0.9rem; color: #9CA3AF; font-size: 0.75rem !important; line-height: 1.3; }
       body:has([data-testid="stSidebar"][aria-expanded="true"]) .avert-lateral { display: block; }
 
       /* Bas de page figé, deux lignes (crédit + dépôt). */
       .pied { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; text-align: center;
-              height: 4rem; display: flex; flex-direction: column; justify-content: center;
-              padding: 0 1rem; line-height: 1.45; background: #F7F8FA; border-top: 1px solid #E5E7EB; }
+              height: 5rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
+              padding: 0 1rem 0.9rem; line-height: 1.45; background: #F7F8FA; border-top: 1px solid #E5E7EB; }
       .pied .credit { color: #4B5563; font-weight: 600; font-size: 0.76rem; }
       .pied .repo { font-size: 0.8rem; }
       .pied .repo a { color: #6B7280; text-decoration: none; }
       .pied .repo a:hover { text-decoration: underline; }
 
       /* Champ de saisie posé juste au-dessus du bas de page, fond opaque (le contenu défile derrière). */
-      [data-testid="stBottom"] { bottom: 4rem; background: #FFFFFF; }
+      [data-testid="stBottom"] { bottom: 5rem; background: #FFFFFF; }
 
       /* En-tête et bas de page se décalent à droite de la barre latérale quand elle est ouverte. */
       @media (min-width: 900px) {
@@ -129,7 +138,7 @@ st.markdown(
          pour que la conversation défile entièrement sans être masquée. `!important` car Streamlit
          impose ses propres marges au conteneur principal. */
       [data-testid="stMainBlockContainer"], [data-testid="stMain"] .block-container {
-        padding-top: 13rem !important; padding-bottom: 10rem !important;
+        padding-top: 13rem !important; padding-bottom: 11rem !important;
       }
     </style>
     """,

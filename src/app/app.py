@@ -90,7 +90,7 @@ st.markdown(
 
       /* Indicateur d'état, figé en haut à droite. Point de couleur : vert = prêt,
          orange (clignotant) = génération en cours. */
-      .etat { position: fixed; top: 1rem; right: 2.5rem; z-index: 1100;
+      .etat { position: fixed; top: 1rem; right: 2.5rem; z-index: 999999;
               display: inline-flex; align-items: center; gap: 0.45rem;
               padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
               border: 1px solid #E5E7EB; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
@@ -112,7 +112,7 @@ st.markdown(
 
       /* Avertissement « vérifiez à la source », collé au bas de la barre latérale (visible
          seulement quand elle est ouverte). */
-      .avert-lateral { display: none; position: fixed; bottom: 0; left: 0; width: 21rem; z-index: 1000;
+      .avert-lateral { display: none; position: fixed; bottom: 0.4rem; left: 0; width: 21rem; z-index: 1000;
                        margin: 0; padding: 0.6rem 1.5rem 0.9rem; color: #9CA3AF; font-size: 0.75rem !important; line-height: 1.3; }
       body:has([data-testid="stSidebar"][aria-expanded="true"]) .avert-lateral { display: block; }
 

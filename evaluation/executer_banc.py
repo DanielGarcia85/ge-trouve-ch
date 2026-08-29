@@ -84,15 +84,15 @@ def main():
     # et OPTIONS par défaut, sans seed) : ni consigne ni régime d'échantillonnage ne sont
     # surchargés. Seul le délai d'attente client est relevé (garde réseau pour la génération CPU
     # longue, surtout au chargement à froid), sans modifier repondre.py ni le système évalué.
-    repondre.TIMEOUT_GENERATION = 1200
+    config.TIMEOUT_GENERATION = 1200
     pipe = repondre.construire_pipeline()
 
     # Trace de provenance du run (régime exact appliqué à toutes les questions).
     provenance = {
         "modele_generation": config.OLLAMA_GENERATION_MODEL,
         "modele_embeddings": config.OLLAMA_EMBEDDING_MODEL,
-        "top_k": repondre.TOP_K,
-        "options": repondre.OPTIONS,
+        "top_k": config.TOP_K,
+        "options": config.OPTIONS_GENERATION,
         "tache_embedding": repondre.TACHE,
         "nombre_questions": len(QUESTIONS),
     }

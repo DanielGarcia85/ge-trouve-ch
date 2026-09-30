@@ -2,23 +2,22 @@
 
 ## Réponse
 
-Selon les informations contenues dans les extraits, le lieu ou la manière de déposer votre demande dépend de votre situation spécifique :
+La procédure pour déposer votre demande de permis de séjour dépend de votre situation spécifique :
 
-**Pour une annonce d'arrivée (provenance d'un autre canton) ou une demande de permis pour recherche d'emploi :**
-Vous pouvez déposer votre demande en ligne ou par courrier. Pour une démarche en ligne, vous devez disposer d'un [compte e-démarches de type simple](https://www.ge.ch/acceder-aux-e-demarches/compte-particuliers).
+**1. Si vous venez d'un autre canton suisse (changement de canton) :**
+Vous pouvez déposer votre demande en ligne. Pour ce faire, vous devez disposer d'un [compte e-démarches de type simple](https://www.ge.ch/acceder-aux-e-demarches/compte-particuliers).
+*   **Pour les ressortissants UE/AELE :** En plus des pièces d'identité et du bail (ou formulaire AL), le formulaire M est requis uniquement pour les demandes faites par courrier.
+*   **Pour les ressortissants de pays non-membres de l'UE/AELE :** En plus des pièces d'identité, du passeport, du bail et d'une photo portrait, le formulaire M est requis uniquement pour les demandes faites par courrier.
 
-**Pour une demande de regroupement familial :**
+**2. Pour une demande de permis de séjour avec ou sans activité (recherche d'emploi) :**
+Votre demande peut être déposée en ligne ou par courrier. Vous pouvez consulter la fiche suivante pour plus de détails : [Aide pratique pour annoncer en ligne son arrivée à Genève ou déposer une demande de permis de séjour avec ou sans activité auprès de l'OCPM](https://www.ge.ch/document/aide-pratique-annoncer-en-ligne-son-arrivee-geneve-deposer-demande-permis-sejour-avec-sans-activite-aupres-ocpm).
+
+**3. Pour une demande de regroupement familial :**
 Votre demande peut être déposée en ligne ou par courrier.
 
-**Pour une demande d'asile :**
-La demande se dépose par oral ou par écrit auprès des points suivants :
-*   Un poste-frontière suisse ;
-*   Le bureau de contrôle des frontières d'un aéroport suisse ;
-*   Ou auprès d'un CFA (Centre fédéral pour requérant d'asile) du Secrétariat d'Etat aux migrations.
-
-Une fois votre demande attribuée au canton de Genève, vous devez suivre une procédure spécifique :
-1.  Vous rendre au **Service accueil de l'Hospice général** (Avenue Louis-Casaï 53, 1216 Cointrin) pour les démarches préalables.
-2.  Ensuite, vous pourrez vous présenter aux **guichets du service protection, asile et retour** (90, route de Chancy, 1213 Onex) muni du laissez-passer délivré par le CFA et timbré par l'Hospice général.
+**4. Si vous êtes une personne requérante d'asile :**
+La demande d'asile se dépose par oral ou par écrit auprès d'un poste-frontière suisse, au bureau de contrôle des frontières d'un aéroport suisse ou auprès d'un CFA (Centre fédéral pour requérant d'asile).
+Une fois attribué au canton de Genève, vous devez d'abord vous rendre au service accueil de l'**Hospice général** (Avenue Louis-Casaï 53, 1216 Cointrin). Ensuite, vous pourrez vous présenter aux guichets du **service protection, asile et retour** (90, route de Chancy, 1213 Onex) avec le laissez-passer délivré par le CFA et timbré par l'Hospice général.
 
 ## Fragments utilisés
 

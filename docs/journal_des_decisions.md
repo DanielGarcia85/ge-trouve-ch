@@ -8,6 +8,14 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-08-31 — Version finale : remise du mémoire
+
+Jalon : remise du travail de Bachelor. Deux retouches de fond depuis le dernier commit.
+
+Allègement du chapitre 2 (« Comprendre le RAG »), Introduction revue, à la demande du directeur de mémoire.
+
+---
+
 ## 2026-08-29 — Logo et favicon, réglages centralisés dans config.py
 
 Deux ajouts techniques.

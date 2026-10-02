@@ -8,6 +8,8 @@ Assistant conversationnel RAG en français pour les démarches administratives d
 
 **Service en ligne : [https://ge-trouve.ch](https://ge-trouve.ch)**
 
+![Aperçu de l'interface Ge-Trouve](resultats/interface/capture_reponse.PNG)
+
 > **Avertissement.** Ge-Trouve est un prototype développé dans le cadre d'un travail de Bachelor. Ce n'est pas un service officiel de l'État de Genève. Les réponses s'appuient sur les pages officielles citées, mais peuvent contenir des erreurs : vérifiez toujours l'information à la source avant d'agir.
 
 ---

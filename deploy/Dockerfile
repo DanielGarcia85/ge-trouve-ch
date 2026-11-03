@@ -41,5 +41,11 @@ EXPOSE 8501
 
 # Interface web : écoute sur toutes les interfaces du conteneur, sans ouverture de
 # navigateur ni invite (mode « headless »). La config du thème est lue depuis .streamlit/.
+# L'adresse publique (browser.serverAddress) est déclarée ici, en production seulement :
+# sans elle, Streamlit interroge un service externe au démarrage pour deviner l'adresse
+# IP publique du serveur (simple affichage dans les logs), ce que ce projet exclut.
+# En cas d'erreur, le visiteur ne voit qu'un message générique : la trace complète
+# (chemins, code) reste dans les journaux du serveur (showErrorDetails=none).
 CMD ["streamlit", "run", "src/app/app.py", \
-     "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
+     "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true", \
+     "--browser.serverAddress=ge-trouve.ch", "--client.showErrorDetails=none"]

@@ -78,6 +78,11 @@ def appliquer_styles():
                             color: #1F2430; }}
           .titre-page p {{ color: #6B7280; margin: 0.2rem 0 0; font-size: 0.98rem; }}
 
+          /* Pas d'icône de lien au survol des deux grands titres (en-tête de l'assistant, titre des
+             pages de texte) : Streamlit en ajoute une à chaque titre. Les titres de section la gardent. */
+          .entete [data-testid="stHeaderActionElements"],
+          .titre-page [data-testid="stHeaderActionElements"] {{ display: none; }}
+
           /* Marges par défaut des pages de texte : le titre se place à la hauteur de celui de
              l'assistant, et le contenu défile entièrement au-dessus du pied de page.
              L'assistant impose ses propres marges (en-tête figé). */

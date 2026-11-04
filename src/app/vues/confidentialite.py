@@ -42,8 +42,7 @@ TITRES = dict(SECTIONS)
 
 commun.afficher_sommaire(SECTIONS)
 
-st.title("Confidentialité")
-st.caption(f"Dernière mise à jour : {MISE_A_JOUR}")
+commun.afficher_titre("Confidentialité", f"Dernière mise à jour : {MISE_A_JOUR}")
 
 st.header("En bref", anchor=TITRES["En bref"])
 st.markdown(

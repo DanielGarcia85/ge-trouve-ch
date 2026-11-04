@@ -17,6 +17,8 @@ import streamlit as st
 
 import commun
 
+MISE_A_JOUR = "4 novembre 2026"
+
 # Technologies, par groupe : (nom et version, rôle dans le projet).
 TECHNOLOGIES = {
     "Modèles": [
@@ -58,7 +60,7 @@ TITRES = dict(SECTIONS)
 
 commun.afficher_sommaire(SECTIONS)
 
-st.title("À propos du projet")
+commun.afficher_titre("À propos du projet", f"Dernière mise à jour : {MISE_A_JOUR}")
 
 st.markdown(
     "Ge-Trouve répond en français simple aux questions sur les démarches administratives du "

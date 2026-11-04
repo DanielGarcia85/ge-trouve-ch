@@ -71,11 +71,18 @@ def appliquer_styles():
             body:has([data-testid="stSidebar"][aria-expanded="true"]) .pied {{ left: 21rem; }}
           }}
 
-          /* Marges par défaut des pages de texte : le titre commence juste sous la navigation,
-             et le contenu défile entièrement au-dessus du pied de page. L'assistant impose
-             ses propres marges (en-tête figé). */
+          /* Titre des pages de texte, calqué sur l'en-tête de l'assistant (même taille, même
+             graisse, centré, à la même hauteur) : le titre ne saute pas quand on change de page. */
+          .titre-page {{ text-align: center; margin: 0 0 2.5rem; }}
+          .titre-page h1 {{ margin: 0; font-weight: 800; letter-spacing: -0.5px; font-size: 2.4rem;
+                            color: #1F2430; }}
+          .titre-page p {{ color: #6B7280; margin: 0.2rem 0 0; font-size: 0.98rem; }}
+
+          /* Marges par défaut des pages de texte : le titre se place à la hauteur de celui de
+             l'assistant, et le contenu défile entièrement au-dessus du pied de page.
+             L'assistant impose ses propres marges (en-tête figé). */
           [data-testid="stMainBlockContainer"], [data-testid="stMain"] .block-container {{
-            padding-top: 4.5rem !important;
+            padding-top: 1rem !important;
             padding-bottom: calc(var(--hauteur-pied) + 3rem) !important;
           }}
         </style>
@@ -84,7 +91,15 @@ def appliquer_styles():
     )
 
 
-# ── Sommaire des pages de texte ───────────────────────────────────────
+# ── Titre et sommaire des pages de texte ──────────────────────────────
+def afficher_titre(titre, sous_titre):
+    """Affiche le titre centré d'une page de texte, suivi d'une ligne grise (date de mise à jour)."""
+    st.markdown(
+        f"<div class='titre-page'><h1>{titre}</h1><p>{sous_titre}</p></div>",
+        unsafe_allow_html=True,
+    )
+
+
 def afficher_sommaire(sections):
     """
     Affiche dans la barre latérale le sommaire « Sur cette page » : un lien par section.

@@ -101,12 +101,6 @@ st.markdown(
       .etat-actif::before { background: #F59E0B; }
       @keyframes clignote { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-      /* Barre latérale : largeur figée quand ouverte (pas de redimensionnement), repli intact. */
-      body:has([data-testid="stSidebar"][aria-expanded="true"]) [data-testid="stSidebar"] {
-        width: 21rem !important; min-width: 21rem !important; max-width: 21rem !important;
-      }
-      [data-testid="stSidebarResizeHandle"] { display: none !important; }
-
       /* Texte d'attente des sources : petite police, sur une seule ligne. */
       .attente-sources { color: #9CA3AF !important; font-size: 0.8rem !important; white-space: nowrap; margin: 0; }
 

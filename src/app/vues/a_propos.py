@@ -17,8 +17,6 @@ import streamlit as st
 
 import commun
 
-MEMOIRE = f"{commun.DEPOT}/releases/tag/v1.0.0"
-
 # Technologies, par groupe : (nom et version, rôle dans le projet).
 TECHNOLOGIES = {
     "Modèles": [
@@ -48,6 +46,18 @@ TECHNOLOGIES = {
 }
 
 
+SECTIONS = (
+    ("Le cadre", "le-cadre"),
+    ("Ce que fait l'outil", "ce-que-fait-l-outil"),
+    ("Comment il est construit", "construction"),
+    ("Technologies", "technologies"),
+    ("Limites connues", "limites"),
+    ("Usage de l'IA", "usage-ia"),
+)
+TITRES = dict(SECTIONS)
+
+commun.afficher_sommaire(SECTIONS)
+
 st.title("À propos du projet")
 
 st.markdown(
@@ -62,31 +72,31 @@ st.info(
     "peuvent contenir des erreurs : vérifiez toujours l'information à la source avant d'agir."
 )
 
-st.header("Le cadre")
+st.header("Le cadre", anchor=TITRES["Le cadre"])
 st.markdown(
     "J'ai réalisé Ge-Trouve seul, pour mon Travail de Bachelor en Informatique de gestion à la "
     "Haute école de gestion de Genève (HEG), sous la direction de Frédéric Mencier. Le travail a "
     "été remis le 31 août 2026 et soutenu le 14 septembre 2026. Le mémoire couvre toute la "
     "démarche : la littérature sur le RAG, le choix de chaque technologie, la construction du "
     "système et son évaluation.\n\n"
-    f"Le code, les journaux de décisions et de mesures et le [mémoire]({MEMOIRE}) sont publics, "
+    f"Le code, les journaux de décisions et de mesures et le [mémoire]({commun.MEMOIRE}) sont publics, "
     f"sur le [dépôt GitHub]({commun.DEPOT}).\n\n"
     "Le travail a été évalué à 5,6/6 pour le mémoire et 5,8/6 pour la soutenance."
 )
 
-st.header("Ce que fait l'outil")
+st.header("Ce que fait l'outil", anchor=TITRES["Ce que fait l'outil"])
 st.markdown(
     "- Il accepte les questions en français courant, tous registres confondus.\n"
     "- Il répond uniquement à partir des pages officielles indexées, avec des liens cliquables "
     "vers le guichet en ligne ou le formulaire utile.\n"
     "- Il affiche dans la barre latérale les pages d'où vient chaque réponse.\n"
     "- Il est conçu pour dire quand la question sort de ce qu'il connaît et orienter vers le bon "
-    "interlocuteur (refus réussi sur trois questions sur quatre lors de l'évaluation).\n"
+    "interlocuteur.\n"
     "- Il écrit la réponse mot à mot, au fil de la génération.\n"
     "- Il ne demande aucun compte et ne garde aucun historique."
 )
 
-st.header("Comment il est construit")
+st.header("Comment il est construit", anchor=TITRES["Comment il est construit"])
 st.markdown(
     "**L'indexation, en amont.** J'ai listé 4 322 pages officielles dans un manifeste, puis je "
     "les ai aspirées en respectant les règles des deux sites (robots.txt, deux secondes entre "
@@ -106,24 +116,22 @@ st.markdown(
     "longues pèsent sur la pertinence."
 )
 
-st.header("Technologies")
+st.header("Technologies", anchor=TITRES["Technologies"])
 for groupe, elements in TECHNOLOGIES.items():
     st.subheader(groupe)
     st.markdown("\n".join(f"- **{nom}** : {role}." for nom, role in elements))
 
-st.header("Limites connues")
+st.header("Limites connues", anchor=TITRES["Limites connues"])
 st.markdown(
     "- Sur ce serveur sans carte graphique, le premier mot d'une réponse à une question nouvelle "
     "arrive après 90 à 120 secondes ; la suite s'écrit ensuite en continu. C'est le prix d'une "
     "exécution entièrement locale sur un serveur modeste.\n"
     "- Le serveur traite une seule question à la fois.\n"
     "- Chaque question est traitée seule : l'assistant ne se souvient pas des précédentes.\n"
-    "- Seules les pages web sont indexées ; les documents PDF et les formulaires ne le sont pas.\n"
-    "- Entre fin août et début octobre 2026, une génération a été interrompue trois fois, "
-    "probablement faute de mémoire : 18 Go suffisent pour les deux modèles, mais sans marge."
+    "- Seules les pages web sont indexées ; les documents PDF et les formulaires ne le sont pas."
 )
 
-st.header("Usage de l'IA")
+st.header("Usage de l'IA", anchor=TITRES["Usage de l'IA"])
 st.markdown(
     "- En production, aucun service d'IA externe n'est utilisé : le modèle de langage est un "
     "modèle open source exécuté localement sur le serveur du projet, et aucune donnée d'usager "

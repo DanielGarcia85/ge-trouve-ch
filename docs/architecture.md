@@ -1,9 +1,9 @@
 # Architecture technique — Ge-Trouve
 
 Documentation technique du système : comment il est bâti et pourquoi. Elle vise le développeur ou le
-mainteneur. Le détail chiffré
-et l'historique des décisions vivent dans `docs/journal_des_decisions.md` et `docs/journal_des_mesures.md` ;
-la marche à suivre de déploiement dans `docs/plan_developpement.md`.
+mainteneur. Le détail chiffré et l'historique des décisions vivent dans `docs/journal_des_decisions.md`
+et `docs/journal_des_mesures.md` ; la marche à suivre de déploiement dans `docs/plan_developpement.md`.
+Les schémas du README sont dans `docs/schemas/`.
 
 **Principe directeur : la souveraineté.** Tout tourne en local sur un VPS suisse, en CPU, sans GPU ni appel
 à une API externe. Aucune donnée utilisateur ni document ne sort du serveur. Cette contrainte gouverne
@@ -52,23 +52,25 @@ Internet ──80/443──▶ caddy (HTTPS) ──▶ app (Streamlit) ──▶
 | **Gemma 4 12B** (`gemma4:12b`) | LLM rédacteur, génère la réponse | Q4_K_M, mode direct (`think=False`) |
 | **Qwen3-Embedding-0.6B** (`qwen3-embedding:0.6b`) | embeddings : vectorise questions et fragments | dimension 1024 |
 | **Chroma** | base vectorielle embarquée : stocke et retrouve les fragments | mode persistant local |
-| **Streamlit** | interface web (page de conversation) | appelle directement le pipeline |
+| **Streamlit** | interface web : conversation, pages « À propos » et « Confidentialité » | appelle directement le pipeline |
 | **Caddy** | reverse proxy, HTTPS automatique | seul service exposé à Internet |
 
 ## 3. Flux d'une requête
 
-Orchestré par `src/repondre.py`, exposé par `src/app/app.py`.
+Orchestré par `src/repondre.py`, exposé par la page « Assistant » de l'interface (`src/app/vues/assistant.py`).
 
 1. L'usager pose sa question dans l'interface Streamlit.
 2. La question est encodée par Qwen. Asymétrie assumée : la **requête** est préfixée par la consigne de
    tâche Qwen (`Instruct: …\nQuery:…`), tandis que les **documents** ont été indexés sans consigne.
 3. Le retriever Chroma renvoie les **top-K fragments** les plus proches (K = 5), avec leurs métadonnées
-   (url, titre, date de capture).
+   (url, titre, date de capture, position).
 4. Le `ChatPromptBuilder` assemble le prompt : message **système** = la consigne de génération (variante V5),
    message **utilisateur** = les extraits (chacun précédé de son URL) puis la question.
 5. Gemma génère en **mode direct** (réflexion désactivée), au régime de production (température 0.3,
    top_p 0.95, top_k 64, `num_predict` 1024, `num_ctx` 4096, sans seed).
 6. La réponse s'affiche **en streaming** (mot à mot) ; les pages sources apparaissent en barre latérale.
+7. Si le pipeline échoue (serveur de modèles injoignable, délai dépassé), l'usager lit un message simple en
+   français ; la trace de l'erreur part dans le journal du conteneur, sans le texte de la question.
 
 Chaque question est **indépendante** : aucune mémoire conversationnelle n'est envoyée au modèle.
 
@@ -95,12 +97,19 @@ Conteneurisé avec **Docker Compose** (`deploy/docker-compose.yml`), sur un VPS 
   (`OLLAMA_NUM_PARALLEL=1`, garde-fou mémoire) ;
 - **ollama-pull** : service one-shot qui tire au démarrage les modèles déclarés par `config.py` ;
 - **app** : l'image de l'application (Streamlit + pipeline), exécutée par un utilisateur non privilégié ;
+  lancée avec l'adresse publique déclarée (`--browser.serverAddress=ge-trouve.ch`, sans quoi Streamlit
+  interroge un service externe au démarrage pour deviner l'adresse IP du serveur) et les erreurs masquées
+  aux visiteurs (`--client.showErrorDetails=none`) ;
 - **caddy** : HTTPS automatique (Let's Encrypt), redirection `www` vers l'apex, seul à publier 80 et 443.
 
 La base Chroma est montée depuis l'hôte (`/mnt/data/chroma`) ; modèles et certificats vivent dans des
-volumes nommés. **Sécurité** : SSH par clé seule (root désactivé), UFW, fail2ban, stockage Docker sur le
-disque de données. **Livraison continue** : un runner GitHub auto-hébergé déploie sur push (changements de
-code ou de config uniquement). Détail et retours d'expérience (incident OOM, résilience, latence) :
+volumes nommés. Les journaux des quatre services sont bornés (pilote `json-file`, 3 fichiers de 10 Mo par
+conteneur, ancre `x-journaux` du compose) : sans ces options, Docker ne fait aucune rotation.
+
+**Sécurité** : SSH par clé seule (root désactivé), UFW, fail2ban, stockage Docker sur le disque de données.
+**Livraison continue** : un runner GitHub auto-hébergé déploie à chaque push sur `main` qui touche le code
+ou la configuration ; le travail courant se fait sur la branche `develop`, et la production ne change qu'à
+la fusion dans `main`. Détail et retours d'expérience (incident OOM, résilience, latence) :
 `docs/journal_des_decisions.md` (entrées des 23 et 25.08) et `docs/journal_des_mesures.md`.
 
 ## 6. Organisation du code
@@ -114,10 +123,20 @@ src/
   indexing/            découpage, embeddings, indexation
   generation/          consigne système et jeu de mise au point
   app/                 interface Streamlit
+    app.py             point d'entrée : configuration, styles communs, navigation (en haut), pied de page
+    commun.py          éléments partagés : constantes, styles, titre et sommaire des pages, pied de page
+    vues/              une page par fichier : assistant.py, a_propos.py, confidentialite.py
+    assets/            logos et favicon
 scripts/               utilitaires hors pipeline (mesures, découverte, setup)
+evaluation/            harnais RAGAS (Partie 3), exécuté sur le poste de développement, hors production
 deploy/                conteneurisation (Dockerfile, docker-compose.yml, Caddyfile)
+docs/schemas/          schémas SVG du README (architecture, production, indexation, évaluation)
 .github/workflows/     livraison continue (deploy.yml)
 ```
+
+Le dossier des pages s'appelle `vues/` et non `pages/` : Streamlit réserve à un dossier `pages/` placé à
+côté du point d'entrée un comportement propre. Une page ajoutée se déclare dans `app.py` (navigation) et,
+si elle doit figurer au pied de page, dans `commun.LIENS_INTERNES`.
 
 `config.py` est la **source unique** des paramètres : il lit les variables d'environnement du shell (posées
 par docker-compose en production), sinon ses valeurs par défaut. **Aucun fichier `.env`** (aucun secret à

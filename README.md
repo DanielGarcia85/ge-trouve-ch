@@ -1,14 +1,41 @@
+<p align="center">
+  <img src="src/app/assets/logo_ge-trouve_horizontal.svg" width="360" alt="Ge-Trouve">
+</p>
 
+<p align="center">
+  <em>Assistant conversationnel RAG en français pour les démarches administratives du canton de Genève,
+  exécuté entièrement sur un serveur suisse.</em>
+</p>
 
-# Ge-Trouve
+<p align="center">
+  <a href="https://github.com/DanielGarcia85/ge-trouve-ch/actions/workflows/deploy.yml"><img src="https://img.shields.io/github/actions/workflow/status/DanielGarcia85/ge-trouve-ch/deploy.yml?branch=main&style=flat&label=d%C3%A9ploiement" alt="État du déploiement"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/DanielGarcia85/ge-trouve-ch?style=flat&label=licence" alt="Licence MIT"></a>
+  <img src="https://img.shields.io/badge/Python-3.13-3776AB?style=flat&logo=python&logoColor=white" alt="Python 3.13">
+  <img src="https://img.shields.io/badge/Haystack-3.0-1C3D5A?style=flat" alt="Haystack 3.0">
+  <img src="https://img.shields.io/badge/Ollama-0.32-000000?style=flat&logo=ollama&logoColor=white" alt="Ollama 0.32">
+  <img src="https://img.shields.io/badge/Streamlit-1.62-FF4B4B?style=flat&logo=streamlit&logoColor=white" alt="Streamlit 1.62">
+  <img src="https://img.shields.io/badge/Docker-Compose-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker Compose">
+  <a href="https://ge-trouve.ch"><img src="https://img.shields.io/badge/en%20ligne-ge--trouve.ch-C8102E?style=flat" alt="Service en ligne : ge-trouve.ch"></a>
+</p>
 
-<img src="src/app/assets/logo_ge-trouve.png" align="right" width="60">
+<p align="center">
+  <a href="https://ge-trouve.ch">Service en ligne</a> ·
+  <a href="#fonctionnalités">Fonctionnalités</a> ·
+  <a href="#architecture">Architecture</a> ·
+  <a href="#schémas">Schémas</a> ·
+  <a href="#résultats-de-lévaluation">Résultats</a> ·
+  <a href="#démarrer-en-local">Démarrer en local</a>
+</p>
 
-Assistant conversationnel RAG en français pour les démarches administratives du canton de Genève. Exécution entièrement locale sur un serveur suisse, réponses sourcées vers les pages officielles.
+Ge-Trouve répond en français simple aux questions sur les démarches administratives du canton de
+Genève. Il retrouve les passages utiles dans les pages officielles de [ge.ch](https://ge.ch/) et [geneve.ch](https://www.geneve.ch/), rédige une
+réponse et cite ses sources, pour que chacun puisse vérifier. Les modèles de langage tournent sur le
+serveur du projet, en Suisse : aucune question ne part vers un service d'intelligence artificielle
+externe.
 
-**Service en ligne : [https://ge-trouve.ch](https://ge-trouve.ch)**
-
-![Aperçu de l'interface Ge-Trouve](resultats/interface/capture_reponse.PNG)
+<p align="center">
+  <img src="resultats/interface/capture_reponse.PNG" width="760" alt="Ge-Trouve : réponse à la question « Où déposer ma demande de permis de séjour ? », avec les pages sources dans la barre latérale">
+</p>
 
 > **Avertissement.** Ge-Trouve est un prototype développé dans le cadre d'un travail de Bachelor. Ce n'est pas un service officiel de l'État de Genève. Les réponses s'appuient sur les pages officielles citées, mais peuvent contenir des erreurs : vérifiez toujours l'information à la source avant d'agir.
 
@@ -23,10 +50,11 @@ Assistant conversationnel RAG en français pour les démarches administratives d
 | **Institution** | Haute école de gestion de Genève (HEG-Genève), filière Informatique de gestion |
 | **Auteur** | Daniel Garcia |
 | **Directeur de mémoire** | Frédéric Mencier |
-| **Année** | 2026 |
-| **Mémoire** | `memoire/TB_Ge-Trouve_DanielGarcia.docx` |
+| **Remise et soutenance** | 31 août 2026 et 14 septembre 2026 |
+| **Évaluation** | mémoire 5,6/6, soutenance 5,8/6 |
+| **Mémoire** | [`memoire/TB_Ge-Trouve_DanielGarcia.pdf`](memoire/TB_Ge-Trouve_DanielGarcia.pdf) (version remise, aussi jointe à la [release `v1.0.0`](https://github.com/DanielGarcia85/ge-trouve-ch/releases/tag/v1.0.0)) ; source `.docx` dans `memoire/` |
 
-Le travail est documenté dans un **mémoire** de Bachelor (`memoire/TB_Ge-Trouve_DanielGarcia.docx`) : le document écrit qui accompagne ce dépôt et développe toute la démarche, de la revue de la littérature RAG et des choix de technologies jusqu'à la construction du système et à son évaluation. Ce dépôt en est la réalisation logicielle.
+Le mémoire est le document écrit qui accompagne ce dépôt : il développe toute la démarche, de la revue de la littérature RAG et des choix de technologies jusqu'à la construction du système et à son évaluation. Ce dépôt en est la réalisation logicielle.
 
 **Question de recherche :** dans quelle mesure un système RAG appliqué à des documents administratifs en français produit-il des réponses fiables et pertinentes pour des utilisateurs non-experts ?
 
@@ -43,7 +71,26 @@ L'information administrative genevoise est publique, mais dispersée sur des mil
 - Pages sources de chaque réponse affichées dans la barre latérale
 - Refus explicite (« je ne sais pas ») quand la question sort du corpus, avec orientation
 - Affichage de la réponse en *streaming*, mot à mot
+- Message clair en français si le service ne peut pas répondre
+- Pages « À propos » (le projet, sa construction, ses technologies) et « Confidentialité » (ce que le site fait réellement des données)
 - Aucune donnée d'usager ne quitte le serveur ; aucun compte, aucun historique conservé
+
+<details>
+<summary><b>Plus de captures</b> (cliquer pour déplier)</summary>
+
+La page au repos, avant toute question :
+
+![Ge-Trouve au repos : navigation en haut, champ de question, barre latérale des sources vide](resultats/interface/capture_repos.PNG)
+
+La page « À propos » : le cadre du travail, le fonctionnement, les technologies, avec un sommaire dans la barre latérale :
+
+![Page « À propos » de Ge-Trouve](resultats/interface/capture_a_propos.png)
+
+La page « Confidentialité » : ce que le site fait réellement des questions, des journaux et des cookies :
+
+![Page « Confidentialité » de Ge-Trouve](resultats/interface/capture_confidentialite.png)
+
+</details>
 
 ## Pile technique
 
@@ -52,35 +99,40 @@ L'information administrative genevoise est publique, mais dispersée sur des mil
 | Langage | Python | 3.13 | Socle du projet |
 | Framework RAG | [Haystack](https://haystack.deepset.ai/) (`haystack-ai`) | 3.0.0 | Assemblage explicite du pipeline |
 | Intégrations | `ollama-haystack`, `chroma-haystack` | 6.8.0, 4.4.0 | Connecteurs Ollama et Chroma |
-| Serveur de modèles | [Ollama](https://ollama.com/) | ≥ 0.32 | Exécution locale des modèles |
-| LLM (rédacteur) | Gemma 4 12B Instruct (`gemma4:12b`) | Q4_K_M, 7,6 Go | Génération des réponses, mode direct (`think:false`) |
-| Embeddings | Qwen3-Embedding-0.6B (`qwen3-embedding:0.6b`) | Q8_0, 639 Mo | Vecteurs de 1 024 dimensions |
-| LLM (repli et juge) | Llama 3.1 8B Instruct (`llama3.1:8b`) | Q4_K_M, 4,9 Go | Repli documenté ; juge d'évaluation (hors production) |
+| Serveur de modèles | [Ollama](https://ollama.com/) | 0.32.6 (production) | Exécution locale des modèles |
+| LLM (rédacteur) | [Gemma 4 12B Instruct](https://huggingface.co/google/gemma-4-12B-it) (`gemma4:12b`) | Q4_K_M, 7,6 Go | Génération des réponses, mode direct (`think:false`) |
+| Embeddings | [Qwen3-Embedding-0.6B](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B) (`qwen3-embedding:0.6b`) | Q8_0, 639 Mo | Vecteurs de 1 024 dimensions |
+| LLM (repli et juge) | [Llama 3.1 8B Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) (`llama3.1:8b`) | Q4_K_M, 4,9 Go | Repli documenté ; juge d'évaluation (hors production) |
 | Base vectorielle | [Chroma](https://www.trychroma.com/) | embarquée | Stockage et recherche des fragments, filtrage par métadonnées |
-| Interface | [Streamlit](https://streamlit.io/) | 1.x | Page de conversation |
-| Serveur frontal | [Caddy](https://caddyserver.com/) | 2.x | HTTPS automatique (Let's Encrypt), reverse proxy |
+| Extraction | [Trafilatura](https://trafilatura.readthedocs.io/) | 2.2.0 | Texte des pages officielles, liens conservés |
+| Interface | [Streamlit](https://streamlit.io/) | 1.62.0 | Conversation, pages « À propos » et « Confidentialité » |
+| Serveur frontal | [Caddy](https://caddyserver.com/) | 2 | HTTPS automatique (Let's Encrypt), reverse proxy |
 | Conteneurisation | Docker Compose | | Quatre services (voir Déploiement) |
 | Évaluation | [RAGAS](https://docs.ragas.io/) + LangChain-Ollama | 0.4.3 | Métriques RAG, juge local (machine de développement uniquement) |
 
-Toutes les licences des composants sont permissives (Apache 2.0, MIT). Versions épinglées dans `requirements.txt`.
+Les bibliothèques et les deux modèles de production sont sous licences permissives (Apache 2.0, MIT). Llama 3.1, utilisé seulement comme juge d'évaluation hors production, relève de la *Llama 3.1 Community License* de Meta. Versions épinglées dans `requirements.txt`.
 
 ## Architecture
 
-```
-                        EN LIGNE (à chaque question)
-┌───────────┐  HTTPS   ┌───────┐    ┌───────────────┐    ┌──────────────────────────┐
-│Utilisateur│ ───────► │ Caddy │ ─► │ Streamlit     │ ─► │ Pipeline Haystack        │
-└───────────┘          │(proxy)│    │ (src/app)     │    │ 1. encodage (Qwen)       │
-                       └───────┘    └───────────────┘    │ 2. recherche (Chroma)    │◄┐
-                                                         │ 3. génération (Gemma)    │ │
-                                                         └──────────────────────────┘ │
-                        HORS LIGNE (indexation, en amont)                             │
-┌──────────────┐  ┌──────────┐  ┌───────────┐  ┌────────────┐  ┌──────────────┐       │
-│ Manifeste    │─►│ Scraping │─►│ Découpage │─►│ Embeddings │─►│ Chroma (base)│───────┘
-└──────────────┘  └──────────┘  └───────────┘  └────────────┘  └──────────────┘
-```
+<p align="center">
+  <img src="docs/schemas/architecture.svg" width="830" alt="Architecture : en ligne, l'usager passe par Caddy et Streamlit vers le pipeline Haystack (encodage Qwen, recherche Chroma, génération Gemma) ; hors ligne, manifeste, scraping, découpage et embeddings alimentent la base Chroma">
+</p>
 
-Tout s'exécute sur une seule machine. En production comme au développement, aucun appel n'est émis vers un service d'intelligence artificielle externe.
+- **En ligne, à chaque question** : l'usager atteint le serveur en HTTPS ; Caddy relaie vers l'interface Streamlit, qui appelle directement le pipeline Haystack. La question est encodée par Qwen, Chroma renvoie les cinq fragments les plus proches, et Gemma rédige la réponse à partir de ces seuls extraits.
+- **Hors ligne, en amont** : les pages listées au manifeste sont aspirées, découpées en fragments de 200 mots, encodées et rangées dans Chroma, avec leur adresse et leur date de capture.
+- Tout s'exécute sur une seule machine. En production comme au développement, aucun appel n'est émis vers un service d'intelligence artificielle externe.
+- Chaque question est traitée seule : le modèle ne reçoit que la question courante et ses extraits.
+
+## Schémas
+
+Dans [`docs/schemas/`](docs/schemas), en versions compactes des figures du mémoire.
+
+| Schéma | Ce qu'il montre |
+|---|---|
+| [Architecture](docs/schemas/architecture.svg) | Les deux chaînes : la réponse en ligne et l'indexation hors ligne. |
+| [Production](docs/schemas/production.svg) | Les quatre conteneurs sur le serveur suisse, le seul point exposé, la livraison par le runner. |
+| [Indexation](docs/schemas/indexation.svg) | Ce que la chaîne d'indexation crée sur la machine : un JSON par page, puis la base Chroma. |
+| [Évaluation](docs/schemas/evaluation.svg) | Le banc RAGAS : le pipeline figé produit les traces, un juge local les note. |
 
 ## Corpus et sources de données
 
@@ -95,6 +147,13 @@ Chiffres du corpus indexé : **4 322 pages** au manifeste (4 304 aspirées), **9
 
 Le scraping respecte le `robots.txt` de chaque domaine, s'identifie par un agent dédié (`GeTrouveBot`) et applique un délai de politesse de deux secondes entre chaque requête. Le corpus brut n'est pas versionné : il se régénère à la demande depuis le manifeste.
 
+<details>
+<summary><b>Schéma : la chaîne d'indexation</b> (cliquer pour déplier)</summary>
+
+![Chaîne d'indexation : pages en ligne, un fichier JSON par page, base Chroma lue à chaque question](docs/schemas/indexation.svg)
+
+</details>
+
 ## Résultats de l'évaluation
 
 Protocole : vingt questions genevoises écrites à la main (seize avec réponse attendue, quatre volontairement hors périmètre), quatre métriques RAGAS calculées en local (juge Llama 3.1 8B, d'une autre famille que le rédacteur), contrôle humain à l'aveugle sur un quart des réponses.
@@ -107,6 +166,13 @@ Protocole : vingt questions genevoises écrites à la main (seize avec réponse 
 | Pertinence de la réponse | 0,71 |
 
 Constats principaux : la recherche documentaire est le point fort ; aucune invention pure n'a été observée (les erreurs de fidélité sont des fusions de passages voisins) ; la pertinence souffre de réponses trop longues ; le refus hors périmètre a fonctionné sur trois questions sur quatre. Analyse complète au chapitre 12 du mémoire ; scores détaillés et traces dans `resultats/evaluation/`.
+
+<details>
+<summary><b>Schéma : le banc d'évaluation</b> (cliquer pour déplier)</summary>
+
+![Banc d'évaluation : le pipeline figé produit les traces, RAGAS les note avec un juge local d'une autre famille](docs/schemas/evaluation.svg)
+
+</details>
 
 ## Démarrer en local
 
@@ -158,9 +224,16 @@ L'ingestion est idempotente et reprend où elle s'est arrêtée en cas d'interru
 streamlit run src/app/app.py
 ```
 
-L'application s'ouvre dans le navigateur. Le tout premier appel charge les modèles en mémoire (compter une à deux minutes par réponse) ; les réglages (modèles, top-k, échantillonnage) se lisent dans `src/config.py` et se surchargent par variables d'environnement.
+L'application s'ouvre dans le navigateur, sur la page « Assistant » ; les pages « À propos » et « Confidentialité » sont dans la navigation en haut. Le tout premier appel charge les modèles en mémoire (compter une à deux minutes par réponse) ; les réglages (modèles, top-k, échantillonnage) se lisent dans `src/config.py` et se surchargent par variables d'environnement.
 
 ## Déploiement en production
+
+<details>
+<summary><b>Schéma : la production</b> (cliquer pour déplier)</summary>
+
+![Production : quatre conteneurs Docker sur le serveur suisse, seul Caddy exposé, déploiement par un runner GitHub auto-hébergé](docs/schemas/production.svg)
+
+</details>
 
 La production tourne sur un serveur virtuel suisse (Infomaniak, 6 vCPU / 18 Go, Ubuntu 24.04, processeur seul), orchestrée par Docker Compose (`deploy/docker-compose.yml`) en quatre services :
 
@@ -175,15 +248,22 @@ La production tourne sur un serveur virtuel suisse (Infomaniak, 6 vCPU / 18 Go, 
 docker compose -f deploy/docker-compose.yml up -d --build
 ```
 
-Points d'exploitation : la base Chroma est construite en local puis copiée sur le serveur (rien ne se re-scrape depuis le VPS) ; une seule génération à la fois est autorisée (`OLLAMA_NUM_PARALLEL=1`, garde-fou mémoire) ; aucun fichier de secrets, la configuration vit dans l'environnement. Le déploiement est continu : chaque poussée sur la branche principale déclenche un redéploiement via un *runner* GitHub Actions auto-hébergé sur le serveur (`.github/workflows/deploy.yml`) ; seules les poussées directes déploient, jamais les contributions externes.
+- La base Chroma est construite en local puis copiée sur le serveur : rien ne se re-scrape depuis le VPS.
+- Une seule génération à la fois est autorisée (`OLLAMA_NUM_PARALLEL=1`, garde-fou mémoire).
+- Aucun fichier de secrets : la configuration vit dans l'environnement.
+- Streamlit est lancé avec l'adresse publique du site (sinon il interroge un service externe au démarrage pour deviner l'adresse IP du serveur) et sans afficher le détail des erreurs aux visiteurs ; les journaux des conteneurs sont limités en taille.
+- Je travaille sur la branche `develop` ; `main` est ce qui tourne en production. Chaque poussée sur `main` qui touche le code ou la configuration déclenche un redéploiement par un *runner* GitHub Actions auto-hébergé sur le serveur (`.github/workflows/deploy.yml`) ; seules les poussées directes déploient, jamais les contributions externes.
 
 ## Structure du dépôt
 
 ```
 ge-trouve-ch/
 ├── src/
-│   ├── app/app.py               # interface Streamlit
-│   ├── app/assets/              # logo et favicon (SVG, PNG)
+│   ├── app/                     # interface Streamlit
+│   │   ├── app.py               # point d'entrée : configuration, navigation, pied de page
+│   │   ├── commun.py            # éléments partagés (styles, titre et sommaire des pages)
+│   │   ├── vues/                # pages : assistant, à propos, confidentialité
+│   │   └── assets/              # logos et favicon (SVG, PNG)
 │   ├── repondre.py              # pipeline de réponse (point d'entrée)
 │   ├── config.py                # configuration centralisée (modèles, réglages)
 │   ├── pull_modeles.py          # provisionnement des modèles Ollama
@@ -210,11 +290,12 @@ ge-trouve-ch/
 ├── .github/workflows/           # déploiement continu (deploy.yml)
 ├── docs/
 │   ├── architecture.md          # documentation technique
+│   ├── schemas/                 # schémas du README (SVG)
 │   ├── plan_developpement.md    # plan des étapes (Partie 2 et Partie 3)
 │   ├── reconstruire_la_base.md  # guide de régénération du corpus et de la base
 │   ├── journal_des_decisions.md # une entrée datée par décision
 │   └── journal_des_mesures.md   # toutes les mesures, datées et reproductibles
-└── memoire/                     # mémoire (docx), bibliographie (.ris), figures (SVG)
+└── memoire/                     # mémoire (docx, PDF), bibliographie (.ris), figures (SVG)
 ```
 
 ## Limites connues

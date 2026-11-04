@@ -8,11 +8,85 @@ Les décisions les plus récentes sont ajoutées en haut.
 
 ---
 
+## 2026-11-04 — Après le Bachelor : pages « À propos » et « Confidentialité », durcissement de la production
+
+**Contexte.** Le travail est clos (mémoire remis le 31.08.2026, soutenu le 14.09.2026, version `v1.0.0`).
+Le dépôt sert désormais de vitrine du projet. Pour ne plus toucher la production à chaque essai, le
+travail courant se fait sur une branche **`develop`** ; la production ne change qu'à la fusion dans `main`
+(le workflow ne se déclenche que sur un push `main` touchant `src/**`, `deploy/**`, `requirements.txt`,
+`.streamlit/**` ou le workflow lui-même). Les livrables du mémoire (figures, `.docx`, PDF) ne sont pas
+modifiés.
+
+**Production (`deploy/`).** Trois constats faits sur le serveur, trois correctifs :
+- **Appel externe au démarrage.** Lancé avec `--server.address=0.0.0.0` en mode *headless*, Streamlit
+  1.62 interroge `checkip.amazonaws.com` à chaque démarrage pour afficher une « External URL » dans ses
+  journaux (`streamlit/web/bootstrap.py`), et ce depuis la mise en production du 25.08. L'appel ne
+  transporte aucune donnée d'usager, mais il contredisait la règle « aucun appel externe » affirmée dans
+  les entrées précédentes : c'est une correction, pas un simple réglage. Correctif : `--browser.serverAddress=ge-trouve.ch` dans la commande du
+  `Dockerfile` (production seulement, le lancement local n'est pas touché). Vérifié dans un bac à sable
+  avec les mêmes options : plus d'appel, la page se charge normalement.
+- **Erreurs montrées aux visiteurs.** Par défaut (`client.showErrorDetails = "full"`), le navigateur
+  affichait la trace complète d'une exception (chemins, code). Correctif : `--client.showErrorDetails=none`
+  dans le `Dockerfile`, et interception de l'erreur dans l'application (voir plus bas). Les journaux du
+  serveur montraient trois arrêts du serveur de modèles (« model runner has unexpectedly stopped », 29.08,
+  10.09 et 01.10.2026), postérieurs au garde-fou `OLLAMA_NUM_PARALLEL=1` ; cause probable : la mémoire.
+- **Journaux sans limite.** `daemon.json` ne réglait que `data-root` : le pilote `json-file` ne faisait
+  aucune rotation (`docker inspect` : `{json-file map[]}`). Correctif : une ancre `x-journaux` dans
+  `docker-compose.yml` (pilote `json-file`, `max-size` 10 Mo, `max-file` 3) appliquée aux quatre services.
+  Au passage, l'en-tête du compose annonçait « trois services » : corrigé en « quatre ».
+
+**Interface (`src/app/`).** Le fichier unique `app.py` est découpé :
+- `app.py` devient le point d'entrée : configuration de la page, styles communs, navigation
+  (`st.navigation`, en haut) et pied de page ;
+- `commun.py` regroupe ce que les pages partagent : constantes (dépôt, contact, mémoire), styles (pied de
+  page, largeur de la barre latérale, titre des pages de texte), titre et sommaire des pages, pied de page ;
+- `vues/assistant.py` reprend la conversation sans changement de comportement, sauf l'erreur : un échec du
+  pipeline affiche un message en français (« Le service n'a pas pu répondre… ») et part dans le journal du
+  serveur avec sa trace, sans le texte de la question (vérifié) ;
+- `vues/a_propos.py` (`/a-propos`) présente le projet : cadre, fonctionnement, technologies et versions
+  (lues dans `requirements.txt` et `docker-compose.yml`), limites, usage de l'IA ;
+- `vues/confidentialite.py` (`/confidentialite`) décrit ce que le site fait réellement des données
+  (question traitée en mémoire et jamais enregistrée, journaux techniques, cookie `_streamlit_xsrf` et clé
+  de thème, hébergement, absence de sauvegarde, droits). Chaque affirmation repose sur un constat fait dans
+  le code ou sur le serveur. Une relecture juridique reste à faire.
+
+Le dossier s'appelle `vues/` et non `pages/`, que Streamlit traite à sa manière à côté du point d'entrée.
+La barre latérale est présente sur toutes les pages (sources sur l'assistant, sommaire « Sur cette page »
+ailleurs), et le titre des pages de texte est placé exactement à la hauteur de celui de l'assistant : la
+mise en page ne saute plus d'une page à l'autre. Elle est fermée au premier affichage sur mobile
+(`initial_sidebar_state="auto"`), où elle couvrait tout l'écran. Le pied de page passe à trois lignes
+(crédit, technologies, liens « À propos », « Confidentialité », GitHub, licence).
+
+**Documentation.** Logo horizontal (`src/app/assets/logo_ge-trouve_horizontal.svg`, mot vectorisé dans la
+police de l'interface) et schémas compacts pour le README dans `docs/schemas/` : `architecture.svg`
+(nouveau) et des copies recadrées des figures 11.1, 10.1 et 12.1 du mémoire, sans légendes ni renvois au
+mémoire. Le README est refondu ensuite.
+
+**Hors de ce chantier.** La branche `exploration-latence` (instrumentation des bancs de latence, 30.09)
+n'est pas intégrée à `develop` ; elle est gardée pour une suite éventuelle du projet.
+
+**Ce qui reste ouvert.** Relecture juridique de la page « Confidentialité » ; contrôles après la fusion dans
+`main` (`docker inspect` doit montrer `max-size:10m`, la ligne « External URL » doit disparaître des
+journaux de l'application).
+
+**Lien avec le mémoire.** Aucun : ces changements sont postérieurs à la remise et ne modifient ni le
+pipeline, ni la consigne, ni les mesures.
+
+---
+
+## 2026-09-14 — Soutenance
+
+Jalon : soutenance du travail de Bachelor. Aucune modification technique.
+
+---
+
 ## 2026-08-31 — Version finale : remise du mémoire
 
-Jalon : remise du travail de Bachelor. Deux retouches de fond depuis le dernier commit.
+Jalon : remise du travail de Bachelor. Deux retouches de fond depuis l'entrée du 29.08.
 
-Allègement du chapitre 2 (« Comprendre le RAG »), Introduction revue, à la demande du directeur de mémoire.
+Allègement du chapitre 2 (« Comprendre le RAG ») et introduction revue, à la demande du directeur de
+mémoire. Le chapitre 4, dont l'allègement était aussi envisagé (entrées des 25 et 28-29.08), est laissé
+en l'état. La version remise est marquée du tag `v1.0.0` (release GitHub, PDF du mémoire joint).
 
 ---
 
@@ -20,9 +94,9 @@ Allègement du chapitre 2 (« Comprendre le RAG »), Introduction revue, à la d
 
 Deux ajouts techniques.
 
-Logo et favicon : un logo (une loupe contenant une coche, aux couleurs genevoises, dégradé du jaune #F2B705 vers le rouge #C8102E, coche #1F2430) est rangé dans un nouveau dossier `src/app/assets/` (source vectorielle `logo_ge-trouve.svg`, raster `logo_ge-trouve.png`). Le favicon de l'onglet est branché dans `src/app/app.py` via `st.set_page_config(page_icon=...)`, avec un chemin construit depuis le fichier (`pathlib`) pour fonctionner en local comme en conteneur, et un repli sur l'icône par défaut si l'actif manque. Le PNG est retenu plutôt que le `.ico` (support Streamlit fiable ; il sert aussi de logo en tête du README). L'emplacement est sous `src/`, seul dossier copié dans l'image Docker (favicon présent en production). Retouches CSS mineures au passage (indicateur d'état remonté sur mobile, espacement du bas de page et de la barre latérale).
+Logo et favicon : un logo (une loupe contenant une coche, aux couleurs genevoises, dégradé du jaune #F2B705 vers le rouge #C8102E, coche #1F2430) est rangé dans un nouveau dossier `src/app/assets/` (source vectorielle `logo_ge-trouve.svg`, raster `logo_ge-trouve.png` ; un `favicon_ge-trouve.ico` est aussi versionné, sans être branché). Le favicon de l'onglet est branché dans `src/app/app.py` via `st.set_page_config(page_icon=...)`, avec un chemin construit depuis le fichier (`pathlib`) pour fonctionner en local comme en conteneur, et un repli sur l'icône par défaut si l'actif manque. Le PNG est retenu plutôt que le `.ico` (support Streamlit fiable ; il sert aussi de logo en tête du README). L'emplacement est sous `src/`, copié dans l'image Docker (favicon présent en production). Retouches CSS mineures au passage (indicateur d'état remonté sur mobile, espacement du bas de page et de la barre latérale).
 
-Réglages centralisés : les réglages du pipeline de réponse (`TOP_K`, `OPTIONS_GENERATION`, `TIMEOUT_GENERATION`) quittent `src/repondre.py` pour `src/config.py`, le point unique de configuration ; `repondre.py` et le banc `evaluation/executer_banc.py` les lisent désormais depuis `config`. Cela aligne le code sur ce que le README annonçait déjà (les réglages se lisent dans `config.py`).
+Réglages centralisés : les réglages du pipeline de réponse (`TOP_K`, `OPTIONS`, renommé `OPTIONS_GENERATION`, et `TIMEOUT_GENERATION`) quittent `src/repondre.py` pour `src/config.py`, le point unique de configuration ; `repondre.py` et le banc `evaluation/executer_banc.py` les lisent désormais depuis `config`. Cela aligne le code sur ce que le README annonçait déjà (les réglages se lisent dans `config.py`).
 
 ---
 
@@ -34,7 +108,7 @@ Le README est entièrement refondu, avec une nouvelle structure : présentation 
 
 ## 2026-08-28 et 29 — Intégration du retour du directeur et rédaction finale
 
-Jalon rédactionnel : le retour du directeur est intégré et la rédaction du mémoire est achevée. Deux nouvelles sections au chapitre 8, 8.4 « L'analyse du besoin » et 8.5 « L'existant et le positionnement », appuyées par une analyse SWOT (Figure 8.1) et une analyse PESTEL (Figure 8.2) et par douze sources « Existant » ajoutées à la bibliographie. Les liminaires et la fermeture sont écrits : conclusion (réponse à la question de recherche, leviers, limites, perspectives), introduction, résumé et remerciements. L'image filée de l'orchestre (chef et musiciens) et la parenté des candidats ont été entièrement retirées du document. Restent l'allègement des chapitres 2 et 4 et la passe finale (mise à jour des champs et des listes, bibliographie, PDF, Compilatio) avant la remise du 31 août.
+Jalon rédactionnel : le retour du directeur est intégré et la rédaction du mémoire est achevée. Deux nouvelles sections au chapitre 8, 8.4 « L'analyse du besoin » et 8.5 « L'existant et le positionnement », appuyées par une analyse SWOT (Figure 8.1) et une analyse PESTEL (Figure 8.2) et par des sources « Existant » ajoutées à la bibliographie (huit fiches nouvelles au `.ris`, qui passe de 89 à 97). Les liminaires et la fermeture sont écrits : conclusion (réponse à la question de recherche, leviers, limites, perspectives), introduction, résumé et remerciements. L'image filée de l'orchestre (chef et musiciens) et la parenté des candidats ont été entièrement retirées du document. Restent l'allègement des chapitres 2 et 4 et la passe finale (mise à jour des champs et des listes, bibliographie, PDF, Compilatio) avant la remise du 31 août.
 
 ---
 
@@ -42,17 +116,26 @@ Jalon rédactionnel : le retour du directeur est intégré et la rédaction du m
 
 Jalon rédactionnel : le chapitre 12 (résultats de l'évaluation) est inséré au mémoire, quatre sections et une fermeture. La section 12.1 raconte le protocole exécuté (20 questions d'auteur, 16 avec réponse et 4 hors périmètre, références bâties depuis le corpus, étanchéité totale) et consigne un constat d'honnêteté : le branchement direct Haystack-RAGAS n'a pas pu être établi avec la version retenue de la bibliothèque, RAGAS a été enveloppé par ses composants LangChain pour Ollama, et le critère d'intégration du chapitre 3 n'aura donc pas servi ; la Figure 12.1 (nouvelle) schématise ce câblage. La 12.2 présente les moyennes sur les questions avec réponse (précision 0,92, rappel 0,93 agrégé sur 15 avec la réserve Q05, fidélité 0,85, pertinence 0,71) : récupération forte, fidélité aux erreurs de fusion sans invention, pertinence tirée par la verbosité. La 12.3 traite les hors périmètre cas par cas et le garde-fou humain (cinq relectures à l'aveugle, grille controle_humain.md), dont la question 8, fidèle mais hors sujet, attrapée par l'humain seul : l'angle mort de RAGAS. La 12.4 classe les défauts sur quatre des sept points de Barnett (trois jamais apparus) et esquisse les leviers sans les développer (consigne plus courte, échantillonnage centralisé dans src/config.py, changement de modèle en une ligne relayé par le CI/CD, palier de serveur), le contrôle humain restant à conserver ; la conclusion développera. Deux annexes nouvelles : l'Annexe 4 (les 20 questions verbatim avec leurs quatre scores, la ligne Moyenne AR, la réserve Q05, les cinq verdicts humains, renvoi aux traces du dépôt) et l'Annexe 5 (calcul des quatre métriques en deux étages, illustrée par annexe_5_metriques_ragas.svg). Un seul appel de citation ajouté (fiche RAGAS existante), aucune fiche Zotero nouvelle. Restent la conclusion, l'introduction à ajuster et le résumé, côté rédaction.
 
+
+> **Écart signalé (04.11).** La grille du contrôle humain (`resultats/evaluation/controle_humain.md`)
+> classe Q08 en n° 4 et n° 2 (page attendue absente du top-5) : cinq points de Barnett sont apparus
+> (1, 2, 4, 6, 7), et non quatre. Le mémoire remis (12.4) garde « quatre » ; la grille fait foi.
 ---
 
 ## 2026-08-27 — Étape 6 terminée : évaluation exécutée
 
-Protocole du chapitre 7 appliqué au pipeline de production figé (consigne V5, régime acté, top_k 5), sans aucune retouche pendant l'étape. Banc exécuté sur les 20 questions d'auteur (une passe, sans seed, poste de développement) ; notation RAGAS 0.4.3 par le juge local Llama 3.1 8B et l'encodeur Qwen3-Embedding, quatre métriques. Une vérification indépendante des 16 réponses de référence a conduit à 9 retouches mineures, appliquées avant la notation finale. Scores clés (questions avec réponse) : précision du contexte 0.92, rappel 0.93, fidélité 0.85, pertinence 0.71 ; les 4 hors périmètre se lisent séparément (un score bas y signale un refus, le comportement attendu). Écarts consignés : Q05 rappel ignoré (échec technique du juge) ; le juge sur CPU impose une notation en série (délai client du banc relevé à 1200 s au premier appel à froid). Constats : récupération forte, fidélité bonne avec des erreurs de fusion de passages voisins (pas d'invention ex nihilo), pertinence tirée vers le bas par la verbosité, aveu d'ignorance inconstant. Le contrôle humain (entrée du jour) confirme ces scores et rattrape un angle mort du juge (Q08, fidèle mais hors sujet). Détail au journal des mesures et dans `resultats/evaluation/`. Reste la rédaction du chapitre 12.
+Protocole du chapitre 7 appliqué au pipeline de production figé (consigne V5, régime acté, top_k 5), sans aucune retouche pendant l'étape. Banc exécuté sur les 20 questions d'auteur (une passe, sans seed, poste de développement) ; notation RAGAS 0.4.3 par le juge local Llama 3.1 8B et l'encodeur Qwen3-Embedding, quatre métriques. Une vérification indépendante des 16 réponses de référence a conduit à 9 retouches mineures, appliquées avant la notation finale. Scores clés (questions avec réponse) : précision du contexte 0,92, rappel 0,93, fidélité 0,85, pertinence 0,71 ; les 4 hors périmètre se lisent séparément (un score bas y signale un refus, le comportement attendu). Écarts consignés : Q05 rappel ignoré (échec technique du juge) ; le juge sur CPU impose une notation en série (délai client du banc relevé à 1200 s au premier appel à froid). Constats : récupération forte, fidélité bonne avec des erreurs de fusion de passages voisins (pas d'invention ex nihilo), pertinence tirée vers le bas par la verbosité, aveu d'ignorance inconstant. Le contrôle humain (entrée du jour) confirme ces scores et rattrape un angle mort du juge (Q08, fidèle mais hors sujet). Détail au journal des mesures et dans `resultats/evaluation/`. Reste la rédaction du chapitre 12.
 
+
+> **Révision du câblage du juge (par rapport à l'entrée du 04.08).** La voie `llm_factory` / LiteLLM a été
+> abandonnée : `llm_factory` renvoie un type que `evaluate()` refuse. Le juge et l'encodeur sont branchés
+> via LangChain-Ollama (`LangchainLLMWrapper(ChatOllama(...))`, `LangchainEmbeddingsWrapper(OllamaEmbeddings(...))`,
+> `evaluation/calculer_ragas.py`), pile LangChain épinglée en 0.3.x (`evaluation/requirements-evaluation.txt`).
 ---
 
 ## 2026-08-27 — Étape 6.4 : contrôle humain
 
-Relecture à l'aveugle de 5 réponses sur 20 (Q01, Q05, Q08, Q14, Q17), confrontées aux captures du corpus du 13.08.2026, selon les 5 critères du protocole et la grille de Barnett et al. 2024. Résultats : Q05 sans défaut ; Q01 incomplète (n° 7) avec une fusion erronée (permis Ci) ; Q08 exacte mais hors sujet, section pertinente non extraite (n° 4) ; Q14 exacte mais absence des horaires non avouée (n° 1), rien d'inventé ; Q17 (hors périmètre) sans aveu ni bonne cible (n° 1 + n° 6). Constat transversal : aucune invention ex nihilo ; les erreurs factuelles sont des fusions d'extraits voisins. Critère « bien orientée » précisé : hors périmètre uniquement. Détail dans le fichier de contrôle. Confrontation aux scores RAGAS à suivre (chapitre 12).
+Relecture à l'aveugle de 5 réponses sur 20 (Q01, Q05, Q08, Q14, Q17), confrontées aux captures du corpus du 13.08.2026, selon les 5 critères du protocole et la grille de Barnett et al. 2024. Résultats : Q05 sans défaut ; Q01 incomplète (n° 7) avec une fusion erronée (permis Ci) ; Q08 exacte mais hors sujet, section pertinente non extraite (n° 4), avec une page attendue absente du top-5 (n° 2) ; Q14 exacte mais absence des horaires non avouée (n° 1), rien d'inventé ; Q17 (hors périmètre) sans aveu, orientation partielle et fusion de passages voisins sur la règle des 3 mois (n° 1 + n° 6). Constat transversal : aucune invention ex nihilo ; les erreurs factuelles sont des fusions d'extraits voisins. Critère « bien orientée » précisé : hors périmètre uniquement. Détail dans le fichier de contrôle. Confrontation aux scores RAGAS à suivre (chapitre 12).
 
 ---
 
@@ -93,13 +176,13 @@ Ubuntu 24.04 LTS, datacenter suisse, IP publique dédiée), servi en **HTTPS** s
 **Serveur et sécurité.** Compte admin **`danielgarcia`** (sudo, clé SSH ed25519) ; login root SSH
 désactivé et authentification **par clé seule** (fichier de durcissement `sshd_config.d/99-hardening.conf`) ;
 **UFW** (22/80/443) et **fail2ban** (jail sshd) ; pare-feu Infomaniak (niveau manager) ouvert sur 22/80/443.
-**Docker** installé depuis le dépôt officiel, avec **data-root déplacé sur `/mnt/data`** (disque de 250 Go)
+**Docker** installé depuis le dépôt officiel, avec **data-root déplacé sur `/mnt/data/docker`** (disque de 250 Go)
 pour que modèles et images ne saturent pas les 19 Go du disque système.
 
 **Conteneurisation (`deploy/`).** `Dockerfile` (image de l'app, utilisateur non privilégié **UID 1001**
 aligné sur `danielgarcia`, propriétaire de la base montée) ; `docker-compose.yml` (services **ollama**,
 **ollama-pull**, **app**, **caddy** ; `restart: unless-stopped`) ; `Caddyfile` (HTTPS automatique Let's
-Encrypt, redirection `www` vers l'apex) ; `.dockerignore`. Le provisionnement des modèles est **automatisé**
+Encrypt, redirection `www` vers l'apex) ; `.dockerignore` (à la racine du dépôt). Le provisionnement des modèles est **automatisé**
 par un service one-shot **`ollama-pull`** (image de l'app) qui exécute `src/pull_modeles.py`, lequel lit
 `config.MODELES_A_TIRER` (source **unique** des noms de modèles). Base Chroma **copiée une fois** sur `/mnt/data/chroma` (scp), montée en
 **lecture-écriture** (Chroma/SQLite écrit ses fichiers WAL même pour de simples lectures).
@@ -109,6 +192,10 @@ par un service one-shot **`ollama-pull`** (image de l'app) qui exécute `src/pul
 `.github/workflows/deploy.yml` : déclenché **uniquement** sur push `main` (jamais sur pull request, pour
 protéger le dépôt public d'un fork malveillant), fait `git pull` dans `/srv/apps/ge-trouve-ch` puis
 `docker compose up -d --build`. Approbation exigée pour les workflows de forks (Settings → Actions).
+> **Mise à jour (25.08, commit `0721af4`).** Le même jour, le workflow reçoit un filtre `paths` : il ne
+> se déclenche que si le push touche `src/**`, `deploy/**`, `requirements.txt`, `.streamlit/**` ou le
+> workflow lui-même (un push purement documentaire ne déploie rien), et un déclenchement manuel
+> (`workflow_dispatch`) est ajouté.
 
 **Décisions et incidents en cours d'exécution.**
 - **Suppression du mécanisme `.env`** : `config.py` lit les variables d'environnement du shell (posées par
@@ -139,19 +226,19 @@ déploie sans étape de tests Python (déploiement pur).
 palier de confort **6 vCPU / 18 Go de RAM** (confirmé par les mesures : Gemma + Qwen tiennent à l'aise à
 18 Go), **Ubuntu 24.04 LTS**. La pile est **conteneurisée avec Docker Compose** (Ollama, application
 Streamlit, reverse proxy **Caddy** pour l'HTTPS automatique) et livrée par un **pipeline GitHub Actions**
-avec un **runner self-hosted sur le VPS** (compte dédié, service systemd) qui déploie sur un push `main`.
+avec un **runner auto-hébergé sur le VPS** (compte dédié, service systemd) qui déploie sur un push `main`.
 Ordre d'exécution : service vivant d'abord, pipeline ensuite. Sous-étapes détaillées dans
 `docs/plan_developpement.md`.
 
 **Motifs.**
-- **Souveraineté** : tout reste sur le serveur suisse (inférence et déploiement) ; le runner self-hosted
+- **Souveraineté** : tout reste sur le serveur suisse (inférence et déploiement) ; le runner auto-hébergé
   garde même la chaîne CI/CD dans le serveur, pas sur une infrastructure tierce.
 - **Reproductibilité** : Docker Compose fige l'assemblage des briques ; un `docker compose up` relance tout.
 - **Sécurité dès le départ** : UFW (22/80/443), SSH par clé seule, login root désactivé, fail2ban ; comptes
   et groupes dédiés (`docker`, `deploy`) plutôt que root. Ces mesures reprennent et devancent les
   recommandations de durcissement d'une infrastructure antérieure de l'auteur.
 - **Patron éprouvé** : l'organisation des fichiers (`/srv/apps`, `/srv/infra`, `/opt/runners`) et le flux du
-  runner GitHub sont repris d'un serveur existant d'un autre projet perso (adaptation : Caddy au lieu de nginx, pas de
+  runner GitHub sont repris d'un serveur existant d'un autre projet personnel (adaptation : Caddy au lieu de Nginx, pas de
   base PostgreSQL, la seule donnée persistante étant la base Chroma).
 
 **Cadre à garder en tête.** Le déploiement et le CI/CD sont un **apport d'ingénierie et de vitrine** (dépôt
@@ -179,7 +266,7 @@ d'un indicateur au niveau du message qui se cachait derrière le champ fixe.
 
 **Sous-décisions.**
 - **Diffusion progressive (streaming) retenue.** Elle ne réduit pas le temps de calcul mais la latence
-  perçue : premier mot en ~1 s à chaud, alors que la réponse complète met ~2 min à s'écrire. Contrepartie
+  perçue : premier mot en 1 à 3,5 s à chaud selon le poste, alors que la réponse complète met ~2 min à s'écrire. Contrepartie
   assumée de la souveraineté (CPU, sans GPU ni API). Chiffres au journal des mesures (2026-08-23).
 - **Pas de préchargement des modèles côté application.** Les modèles restent résidents côté Ollama ; le
   maintien au chaud relève du déploiement (`keep_alive`, étape 5), pas de l'application.
@@ -196,11 +283,15 @@ contraste plus rapide), deux modes (appel direct / streaming), à froid et à ch
 chargé. Tableaux et constats au journal des mesures (2026-08-23) ; captures dans `resultats/interface/`.
 
 **Lien avec le mémoire.** Matière du chapitre 11 (interface). Argument à porter : distinguer **latence de
-calcul** (inchangée) et **latence perçue** (réduite à ~1 s par le streaming).
+calcul** (inchangée) et **latence perçue** (réduite à quelques secondes par le streaming).
+
+> **Précision (25.08).** Ces premiers mots rapides venaient du cache de traitement du prompt (question
+> rejouée). En production, une question nouvelle attend environ 1,5 min avant le premier mot : voir
+> l'entrée du 25.08 et le journal des mesures.
 
 ---
 
-## 2026-08-13 — Chapitre 10 complet : l'étape 3 racontée au mémoire
+## 2026-08-22 — Chapitre 10 complet : l'étape 3 racontée au mémoire
 
 **Nature.** Jalon rédactionnel, sans décision technique nouvelle. La section 10.6 (corpus complet :
 découverte, scraping, indexation) est rédigée et insérée ; le chapitre 10 est complet et fermé.
@@ -213,7 +304,7 @@ cantonal, scraping responsable, préservation des liens, indexation, mesures, re
 sur les journaux. Détail des faits et chiffres : entrée du 13.08 (clôture de l'étape 3) et journal des mesures.
 
 **Ce qui reste ouvert.** Interface (étape 4, en cours), déploiement (étape 5), évaluation RAGAS (Partie 3),
-conclusion de la Partie 1.
+conclusion du mémoire.
 
 ---
 
@@ -242,7 +333,7 @@ complet (4304 pages), plus seulement sur le pilote.
   pilote mais le corpus complet (références mises à jour). Contrôle qualitatif sur la question type
   concluant (réponse fondée, sourcée, liens cités, plus complète que sur le pilote).
 
-**Leçon d'exécution.** Un traitement long (scraping ~2,4 h, indexation ~3,3 h) sur poste Windows exige de
+**Leçon d'exécution.** Un traitement long (scraping ~2,4 h estimées, soit 4 322 pages à 2 s, indexation ~3,3 h) sur poste Windows exige de
 désactiver la mise en veille (`powercfg /change standby-timeout-ac 0`) et de suspendre OneDrive pendant
 l'écriture de la base. La reprise a sauvé l'indexation après une mise en veille intempestive.
 
@@ -298,7 +389,7 @@ alimentent l'Annexe 2 ; détail chiffré dans `docs/journal_des_mesures.md`.
   (offices, formulaires, permis), **cite les pages officielles** (URL fournies avec les extraits) et, hors
   corpus, **avoue son ignorance et oriente** vers le guichet ou le site officiel, sans rien inventer. Les
   formulaires, numéros ou adresses ne sont repris que s'ils figurent dans les extraits.
-- **Régime d'échantillonnage de production** (`src/repondre.py`, `OPTIONS`) : température **0.3**,
+- **Régime d'échantillonnage de production** (`src/repondre_pilote.py`, renommé `src/repondre.py` le 13.08, `OPTIONS`) : température **0,3**,
   top_p 0.95, top_k 64, `num_predict` **1024**, `num_ctx` 4096, **sans seed** (le seed reste un outil de
   comparaison des essais, pas un réglage de production).
 
@@ -319,7 +410,7 @@ script de comparaison (`scripts/mesures/comparer_consignes.py`) archivant répon
 `resultats/consignes/` (versionné), dans un fichier daté et étiqueté par les variantes jouées.
 
 **Ce qui reste ouvert.**
-- Latence propre du régime de production à mesurer sur DANIELGARCIA (les essais garciad throttlaient).
+- Latence propre du régime de production à mesurer sur DANIELGARCIA (les essais sur GARCIAD subissaient un bridage thermique).
 - La complétude de V3 ne prendra tout son sens qu'avec le **corpus complet** (étape 3) : formulaires, liens
   et contacts n'existent dans les réponses que si le corpus les contient (le pilote en est pauvre).
 - Tirages de stabilité formels (sans seed) allégés : V3 déjà vérifiée, y compris son ancrage.
@@ -328,9 +419,9 @@ script de comparaison (`scripts/mesures/comparer_consignes.py`) archivant répon
 
 **État.** Étape 2 close. Consigne V3 active, régime de production acté. Reste le corpus complet (étape 3).
 
-**Mise à jour (soirée du 11.08).** La latence propre du régime de production a été relevée sur DANIELGARCIA
-(détail au journal des mesures) : le point « latence à mesurer » ci-dessus est clos. La section 10.5
-(consigne de génération) est rédigée, insérée et vérifiée au mémoire ; l'Annexe 2 porte sa section Étape 2.
+**Mise à jour (11 et 12.08).** La latence propre du régime de production a été relevée sur DANIELGARCIA
+le 11.08 (détail au journal des mesures) : le point « latence à mesurer » ci-dessus est clos. La section
+10.5 (consigne de génération) est rédigée, puis insérée et vérifiée au mémoire le 12.08 ; l'Annexe 2 porte sa section Étape 2.
 Dans la foulée, le dépôt a été réorganisé (résultats versionnés dans `resultats/` hors `data/`, chemins
 centralisés, renommages `_pilote`).
 
@@ -385,7 +476,7 @@ archivée est citée en prose dans le mémoire. Détail chiffré : `docs/journal
   principal par `HTMLToDocument` (trafilatura, épinglé), un JSON par page.
 - Indexation (`src/indexing/indexer_pilote.py`) : découpage 200 mots / recouvrement 40, embeddings Qwen
   sans consigne, écriture dans Chroma persistant avec métadonnées par fragment.
-- Pipeline de réponse (`src/repondre.py`, assemblé en `add_component` / `connect`) : requête Qwen
+- Pipeline de réponse (`src/repondre_pilote.py`, renommé `src/repondre.py` le 13.08, assemblé en `add_component` / `connect`) : requête Qwen
   avec consigne de tâche, recherche Chroma (top_k 5), `ChatPromptBuilder` (système + utilisateur),
   `OllamaChatGenerator` sur Gemma en mode direct (`think=False`).
 - Configuration partagée `src/config.py` (lecture du `.env`).
@@ -398,7 +489,7 @@ archivée est citée en prose dans le mémoire. Détail chiffré : `docs/journal
 - L'empreinte mémoire du couple Gemma + Qwen **confirme le budget du chapitre 4** : tenue au palier de
   confort 18 Go ; sur GARCIAD (16 Go) elle tient tout juste. Cela **verrouille le dimensionnement du VPS**
   (palier plancher 12 Go exclu, confort 18 Go requis).
-- Le contraste inter-postes de l'étape 0 se confirme sur le pipeline (garciad prépare vite, décode lentement).
+- Le contraste inter-postes de l'étape 0 se confirme sur le pipeline (GARCIAD prépare vite, décode lentement).
 
 **Réglages posés comme révisables.** Découpage 200 mots / recouvrement 40 ; top_k 5 ; consigne provisoire. L'extraction retire les hyperliens (trafilatura garde la prose) : la réponse est juste mais
 vague, sans lien ni adresse, ces éléments n'étant pas dans le corpus. À corriger à l'étape 3.
@@ -415,6 +506,9 @@ Chroma embarquée. Aucun appel externe, aucune clé.
 ---
 
 ## 2026-08-06 — Chapitre 9 : spécifications, périmètre du corpus, interface et frontal
+
+> Date de référence et de décision : 06.08.2026. Rédaction et insertion au mémoire (texte, fiches Zotero,
+> Figure 9.1) : 10.08.2026.
 
 **Nature.** Chapitre de spécifications et d'architecture du prototype (rédigé côté mémoire). Il pose le
 cahier des charges, arrête le périmètre du corpus, et tranche deux briques de la Partie 2 laissées
@@ -449,7 +543,7 @@ entretenir), gardé comme repli documenté ; sa solidité et son ubiquité reste
 confrontée aux mesures : le poste s'avère plus lourd que prévu. Constat acté sans rétrofit de la
 Partie 1 (mesures en Annexe 2 ; chiffres au journal des mesures).
 
-**Pièces.** Cinq captures (Streamlit, Open WebUI, Caddy, Nginx) archivées **localement** dans `biblio/`
+**Pièces.** Cinq captures (dépôt Ge-Trouve, Streamlit, Open WebUI, Caddy, Nginx) archivées **localement** dans `biblio/`
 (hors dépôt) ; cinq fiches Zotero au `.ris` (versionné) ; Figure 9.1 versionnée dans
 `memoire/images/figures/`.
 
@@ -531,7 +625,7 @@ volontairement sans réponse) ; vigilance Partie 3 (comportement des consignes a
 copies françaises, à confronter au contrôle humain).
 
 **Sources.** Réutilisations : Ciancone et al. 2024, compar:IA 2026, Swiss AI
-Initiative 2025 (Apertus), Es et al. 2023. Zotero : 83 fiches.
+Initiative 2025 (Apertus), Es et al. 2023. Zotero : 83 fiches (une nouvelle : Commission de l'intelligence artificielle 2024, citée en 8.3).
 
 **État du document.** Environ 30 100 mots, 15 tableaux, 12 figures, 64 notes. Partie 1 complète.
 
@@ -739,6 +833,9 @@ paramétrable pour échanger ce maillon sans réécriture.
 
 ## 2026-07-16 — Modèle de langage (LLM) : Gemma 4 12B Instruct
 
+> Le 16.07.2026 est la date de référence du chapitre ; la décision est consignée le 19.07.2026, après les
+> relevés des 17 et 18.07.
+
 **Décision.** Le modèle de langage retenu est **Gemma 4 12B Instruct**, servi en local via Ollama.
 Le choix du modèle et celui du palier serveur sont **liés** : c'est une décision conjointe.
 
@@ -750,7 +847,7 @@ Le choix du modèle et celui du palier serveur sont **liés** : c'est une décis
   documenté par l'éditeur.
 - Repli documenté (si le palier plancher est retenu) : Llama 3.1 8B Instruct (`llama3.1:8b`, Q4_K_M, 4,9 Go).
 
-**Serveur de production.** Infomaniak Serveur Cloud. Palier de confort : 6 CPU / 18 Go de RAM. Palier
+**Serveur de production.** Infomaniak Serveur Cloud. Palier de confort : 6 vCPU / 18 Go de RAM. Palier
 plancher : 4 CPU / 12 Go, retenu comme scénario de repli. Rien n'est souscrit à ce stade ; souscription
 prévue en août.
 
@@ -768,7 +865,7 @@ classement compar:IA (comparateur d'IA conversationnelles, comparia.beta.gouv.fr
 convention reprise au chapitre 5). Cinq candidats comparés : Llama 3.1 8B Instruct (Meta, 07/2024),
 Apertus 8B Instruct (Swiss AI, 09/2025), Ministral 3 8B Instruct (Mistral AI, 12/2025), Qwen 3.5 9B
 Instruct (Alibaba, 03/2026) et Gemma 4 12B Instruct (Google DeepMind, 06/2026) ; principaux écartés
-pour l'enveloppe mémoire : GLM-5.2 (744 milliards de paramètres), gpt-oss, Lucie-7B. Zotero : cartes
+: GLM-5.2 (744 milliards de paramètres) et gpt-oss pour l'enveloppe mémoire, Lucie-7B pour l'alignement. Zotero : cartes
 Hugging Face et rapports techniques des candidats (consultés le 16.07.2026), pages de la bibliothèque
 Ollama (`llama3.1`, `ministral-3`, `qwen3.5`, `gemma4`, consultées les 17-18.07.2026) et le relevé
 compar:IA.
@@ -799,7 +896,7 @@ non tranchés. Le code doit rester paramétrable pour échanger ces maillons san
 
 **Mise en œuvre.**
 - Paquets : `haystack-ai` (cœur 2.x), `ollama-haystack`, `chroma-haystack`.
-- Versions **épinglées** dans `requirements.txt` dès la première installation. 
+- Versions **épinglées** dans `requirements.txt` dès la première installation.
 - Composants de référence : `OllamaTextEmbedder` / `OllamaDocumentEmbedder`, `OllamaGenerator` ou
   `OllamaChatGenerator`, `ChromaDocumentStore`, `ChromaEmbeddingRetriever`, `PromptBuilder`.
 - Pipelines assemblés explicitement (`add_component` / `connect`), sans raccourci masquant le flux.
@@ -822,8 +919,9 @@ Viser la sobriété à chaque choix.
 
 > **Mise à jour (supersession partielle).** Les maillons listés ci-dessus comme ouverts ont depuis été
 > tranchés : LLM le 16.07.2026 (Gemma 4 12B Instruct), embeddings le 21.07.2026 (Qwen3-Embedding-0.6B).
-> Le palier serveur retenu est 6 CPU / 18 Go de RAM (confort), non les ~12 Go évoqués ici. Voir les
-> entrées du 16.07 et du 21.07 ci-dessus.
+> Le palier serveur retenu est 6 vCPU / 18 Go de RAM (confort), non les ~12 Go évoqués ici. Voir les
+> entrées du 16.07 et du 21.07 ci-dessus. Mistral 7B n'a finalement jamais été installé ; Ollama et les
+> modèles retenus l'ont été le 06.08.2026.
 
 > **Précision (06.08.2026).** À l'installation, `requirements.txt` épingle `haystack-ai` **3.0.0**, la
 > version courante. Le chapitre 3 avait tranché sur la ligne 2.x (v2.31 alors, transition 3.0 annoncée) ;

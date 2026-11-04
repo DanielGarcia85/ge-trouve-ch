@@ -17,7 +17,8 @@ Ce que le fichier ne fait pas
 
 Pages
 ─────
-  - « Assistant » (page d'accueil) : `vues/assistant.py`.
+  - « Assistant » (page d'accueil) : `vues/assistant.py` ;
+  - « À propos » (`/a-propos`) : `vues/a_propos.py`.
 
 Le dossier s'appelle `vues/` et non `pages/` : Streamlit réserve à un dossier `pages/` placé
 à côté du point d'entrée un comportement propre ; un autre nom évite toute ambiguïté.
@@ -50,6 +51,7 @@ commun.appliquer_styles()
 navigation = st.navigation(
     [
         st.Page(DOSSIER / "vues" / "assistant.py", title="Assistant", default=True),
+        st.Page(DOSSIER / "vues" / "a_propos.py", title="À propos", url_path="a-propos"),
     ],
     position="top",
 )

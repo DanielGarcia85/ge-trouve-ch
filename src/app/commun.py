@@ -29,7 +29,7 @@ TECHNOLOGIES = ("Haystack", "Gemma 4", "Qwen3-Embedding", "Chroma", "Ollama", "S
 
 # Liens internes du pied de page : (libellé, adresse). Une page ajoutée à la navigation
 # (app.py) s'ajoute aussi ici.
-LIENS_INTERNES = ()
+LIENS_INTERNES = (("À propos", "/a-propos"),)
 
 
 

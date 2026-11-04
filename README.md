@@ -28,7 +28,7 @@
 </p>
 
 Ge-Trouve répond en français simple aux questions sur les démarches administratives du canton de
-Genève. Il retrouve les passages utiles dans les pages officielles de ge.ch et geneve.ch, rédige une
+Genève. Il retrouve les passages utiles dans les pages officielles de [ge.ch](https://ge.ch/) et [geneve.ch](https://www.geneve.ch/), rédige une
 réponse et cite ses sources, pour que chacun puisse vérifier. Les modèles de langage tournent sur le
 serveur du projet, en Suisse : aucune question ne part vers un service d'intelligence artificielle
 externe.
@@ -46,7 +46,7 @@ externe.
 | | |
 |---|---|
 | **Titre** | Ge-Trouve : Conception, développement et évaluation d'un assistant conversationnel RAG en français pour les démarches administratives du canton de Genève |
-| **Type** | Travail de Bachelor, mené seul |
+| **Type** | Travail de Bachelor |
 | **Institution** | Haute école de gestion de Genève (HEG-Genève), filière Informatique de gestion |
 | **Auteur** | Daniel Garcia |
 | **Directeur de mémoire** | Frédéric Mencier |
@@ -100,9 +100,9 @@ La page « Confidentialité » : ce que le site fait réellement des questions, 
 | Framework RAG | [Haystack](https://haystack.deepset.ai/) (`haystack-ai`) | 3.0.0 | Assemblage explicite du pipeline |
 | Intégrations | `ollama-haystack`, `chroma-haystack` | 6.8.0, 4.4.0 | Connecteurs Ollama et Chroma |
 | Serveur de modèles | [Ollama](https://ollama.com/) | 0.32.6 (production) | Exécution locale des modèles |
-| LLM (rédacteur) | Gemma 4 12B Instruct (`gemma4:12b`) | Q4_K_M, 7,6 Go | Génération des réponses, mode direct (`think:false`) |
-| Embeddings | Qwen3-Embedding-0.6B (`qwen3-embedding:0.6b`) | Q8_0, 639 Mo | Vecteurs de 1 024 dimensions |
-| LLM (repli et juge) | Llama 3.1 8B Instruct (`llama3.1:8b`) | Q4_K_M, 4,9 Go | Repli documenté ; juge d'évaluation (hors production) |
+| LLM (rédacteur) | [Gemma 4 12B Instruct](https://huggingface.co/google/gemma-4-12B-it) (`gemma4:12b`) | Q4_K_M, 7,6 Go | Génération des réponses, mode direct (`think:false`) |
+| Embeddings | [Qwen3-Embedding-0.6B](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B) (`qwen3-embedding:0.6b`) | Q8_0, 639 Mo | Vecteurs de 1 024 dimensions |
+| LLM (repli et juge) | [Llama 3.1 8B Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) (`llama3.1:8b`) | Q4_K_M, 4,9 Go | Repli documenté ; juge d'évaluation (hors production) |
 | Base vectorielle | [Chroma](https://www.trychroma.com/) | embarquée | Stockage et recherche des fragments, filtrage par métadonnées |
 | Extraction | [Trafilatura](https://trafilatura.readthedocs.io/) | 2.2.0 | Texte des pages officielles, liens conservés |
 | Interface | [Streamlit](https://streamlit.io/) | 1.62.0 | Conversation, pages « À propos » et « Confidentialité » |
